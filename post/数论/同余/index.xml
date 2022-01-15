@@ -3,6 +3,19 @@
 
   
   <item>
+    <title>数列通项：特征根法</title>
+    <link>/post/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%88%97%E9%80%9A%E9%A1%B9%E7%89%B9%E5%BE%81%E6%A0%B9%E6%B3%95/</link>
+    
+    <summary>用这个方法，30 秒速解斐波那契数列通项.</summary>
+    
+    <content>
+      二次特征根 ¶已知 f_1,f_2 和 af_{n&#43;2}&#43;bf_{n&#43;1}&#43;cf_n=0(a\not=0)，求 f_n. 解： 两边同除 a：  根据韦达定理，二次方程 ax^2&#43;bx&#43;c=0 的解 x_1,x_2 满足 代入化简得   \therefore 数列 \{f_{n&#43;1}&#43;x_1f_n\} 是首项为 f_2&#43;x_1f_1，公比为 x_2 的等比数列. 由方程解的对称性可知，x_1,x_2 可互换，因此 (2)-(1) 得   三次特征根 ¶已知 f_1,f_2,f_3 和 af_{n&#43;3}&#43;bf_{n&#43;2}&#43;cf_{n&#43;1}&#43;df_n=0(a\not=0)，求 f_n. 解： 两边同除 a：  根据韦达定理，三次方程 ax^3&#43;bx^2&#43;cx&#43;d=0 的解 x_1,x_2,x_3 满足 代入化简得   设 p(\alpha,\beta)=f_3-(x_\alpha&#43;x_\beta)f_2&#43;x_\alpha x_\beta f_1，则数列  是首项为 p(1,2)，公比为 x_3 的等比数列. 由方程解的对称性可知，x_1,x_2,x_3 可互换，因此 (2)-(1)，结合对称性得 (4)-(3) 得： 斐波那契数列 ¶已知 f_1=f_2=1,f_{n&#43;2}=f_{n&#43;1}&#43;f_n，求 f_n 的通项. 解： 斐波那契数列实际是 二次特征根 在 a=1,b=-1,c=-1 时的情况. 解方程 x^2-x-1=0 得 代入结论得 
+    </content>
+  </item>
+  
+
+  
+  <item>
     <title>三角函数公式</title>
     <link>/post/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E5%85%AC%E5%BC%8F/</link>
     
@@ -16,21 +29,8 @@
 
   
   <item>
-    <title>斐波那契数列通项</title>
-    <link>/post/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E9%80%9A%E9%A1%B9/</link>
-    
-    <summary>30 秒速解斐波那契数列通项.</summary>
-    
-    <content>
-      已知 a_1=a_2=1,a_{n&#43;2}=a_{n&#43;1}-a_n，求 a_n 的通项. 解： 设 a_{n&#43;2}-ra_{n&#43;1}=s(a_{n&#43;1}-ra_n)， 则 a_{n&#43;2}=(s&#43;r)a_{n&#43;1}-s\cdot ra_n. 对比 a_{n&#43;2}=a_{n&#43;1}-a_n 得 解得 ∴ 数列 \{a_{n&#43;1}-ra_n\} 是以 a_2-ra_1 为首项，s 为公比的等比数列. 两式相减得：   
-    </content>
-  </item>
-  
-
-  
-  <item>
     <title>换根 DP</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%8D%A2%E6%A0%B9-dp/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%8D%A2%E6%A0%B9-dp/</link>
     
     <summary>换根 DP 是基于 树形 DP 的更高效算法.</summary>
     
@@ -308,7 +308,7 @@
     <summary>在有向图 $G$ 中，如果同时存在 $u→v$ 和 $v→u$ 的路径，那么称 $u$ 和 $v$ 强连通.</summary>
     
     <content>
-      简介 ¶强连通 ¶在有向图 G 中，如果同时存在 u→v 和 v→u 的路径，那么称 u 和 v 强连通.  强连通图 ¶如果有向图 G 的任意两个节点都强连通，那么称 G 是强连通图.  强连通分量 ¶如果图 G 的子图是强连通图，那么该子图称作 G 的强连通分量.  本章介绍求强连通分量的三种算法. Tarjan 算法 ¶图的结构 ¶Tarjan 算法基于对图的 深度优先遍历（DFS），并且将图近似地看成一棵 树.因此，这棵树中会不可避免地出现一些奇怪的边.    前向边：与普通边方向一致，但跨越多个节点.   返祖边：与普通边方向相反，从子孙指向祖先.   横向边：边的两个端点居于树的同一深度.   时间戳 ¶DFS 遍历一张图时，按访问顺序给节点打标记.u 是第 i 个被访问的节点，记作 dfn[u]=i.这个标记叫做「时间戳」.在图中，时间戳标记在节点的右上方.     u 1 2 3 4 5 6     dfn[u] 1 2 5 3 4 6    追溯值 ¶Tarjan 算法还引入了「追溯值」：low[u]，定义为以下节点时间戳的最小值：   以 u 为根的子树中的所有节点.   从这棵子树的任意节点出发，经过 1 条前向边、返祖边或横向边，能到达的节点.   以 low[2] 为例，其子树中有 2,4,5 号节点，还可以通过一条返祖边到达 1 号节点.low[2] 为这些节点时间戳的最小值，也就是 1.     u 1 2 3 4 5 6     low[u] 1 1 5 1 4 6    基本原理 ¶Tarjan 算法是如何利用 dfn 和 low 来求强连通分量的呢？   首先，强连通分量中必然存在环，也就必然存在返祖边.   如果节点 u 满足 dfn[u]=low[u]，存在两种情况：   如果 u 没有出边，则 u 独自为一个强连通分量.   否则 u 的子树中必有一条返祖边指向 u 本身，此处必存在多节点的强连通分量.     要想具体地确定哪些节点是强连通分量，还得借助 栈.具体看以下样例.         1   dfn[1]=low[1]=1.     u 1 2 3 4 5 6     dfn[u] 1        low[u] 1            2   dfn[2]=low[2]=1.     u 1 2 3 4 5 6     dfn[u] 1 2       low[u] 1 2           3   dfn[4]=low[4]=3.节点 4 有一条返祖边指向 1，故更新 low[4]=low[1]=1.     u 1 2 3 4 5 6     dfn[u] 1 2  3     low[u] 1 2  \textcolor{red}{1}         4   回溯至节点 2，更新 low[2]=\min(low[2],low[4])=1.     u 1 2 3 4 5 6     dfn[u] 1 2  3     low[u] 1 \textcolor{red}{1}  1         5   dfn[5]=low[5]=4.节点 5 没有出边和子树，单独一个节点构成强连通分量.移除栈顶的 5.     u 1 2 3 4 5 6     dfn[u] 1 2  3 \textcolor{red}{4}    low[u] 1 1  1 \textcolor{red}{4}        6   回溯至节点 2，low[2]=\min(low[2],low[5])=1.     u 1 2 3 4 5 6     dfn[u] 1 2  3 4    low[u] 1 1  1 4        7   回溯至节点 1，low[1]=\min(low[1],low[2])=1.此时 low[1]=dfn[1]，栈顶的红色部分同属一个强连通分量.将其从栈中删除.     u 1 2 3 4 5 6     dfn[u] \textcolor{red}{1} 2  3 4    low[u] \textcolor{red}{1} 1  1 4        ...     时间复杂度为 O(n&#43;m)（n 为点数，m 为边数）. Kosaraju 算法 ¶Kosaraju 的核心思想可以总结为两点：   强连通分量反过来还是强连通分量.   把强连通分量反一半过来会得到两条共起点、终点的路径.   第一次正向遍历，第二次反向遍历，若出现共起点、终点的两条路径，则此处必有强连通分量. Garbow 算法 ¶ 未完待续 \cdots \ \cdots   
+      简介 ¶强连通 ¶在有向图 G 中，如果同时存在 u→v 和 v→u 的路径，那么称 u 和 v 强连通.  强连通图 ¶如果有向图 G 的任意两个节点都强连通，那么称 G 是强连通图.  强连通分量 ¶如果图 G 的子图是强连通图，那么该子图称作 G 的强连通分量.  本章介绍求强连通分量的三种算法. Tarjan 算法 ¶图的结构 ¶Tarjan 算法基于对图的 深度优先遍历（DFS），并且将图近似地看成一棵 树.因此，这棵树中会不可避免地出现一些奇怪的边.    前向边：与普通边方向一致，但跨越多个节点.   返祖边：与普通边方向相反，从子孙指向祖先.   横向边：边的两个端点居于树的同一深度.   时间戳 ¶DFS 遍历一张图时，按访问顺序给节点打标记.u 是第 i 个被访问的节点，记作 dfn[u]=i.这个标记叫做「时间戳」.在图中，时间戳标记在节点的右上方.     u 1 2 3 4 5 6     dfn[u] 1 2 5 3 4 6    追溯值 ¶Tarjan 算法还引入了「追溯值」：low[u]，定义为以下节点时间戳的最小值：   以 u 为根的子树中的所有节点.   从这棵子树的任意节点出发，经过 1 条前向边、返祖边或横向边，能到达的节点.   以 low[2] 为例，其子树中有 2,4,5 号节点，还可以通过一条返祖边到达 1 号节点.low[2] 为这些节点时间戳的最小值，也就是 1.     u 1 2 3 4 5 6     low[u] 1 1 5 1 4 6    基本原理 ¶Tarjan 算法是如何利用 dfn 和 low 来求强连通分量的呢？   首先，强连通分量中必然存在环，也就必然存在返祖边.   如果节点 u 满足 dfn[u]=low[u]，存在两种情况：   如果 u 没有出边，则 u 独自为一个强连通分量.   否则 u 的子树中必有一条返祖边指向 u 本身，此处必存在多节点的强连通分量.     要想具体地确定哪些节点是强连通分量，还得借助 栈.具体看以下样例.         1   dfn[1]=low[1]=1.     u 1 2 3 4 5 6     dfn[u] 1        low[u] 1            2   dfn[2]=low[2]=1.     u 1 2 3 4 5 6     dfn[u] 1 2       low[u] 1 2           3   dfn[4]=low[4]=3.节点 4 有一条返祖边指向 1，故更新 low[4]=low[1]=1.     u 1 2 3 4 5 6     dfn[u] 1 2  3     low[u] 1 2  \textcolor{red}{1}         4   回溯至节点 2，更新 low[2]=\min(low[2],low[4])=1.     u 1 2 3 4 5 6     dfn[u] 1 2  3     low[u] 1 \textcolor{red}{1}  1         5   dfn[5]=low[5]=4.节点 5 没有出边和子树，单独一个节点构成强连通分量.移除栈顶的 5.     u 1 2 3 4 5 6     dfn[u] 1 2  3 \textcolor{red}{4}    low[u] 1 1  1 \textcolor{red}{4}        6   回溯至节点 2，low[2]=\min(low[2],low[5])=1.     u 1 2 3 4 5 6     dfn[u] 1 2  3 4    low[u] 1 1  1 4        7   回溯至节点 1，low[1]=\min(low[1],low[2])=1.此时 low[1]=dfn[1]，栈顶的红色部分同属一个强连通分量.将其从栈中删除.     u 1 2 3 4 5 6     dfn[u] \textcolor{red}{1} 2  3 4    low[u] \textcolor{red}{1} 1  1 4        &amp;hellip;     时间复杂度为 O(n&#43;m)（n 为点数，m 为边数）. Kosaraju 算法 ¶Kosaraju 的核心思想可以总结为两点：   强连通分量反过来还是强连通分量.   把强连通分量反一半过来会得到两条共起点、终点的路径.   第一次正向遍历，第二次反向遍历，若出现共起点、终点的两条路径，则此处必有强连通分量. Garbow 算法 ¶ 未完待续 \cdots \ \cdots   
     </content>
   </item>
   
@@ -355,7 +355,7 @@
   
   <item>
     <title>AC 自动机</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%AD%97%E7%AC%A6%E4%B8%B2/ac-%E8%87%AA%E5%8A%A8%E6%9C%BA/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95/ac-%E8%87%AA%E5%8A%A8%E6%9C%BA/</link>
     
     <summary>AC 自动机不是能自动 AC 的机器，而是一种著名的多模式串匹配算法.</summary>
     
@@ -368,7 +368,7 @@
   
   <item>
     <title>KMP 算法</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp-%E7%AE%97%E6%B3%95/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95/kmp-%E7%AE%97%E6%B3%95/</link>
     
     <summary>KMP 算法并不能用来看毛片，它是一种字符串匹配算法.</summary>
     
@@ -407,7 +407,7 @@
   
   <item>
     <title>RMQ 算法</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/rmq-%E7%AE%97%E6%B3%95/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/rmq-%E7%AE%97%E6%B3%95/</link>
     
     <summary>RMQ 是 Range Maximum/Minimum Query 的缩写，意为区间的最大（或最小）值.</summary>
     
@@ -433,7 +433,7 @@
   
   <item>
     <title>哈希函数</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0/</link>
     
     <summary>哈希函数 $getHash()$ 能够将字符串转化成整数，并保证字符串不同，对应的整数也不同.</summary>
     
@@ -472,7 +472,7 @@
   
   <item>
     <title>数位 DP</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%95%B0%E4%BD%8D-dp/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%95%B0%E4%BD%8D-dp/</link>
     
     <summary>如何统计区间 $[l,r]$ 中有多少整数符合某条件？</summary>
     
@@ -485,7 +485,7 @@
   
   <item>
     <title>树形 DP</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%A0%91%E5%BD%A2-dp/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%A0%91%E5%BD%A2-dp/</link>
     
     <summary>树形 DP 以树形结构为研究对象.</summary>
     
@@ -589,7 +589,7 @@
   
   <item>
     <title>状压 DP</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%8A%B6%E5%8E%8B-dp/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%8A%B6%E5%8E%8B-dp/</link>
     
     <summary>在程序中，我们如何保存一面棋盘？</summary>
     
@@ -602,7 +602,7 @@
   
   <item>
     <title>状态压缩</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/</link>
     
     <summary>将长为 $m$ 的 bool 数组用 $m$ 位二进制数表示，其中 $i$ 位等于原数组第 $i$ 个元素.</summary>
     
@@ -615,7 +615,7 @@
   
   <item>
     <title>区间 DP</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8C%BA%E9%97%B4-dp/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8C%BA%E9%97%B4-dp/</link>
     
     <summary>区间 DP 以区间为研究对象.</summary>
     
@@ -628,7 +628,7 @@
   
   <item>
     <title>记忆化搜索</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/</link>
     
     <summary>求 Fibonacci 第 $i$ 项的深搜程序如下：</summary>
     
@@ -641,7 +641,7 @@
   
   <item>
     <title>高精度</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6/</link>
     
     <summary>高精度是支持高位数的运算系统.</summary>
     
@@ -654,7 +654,7 @@
   
   <item>
     <title>背包问题</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E8%83%8C%E5%8C%85-dp/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E8%83%8C%E5%8C%85-dp/</link>
     
     <summary>给定若干物品的体积和价值，将其装入固定容积的背包，以使总价值尽可能大.</summary>
     
@@ -667,7 +667,7 @@
   
   <item>
     <title>基础 DP</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%9F%BA%E7%A1%80-dp/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%9F%BA%E7%A1%80-dp/</link>
     
     <summary>一些 DP 的经典问题.</summary>
     
@@ -680,7 +680,7 @@
   
   <item>
     <title>动态规划（DP）</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
     
     <summary>动态规划（DP）是打表的最高境界.</summary>
     
@@ -693,7 +693,7 @@
   
   <item>
     <title>搜索</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2/</link>
     
     <summary>运用计算机的高性能枚举问题的答案.</summary>
     
@@ -706,7 +706,7 @@
   
   <item>
     <title>二分</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86/</link>
     
     <summary>通过若干次折半范围实现快速查询.</summary>
     
@@ -719,7 +719,7 @@
   
   <item>
     <title>排序</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/</link>
     
     <summary>重新排序数组 $a$（长度 $n$）中的元素.</summary>
     
@@ -732,7 +732,7 @@
   
   <item>
     <title>递归</title>
-    <link>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92/</link>
+    <link>/post/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92/</link>
     
     <summary>函数调用自身的编程技巧是递归.</summary>
     
