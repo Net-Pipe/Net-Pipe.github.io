@@ -256,6 +256,141 @@ ul > li {
   .result :last-child .post {
     margin-bottom: 0; }
 
+.flex-left,
+.flex-right {
+  flex: 0 0 var(--aside-width); }
+  .flex-left div.outer,
+  .flex-right div.outer {
+    padding: .7rem;
+    margin: .3rem;
+    width: calc(var(--aside-width) - 2rem);
+    height: calc(100% - 2rem);
+    position: fixed;
+    overflow: auto; }
+    .flex-left div.outer::-webkit-scrollbar-track,
+    .flex-right div.outer::-webkit-scrollbar-track {
+      margin: .7rem; }
+  .flex-left div.inner,
+  .flex-right div.inner {
+    direction: ltr;
+    background-color: var(--background-color);
+    color: var(--color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    box-sizing: border-box;
+    width: calc(var(--aside-width) - 2rem);
+    padding: .5rem;
+    margin-bottom: 1rem;
+    overflow: auto;
+    padding: 1rem; }
+    .flex-left div.inner:hover,
+    .flex-right div.inner:hover {
+      box-shadow: var(--box-shadow-hover); }
+    .flex-left div.inner h2,
+    .flex-right div.inner h2 {
+      margin: 0 0 .5rem 0;
+      line-height: 20px; }
+      .flex-left div.inner h2 > img,
+      .flex-right div.inner h2 > img {
+        vertical-align: -2px;
+        width: 20px;
+        height: 20px;
+        margin-right: .5rem; }
+    .flex-left div.inner ul,
+    .flex-right div.inner ul {
+      padding-left: 1rem; }
+    .flex-left div.inner:last-of-type,
+    .flex-right div.inner:last-of-type {
+      margin-bottom: 0; }
+  .flex-left div.avatar,
+  .flex-right div.avatar {
+    text-align: center; }
+    .flex-left div.avatar h2,
+    .flex-right div.avatar h2 {
+      margin: 1rem; }
+    .flex-left div.avatar img.avatar,
+    .flex-right div.avatar img.avatar {
+      transition: all 0.3s;
+      border-radius: 1rem;
+      box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2); }
+      .flex-left div.avatar img.avatar:hover,
+      .flex-right div.avatar img.avatar:hover {
+        transform: perspective(1px) scale(1.04); }
+    .flex-left div.avatar .data-left,
+    .flex-left div.avatar .data-right,
+    .flex-right div.avatar .data-left,
+    .flex-right div.avatar .data-right {
+      flex: 0 0 50%;
+      display: inline-block;
+      width: calc(50% - 1rem); }
+    .flex-left div.avatar .data-left,
+    .flex-right div.avatar .data-left {
+      border-right: 1px solid var(--color); }
+    .flex-left div.avatar .social,
+    .flex-right div.avatar .social {
+      margin-top: 1rem; }
+      .flex-left div.avatar .social .social-box,
+      .flex-right div.avatar .social .social-box {
+        border-radius: var(--border-radius);
+        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+        background-color: var(--background-color);
+        color: var(--color);
+        transition: all 0.3s;
+        margin-top: .5rem;
+        padding: .5rem;
+        text-align: left;
+        font-size: 18px; }
+        .flex-left div.avatar .social .social-box a,
+        .flex-right div.avatar .social .social-box a {
+          color: var(--color); }
+        .flex-left div.avatar .social .social-box:hover a,
+        .flex-right div.avatar .social .social-box:hover a {
+          color: var(--link-color);
+          text-decoration: underline; }
+        .flex-left div.avatar .social .social-box:hover,
+        .flex-right div.avatar .social .social-box:hover {
+          transform: perspective(1px) scale(1.04); }
+        .flex-left div.avatar .social .social-box img,
+        .flex-right div.avatar .social .social-box img {
+          vertical-align: text-bottom;
+          width: 20px; }
+        .flex-left div.avatar .social .social-box .search,
+        .flex-right div.avatar .social .social-box .search {
+          display: inline-block;
+          width: calc(100% - 36px); }
+          .flex-left div.avatar .social .social-box .search > input,
+          .flex-right div.avatar .social .social-box .search > input {
+            background-color: var(--background-color);
+            color: var(--color);
+            border: none;
+            font-size: 17px;
+            outline: none;
+            width: 100%; }
+  .flex-left div.categories .post-categories,
+  .flex-right div.categories .post-categories {
+    display: inline-block;
+    transition: all 0.1s;
+    line-height: 1.7rem; }
+    .flex-left div.categories .post-categories:hover,
+    .flex-right div.categories .post-categories:hover {
+      transform: perspective(1px) scale(1.04); }
+  .flex-left #TableOfContents > ul,
+  .flex-right #TableOfContents > ul {
+    padding-left: 0;
+    margin-bottom: -.5rem; }
+    .flex-left #TableOfContents > ul li,
+    .flex-right #TableOfContents > ul li {
+      list-style: none; }
+
+.flex-left {
+  margin-right: -1rem; }
+
+.flex-right {
+  margin-left: -1rem; }
+
+.flex-hidden {
+  display: none; }
+
 .pagination {
   margin: 0;
   padding: 0;
@@ -380,129 +515,6 @@ ul > li {
 .markdown-inner > :last-child > :last-child,
 .markdown-inner > :last-child > :last-child > :last-child {
   margin-bottom: 0; }
-
-.flex-left,
-.flex-right {
-  flex: 0 0 var(--aside-width); }
-  .flex-left div.outer,
-  .flex-right div.outer {
-    padding: .7rem;
-    margin: .3rem;
-    width: calc(var(--aside-width) - 2rem);
-    height: calc(100% - 2rem);
-    position: fixed;
-    overflow: auto; }
-    .flex-left div.outer::-webkit-scrollbar-track,
-    .flex-right div.outer::-webkit-scrollbar-track {
-      margin: .7rem; }
-    .flex-left div.outer div.avatar,
-    .flex-right div.outer div.avatar {
-      text-align: center; }
-      .flex-left div.outer div.avatar h2,
-      .flex-right div.outer div.avatar h2 {
-        margin: 1rem; }
-      .flex-left div.outer div.avatar .data-left,
-      .flex-left div.outer div.avatar .data-right,
-      .flex-right div.outer div.avatar .data-left,
-      .flex-right div.outer div.avatar .data-right {
-        flex: 0 0 50%;
-        display: inline-block;
-        width: calc(50% - 1rem); }
-      .flex-left div.outer div.avatar .data-left,
-      .flex-right div.outer div.avatar .data-left {
-        border-right: 1px solid var(--color); }
-      .flex-left div.outer div.avatar .social,
-      .flex-right div.outer div.avatar .social {
-        margin-top: 1rem; }
-        .flex-left div.outer div.avatar .social .social-box,
-        .flex-right div.outer div.avatar .social .social-box {
-          border-radius: var(--border-radius);
-          box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
-          transition: all .3s;
-          background-color: var(--background-color);
-          color: var(--color);
-          margin-top: .5rem;
-          padding: .5rem;
-          text-align: left;
-          font-size: 18px; }
-          .flex-left div.outer div.avatar .social .social-box:hover,
-          .flex-right div.outer div.avatar .social .social-box:hover {
-            transform: scale(1.03); }
-          .flex-left div.outer div.avatar .social .social-box a,
-          .flex-right div.outer div.avatar .social .social-box a {
-            color: var(--color); }
-          .flex-left div.outer div.avatar .social .social-box:hover a,
-          .flex-right div.outer div.avatar .social .social-box:hover a {
-            color: var(--link-color);
-            text-decoration: underline; }
-          .flex-left div.outer div.avatar .social .social-box img,
-          .flex-right div.outer div.avatar .social .social-box img {
-            vertical-align: text-bottom;
-            width: 20px; }
-          .flex-left div.outer div.avatar .social .social-box .search,
-          .flex-right div.outer div.avatar .social .social-box .search {
-            display: inline-block;
-            width: calc(100% - 36px); }
-            .flex-left div.outer div.avatar .social .social-box .search > input,
-            .flex-right div.outer div.avatar .social .social-box .search > input {
-              background-color: var(--background-color);
-              color: var(--color);
-              border: none;
-              font-size: 17px;
-              outline: none;
-              width: 100%; }
-    .flex-left div.outer div.categories .post-categories,
-    .flex-right div.outer div.categories .post-categories {
-      margin: .5rem 0;
-      line-height: 1.7rem; }
-    .flex-left div.outer #TableOfContents > ul,
-    .flex-right div.outer #TableOfContents > ul {
-      padding-left: 0;
-      margin-bottom: -.5rem; }
-      .flex-left div.outer #TableOfContents > ul li,
-      .flex-right div.outer #TableOfContents > ul li {
-        list-style: none; }
-  .flex-left div.inner,
-  .flex-right div.inner {
-    direction: ltr;
-    background-color: var(--background-color);
-    color: var(--color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    box-sizing: border-box;
-    width: calc(var(--aside-width) - 2rem);
-    padding: .5rem;
-    margin-bottom: 1rem;
-    overflow: auto;
-    padding: 1rem; }
-    .flex-left div.inner:hover,
-    .flex-right div.inner:hover {
-      box-shadow: var(--box-shadow-hover); }
-    .flex-left div.inner h2,
-    .flex-right div.inner h2 {
-      margin: 0 0 .5rem 0;
-      line-height: 20px; }
-      .flex-left div.inner h2 > img,
-      .flex-right div.inner h2 > img {
-        vertical-align: -2px;
-        width: 20px;
-        height: 20px;
-        margin-right: .5rem; }
-    .flex-left div.inner ul,
-    .flex-right div.inner ul {
-      padding-left: 1rem; }
-    .flex-left div.inner:last-of-type,
-    .flex-right div.inner:last-of-type {
-      margin-bottom: 0; }
-
-.flex-left {
-  margin-right: -1rem; }
-
-.flex-right {
-  margin-left: -1rem; }
-
-.flex-hidden {
-  display: none; }
 
 body {
   max-width: 75rem;
@@ -746,7 +758,7 @@ article .mermaid svg {
       <div class="flex-visible">
         
   <div class="inner avatar">
-  <img src="../../images/freeze.png" class="avatar" width="96px" height="96px" />
+  <a href="../../"><img src="../../images/NetPipe.png" class="avatar" width="96px" height="96px" /></a>
   <h2>Net Pipe</h2>
   <div class="data-left">
     <h3>57</h3>
