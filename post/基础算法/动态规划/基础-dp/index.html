@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>基础 DP &#8211; NetPipe&#39;s Blog</title>
+
+  
+  <meta name="description" content="斐波那契数列 ¶斐波那契数列是形如 $\{1,1,2,3,5,8,\cdots\}$ 的数列.">
+  
+  <meta name="author" content="Net Pipe">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="../../../../index.xml" rel="alternate" type="application/rss+xml" title="NetPipe&#39;s Blog" />
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../images/freeze.png" />
+
+  
+    <style>@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url("/fonts/FantasqueSansMono-Regular.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/FantasqueSansMono-Bold.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: italic;
+  src: url("/fonts/FantasqueSansMono-Italic.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Lazy';
+  src: url("/fonts/lazy.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Material Icons.woff2") format("woff2"); }
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Material Icons Outlined.woff2") format("woff2"); }
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Round';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Material Icons Round.woff2") format("woff2"); }
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Sharp';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Material Icons Sharp.woff2") format("woff2"); }
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Two Tone';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Material Icons Two Tone.woff2") format("woff2"); }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
+
+.material-icons-outlined {
+  font-family: 'Material Icons Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
+
+.material-icons-round {
+  font-family: 'Material Icons Round';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
+
+.material-icons-sharp {
+  font-family: 'Material Icons Sharp';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
+
+.material-icons-two-tone {
+  font-family: 'Material Icons Two Tone';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
+
+body,
+code,
+input {
+  font-family: 'Fantasque Sans Mono', sans-serif;
+  -webkit-font-smoothing: antialiased; }
+  body article h1, body article h2, body article h3, body article h4, body article h5, body article h6, body .posts h1, body .posts h2, body .posts h3, body .posts h4, body .posts h5, body .posts h6,
+  code article h1,
+  code article h2,
+  code article h3,
+  code article h4,
+  code article h5,
+  code article h6,
+  code .posts h1,
+  code .posts h2,
+  code .posts h3,
+  code .posts h4,
+  code .posts h5,
+  code .posts h6,
+  input article h1,
+  input article h2,
+  input article h3,
+  input article h4,
+  input article h5,
+  input article h6,
+  input .posts h1,
+  input .posts h2,
+  input .posts h3,
+  input .posts h4,
+  input .posts h5,
+  input .posts h6 {
+    font-weight: normal; }
+
+strong {
+  font-weight: normal;
+  text-shadow: 0 0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  --aside-width: 18rem;
+  --box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  --color: black;
+  --border: 1px solid #dee0e2;
+  --border-color: #dee0e2;
+  --border-radius: 0.25rem;
+  --link-color: #4588be;
+  --category-color: rgba(72, 175, 209, 0.7);
+  --background-color: white;
+  --hover-color: #f7f7f7; }
+  * body {
+    background-color: #f7f7f7; }
+
+::selection {
+  background-color: #CCE2FF;
+  color: rgba(0, 0, 0, 0.87); }
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #dddddd; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #acacac; }
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #f0f0f0; }
+
+a {
+  text-decoration: none;
+  color: #4794d3; }
+
+a:focus, a:hover {
+  outline: none;
+  text-decoration: underline; }
+
+a.alternate:focus,
+a.alternate:hover,
+a.alternate:focus > *,
+a.alternate:hover > * {
+  text-decoration: none;
+  background: var(--hover-color); }
+
+small {
+  font-size: 70%; }
+
+ol, ul {
+  margin: .5rem 0;
+  padding-left: 2rem;
+  word-break: break-word; }
+  ol > li, ul > li {
+    margin: .5rem 0; }
+
+ul > li {
+  list-style: circle; }
+
+.result {
+  width: 100%; }
+  .result :first-child .post {
+    margin-top: 0; }
+  .result :last-child .post {
+    margin-bottom: 0; }
+
+.pagination {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; }
+  .pagination div.pagination-box {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    background-color: var(--background-color);
+    color: var(--color);
+    margin: 0 .5rem;
+    color: var(--link-color);
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    cursor: default; }
+    .pagination div.pagination-box:hover {
+      box-shadow: var(--box-shadow-hover); }
+    .pagination div.pagination-box:not(.disabled):hover {
+      background-color: var(--hover-color);
+      cursor: pointer; }
+  .pagination div.prev {
+    width: 5rem;
+    margin-left: 0; }
+  .pagination div.next {
+    width: 5rem;
+    margin-right: 0; }
+  .pagination div.pagination-eldivpsis {
+    width: 3rem; }
+  .pagination div.disabled {
+    color: var(--color); }
+
+.posts .post {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  background-color: var(--background-color);
+  color: var(--color);
+  margin: 1rem 0;
+  padding: .7rem 1rem; }
+  .posts .post:hover {
+    box-shadow: var(--box-shadow-hover); }
+
+.posts :first-child .post {
+  margin-top: 0; }
+
+.post-list {
+  border: var(--border);
+  border-radius: var(--border-radius); }
+  .post-list .post-item {
+    padding: .3rem .5rem;
+    height: 1.5rem; }
+    .post-list .post-item * {
+      font-size: 100%;
+      vertical-align: bottom; }
+    .post-list .post-item:hover a {
+      color: var(--link-color);
+      text-decoration: underline; }
+
+.post-link {
+  color: var(--color); }
+  .post-link:hover .post-title a {
+    color: var(--link-color);
+    text-decoration: underline; }
+
+.post-title {
+  margin: 0 0 .5rem 0;
+  font-size: 20px; }
+  .post-title a {
+    color: var(--color); }
+  .post-title:hover a {
+    color: var(--link-color);
+    text-decoration: underline; }
+
+.post-meta {
+  color: gray; }
+  .post-meta img {
+    vertical-align: text-bottom; }
+
+.post-categories {
+  font-size: 13px; }
+  .post-categories a {
+    color: white;
+    background-color: var(--category-color);
+    border-radius: .2rem;
+    padding: .2rem .2rem;
+    white-space: nowrap; }
+
+.post-summary {
+  margin-top: .5rem; }
+
+.post-header {
+  margin-bottom: 1rem; }
+
+.post-content {
+  text-align: justify;
+  background-color: white;
+  padding: 1rem; }
+  .post-content .md__image {
+    display: block;
+    max-width: 100%;
+    margin: auto; }
+
+.post-content > :first-child,
+.post-content > :first-child > :first-child,
+.post-content > :first-child > :first-child > :first-child,
+.markdown-inner > :first-child,
+.markdown-inner > :first-child > :first-child,
+.markdown-inner > :first-child > :first-child > :first-child {
+  margin-top: 0; }
+
+.post-content > :last-child,
+.post-content > :last-child > :last-child,
+.post-content > :last-child > :last-child > :last-child,
+.markdown-inner > :last-child,
+.markdown-inner > :last-child > :last-child,
+.markdown-inner > :last-child > :last-child > :last-child {
+  margin-bottom: 0; }
+
+.flex-left,
+.flex-right {
+  flex: 0 0 var(--aside-width); }
+  .flex-left div.outer,
+  .flex-right div.outer {
+    padding: .7rem;
+    margin: .3rem;
+    width: calc(var(--aside-width) - 2rem);
+    height: calc(100% - 2rem);
+    position: fixed;
+    overflow: auto; }
+    .flex-left div.outer::-webkit-scrollbar-track,
+    .flex-right div.outer::-webkit-scrollbar-track {
+      margin: .7rem; }
+    .flex-left div.outer div.avatar,
+    .flex-right div.outer div.avatar {
+      text-align: center; }
+      .flex-left div.outer div.avatar h2,
+      .flex-right div.outer div.avatar h2 {
+        margin: 1rem; }
+      .flex-left div.outer div.avatar .data-left,
+      .flex-left div.outer div.avatar .data-right,
+      .flex-right div.outer div.avatar .data-left,
+      .flex-right div.outer div.avatar .data-right {
+        flex: 0 0 50%;
+        display: inline-block;
+        width: calc(50% - 1rem); }
+      .flex-left div.outer div.avatar .data-left,
+      .flex-right div.outer div.avatar .data-left {
+        border-right: 1px solid var(--color); }
+      .flex-left div.outer div.avatar .social,
+      .flex-right div.outer div.avatar .social {
+        margin-top: 1rem; }
+        .flex-left div.outer div.avatar .social .social-box,
+        .flex-right div.outer div.avatar .social .social-box {
+          border-radius: var(--border-radius);
+          box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+          transition: all .3s;
+          background-color: var(--background-color);
+          color: var(--color);
+          margin-top: .5rem;
+          padding: .5rem;
+          text-align: left;
+          font-size: 18px; }
+          .flex-left div.outer div.avatar .social .social-box:hover,
+          .flex-right div.outer div.avatar .social .social-box:hover {
+            transform: scale(1.03); }
+          .flex-left div.outer div.avatar .social .social-box a,
+          .flex-right div.outer div.avatar .social .social-box a {
+            color: var(--color); }
+          .flex-left div.outer div.avatar .social .social-box:hover a,
+          .flex-right div.outer div.avatar .social .social-box:hover a {
+            color: var(--link-color);
+            text-decoration: underline; }
+          .flex-left div.outer div.avatar .social .social-box img,
+          .flex-right div.outer div.avatar .social .social-box img {
+            vertical-align: text-bottom;
+            width: 20px; }
+          .flex-left div.outer div.avatar .social .social-box .search,
+          .flex-right div.outer div.avatar .social .social-box .search {
+            display: inline-block;
+            width: calc(100% - 36px); }
+            .flex-left div.outer div.avatar .social .social-box .search > input,
+            .flex-right div.outer div.avatar .social .social-box .search > input {
+              background-color: var(--background-color);
+              color: var(--color);
+              border: none;
+              font-size: 17px;
+              outline: none;
+              width: 100%; }
+    .flex-left div.outer div.categories .post-categories,
+    .flex-right div.outer div.categories .post-categories {
+      margin: .5rem 0;
+      line-height: 1.7rem; }
+    .flex-left div.outer #TableOfContents > ul,
+    .flex-right div.outer #TableOfContents > ul {
+      padding-left: 0;
+      margin-bottom: 0; }
+      .flex-left div.outer #TableOfContents > ul li,
+      .flex-right div.outer #TableOfContents > ul li {
+        list-style: none; }
+        .flex-left div.outer #TableOfContents > ul li:last-of-type,
+        .flex-right div.outer #TableOfContents > ul li:last-of-type {
+          margin-bottom: 0; }
+  .flex-left div.inner,
+  .flex-right div.inner {
+    direction: ltr;
+    background-color: var(--background-color);
+    color: var(--color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    box-sizing: border-box;
+    width: calc(var(--aside-width) - 2rem);
+    padding: .5rem;
+    margin-bottom: 1rem;
+    overflow: auto;
+    padding: 1rem; }
+    .flex-left div.inner:hover,
+    .flex-right div.inner:hover {
+      box-shadow: var(--box-shadow-hover); }
+    .flex-left div.inner h2,
+    .flex-right div.inner h2 {
+      margin: 0 0 .5rem 0;
+      line-height: 20px; }
+      .flex-left div.inner h2 > img,
+      .flex-right div.inner h2 > img {
+        vertical-align: -2px;
+        width: 20px;
+        height: 20px;
+        margin-right: .5rem; }
+    .flex-left div.inner ul,
+    .flex-right div.inner ul {
+      padding-left: 1rem; }
+    .flex-left div.inner:last-of-type,
+    .flex-right div.inner:last-of-type {
+      margin-bottom: 0; }
+
+.flex-left {
+  margin-right: -1rem; }
+
+.flex-right {
+  margin-left: -1rem; }
+
+.flex-hidden {
+  display: none; }
+
+body {
+  max-width: 75rem;
+  margin: 0 auto;
+  overflow: hidden scroll; }
+
+main {
+  display: flex; }
+
+article {
+  overflow: hidden;
+  will-change: transform; }
+
+.blog-page {
+  flex-grow: 1;
+  min-width: 18rem;
+  padding: 1rem;
+  width: calc(100% - 42rem); }
+  .blog-page .post-toc {
+    display: none; }
+  .blog-page .post-pagination {
+    width: 100%;
+    height: 2rem; }
+  .blog-page .post-content {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    background-color: var(--background-color);
+    color: var(--color); }
+    .blog-page .post-content:hover {
+      box-shadow: var(--box-shadow-hover); }
+
+@media screen and (max-width: 70rem) {
+  .flex-left .flex-visible {
+    margin-bottom: 1rem; }
+  .flex-left .flex-hidden {
+    display: block; }
+  .flex-right {
+    display: none; } }
+
+@media screen and (max-width: 48rem) {
+  main {
+    display: block; }
+  .flex-left {
+    width: 100%;
+    margin: 0;
+    margin-bottom: -1rem; }
+    .flex-left div.outer {
+      position: relative;
+      width: auto; }
+    .flex-left div.inner {
+      width: auto; }
+  .blog-page {
+    width: calc(100% - 2rem); } }
+
+@media screen and (max-width: 25rem) {
+  .pagination div.pagination-box {
+    margin: 0 .25rem; } }
+
+.book-columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin: .5rem;
+  margin-left: -.5rem;
+  margin-right: -.5rem; }
+  .book-columns .markdown-inner {
+    margin: .5rem;
+    flex: 1 1; }
+
+.book-tabs {
+  margin: .5em 0;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap; }
+  .book-tabs label {
+    line-height: 1rem;
+    display: inline-block;
+    padding: .3rem 16px;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    cursor: pointer;
+    z-index: 999;
+    border: 1px solid transparent;
+    vertical-align: baseline; }
+  .book-tabs .book-tabs-content,
+  .book-tabs .book-tabs-pure-content {
+    order: 999;
+    width: 100%;
+    display: none;
+    overflow: hidden;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius); }
+  .book-tabs .book-tabs-content {
+    border: var(--border);
+    padding: .5rem; }
+  .book-tabs input[type="radio"] {
+    display: none; }
+    .book-tabs input[type="radio"]:not(:checked) + label {
+      color: #95A5A6; }
+      .book-tabs input[type="radio"]:not(:checked) + label:hover {
+        background-color: var(--hover-color); }
+    .book-tabs input[type="radio"]:checked + label {
+      border: var(--border);
+      border-bottom: none; }
+      .book-tabs input[type="radio"]:checked + label + .book-tabs-content, .book-tabs input[type="radio"]:checked + label + .book-tabs-pure-content {
+        display: block; }
+    .book-tabs input[type="radio"]:first-of-type:checked + label + .book-tabs-pure-content :first-child {
+      border-top-left-radius: 0; }
+
+details {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  margin: .5rem 0;
+  padding: .5rem  1rem .5rem  0.75rem; }
+  details summary {
+    font-size: 12.8px;
+    font-weight: bold; }
+    details summary::marker {
+      content: '';
+      font-size: 0; }
+  details ::-webkit-details-marker {
+    content: '';
+    font-size: 0; }
+  details ::-moz-list-bullet {
+    content: '';
+    font-size: 0; }
+  details label {
+    font-size: 20px !important;
+    margin-left: -5px;
+    margin-right: 5px;
+    vertical-align: -4.5px; }
+  details[open] > summary {
+    margin-bottom: 0; }
+    details[open] > summary label {
+      transform: rotate(90deg); }
+  details .markdown-inner {
+    padding: .5rem 0; }
+  details:focus {
+    outline: none; }
+
+article h1 {
+  font-size: 200%;
+  line-height: 110%; }
+
+article h2 {
+  font-size: 140%;
+  line-height: 120%; }
+
+article h3 {
+  font-size: 120%;
+  line-height: 120%; }
+  article h3 .katex {
+    font-size: 100%; }
+
+article h4 {
+  font-size: 110%; }
+
+article p {
+  margin: .5rem 0;
+  line-height: 1.5rem; }
+
+article h1, article h2, article h3, article h4, article h5, article h6 {
+  margin: .7rem 0; }
+  article h1 .anchor, article h2 .anchor, article h3 .anchor, article h4 .anchor, article h5 .anchor, article h6 .anchor {
+    opacity: 0; }
+  article h1:hover .anchor, article h1:focus .anchor, article h2:hover .anchor, article h2:focus .anchor, article h3:hover .anchor, article h3:focus .anchor, article h4:hover .anchor, article h4:focus .anchor, article h5:hover .anchor, article h5:focus .anchor, article h6:hover .anchor, article h6:focus .anchor {
+    opacity: 1; }
+
+article hr {
+  border: none;
+  border-bottom: 1px solid #ebeced; }
+
+article blockquote {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  border-left: .3rem solid lightgray;
+  padding: 0 .5rem; }
+
+article pre {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  margin: .5rem 0;
+  padding: .5rem 1rem;
+  overflow-x: auto;
+  line-height: 22px; }
+
+article code {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1px 2px; }
+
+article pre {
+  color: #686868; }
+  article pre code {
+    border: none;
+    padding: 0; }
+  article pre * {
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text; }
+
+article code:focus {
+  outline: none; }
+
+article .md__table {
+  margin: -.5rem;
+  padding: .5rem;
+  overflow: auto; }
+  article .md__table::-webkit-scrollbar-track {
+    margin: .5rem; }
+  article .md__table table {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    border-spacing: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; }
+    article .md__table table th {
+      font-weight: normal; }
+    article .md__table table td {
+      border-top: 1px solid var(--border-color); }
+    article .md__table table th, article .md__table table td {
+      padding: .3rem 16px;
+      white-space: nowrap; }
+
+article .mermaid svg {
+  display: block;
+  margin: auto;
+  zoom: 80%; }
+</style>
+  
+</head>
+
+
+
+
+
+
+<body>
+<main>
+  <div class="flex-left">
+    <div class="outer">
+      <div class="flex-visible">
+        
+  <div class="inner avatar">
+  <img src="../../../../images/freeze.png" class="avatar" width="96px" height="96px" />
+  <h2>Net Pipe</h2>
+  <div class="data-left">
+    <h3>57</h3>
+    <span>Posts</span>
+  </div>
+  <div class="data-right">
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    <h3>18313</h3>
+    <span>Words</span>
+  </div>
+  <div class="social">
+    <div class="social-box">
+      <img src="../../../../images/search.svg"/>
+      <div class="search">
+        <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
+      </div>
+    </div>
+    <a class="alternate" href="../../../../">
+      <div class="social-box">
+        <img src="../../../../images/home.svg"/>
+        <object><a href="../../../../">Home</a></object>
+      </div>
+    </a>
+    <a class="alternate" href="../../../../post/">
+      <div class="social-box">
+        <img src="../../../../images/posts.svg"/>
+        <object><a href="../../../../post/">Posts</a></object>
+      </div>
+    </a>
+    <a class="alternate" type="application/rss+xml" href="../../../../index.xml">
+      <div class="social-box">
+        <img src="../../../../images/rss.svg"/>
+        <object><a  type="application/rss+xml" href="../../../../index.xml">RSS</a></object>
+      </div>
+    </a>
+  </div>
+  <script>
+    function keyup_submit(e){ 
+    var evt = window.event || e; 
+      if (evt.keyCode == 13){
+        window.location.href = '/_search?wd=' + document.getElementById("search-key").value;
+      }
+    }
+  </script>
+</div>
+  <div class="inner categories">
+  <h2><img src="../../../../images/categories.svg" />Categories</h2>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/">基础数学</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/dp/">DP</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E5%9B%BE%E8%AE%BA/">图论</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+  </span>
+  
+  <span class="post-categories">
+    <a href="../../../../categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+  </span>
+  
+</div>
+
+      </div>
+      <div class="flex-hidden">
+        
+  <div class="inner">
+  <h2><img src="../../../../images/notice.svg" />Notice</h2>
+  <p>Under Construction ...</p>
+</div>
+  
+
+<div class="inner">
+  <h2><img src="../../../../images/toc.svg">TOC</h2>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#斐波那契数列">斐波那契数列</a></li>
+    <li><a href="#汉诺塔问题">汉诺塔问题</a></li>
+    <li><a href="#骨牌问题">骨牌问题</a></li>
+    <li><a href="#平面分割问题">平面分割问题</a></li>
+    <li><a href="#最长上升子序列-lis">最长上升子序列 (LIS)</a></li>
+    <li><a href="#最长公共子序列-lcs">最长公共子序列 (LCS)</a></li>
+    <li><a href="#数字金字塔">数字金字塔</a></li>
+    <li><a href="#数字矩阵">数字矩阵</a></li>
+    <li><a href="#前缀和">前缀和</a>
+      <ul>
+        <li><a href="#预处理">预处理</a></li>
+        <li><a href="#查询">查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#二维前缀和">二维前缀和</a>
+      <ul>
+        <li><a href="#预处理-1">预处理</a></li>
+        <li><a href="#查询-1">查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#差分">差分</a>
+      <ul>
+        <li><a href="#预处理-2">预处理</a></li>
+        <li><a href="#区间修改">区间修改</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  
+<div class="blog-page">
+  <article class="post-content">
+    
+    <div class="post-header">
+      <h1>基础 DP</h1>
+      <span class="post-meta">
+        
+          <img src="../../../../images/time.svg"></img>
+          Jan 16, 2021
+        
+      </span>
+      <span class="post-categories">
+        
+          <a href="../../../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
+        
+          <a href="../../../../categories/dp/">DP</a>
+        
+      </span>
+    </div>
+    
+    <h2 id="斐波那契数列">斐波那契数列 <a class="anchor" href="#%e6%96%90%e6%b3%a2%e9%82%a3%e5%a5%91%e6%95%b0%e5%88%97">¶</a></h2><p>斐波那契数列是形如 $\{1,1,2,3,5,8,\cdots\}$ 的数列. 求数列的第 $n$ 项.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$f[n]$：数列的第 $n$ 项.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f[n]=
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    1<span style="color:#728e00">&amp;</span>n=1,2<span style="color:#728e00">\\</span>
+    f[n-1]+f[n-2]<span style="color:#728e00">&amp;</span>n<span style="color:#728e00">\geq</span> 3
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#434f54">f</span>[];
+<span style="color:#434f54">f</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">f</span>[<span style="color:#8a7b52">2</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
+<span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">3</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+    <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">2</span>];
+</code></pre></div></div>
+</details>
+<h2 id="汉诺塔问题">汉诺塔问题 <a class="anchor" href="#%e6%b1%89%e8%af%ba%e5%a1%94%e9%97%ae%e9%a2%98">¶</a></h2><p>汉诺塔由 $n$ 个不同的盘子和 $3$ 根杆子组成. 初始时，$n$ 个盘子从小到大叠在 $a$ 杆上：</p>
+<p><img class="md__image" src="1.png" alt=""  /></p>
+<p>现在，按以下规则将 $n$ 个盘子从 $a$ 杆移到 $c$ 杆.</p>
+<ol>
+<li>一次只能动一个盘子.</li>
+<li>盘子只能放在杆上.</li>
+<li>大盘子不能叠在小盘子上.</li>
+</ol>
+<p>求移动盘子的最少次数.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$f[n]$：将 $n$ 个盘子从一杆移至另一杆，所需的最少移动次数.</p>
+<p>将 $n$ 个盘子从 $a$ 杆移到 $c$ 杆，需要以下 $3$ 步：</p>
+<ol>
+<li>将 $a$ 杆的 $n-1$ 个盘子移至 $b$ 杆（共 $f[n-1]$ 次）.</li>
+<li>将 $a$ 杆的最后一个盘子移至 $c$ 杆（共 $1$ 次）.</li>
+<li>将 $b$ 杆的 $n-1$ 个盘子移至 $c$ 杆（共 $f[n-1]$ 次）.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f[n]=
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    1<span style="color:#728e00">&amp;</span>n=1<span style="color:#728e00">\\</span>
+    2<span style="color:#728e00">\cdot</span> f[n-1]+1<span style="color:#728e00">&amp;</span>n<span style="color:#728e00">\geq</span> 2
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#434f54">f</span>[]; <span style="color:#434f54">f</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
+<span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+    <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span> <span style="color:#728e00">*</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>;
+</code></pre></div></div>
+</details>
+<h2 id="骨牌问题">骨牌问题 <a class="anchor" href="#%e9%aa%a8%e7%89%8c%e9%97%ae%e9%a2%98">¶</a></h2><p>用若干 $1×2$ 的骨牌铺满 $2×n$ 的方格. 如图为 $n=3$ 时的所有铺法：</p>
+<p><img class="md__image" src="2.png" alt=""  /></p>
+<p>求任意 $n$ 对应的方法总数.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$f[n]$：$n$ 对应的方法总数.</p>
+<ul>
+<li>若第一个骨牌竖放在左边，则剩余 $2×(n-1)$ 个空方格，铺法数为 $f[n-1]$.</li>
+<li>若第一个骨牌横放在左上角，为了不留空，第二个骨牌必须横放在其正下方. 剩余 $2×(n-2)$ 个空方格，铺法数为 $f[n-2]$.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f[n]=
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    1<span style="color:#728e00">&amp;</span>n=1<span style="color:#728e00">\\</span>
+    2<span style="color:#728e00">&amp;</span>n=2<span style="color:#728e00">\\</span>
+    f[n-1]+f[n-2]<span style="color:#728e00">&amp;</span>n<span style="color:#728e00">\geq</span> 3
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><p>状态转移方程几乎和 <a href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97">斐波那契数列</a> 一致.</p>
+</div>
+</details>
+<h2 id="平面分割问题">平面分割问题 <a class="anchor" href="#%e5%b9%b3%e9%9d%a2%e5%88%86%e5%89%b2%e9%97%ae%e9%a2%98">¶</a></h2><p>平面上有 $n$ 条闭曲线，每 $2$ 条恰好交于 $2$ 点，且每 $3$ 条不交于同一点. 求平面被分割成的区域个数.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$a[n]$：$n$ 条封闭曲线分割成的区域个数.</p>
+<p><img src="3.png" alt=""></p>
+<p>由上图可得：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">a[1]=2<span style="color:#728e00">\\</span>
+a[2]-a[1]=2<span style="color:#728e00">\\</span>
+a[3]-a[2]=4<span style="color:#728e00">\\</span>
+a[4]-a[3]=6<span style="color:#728e00">\\</span>
+</code></pre></div><p>即</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">a[n]=<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    2<span style="color:#728e00">&amp;</span>n=1<span style="color:#728e00">\\</span>
+    a[n-1]+2(n-1)<span style="color:#728e00">&amp;</span>n≥2
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><p>正确性证明：</p>
+<p>新增一条曲线时，每与一条已有曲线相交一次，就增加一个区域. 而新增的第 $n$ 条曲线与已有的 $n-1$ 条曲线各有 $2$ 个交点</p>
+<p>$∴$ 新增区域数 $=$ 新增交点数 $=2\cdot (n-1)$.</p>
+<p>$∴$ 现有区域个数 $a[n]=$ 原有区域个数 $+$ 新增区域个数 $=a[n-1]+2(n-1)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#434f54">a</span>[]; <span style="color:#434f54">a</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>;
+<span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+    <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#8a7b52">2</span> <span style="color:#728e00">*</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>);
+</code></pre></div></div>
+</details>
+<h2 id="最长上升子序列-lis">最长上升子序列 (LIS) <a class="anchor" href="#%e6%9c%80%e9%95%bf%e4%b8%8a%e5%8d%87%e5%ad%90%e5%ba%8f%e5%88%97-lis">¶</a></h2><p>求序列 $A$（长度 $n$）的最长上升子序列 $\text{LIS}(A)$ 的长度.</p>
+<p>例：$A=\{2,3,6,4,5,1\}$, $\text{LIS}(A)=\{2,3,4,5\}$（长度 $4$）.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$f[i]$：$\text{LIS}(A_{1\cdots i})$ 的长度.</p>
+<p>枚举 $j=1\cdots i-1$：</p>
+<ul>
+<li>若 $A_j&lt;A_i$，则 $A_i$ 可以接在 $\text{LIS}(A_{1\cdots j})$ 后面，形成的上升子序列长度为 $f[j]+1$.</li>
+<li>若 $A_j≥A_i$，$A_j$ 对 $f[i]$ 没有贡献，直接跳过.</li>
+</ul>
+<p>$$f[i]=\max_{j&lt;i, \ A_j&lt;A_i}(f[j]+1)$$</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+	<span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">i</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>)
+        <span style="color:#728e00">if</span> (<span style="color:#434f54">a</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">&lt;</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>])
+            <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">max</span>(<span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>], <span style="color:#434f54">f</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>);
+}
+<span style="color:#95a5a6">// 问题的解是 f[n]
+</span></code></pre></div><details >
+  <summary><label class="material-icons-round">chevron_right</label>单调栈优化</summary>
+  <div class="markdown-inner"><p>扫描每一个数，将其加入单调栈.</p>
+<p>假设当前单调栈内有 $\{2,3,6\}$，而扫描到 $4$. 根据贪心原理，将 $6$ 替换为 $4$ 必定更优.</p>
+<p>当扫描到 $a[i]$：</p>
+<ul>
+<li>若 $a[i]$ 大于栈尾，则直接将其入栈.</li>
+<li>否则在栈中二分查找第一个 $\geq a[i]$ 的数，将其替换为 $a[i]$.</li>
+</ul>
+<p>最终栈的长度即为 LIS 的长度. 时间复杂度为 $O(n\log{n})$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#434f54">vector</span><span style="color:#728e00">&lt;</span><span style="color:#00979d">int</span><span style="color:#728e00">&gt;</span> <span style="color:#434f54">s</span>;
+<span style="color:#434f54">s</span>.<span style="color:#434f54">push_back</span>(<span style="color:#434f54">a</span>[<span style="color:#8a7b52">1</span>]);
+<span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+    <span style="color:#728e00">if</span>(<span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">&gt;</span> <span style="color:#434f54">s</span>.<span style="color:#434f54">back</span>())
+        <span style="color:#434f54">s</span>.<span style="color:#434f54">push_back</span>(<span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>]);
+    <span style="color:#728e00">else</span>
+        <span style="color:#434f54">s</span>[<span style="color:#728e00">*</span><span style="color:#434f54">lower_bound</span>(<span style="color:#434f54">s</span>.<span style="color:#434f54">begin</span>(), <span style="color:#434f54">s</span>.<span style="color:#434f54">end</span>(), <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>])] <span style="color:#728e00">=</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>];
+}
+</code></pre></div></div>
+</details>
+</div>
+</details>
+<h2 id="最长公共子序列-lcs">最长公共子序列 (LCS) <a class="anchor" href="#%e6%9c%80%e9%95%bf%e5%85%ac%e5%85%b1%e5%ad%90%e5%ba%8f%e5%88%97-lcs">¶</a></h2><p>求序列 $A$（长度 $n$）和序列 $b$（长度 $m$）的最长公共子序列 $\text{LCS}(A,B)$ 的长度.</p>
+<p>例：$A=$ <code>freeze</code>, $B=$ <code>refeze</code>, $\text{LCS}(A,B)=$ <code>reeze</code>（长度 $5$）.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$f[i,j]$：$\text{LCS}(A_{1\cdots i},B_{1\cdots j})$ 的长度.</p>
+<p>枚举 $i=1\cdots n$：
+枚举 $j=1\cdots m$：</p>
+<ul>
+<li>若 $A_i≠B_j$，继承最优子状态：$f[i,j]=\max(f[i-1,j],f[i,j-1])$.</li>
+<li>若 $A_i=B_j$，则 $A_i$（或 $B_j$）可以接在 $\text{LCS}(A_{1\cdots i-1},B_{1\cdots j-1})$ 之后，形成的公共序列长度为 $f[i-1,j-1]+1$.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f[i,j]=<span style="color:#728e00">\max\left\{\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">&amp;</span>f[i-1,j]<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>f[i,j-1]<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>f[i-1,j-1]+1,A<span style="color:#728e00">_</span>i=B<span style="color:#728e00">_</span>j
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>.
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">m</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">max</span>(<span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">j</span>], <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>]);
+        <span style="color:#728e00">if</span> (<span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">==</span> <span style="color:#434f54">b</span>[<span style="color:#434f54">j</span>])
+            <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">max</span>(<span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>], <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">j</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>);
+    }
+}
+</code></pre></div></div>
+</details>
+<h2 id="数字金字塔">数字金字塔 <a class="anchor" href="#%e6%95%b0%e5%ad%97%e9%87%91%e5%ad%97%e5%a1%94">¶</a></h2><p>三角矩阵 $A$ 有 $n$ 行，第 $i$ 行有 $i$ 列. 从第一行第一列出发，每次可以移动到下一行相邻的两个数字. 到达底部时，经过的数字之和最大为多少？</p>
+<p><img class="md__image" src="4.svg" alt=""  /></p>
+<p>此例中，最优路径为 $13→8→26→15$，最大值为 $62$.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$(i,j)$：第 $i$ 行第 $j$ 列的数字.</p>
+<p>$f[i,j]$：走到 $(i,j)$ 时，经过的数字之和的最大值.</p>
+<p>逆推法：要走到 $(i,j)$，则上一步只能在 $(i-1,j-1)$ 或 $(i-1,j)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f[i,j]=(i,j)+<span style="color:#728e00">\max\left\{\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">&amp;</span>f[i-1,j-1]<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>f[i-1,j]
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>.
+</code></pre></div><p><strong>注意</strong>：当 $j=1$ 或 $j=i$ 时，$f[i-1,j-1]$ 和 $f[i-1,j]$ 会越界. 故 $f$ 数组须初始化为 $-∞$，以使越界的元素在 $\max$ 操作中被自动淘汰.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#434f54">memset</span>(<span style="color:#434f54">f</span>, <span style="color:#8a7b52">0x80</span>, <span style="color:#728e00">sizeof</span> <span style="color:#434f54">f</span>);
+<span style="color:#434f54">f</span>[<span style="color:#8a7b52">1</span>][<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
+<span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">i</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#434f54">cin</span> <span style="color:#728e00">&gt;&gt;</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>];
+        <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>] <span style="color:#728e00">+=</span> <span style="color:#434f54">max</span>(<span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">j</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>], <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">j</span>]);
+    }
+}
+<span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+    <span style="color:#434f54">ans</span> <span style="color:#728e00">=</span> <span style="color:#434f54">max</span>(<span style="color:#434f54">ans</span>, <span style="color:#434f54">f</span>[<span style="color:#434f54">n</span>][<span style="color:#434f54">i</span>]);
+</code></pre></div></div>
+</details>
+<h2 id="数字矩阵">数字矩阵 <a class="anchor" href="#%e6%95%b0%e5%ad%97%e7%9f%a9%e9%98%b5">¶</a></h2><p>有 $n$ 行 $m$ 列的数字矩阵 $A$. 从左上角出发，每次只能向下或向右走一步. 到右下角时，经过的数字之和最大为多少？</p>
+<p><img class="md__image" src="5.svg" alt=""  /></p>
+<p>此例中，最优路径为 $17→1→20→12→9→2$，最大值为 $61$.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>分析</summary>
+  <div class="markdown-inner"><p>$(i,j)$：第 $i$ 行第 $j$ 列的数字.</p>
+<p>$f[i,j]$：走到 $(i,j)$ 时，经过的数字之和的最大值.</p>
+<p>逆推法：由于只能向左走或向下走，要走到 $(i,j)$，上一步只能在 $(i-1,j)$ 或 $(i,j-1)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f[i,j]=(i,j)+<span style="color:#728e00">\max\left\{\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">&amp;</span>f[i-1,j]<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>f[i,j-1]
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>.
+</code></pre></div><p><strong>注意</strong>：当 $i=1$ 或 $j=1$ 时，$f[i-1,j]$ 和 $f[i,j-1]$ 会越界. $f$ 数组须初始化为 $-∞$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#434f54">memset</span>(<span style="color:#434f54">f</span>, <span style="color:#8a7b52">0x80</span>, <span style="color:#728e00">sizeof</span> <span style="color:#434f54">f</span>);
+<span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">m</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#434f54">cin</span> <span style="color:#728e00">&gt;&gt;</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>];
+        <span style="color:#728e00">if</span> (<span style="color:#728e00">!</span>(<span style="color:#434f54">i</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#434f54">j</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">1</span>))
+            <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>] <span style="color:#728e00">+=</span> <span style="color:#434f54">max</span>(<span style="color:#434f54">f</span>[<span style="color:#434f54">i</span><span style="color:#728e00">-</span><span style="color:#8a7b52">1</span>][<span style="color:#434f54">j</span>], <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>]);
+    }
+}
+</code></pre></div></div>
+</details>
+<h2 id="前缀和">前缀和 <a class="anchor" href="#%e5%89%8d%e7%bc%80%e5%92%8c">¶</a></h2><p>前缀和是一种重要的预处理技巧，能大幅降低查询区间元素和的时间复杂度.</p>
+<h3 id="预处理">预处理 <a class="anchor" href="#%e9%a2%84%e5%a4%84%e7%90%86">¶</a></h3><p>数列 $A$ 有 $n$ 个元素.</p>
+<p>$f[i]$: $A_1$ 到 $A_i$ 的和.</p>
+<p>$$f[i]=f[i-1]+A_i$$</p>
+<p>时间复杂度：$O(n)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+    <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>];
+</code></pre></div><h3 id="查询">查询 <a class="anchor" href="#%e6%9f%a5%e8%af%a2">¶</a></h3><p>$g[i,j]$：$A_i$ 到 $A_j$ 的和.</p>
+<p>$$g[i,j]=f[j]-f[i-1]$$</p>
+<p>单次查询的时间复杂度：$O(1)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">g</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">j</span>) { <span style="color:#95a5a6">// sum of a[i ... j]
+</span><span style="color:#95a5a6"></span>    <span style="color:#728e00">return</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">-</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>];
+}
+</code></pre></div><h2 id="二维前缀和">二维前缀和 <a class="anchor" href="#%e4%ba%8c%e7%bb%b4%e5%89%8d%e7%bc%80%e5%92%8c">¶</a></h2><h3 id="预处理-1">预处理 <a class="anchor" href="#%e9%a2%84%e5%a4%84%e7%90%86-1">¶</a></h3><p>矩阵 $A$ 有 $n$ 行 $m$ 列.</p>
+<p>$f[i,j]$：以 $(1,1)$ 为左上角，以 $(i, j)$ 为右下角的矩阵的元素和.</p>
+<p>$$f[i,j]=f[i-1,j]+f[i,j-1]-f[i-1,j-1]+(i,j)$$</p>
+<p><img class="md__image" src="8.png" alt=""  /></p>
+<p>时间复杂度：$O(nm)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#434f54">f</span>[<span style="color:#8a7b52">0</span>][<span style="color:#8a7b52">0</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>;
+<span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">m</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">j</span>] <span style="color:#728e00">+</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">-</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">j</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>][<span style="color:#434f54">j</span>];
+</code></pre></div><h3 id="查询-1">查询 <a class="anchor" href="#%e6%9f%a5%e8%af%a2-1">¶</a></h3><p>$g[x_1,y_1,x_2,y_2]$：以 $(x_1,y_1)$ 为左上角，以 $(x_2, y_2)$ 为右下角的矩阵的元素和.</p>
+<p>$$g[x_1,y_1,x_2,y_2]=f[x_2,y_2]-f[x_1-1,y_2]-f[x_2,y_1-1]+f[x_1-1,y_1-1]$$</p>
+<p><img class="md__image" src="9.png" alt=""  /></p>
+<p>单次查询的时间复杂度：$O(1)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">g</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">x1</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">y1</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">x2</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">y2</span>) {
+    <span style="color:#728e00">return</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">x2</span>][<span style="color:#434f54">y2</span>] <span style="color:#728e00">-</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">x1</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">y2</span>] <span style="color:#728e00">-</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">x2</span>][<span style="color:#434f54">y1</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">x1</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">y1</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>];
+}
+</code></pre></div><h2 id="差分">差分 <a class="anchor" href="#%e5%b7%ae%e5%88%86">¶</a></h2><p>差分是前缀和的逆运算，能大幅降低区间修改的时间复杂度.</p>
+<h3 id="预处理-2">预处理 <a class="anchor" href="#%e9%a2%84%e5%a4%84%e7%90%86-2">¶</a></h3><p>数列 $A$ 有 $n$ 个元素.</p>
+<p>令 $f[i]=A_i-A_{i-1}$. $f$ 为差分数列.</p>
+<p>时间复杂度：$O(n)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+    <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">-</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>];
+</code></pre></div><h3 id="区间修改">区间修改 <a class="anchor" href="#%e5%8c%ba%e9%97%b4%e4%bf%ae%e6%94%b9">¶</a></h3><p>当给 $A_l\cdots A_r$ 统一加上 $x$ 时，$f[l]$ 增加了 $x$，$f[r+1]$ 减少了 $x$, $f$ 数列中其余元素不变.</p>
+<p>因此可以每次只修改 $f[l]$ 和 $f[r+1]$，最后通过 $f$ 数列还原出 $A$.</p>
+<p>单次修改的时间复杂度：$O(1)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">void</span> <span style="color:#d35400">add</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">l</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">r</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">x</span>) { <span style="color:#95a5a6">// add x to A[l ... r]
+</span><span style="color:#95a5a6"></span>    <span style="color:#434f54">f</span>[<span style="color:#434f54">l</span>] <span style="color:#728e00">+=</span> <span style="color:#434f54">x</span>, <span style="color:#434f54">f</span>[<span style="color:#434f54">r</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">-=</span> <span style="color:#434f54">x</span>;
+}
+
+<span style="color:#00979d">void</span> <span style="color:#d35400">restore</span>() {
+    <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">+</span> <span style="color:#434f54">f</span>[<span style="color:#434f54">i</span>];
+}
+</code></pre></div>
+  </article>
+</div>
+
+
+
+  <div class="flex-right">
+    <div class="outer">
+      
+  <div class="inner">
+  <h2><img src="../../../../images/notice.svg" />Notice</h2>
+  <p>Under Construction ...</p>
+</div>
+  
+
+<div class="inner">
+  <h2><img src="../../../../images/toc.svg">TOC</h2>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#斐波那契数列">斐波那契数列</a></li>
+    <li><a href="#汉诺塔问题">汉诺塔问题</a></li>
+    <li><a href="#骨牌问题">骨牌问题</a></li>
+    <li><a href="#平面分割问题">平面分割问题</a></li>
+    <li><a href="#最长上升子序列-lis">最长上升子序列 (LIS)</a></li>
+    <li><a href="#最长公共子序列-lcs">最长公共子序列 (LCS)</a></li>
+    <li><a href="#数字金字塔">数字金字塔</a></li>
+    <li><a href="#数字矩阵">数字矩阵</a></li>
+    <li><a href="#前缀和">前缀和</a>
+      <ul>
+        <li><a href="#预处理">预处理</a></li>
+        <li><a href="#查询">查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#二维前缀和">二维前缀和</a>
+      <ul>
+        <li><a href="#预处理-1">预处理</a></li>
+        <li><a href="#查询-1">查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#差分">差分</a>
+      <ul>
+        <li><a href="#预处理-2">预处理</a></li>
+        <li><a href="#区间修改">区间修改</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
+
+
+    </div>
+  </div>
+
+  <script src="../../../../js/jquery.min.js"></script>
+
+
+<script defer>
+function IsPC() {  
+  var userAgentInfo = navigator.userAgent;
+  var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
+  for (var v = 0; v < Agents.length; v ++) {  
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      return false;
+    }
+  }
+  return true;
+}
+function detectZoom() {
+  var ratio = 0,
+  screen = window.screen,
+  ua = navigator.userAgent.toLowerCase();
+  if (window.devicePixelRatio !== undefined)
+    ratio = window.devicePixelRatio;
+  else if (~ua.indexOf('msie')) {
+    if (screen.deviceXDPI && screen.logicalXDPI)
+      ratio = screen.deviceXDPI / screen.logicalXDPI;
+  }
+  else if (window.outerWidth !== undefined && window.innerWidth !== undefined)
+    ratio = window.outerWidth / window.innerWidth;
+  
+  if (ratio)
+    ratio = Math.round(ratio * 100);
+  return ratio;
+}
+$('img').each(function(id, el, arr) {
+  if (el.parentElement.tagName == 'P') {
+    el.className = "md__image";
+    var src = el.getAttribute('src');
+    if (IsPC() && src.substr(src.lastIndexOf(".") + 1) != "svg") {
+      if (el.style.zoom)
+        el.style.zoom = parseFloat(el.style.zoom) / detectZoom();
+      else
+        el.style.zoom = 100 / detectZoom();
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="../../../../katex/katex.min.css">
+<script src="../../../../katex/katex.min.js"></script>
+<script src="../../../../katex/auto-render.min.js"></script>
+
+<script>
+  function renderTex() {
+    renderMathInElement(document.body, {
+      trust: true,
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ],
+      macros: {
+        
+        "\\d": "\\text{d}",
+        "\\zh": "\\footnotesize \\ ",
+        "\\en": "\\normalsize \\ ",
+        "\\su": "\\displaystyle",
+        "\\eq": "\\Longleftrightarrow",
+        "\\intro": "\\Longrightarrow",
+        "\\mathring": "\\overset\{\\normalsizeₒ\}",
+        "\\arccot": "\\text\{arccot\} \\, ",
+        "\\xor": "\\text\{xor\} \\, ",
+        "\\mex": "\\text\{mex\} \\, "
+      }
+    });
+  }  
+  document.addEventListener("DOMContentLoaded", function() {
+    renderTex();
+  });
+
+</script>
+
+<script>
+  $('.language-latex').each(function(id, el, arr) {
+    function toText(text) { 
+      var temp = document.createElement("div"); 
+      temp.innerHTML = text; 
+      var output = temp.innerText || temp.textContent; 
+      temp = null; 
+      return output; 
+    } 
+    tex = toText(el.innerHTML);
+    el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
+  });
+
+</script>
+
+<script>
+  $('table').each(function(id, el, arr) {
+    el.outerHTML = `<div class="md__table">${el.outerHTML}</div>`;
+  });
+</script>
+
+
+
+<script src="../../../../js/mermaid.min.js"></script>
+
+<script>
+  mermaid.initialize({
+    
+    themeCSS: ".node rect { \
+      fill: transparent;    \
+      stroke: transparent;  \
+    }                       \
+    .nodeLabel {            \
+      font-size: 24px;      \
+    }",
+    startOnLoad: true,
+    flowchart: {
+      curve: 'cardinal'
+    },
+    securityLevel: 'loose',
+  });
+</script>
+
+<script>
+  Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+    (el) => {
+      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+    }
+  );
+</script>
+
+  
+</main>
+</body>
+</html>
