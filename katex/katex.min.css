@@ -1315,8 +1315,9 @@ body {
 
 /* Add space between broken lines: */
 
-.katex-display>.base {
-    margin: 0.25em 0
+.katex-display .base {
+    margin: 0.25em 0;
+    /* padding: .5em; */
 }
 
 
@@ -1324,7 +1325,7 @@ body {
 
 .katex-display {
     margin: 0;
-    padding: 0.5em;
+    /* padding: 0.5em; */
 }
 
 .katex-display {

@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
 
-  <title>斐波那契数列通项 &#8211; NetPipe&#39;s Blog</title>
+  <title>数列通项：不动点法 &#8211; NetPipe&#39;s Blog</title>
 
   
-  <meta name="description" content="已知 $a_1=a_2=1,a_{n&#43;2}=a_{n&#43;1}-a_n$，求 $a_n$ 的通项.">
+  <meta name="description" content="不动点 ¶函数 $f(x)$ 与 $y=x$ 的交点为不动点.">
   
   <meta name="author" content="Net Pipe">
 
@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="../../../index.xml" rel="alternate" type="application/rss+xml" title="NetPipe&#39;s Blog" />
-  <link rel="shortcut icon" type="image/x-icon" href="../../../images/freeze.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="../../../images/NetPipe.png" />
 
   
     <style>@font-face {
@@ -194,9 +194,9 @@ strong {
   --color: black;
   --border: 1px solid #dee0e2;
   --border-color: #dee0e2;
-  --border-radius: 0.25rem;
+  --radius: 0.25rem;
   --link-color: #4588be;
-  --category-color: rgba(72, 175, 209, 0.7);
+  --category-color: rgba(38, 152, 190, 0.7);
   --background-color: white;
   --hover-color: #f7f7f7; }
   * body {
@@ -255,6 +255,141 @@ ul > li {
   .result :last-child .post {
     margin-bottom: 0; }
 
+.flex-left,
+.flex-right {
+  flex: 0 0 var(--aside-width); }
+  .flex-left div.outer,
+  .flex-right div.outer {
+    padding: .7rem;
+    margin: .3rem;
+    width: calc(var(--aside-width) - 2rem);
+    height: calc(100% - 2rem);
+    position: fixed;
+    overflow: auto; }
+    .flex-left div.outer::-webkit-scrollbar-track,
+    .flex-right div.outer::-webkit-scrollbar-track {
+      margin: .7rem; }
+  .flex-left div.inner,
+  .flex-right div.inner {
+    direction: ltr;
+    background-color: var(--background-color);
+    color: var(--color);
+    border-radius: var(--radius);
+    box-shadow: var(--box-shadow);
+    box-sizing: border-box;
+    width: calc(var(--aside-width) - 2rem);
+    padding: .5rem;
+    margin-bottom: 1rem;
+    overflow: auto;
+    padding: 1rem; }
+    .flex-left div.inner:hover,
+    .flex-right div.inner:hover {
+      box-shadow: var(--box-shadow-hover); }
+    .flex-left div.inner h2,
+    .flex-right div.inner h2 {
+      margin: 0 0 .5rem 0;
+      line-height: 20px; }
+      .flex-left div.inner h2 > img,
+      .flex-right div.inner h2 > img {
+        vertical-align: -2px;
+        width: 20px;
+        height: 20px;
+        margin-right: .5rem; }
+    .flex-left div.inner ul,
+    .flex-right div.inner ul {
+      padding-left: 1rem; }
+    .flex-left div.inner:last-of-type,
+    .flex-right div.inner:last-of-type {
+      margin-bottom: 0; }
+  .flex-left div.avatar,
+  .flex-right div.avatar {
+    text-align: center; }
+    .flex-left div.avatar h2,
+    .flex-right div.avatar h2 {
+      margin: 1rem; }
+    .flex-left div.avatar img.avatar,
+    .flex-right div.avatar img.avatar {
+      transition: all 0.3s;
+      border-radius: 1rem;
+      box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2); }
+      .flex-left div.avatar img.avatar:hover,
+      .flex-right div.avatar img.avatar:hover {
+        transform: perspective(1px) scale(1.04); }
+    .flex-left div.avatar .data-left,
+    .flex-left div.avatar .data-right,
+    .flex-right div.avatar .data-left,
+    .flex-right div.avatar .data-right {
+      flex: 0 0 50%;
+      display: inline-block;
+      width: calc(50% - 1rem); }
+    .flex-left div.avatar .data-left,
+    .flex-right div.avatar .data-left {
+      border-right: 1px solid var(--color); }
+    .flex-left div.avatar .social,
+    .flex-right div.avatar .social {
+      margin-top: 1rem; }
+      .flex-left div.avatar .social .social-box,
+      .flex-right div.avatar .social .social-box {
+        border-radius: var(--radius);
+        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+        background-color: var(--background-color);
+        color: var(--color);
+        transition: all 0.3s;
+        margin-top: .5rem;
+        padding: .5rem;
+        text-align: left;
+        font-size: 18px; }
+        .flex-left div.avatar .social .social-box a,
+        .flex-right div.avatar .social .social-box a {
+          color: var(--color); }
+        .flex-left div.avatar .social .social-box:hover a,
+        .flex-right div.avatar .social .social-box:hover a {
+          color: var(--link-color);
+          text-decoration: underline; }
+        .flex-left div.avatar .social .social-box:hover,
+        .flex-right div.avatar .social .social-box:hover {
+          transform: perspective(1px) scale(1.04); }
+        .flex-left div.avatar .social .social-box img,
+        .flex-right div.avatar .social .social-box img {
+          vertical-align: text-bottom;
+          width: 20px; }
+        .flex-left div.avatar .social .social-box .search,
+        .flex-right div.avatar .social .social-box .search {
+          display: inline-block;
+          width: calc(100% - 36px); }
+          .flex-left div.avatar .social .social-box .search > input,
+          .flex-right div.avatar .social .social-box .search > input {
+            background-color: var(--background-color);
+            color: var(--color);
+            border: none;
+            font-size: 17px;
+            outline: none;
+            width: 100%; }
+  .flex-left div.categories .post-categories,
+  .flex-right div.categories .post-categories {
+    display: inline-block;
+    transition: all 0.1s;
+    line-height: 1.7rem; }
+    .flex-left div.categories .post-categories:hover,
+    .flex-right div.categories .post-categories:hover {
+      transform: perspective(1px) scale(1.04); }
+  .flex-left #TableOfContents > ul,
+  .flex-right #TableOfContents > ul {
+    padding-left: 0;
+    margin-bottom: -.5rem; }
+    .flex-left #TableOfContents > ul li,
+    .flex-right #TableOfContents > ul li {
+      list-style: none; }
+
+.flex-left {
+  margin-right: -1rem; }
+
+.flex-right {
+  margin-left: -1rem; }
+
+.flex-hidden {
+  display: none; }
+
 .pagination {
   margin: 0;
   padding: 0;
@@ -265,7 +400,7 @@ ul > li {
   justify-content: center;
   font-size: 18px; }
   .pagination div.pagination-box {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     background-color: var(--background-color);
     color: var(--color);
@@ -295,7 +430,7 @@ ul > li {
     color: var(--color); }
 
 .posts .post {
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   color: var(--color);
@@ -309,7 +444,11 @@ ul > li {
 
 .post-list {
   border: var(--border);
-  border-radius: var(--border-radius); }
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow); }
+  .post-list:hover {
+    box-shadow: var(--box-shadow-hover); }
   .post-list .post-item {
     padding: .3rem .5rem;
     height: 1.5rem; }
@@ -364,147 +503,17 @@ ul > li {
     max-width: 100%;
     margin: auto; }
 
-.post-content > :first-child,
-.post-content > :first-child > :first-child,
-.post-content > :first-child > :first-child > :first-child,
+.post-content > :first-child, .post-content > :first-child > :first-child, .post-content > :first-child > :first-child > :first-child,
 .markdown-inner > :first-child,
 .markdown-inner > :first-child > :first-child,
 .markdown-inner > :first-child > :first-child > :first-child {
   margin-top: 0; }
 
-.post-content > :last-child,
-.post-content > :last-child > :last-child,
-.post-content > :last-child > :last-child > :last-child,
+.post-content > :last-child, .post-content > :last-child > :last-child, .post-content > :last-child > :last-child > :last-child,
 .markdown-inner > :last-child,
 .markdown-inner > :last-child > :last-child,
 .markdown-inner > :last-child > :last-child > :last-child {
   margin-bottom: 0; }
-
-.flex-left,
-.flex-right {
-  flex: 0 0 var(--aside-width); }
-  .flex-left div.outer,
-  .flex-right div.outer {
-    padding: .7rem;
-    margin: .3rem;
-    width: calc(var(--aside-width) - 2rem);
-    height: calc(100% - 2rem);
-    position: fixed;
-    overflow: auto; }
-    .flex-left div.outer::-webkit-scrollbar-track,
-    .flex-right div.outer::-webkit-scrollbar-track {
-      margin: .7rem; }
-    .flex-left div.outer div.avatar,
-    .flex-right div.outer div.avatar {
-      text-align: center; }
-      .flex-left div.outer div.avatar h2,
-      .flex-right div.outer div.avatar h2 {
-        margin: 1rem; }
-      .flex-left div.outer div.avatar .data-left,
-      .flex-left div.outer div.avatar .data-right,
-      .flex-right div.outer div.avatar .data-left,
-      .flex-right div.outer div.avatar .data-right {
-        flex: 0 0 50%;
-        display: inline-block;
-        width: calc(50% - 1rem); }
-      .flex-left div.outer div.avatar .data-left,
-      .flex-right div.outer div.avatar .data-left {
-        border-right: 1px solid var(--color); }
-      .flex-left div.outer div.avatar .social,
-      .flex-right div.outer div.avatar .social {
-        margin-top: 1rem; }
-        .flex-left div.outer div.avatar .social .social-box,
-        .flex-right div.outer div.avatar .social .social-box {
-          border-radius: var(--border-radius);
-          box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
-          transition: all .3s;
-          background-color: var(--background-color);
-          color: var(--color);
-          margin-top: .5rem;
-          padding: .5rem;
-          text-align: left;
-          font-size: 18px; }
-          .flex-left div.outer div.avatar .social .social-box:hover,
-          .flex-right div.outer div.avatar .social .social-box:hover {
-            transform: scale(1.03); }
-          .flex-left div.outer div.avatar .social .social-box a,
-          .flex-right div.outer div.avatar .social .social-box a {
-            color: var(--color); }
-          .flex-left div.outer div.avatar .social .social-box:hover a,
-          .flex-right div.outer div.avatar .social .social-box:hover a {
-            color: var(--link-color);
-            text-decoration: underline; }
-          .flex-left div.outer div.avatar .social .social-box img,
-          .flex-right div.outer div.avatar .social .social-box img {
-            vertical-align: text-bottom;
-            width: 20px; }
-          .flex-left div.outer div.avatar .social .social-box .search,
-          .flex-right div.outer div.avatar .social .social-box .search {
-            display: inline-block;
-            width: calc(100% - 36px); }
-            .flex-left div.outer div.avatar .social .social-box .search > input,
-            .flex-right div.outer div.avatar .social .social-box .search > input {
-              background-color: var(--background-color);
-              color: var(--color);
-              border: none;
-              font-size: 17px;
-              outline: none;
-              width: 100%; }
-    .flex-left div.outer div.categories .post-categories,
-    .flex-right div.outer div.categories .post-categories {
-      margin: .5rem 0;
-      line-height: 1.7rem; }
-    .flex-left div.outer #TableOfContents > ul,
-    .flex-right div.outer #TableOfContents > ul {
-      padding-left: 0;
-      margin-bottom: 0; }
-      .flex-left div.outer #TableOfContents > ul li,
-      .flex-right div.outer #TableOfContents > ul li {
-        list-style: none; }
-        .flex-left div.outer #TableOfContents > ul li:last-of-type,
-        .flex-right div.outer #TableOfContents > ul li:last-of-type {
-          margin-bottom: 0; }
-  .flex-left div.inner,
-  .flex-right div.inner {
-    direction: ltr;
-    background-color: var(--background-color);
-    color: var(--color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    box-sizing: border-box;
-    width: calc(var(--aside-width) - 2rem);
-    padding: .5rem;
-    margin-bottom: 1rem;
-    overflow: auto;
-    padding: 1rem; }
-    .flex-left div.inner:hover,
-    .flex-right div.inner:hover {
-      box-shadow: var(--box-shadow-hover); }
-    .flex-left div.inner h2,
-    .flex-right div.inner h2 {
-      margin: 0 0 .5rem 0;
-      line-height: 20px; }
-      .flex-left div.inner h2 > img,
-      .flex-right div.inner h2 > img {
-        vertical-align: -2px;
-        width: 20px;
-        height: 20px;
-        margin-right: .5rem; }
-    .flex-left div.inner ul,
-    .flex-right div.inner ul {
-      padding-left: 1rem; }
-    .flex-left div.inner:last-of-type,
-    .flex-right div.inner:last-of-type {
-      margin-bottom: 0; }
-
-.flex-left {
-  margin-right: -1rem; }
-
-.flex-right {
-  margin-left: -1rem; }
-
-.flex-hidden {
-  display: none; }
 
 body {
   max-width: 75rem;
@@ -529,7 +538,7 @@ article {
     width: 100%;
     height: 2rem; }
   .blog-page .post-content {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     background-color: var(--background-color);
     color: var(--color); }
@@ -582,8 +591,8 @@ article {
     line-height: 1rem;
     display: inline-block;
     padding: .3rem 16px;
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
     cursor: pointer;
     z-index: 999;
     border: 1px solid transparent;
@@ -594,8 +603,8 @@ article {
     width: 100%;
     display: none;
     overflow: hidden;
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius); }
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius); }
   .book-tabs .book-tabs-content {
     border: var(--border);
     padding: .5rem; }
@@ -615,9 +624,13 @@ article {
 
 details {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   margin: .5rem 0;
   padding: .5rem  1rem .5rem  0.75rem; }
+  details:hover {
+    box-shadow: var(--box-shadow-hover); }
   details summary {
     font-size: 12.8px;
     font-weight: bold; }
@@ -678,21 +691,33 @@ article hr {
 
 article blockquote {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: none;
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   border-left: .3rem solid lightgray;
-  padding: 0 .5rem; }
+  padding: .2rem .5rem; }
+  article blockquote:hover {
+    box-shadow: var(--box-shadow-hover); }
+  article blockquote > :first-child, article blockquote > :first-child > :first-child, article blockquote > :first-child > :first-child > :first-child {
+    margin-top: 0; }
+  article blockquote > :last-child, article blockquote > :last-child > :last-child, article blockquote > :last-child > :last-child > :last-child {
+    margin-bottom: 0; }
 
 article pre {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   margin: .5rem 0;
   padding: .5rem 1rem;
   overflow-x: auto;
   line-height: 22px; }
+  article pre:hover {
+    box-shadow: var(--box-shadow-hover); }
 
 article code {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
   padding: 1px 2px; }
 
 article pre {
@@ -716,10 +741,14 @@ article .md__table {
     margin: .5rem; }
   article .md__table table {
     border: var(--border);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--box-shadow);
     border-spacing: 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch; }
+    article .md__table table:hover {
+      box-shadow: var(--box-shadow-hover); }
     article .md__table table th {
       font-weight: normal; }
     article .md__table table td {
@@ -748,10 +777,10 @@ article .mermaid svg {
       <div class="flex-visible">
         
   <div class="inner avatar">
-  <img src="../../../images/freeze.png" class="avatar" width="96px" height="96px" />
+  <a href="../../../"><img src="../../../images/NetPipe.png" class="avatar" width="96px" height="96px" /></a>
   <h2>Net Pipe</h2>
   <div class="data-left">
-    <h3>57</h3>
+    <h3>58</h3>
     <span>Posts</span>
   </div>
   <div class="data-right">
@@ -871,7 +900,9 @@ article .mermaid svg {
     
         
     
-    <h3>18313</h3>
+        
+    
+    <h3>18700</h3>
     <span>Words</span>
   </div>
   <div class="social">
@@ -959,6 +990,22 @@ article .mermaid svg {
 </div>
   
 
+<div class="inner">
+  <h2><img src="../../../images/toc.svg">TOC</h2>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#不动点">不动点</a></li>
+    <li><a href="#一次不动点">一次不动点</a></li>
+    <li><a href="#齐次不动点">齐次不动点</a>
+      <ul>
+        <li><a href="#单根">单根</a></li>
+        <li><a href="#双根">双根</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
 
 
       </div>
@@ -970,11 +1017,11 @@ article .mermaid svg {
   <article class="post-content">
     
     <div class="post-header">
-      <h1>斐波那契数列通项</h1>
+      <h1>数列通项：不动点法</h1>
       <span class="post-meta">
         
           <img src="../../../images/time.svg"></img>
-          Dec 31, 2021
+          Jan 16, 2022
         
       </span>
       <span class="post-categories">
@@ -984,35 +1031,64 @@ article .mermaid svg {
       </span>
     </div>
     
-    <p>已知 $a_1=a_2=1,a_{n+2}=a_{n+1}-a_n$，求 $a_n$ 的通项.</p>
-<p><strong>解：</strong> 设 $a_{n+2}-ra_{n+1}=s(a_{n+1}-ra_n)$，</p>
-<p>则 $a_{n+2}=(s+r)a_{n+1}-s\cdot ra_n$.</p>
-<p>对比 $a_{n+2}=a_{n+1}-a_n$ 得</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-  s+r=1<span style="color:#728e00">\\</span>
-  s<span style="color:#728e00">\cdot</span> r=-1
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-</code></pre></div><p>解得</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-  s=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
-  r=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-
-<span style="color:#728e00">\text</span><span style="color:#728e00">{</span><span style="color:#728e00">\quad</span> or <span style="color:#728e00">\quad</span><span style="color:#728e00">}</span>
-
-<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-  s=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
-  r=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-</code></pre></div><p>∴ 数列 $\{a_{n+1}-ra_n\}$ 是以 $a_2-ra_1$ 为首项，$s$ 为公比的等比数列.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">∴
-<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-  a<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>-<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>a<span style="color:#728e00">_</span>n=<span style="color:#728e00">\left</span>(<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">^</span>n<span style="color:#728e00">\\</span>
-  a<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>-<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>a<span style="color:#728e00">_</span>n=<span style="color:#728e00">\left</span>(<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">^</span>n
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-</code></pre></div><p>两式相减得：</p>
-<p>$$\sqrt{5}a_n=\left(\cfrac{1+\sqrt{5}}{2}\right)^n-\left(\cfrac{1-\sqrt{5}}{2}\right)^n$$</p>
-<p>$$a_n=\cfrac{\sqrt{5}}{5}\left[\left(\cfrac{1+\sqrt{5}}{2}\right)^n-\left(\cfrac{1-\sqrt{5}}{2}\right)^n\right]$$</p>
+    <h2 id="不动点">不动点 <a class="anchor" href="#%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><p>函数 $f(x)$ 与 $y=x$ 的交点为不动点. 即不动点 $x_0$ 满足</p>
+<p>$$f(x_0)=x_0$$</p>
+<p>若 $a_n=f(a_{n-1})$，则 $f(x)$ 的不动点同时也是数列 $\{a_n\}$ 的不动点.</p>
+<h2 id="一次不动点">一次不动点 <a class="anchor" href="#%e4%b8%80%e6%ac%a1%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><p>已知 $a_1$ 和 $a_n=A\cdot a_{n-1}+B(A\not=0)$，求 $a_n$.</p>
+<p><strong>解：</strong> 设 $x_0$ 是 $f(x)=Ax+B$ 的 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a>，则</p>
+<p>$$Ax_0+B=x_0$$</p>
+<p>整理得</p>
+<p>$$B-x_0=-Ax_0$$</p>
+<p>$$\therefore a_n-x_0=A\cdot a_{n-1}+B-x_0=A(a_{n-1}-x_0)$$</p>
+<p>$\therefore$ 数列 $\{a_n-x_0\}$ 是首项为 $a_1-x_0$，公比为 $A$ 的等比数列</p>
+<p>$$a_n-x_0=(a_1-x_0)A^{n-1}$$</p>
+<p>$$\therefore a_n=x_0+(a_1-x_0)A^{n-1}$$</p>
+<h2 id="齐次不动点">齐次不动点 <a class="anchor" href="#%e9%bd%90%e6%ac%a1%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><h3 id="单根">单根 <a class="anchor" href="#%e5%8d%95%e6%a0%b9">¶</a></h3><p>已知 $a_1$ 和 $a_n=\dfrac{Aa_{n-1}+B}{Ca_{n-1}+D}(C\not=0)$，方程 $\dfrac{Ax+B}{Cx+D}=x$ 仅有一根，求 $a_n$.</p>
+<p><strong>解：</strong> 设 $x_0$ 是 $f(x)=\dfrac{Ax+B}{Cx+D}$ 的一个 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a>，则</p>
+<p>$$x_0=\frac{Ax_0+B}{Cx_0+D}$$</p>
+<p>整理得</p>
+<p>$$B-Dx_0=Cx_0^2-Ax_0\tag{1}$$</p>
+<p>$$Cx_0^2+(D-A)x_0-B=0\tag{2}$$</p>
+<p>$\because$ 方程 $(2)$ 仅有一根 $\therefore\Delta=0$，故</p>
+<p>$$x_0=\dfrac{A-D}{2C}\tag{3}$$</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">\therefore</span> a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Aa<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(A-Cx<span style="color:#728e00">_</span>0)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B-Dx<span style="color:#728e00">_</span>0<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(A-Cx<span style="color:#728e00">_</span>0)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+Cx<span style="color:#728e00">_</span>0<span style="color:#728e00">^</span>2-Ax<span style="color:#728e00">_</span>0<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span><span style="color:#728e00">{</span><span style="color:#728e00">\text</span><span style="color:#728e00">{</span><span style="color:#728e00">\footnotesize</span>代入<span style="color:#728e00">}</span> <span style="color:#728e00">\ </span>(1)<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">\\</span>
+<span style="color:#728e00">\therefore</span> <span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">}&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}{</span>(A-Cx<span style="color:#728e00">_</span>0)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+Cx<span style="color:#728e00">_</span>0<span style="color:#728e00">^</span>2-Ax<span style="color:#728e00">_</span>0<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>C(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)+Cx<span style="color:#728e00">_</span>0+D<span style="color:#728e00">}{</span>(A-<span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A-D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span>)(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span><span style="color:#728e00">{</span><span style="color:#728e00">\text</span><span style="color:#728e00">{</span><span style="color:#728e00">\footnotesize</span>将<span style="color:#728e00">}</span> <span style="color:#728e00">\ </span>(3) <span style="color:#728e00">\ \text</span><span style="color:#728e00">{</span><span style="color:#728e00">\footnotesize</span>代入分母第一个<span style="color:#728e00">}</span> <span style="color:#728e00">\ </span>x<span style="color:#728e00">_</span>0<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>C<span style="color:#728e00">}{</span><span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A+D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}}</span>+<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span><span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A-D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span>+D<span style="color:#728e00">}{</span><span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A+D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span>(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>2C<span style="color:#728e00">}{</span>A+D<span style="color:#728e00">}</span>+<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0<span style="color:#728e00">}</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><p>$\therefore$ 数列 $\left\{\dfrac{1}{a_n-x_0}\right\}$ 是首项为 $\dfrac{1}{a_1-x_0}$，公差为 $\dfrac{2C}{A+D}$ 的等差数列. 据此可求得 $\{a_n\}$ 通项.</p>
+<h3 id="双根">双根 <a class="anchor" href="#%e5%8f%8c%e6%a0%b9">¶</a></h3><p>已知 $a_1$ 和 $a_n=\dfrac{Aa_{n-1}+B}{Ca_{n-1}+D}(C\not=0)$，方程 $\dfrac{Ax+B}{Cx+D}=x$ 有两根，求 $a_n$.</p>
+<p><strong>解：</strong> 设 $x_1,x_2$ 是 $f(x)=\dfrac{Ax+B}{Cx+D}$ 的两个 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a>，则</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
+    x<span style="color:#728e00">_</span>1=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Ax<span style="color:#728e00">_</span>1+B<span style="color:#728e00">}{</span>Cx<span style="color:#728e00">_</span>1+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+    <span style="color:#728e00">\\</span>
+    x<span style="color:#728e00">_</span>2=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Ax<span style="color:#728e00">_</span>2+B<span style="color:#728e00">}{</span>Cx<span style="color:#728e00">_</span>2+D<span style="color:#728e00">}</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
+<span style="color:#728e00">\intro</span>
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
+    Cx<span style="color:#728e00">_</span>1(x<span style="color:#728e00">_</span>1-A)=B-Dx<span style="color:#728e00">_</span>1<span style="color:#728e00">\\</span>
+    Cx<span style="color:#728e00">_</span>2(x<span style="color:#728e00">_</span>2-A)=B-Dx<span style="color:#728e00">_</span>2
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">\therefore</span> a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>1<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Aa<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>1<span style="color:#728e00">\\</span>
+<span style="color:#728e00">\therefore</span> (a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>1)(Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D)<span style="color:#728e00">&amp;</span>=Aa<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B-x<span style="color:#728e00">_</span>1(Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D)<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=(A-Cx<span style="color:#728e00">_</span>1)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B-Dx<span style="color:#728e00">_</span>1<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=(A-Cx<span style="color:#728e00">_</span>1)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>1(A-Cx<span style="color:#728e00">_</span>1)<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=(A-Cx<span style="color:#728e00">_</span>1)(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>1)
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><p>即</p>
+<p>$$(a_n-x_1)(Ca_{n-1}+D)=(A-Cx_1)(a_{n-1}-x_1)$$</p>
+<p>同理可得</p>
+<p>$$(a_n-x_2)(Ca_{n-1}+D)=(A-Cx_2)(a_{n-1}-x_2)$$</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">\therefore</span> <span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>A-Cx<span style="color:#728e00">_</span>1<span style="color:#728e00">}{</span>A-Cx<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\cdot\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_{</span>n-2<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><p>$\therefore$ 数列 $\left\{\dfrac{a_n-x_1}{a_n-x_2}\right\}$ 是首项为 $\dfrac{a_1-x_1}{a_1-x_2}$，公比为 $\dfrac{A-Cx_1}{A-Cx_2}$ 的等比数列. 据此可求得 $\{a_n\}$ 通项.</p>
 
   </article>
 </div>
@@ -1027,6 +1103,22 @@ article .mermaid svg {
   <p>Under Construction ...</p>
 </div>
   
+
+<div class="inner">
+  <h2><img src="../../../images/toc.svg">TOC</h2>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#不动点">不动点</a></li>
+    <li><a href="#一次不动点">一次不动点</a></li>
+    <li><a href="#齐次不动点">齐次不动点</a>
+      <ul>
+        <li><a href="#单根">单根</a></li>
+        <li><a href="#双根">双根</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
 
 
 

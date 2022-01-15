@@ -7,7 +7,7 @@
   <title>数列通项：特征根法 &#8211; NetPipe&#39;s Blog</title>
 
   
-  <meta name="description" content="二次特征根 ¶已知 $f_1,f_2$ 和 $af_{n&#43;2}&#43;bf_{n&#43;1}&#43;cf_n=0(a\not=0)$，求 $f_n$.">
+  <meta name="description" content="特征根法在数列通项与线性齐次微分方程的应用中有异曲同工之妙.">
   
   <meta name="author" content="Net Pipe">
 
@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="../../../index.xml" rel="alternate" type="application/rss+xml" title="NetPipe&#39;s Blog" />
-  <link rel="shortcut icon" type="image/x-icon" href="../../../images/freeze.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="../../../images/NetPipe.png" />
 
   
     <style>@font-face {
@@ -194,7 +194,7 @@ strong {
   --color: black;
   --border: 1px solid #dee0e2;
   --border-color: #dee0e2;
-  --border-radius: 0.25rem;
+  --radius: 0.25rem;
   --link-color: #4588be;
   --category-color: rgba(38, 152, 190, 0.7);
   --background-color: white;
@@ -274,7 +274,7 @@ ul > li {
     direction: ltr;
     background-color: var(--background-color);
     color: var(--color);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     box-sizing: border-box;
     width: calc(var(--aside-width) - 2rem);
@@ -330,7 +330,7 @@ ul > li {
       margin-top: 1rem; }
       .flex-left div.avatar .social .social-box,
       .flex-right div.avatar .social .social-box {
-        border-radius: var(--border-radius);
+        border-radius: var(--radius);
         box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
         background-color: var(--background-color);
         color: var(--color);
@@ -400,7 +400,7 @@ ul > li {
   justify-content: center;
   font-size: 18px; }
   .pagination div.pagination-box {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     background-color: var(--background-color);
     color: var(--color);
@@ -430,7 +430,7 @@ ul > li {
     color: var(--color); }
 
 .posts .post {
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   color: var(--color);
@@ -444,7 +444,11 @@ ul > li {
 
 .post-list {
   border: var(--border);
-  border-radius: var(--border-radius); }
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow); }
+  .post-list:hover {
+    box-shadow: var(--box-shadow-hover); }
   .post-list .post-item {
     padding: .3rem .5rem;
     height: 1.5rem; }
@@ -499,17 +503,13 @@ ul > li {
     max-width: 100%;
     margin: auto; }
 
-.post-content > :first-child,
-.post-content > :first-child > :first-child,
-.post-content > :first-child > :first-child > :first-child,
+.post-content > :first-child, .post-content > :first-child > :first-child, .post-content > :first-child > :first-child > :first-child,
 .markdown-inner > :first-child,
 .markdown-inner > :first-child > :first-child,
 .markdown-inner > :first-child > :first-child > :first-child {
   margin-top: 0; }
 
-.post-content > :last-child,
-.post-content > :last-child > :last-child,
-.post-content > :last-child > :last-child > :last-child,
+.post-content > :last-child, .post-content > :last-child > :last-child, .post-content > :last-child > :last-child > :last-child,
 .markdown-inner > :last-child,
 .markdown-inner > :last-child > :last-child,
 .markdown-inner > :last-child > :last-child > :last-child {
@@ -538,7 +538,7 @@ article {
     width: 100%;
     height: 2rem; }
   .blog-page .post-content {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     background-color: var(--background-color);
     color: var(--color); }
@@ -591,8 +591,8 @@ article {
     line-height: 1rem;
     display: inline-block;
     padding: .3rem 16px;
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
     cursor: pointer;
     z-index: 999;
     border: 1px solid transparent;
@@ -603,8 +603,8 @@ article {
     width: 100%;
     display: none;
     overflow: hidden;
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius); }
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius); }
   .book-tabs .book-tabs-content {
     border: var(--border);
     padding: .5rem; }
@@ -624,9 +624,13 @@ article {
 
 details {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   margin: .5rem 0;
   padding: .5rem  1rem .5rem  0.75rem; }
+  details:hover {
+    box-shadow: var(--box-shadow-hover); }
   details summary {
     font-size: 12.8px;
     font-weight: bold; }
@@ -687,21 +691,33 @@ article hr {
 
 article blockquote {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: none;
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   border-left: .3rem solid lightgray;
-  padding: 0 .5rem; }
+  padding: .2rem .5rem; }
+  article blockquote:hover {
+    box-shadow: var(--box-shadow-hover); }
+  article blockquote > :first-child, article blockquote > :first-child > :first-child, article blockquote > :first-child > :first-child > :first-child {
+    margin-top: 0; }
+  article blockquote > :last-child, article blockquote > :last-child > :last-child, article blockquote > :last-child > :last-child > :last-child {
+    margin-bottom: 0; }
 
 article pre {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   margin: .5rem 0;
   padding: .5rem 1rem;
   overflow-x: auto;
   line-height: 22px; }
+  article pre:hover {
+    box-shadow: var(--box-shadow-hover); }
 
 article code {
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
   padding: 1px 2px; }
 
 article pre {
@@ -725,10 +741,14 @@ article .md__table {
     margin: .5rem; }
   article .md__table table {
     border: var(--border);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--box-shadow);
     border-spacing: 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch; }
+    article .md__table table:hover {
+      box-shadow: var(--box-shadow-hover); }
     article .md__table table th {
       font-weight: normal; }
     article .md__table table td {
@@ -760,7 +780,7 @@ article .mermaid svg {
   <a href="../../../"><img src="../../../images/NetPipe.png" class="avatar" width="96px" height="96px" /></a>
   <h2>Net Pipe</h2>
   <div class="data-left">
-    <h3>57</h3>
+    <h3>58</h3>
     <span>Posts</span>
   </div>
   <div class="data-right">
@@ -880,7 +900,9 @@ article .mermaid svg {
     
         
     
-    <h3>18390</h3>
+        
+    
+    <h3>18700</h3>
     <span>Words</span>
   </div>
   <div class="social">
@@ -974,7 +996,7 @@ article .mermaid svg {
   <ul>
     <li><a href="#二次特征根">二次特征根</a></li>
     <li><a href="#三次特征根">三次特征根</a></li>
-    <li><a href="#斐波那契数列">斐波那契数列</a></li>
+    <li><a href="#n-次特征根">$n$ 次特征根</a></li>
   </ul>
 </nav>
 </div>
@@ -1004,7 +1026,10 @@ article .mermaid svg {
       </span>
     </div>
     
-    <h2 id="二次特征根">二次特征根 <a class="anchor" href="#%e4%ba%8c%e6%ac%a1%e7%89%b9%e5%be%81%e6%a0%b9">¶</a></h2><p>已知 $f_1,f_2$ 和 $af_{n+2}+bf_{n+1}+cf_n=0(a\not=0)$，求 $f_n$.</p>
+    <blockquote>
+<p>特征根法在数列通项与线性齐次微分方程的应用中有异曲同工之妙.</p>
+</blockquote>
+<h2 id="二次特征根">二次特征根 <a class="anchor" href="#%e4%ba%8c%e6%ac%a1%e7%89%b9%e5%be%81%e6%a0%b9">¶</a></h2><p>已知 $f_1,f_2$ 和 $af_{n+2}+bf_{n+1}+cf_n=0(a\not=0)$，求 $f_n$.</p>
 <p><strong>解：</strong> 两边同除 $a$：</p>
 <p>$$f_{n+2}+\frac{b}{a}f_{n+1}+\frac{c}{a}f_n=0$$</p>
 <p>根据韦达定理，二次方程 $ax^2+bx+c=0$ 的解 $x_1,x_2$ 满足</p>
@@ -1014,16 +1039,61 @@ article .mermaid svg {
 <span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
 </code></pre></div><p>代入化简得</p>
 <p>$$f_{n+2}-(x_1+x_2)f_{n+1}+(x_1\cdot x_2)f_n=0$$</p>
-<p>$$f_{n+2}-x_1f_{n+1}=x_2(f_{n+1}+x_1f_n)$$</p>
-<p>$\therefore$ 数列 $\{f_{n+1}+x_1f_n\}$ 是首项为 $f_2+x_1f_1$，公比为 $x_2$ 的等比数列.</p>
+<p>$$f_{n+2}-x_1f_{n+1}=x_2(f_{n+1}-x_1f_n)$$</p>
+<p>$\therefore$ 数列 $\{f_{n+1}-x_1f_n\}$ 是首项为 $f_2-x_1f_1$，公比为 $x_2$ 的等比数列.</p>
+<p>$$f_{n+1}-x_1f_n=(f_2-x_1f_1)\cdot x_2^{n-1}\tag{1}$$</p>
 <p>由方程解的对称性可知，$x_1,x_2$ 可互换，因此</p>
+<p>$$f_{n+1}-x_2f_n=(f_2-x_2f_1)\cdot x_1^{n-1}\tag{2}$$</p>
+<p>$(2)-(1)$ 得</p>
+<p>$$(x_1-x_2)f_n=(f_2-x_2f_1)\cdot x_1^{n-1}-(f_2-x_1f_1)\cdot x_2^{n-1}$$</p>
+<p>$$f_n=\frac{(f_2-x_2f_1)\cdot x_1^{n-1}-(f_2-x_1f_1)\cdot x_2^{n-1}}{x_1-x_2}$$</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>例：斐波那契数列</summary>
+  <div class="markdown-inner"><p>已知 $f_1=f_2=1,f_{n+2}=f_{n+1}+f_n$，求 $f_n$ 的通项.</p>
+<p><strong>解：</strong> 斐波那契数列本质是 <a href="#%E4%BA%8C%E6%AC%A1%E7%89%B9%E5%BE%81%E6%A0%B9">二次特征根</a> 在 $a=1,b=-1,c=-1$ 时的情况.</p>
+<p>解方程 $x^2-x-1=0$ 得</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-f<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>+x<span style="color:#728e00">_</span>1f<span style="color:#728e00">_</span>n=(f<span style="color:#728e00">_</span>2+x<span style="color:#728e00">_</span>1f<span style="color:#728e00">_</span>1)<span style="color:#728e00">\cdot</span> x<span style="color:#728e00">_</span>2<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span>(1)<span style="color:#728e00">\\</span>
-f<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>+x<span style="color:#728e00">_</span>2f<span style="color:#728e00">_</span>n=(f<span style="color:#728e00">_</span>2+x<span style="color:#728e00">_</span>2f<span style="color:#728e00">_</span>1)<span style="color:#728e00">\cdot</span> x<span style="color:#728e00">_</span>1<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span>(2)
+  <span style="color:#728e00">\su</span> x<span style="color:#728e00">_</span>1=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+  <span style="color:#728e00">\su</span> x<span style="color:#728e00">_</span>2=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>
 <span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-</code></pre></div><p>$(2)-(1)$ 得</p>
-<p>$$(x_1-x_2)f_n=(f_2-x_2f_1)x_1^{n-1}-(f_2-x_1f_1)x_2^{n-1}$$</p>
-<p>$$f_n=\frac{(f_2-x_2f_1)x_1^{n-1}-(f_2-x_1f_1)x_2^{n-1}}{x_1-x_2}$$</p>
+</code></pre></div><p>代入结论得</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+f<span style="color:#728e00">_</span>n<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(f<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>2f<span style="color:#728e00">_</span>1)<span style="color:#728e00">\cdot</span> x<span style="color:#728e00">_</span>1<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span>-(f<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>1f<span style="color:#728e00">_</span>1)<span style="color:#728e00">\cdot</span> x<span style="color:#728e00">_</span>2<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span><span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>5<span style="color:#728e00">}</span><span style="color:#728e00">\left</span><span style="color:#434f54">[\left(\cfrac{1+\sqrt{5}}{2}\right)^{\footnotesize n}-\left(\cfrac{1-\sqrt{5}}{2}\right)^{\footnotesize n}\right]</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><details >
+  <summary><label class="material-icons-round">chevron_right</label>答题格式</summary>
+  <div class="markdown-inner"><p>设 $a_{n+2}-ra_{n+1}=q(a_{n+1}-ra_n)$，</p>
+<p>则 $a_{n+2}=(q+r)a_{n+1}-q\cdot ra_n$.</p>
+<p>对比 $a_{n+2}=a_{n+1}-a_n$ 得</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+  q+r=1<span style="color:#728e00">\\</span>
+  q<span style="color:#728e00">\cdot</span> r=-1
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><p>解得</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+  q=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+  r=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+<p><span style="color:#728e00">\text</span><span style="color:#728e00">{</span><span style="color:#728e00">\quad</span> or <span style="color:#728e00">\quad</span><span style="color:#728e00">}</span></p>
+<p><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+q=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\</span>
+r=<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><p>∴ 数列 ${a_{n+1}-ra_n}$ 是以 $a_2-ra_1$ 为首项，$q$ 为公比的等比数列.</p></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">∴
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+  a<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>-<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>a<span style="color:#728e00">_</span>n=<span style="color:#728e00">\left</span>(<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">^</span>n<span style="color:#728e00">\\</span>
+  a<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>-<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>a<span style="color:#728e00">_</span>n=<span style="color:#728e00">\left</span>(<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">^</span>n
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><p>两式相减得：</p>
+<p>$$\sqrt{5}a_n=\left(\cfrac{1+\sqrt{5}}{2}\right)^n-\left(\cfrac{1-\sqrt{5}}{2}\right)^n$$</p>
+<p>$$a_n=\cfrac{\sqrt{5}}{5}\left[\left(\cfrac{1+\sqrt{5}}{2}\right)^n-\left(\cfrac{1-\sqrt{5}}{2}\right)^n\right]$$</p>
+</div>
+</details>
+</div>
+</details>
 <h2 id="三次特征根">三次特征根 <a class="anchor" href="#%e4%b8%89%e6%ac%a1%e7%89%b9%e5%be%81%e6%a0%b9">¶</a></h2><p>已知 $f_1,f_2,f_3$ 和 $af_{n+3}+bf_{n+2}+cf_{n+1}+df_n=0(a\not=0)$，求 $f_n$.</p>
 <p><strong>解：</strong> 两边同除 $a$：</p>
 <p>$$f_{n+3}+\frac{b}{a}f_{n+2}+\frac{c}{a}f_{n+1}+\frac{d}{a}f_n=0$$</p>
@@ -1036,38 +1106,52 @@ f<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>+x<
 </code></pre></div><p>代入化简得</p>
 <p>$$f_{n+3}-(x_1+x_2+x_3)f_{n+2}+(x_1x_2+x_1x_3+x_2x_3)f_{n+1}-(x_1x_2x_3)f_n=0$$</p>
 <p>$$f_{n+3}-(x_1+x_2)f_{n+2}+x_1x_2f_{n+1}=x_3\big[f_{n+2}-(x_1+x_2)f_{n+1}+x_1x_2f_n\big]$$</p>
-<p>设 $p(\alpha,\beta)=f_3-(x_\alpha+x_\beta)f_2+x_\alpha x_\beta f_1$，则数列</p>
-<p>$$\{f_{n+2}-(x_1+x_2)f_{n+1}+x_1x_2f_n\}$$</p>
-<p>是首项为 $p(1,2)$，公比为 $x_3$ 的等比数列.</p>
+<p>定义函数</p>
+<p>$$\varphi(x,y)=f_3-(x+y)f_2+xyf_1$$</p>
+<p>$\therefore$ 数列 $\{f_{n+2}-(x_1+x_2)f_{n+1}+x_1x_2f_n\}$ 是首项为 $\varphi(x_1,x_2)$，公比为 $x_3$ 的等比数列.</p>
+<p>$$f_{n+2}-(x_1+x_2)f_{n+1}+x_1x_2f_n=\varphi(x_1,x_2)\cdot x_3^{n-1}\tag{1}$$</p>
 <p>由方程解的对称性可知，$x_1,x_2,x_3$ 可互换，因此</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-f<span style="color:#728e00">_{</span>n+2<span style="color:#728e00">}</span>-(x<span style="color:#728e00">_</span>1+x<span style="color:#728e00">_</span>2)f<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>+x<span style="color:#728e00">_</span>1x<span style="color:#728e00">_</span>2f<span style="color:#728e00">_</span>n=p(1,2)<span style="color:#728e00">\cdot</span> x<span style="color:#728e00">_</span>3<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span>(1)<span style="color:#728e00">\\</span>
-f<span style="color:#728e00">_{</span>n+2<span style="color:#728e00">}</span>-(x<span style="color:#728e00">_</span>1+x<span style="color:#728e00">_</span>3)f<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>+x<span style="color:#728e00">_</span>1x<span style="color:#728e00">_</span>3f<span style="color:#728e00">_</span>n=p(1,3)<span style="color:#728e00">\cdot</span> x<span style="color:#728e00">_</span>2<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span>(2)
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-</code></pre></div><p>$(2)-(1)$，结合对称性得</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-<span style="color:#728e00">\su</span> f<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>1f<span style="color:#728e00">_</span>n=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span><span style="color:#728e00">\big</span><span style="color:#434f54">[p(1,3)x_2^{n-1}-p(1,2)x_3^{n-1}\big]</span><span style="color:#728e00">\qquad</span>(3)<span style="color:#728e00">\\</span>
-<span style="color:#728e00">\su</span> f<span style="color:#728e00">_{</span>n+1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>2f<span style="color:#728e00">_</span>n=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span><span style="color:#728e00">\big</span><span style="color:#434f54">[p(2,3)x_1^{n-1}-p(1,2)x_3^{n-1}\big]</span><span style="color:#728e00">\qquad</span>(4)<span style="color:#728e00">\\</span>
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-</code></pre></div><p>$(4)-(3)$ 得：</p>
+<p>$$f_{n+2}-(x_1+x_3)f_{n+1}+x_1x_3f_n=\varphi(x_1,x_3)\cdot x_2^{n-1}\tag{2}$$</p>
+<p>$(1)-(2)$ 得</p>
+<p>$$f_{n+1}-x_1f_n=\frac{\varphi(x_1,x_3)\cdot x_2^{n-1}-\varphi(x_1,x_2)\cdot x_3^{n-1}}{x_2-x_3}\tag{3}$$</p>
+<p>再由对称性得</p>
+<p>$$f_{n+1}-x_2f_n=\frac{\varphi(x_2,x_3)\cdot x_1^{n-1}-\varphi(x_1,x_2)\cdot x_3^{n-1}}{x_1-x_3}\tag{4}$$</p>
+<p>$(3)-(4)$ 得</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f<span style="color:#728e00">_</span>n=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\bigg</span>[
-  <span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>p(2,3)<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>1<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span>
-  -<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>p(1,3)<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>2<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span>
-  +<span style="color:#728e00">\left</span>(<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span>-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)p(1,2)x<span style="color:#728e00">_</span>3<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span><span style="color:#728e00">\bigg</span>
+  <span style="color:#728e00">\frac</span><span style="color:#728e00">{</span><span style="color:#728e00">\varphi</span>(x<span style="color:#728e00">_</span>2,x<span style="color:#728e00">_</span>3)<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>1<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span>
+  -<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span><span style="color:#728e00">\varphi</span>(x<span style="color:#728e00">_</span>1,x<span style="color:#728e00">_</span>3)<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>2<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span>
+  +<span style="color:#728e00">\left</span>(<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span>-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>3<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">\varphi</span>(x<span style="color:#728e00">_</span>1,x<span style="color:#728e00">_</span>2)<span style="color:#728e00">\cdot</span> x<span style="color:#728e00">_</span>3<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span><span style="color:#728e00">\bigg</span>
 ]
-</code></pre></div><h2 id="斐波那契数列">斐波那契数列 <a class="anchor" href="#%e6%96%90%e6%b3%a2%e9%82%a3%e5%a5%91%e6%95%b0%e5%88%97">¶</a></h2><p>已知 $f_1=f_2=1,f_{n+2}=f_{n+1}+f_n$，求 $f_n$ 的通项.</p>
-<p><strong>解：</strong> 斐波那契数列实际是 <a href="#%E4%BA%8C%E6%AC%A1%E7%89%B9%E5%BE%81%E6%A0%B9">二次特征根</a> 在 $a=1,b=-1,c=-1$ 时的情况.</p>
-<p>解方程 $x^2-x-1=0$ 得</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-  <span style="color:#728e00">\su</span> x<span style="color:#728e00">_</span>1=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
-  <span style="color:#728e00">\su</span> x<span style="color:#728e00">_</span>2=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span>
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-</code></pre></div><p>代入结论得</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
-f<span style="color:#728e00">_</span>n<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(f<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>2f<span style="color:#728e00">_</span>1)x<span style="color:#728e00">_</span>1<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}</span>-(f<span style="color:#728e00">_</span>2-x<span style="color:#728e00">_</span>1f<span style="color:#728e00">_</span>1)x<span style="color:#728e00">_</span>2<span style="color:#728e00">^{</span>n-1<span style="color:#728e00">}}{</span>x<span style="color:#728e00">_</span>1-x<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
-<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span><span style="color:#728e00">\left</span>(<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1+<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">^</span>n-<span style="color:#728e00">\left</span>(<span style="color:#728e00">\cfrac</span><span style="color:#728e00">{</span>1-<span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">^</span>n<span style="color:#728e00">}{</span><span style="color:#728e00">\sqrt</span><span style="color:#728e00">{</span>5<span style="color:#728e00">}}</span>
-<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
-</code></pre></div>
+</code></pre></div><h2 id="n-次特征根">$n$ 次特征根 <a class="anchor" href="#n-%e6%ac%a1%e7%89%b9%e5%be%81%e6%a0%b9">¶</a></h2><p>已知 $f_1\sim f_k$ 和 $a_nf_{k+n}+a_{n-1}f_{k+n-1}+\cdots+a_0f_k=0(a_n\not=0)$，求 $f_k$.</p>
+<blockquote>
+<p>通过 <a href="#%E4%BA%8C%E6%AC%A1%E7%89%B9%E5%BE%81%E6%A0%B9">二次特征根</a> 和 <a href="#%E4%B8%89%E6%AC%A1%E7%89%B9%E5%BE%81%E6%A0%B9">三次特征根</a> 的解法不难归纳，$n+1$ 项递推式</p>
+<p>$$a_nf_{k+n}+a_{n-1}f_{k+n-1}+\cdots+a_0f_k=0$$</p>
+<p>可通过构造 $n$ 次特征方程</p>
+<p>$$a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x_1+a_0=0$$</p>
+<p>而求解通项 $f_k$.</p>
+</blockquote>
+<p><strong>解：</strong> 两边同除 $a_n$</p>
+<p>$$f_{k+n}+\frac{a_{n-1}}{a_n}f_{k+n-1}+\frac{a_{n-2}}{a_n}f_{k+n-2}+\cdots+\frac{a_0}{a_n}f_k=0$$</p>
+<p>既知 $n$ 次方程韦达定理</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
+  <span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>i=1<span style="color:#728e00">}^</span>nx<span style="color:#728e00">_</span>i=-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}}{</span>a<span style="color:#728e00">_</span>n<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+  <span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>1<span style="color:#728e00">\leq</span> i &lt; j <span style="color:#728e00">\leq</span> n<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>ix<span style="color:#728e00">_</span>j=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_{</span>n-2<span style="color:#728e00">}}{</span>a<span style="color:#728e00">_</span>n<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+  <span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>1<span style="color:#728e00">\leq</span> i &lt; j &lt; k <span style="color:#728e00">\leq</span> n<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>ix<span style="color:#728e00">_</span>jx<span style="color:#728e00">_</span>k=-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_{</span>n-3<span style="color:#728e00">}}{</span>a<span style="color:#728e00">_</span>n<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+  <span style="color:#728e00">\cdots\\</span>
+  <span style="color:#728e00">\prod</span><span style="color:#728e00">_{</span>i=1<span style="color:#728e00">}^</span>nx<span style="color:#728e00">_</span>i=(-1)<span style="color:#728e00">^</span>n<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_</span>0<span style="color:#728e00">}{</span>a<span style="color:#728e00">_</span>n<span style="color:#728e00">}</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
+</code></pre></div><p>定义 $\su\delta {t\atop n}=\sum_{\small 1\leq i_1 &lt; i_2 &lt; \cdots &lt; i_t \leq n}\prod_{j=1}^tx_{i_j}$，即从 $x_1\sim x_n$ 中任取 $t$ 项相乘的所有结果之和. 则韦达定理等价于</p>
+<p>$$\delta {t\atop n} =(-1)^t\frac{a_{n-t}}{a_n}$$</p>
+<p>代入原递推式得</p>
+<p>$$f_{k+n}-\delta{1\atop n}f_{k+n}+\delta{2\atop n}f_{k+n-2}+\cdots+\delta{n\atop n}f_k=0\tag{1}$$</p>
+<p>易知 $\delta$ 函数具有性质</p>
+<p>$$\delta{t\atop n}=x_n\cdot\delta{t-1\atop n-1}+\prod_{i=1}^{n-1}x_i$$</p>
+<p>故 $(1)$ 式可化为</p>
+<p>$$\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{k+n-i+1}=x_n\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{k+n-i}$$</p>
+<p>$∴$ 数列 $\su\left\{\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{k+n-i}\right\}$ 是首项为 $\su\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{1+n-i}$，公差为 $x_n$ 的等差数列.</p>
+<p>$$\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{k+n-i}=x_n^{n-1}\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{1+n-i}$$</p>
+<p>通过 $n$ 次对称相消可得 $f_k$ 与 $n$ 个等比数列的关系式.</p>
+
   </article>
 </div>
 
@@ -1088,7 +1172,7 @@ f<span style="color:#728e00">_</span>n<span style="color:#728e00">&amp;</span>=<
   <ul>
     <li><a href="#二次特征根">二次特征根</a></li>
     <li><a href="#三次特征根">三次特征根</a></li>
-    <li><a href="#斐波那契数列">斐波那契数列</a></li>
+    <li><a href="#n-次特征根">$n$ 次特征根</a></li>
   </ul>
 </nav>
 </div>
