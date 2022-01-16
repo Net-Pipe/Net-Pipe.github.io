@@ -7,7 +7,7 @@
   <title>数列通项：不动点法 &#8211; NetPipe&#39;s Blog</title>
 
   
-  <meta name="description" content="不动点 ¶函数 $f(x)$ 与 $y=x$ 的交点为不动点.">
+  <meta name="description" content="本篇证明可略过.">
   
   <meta name="author" content="Net Pipe">
 
@@ -368,7 +368,7 @@ ul > li {
   .flex-left div.categories .post-categories,
   .flex-right div.categories .post-categories {
     display: inline-block;
-    transition: all 0.1s;
+    transition: all 0.05s;
     line-height: 1.7rem; }
     .flex-left div.categories .post-categories:hover,
     .flex-right div.categories .post-categories:hover {
@@ -583,31 +583,37 @@ article {
     flex: 1 1; }
 
 .book-tabs {
+  border: var(--border);
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   margin: .5em 0;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap; }
+  .book-tabs:hover {
+    box-shadow: var(--box-shadow-hover); }
   .book-tabs label {
     line-height: 1rem;
     display: inline-block;
     padding: .3rem 16px;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
     cursor: pointer;
     z-index: 999;
     border: 1px solid transparent;
     vertical-align: baseline; }
-  .book-tabs .book-tabs-content,
-  .book-tabs .book-tabs-pure-content {
+  .book-tabs .book-tabs-content {
+    border-top: var(--border);
+    padding: .5rem;
     order: 999;
     width: 100%;
     display: none;
     overflow: hidden;
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius); }
-  .book-tabs .book-tabs-content {
-    border: var(--border);
-    padding: .5rem; }
+    .book-tabs .book-tabs-content > :first-child, .book-tabs .book-tabs-content > :first-child > :first-child, .book-tabs .book-tabs-content > :first-child > :first-child > :first-child {
+      margin-top: 0; }
+    .book-tabs .book-tabs-content > :last-child, .book-tabs .book-tabs-content > :last-child > :last-child, .book-tabs .book-tabs-content > :last-child > :last-child > :last-child {
+      margin-bottom: 0; }
   .book-tabs input[type="radio"] {
     display: none; }
     .book-tabs input[type="radio"]:not(:checked) + label {
@@ -615,12 +621,9 @@ article {
       .book-tabs input[type="radio"]:not(:checked) + label:hover {
         background-color: var(--hover-color); }
     .book-tabs input[type="radio"]:checked + label {
-      border: var(--border);
       border-bottom: none; }
-      .book-tabs input[type="radio"]:checked + label + .book-tabs-content, .book-tabs input[type="radio"]:checked + label + .book-tabs-pure-content {
+      .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
         display: block; }
-    .book-tabs input[type="radio"]:first-of-type:checked + label + .book-tabs-pure-content :first-child {
-      border-top-left-radius: 0; }
 
 details {
   border: var(--border);
@@ -632,14 +635,12 @@ details {
   details:hover {
     box-shadow: var(--box-shadow-hover); }
   details summary {
-    font-size: 12.8px;
-    font-weight: bold; }
+    font-size: 14px;
+    text-shadow: 0 0; }
     details summary::marker {
       content: '';
       font-size: 0; }
-  details ::-webkit-details-marker {
-    content: '';
-    font-size: 0; }
+  details ::-webkit-details-marker,
   details ::-moz-list-bullet {
     content: '';
     font-size: 0; }
@@ -647,7 +648,8 @@ details {
     font-size: 20px !important;
     margin-left: -5px;
     margin-right: 5px;
-    vertical-align: -4.5px; }
+    vertical-align: -4.5px;
+    transition: all .3s; }
   details[open] > summary {
     margin-bottom: 0; }
     details[open] > summary label {
@@ -734,8 +736,8 @@ article code:focus {
   outline: none; }
 
 article .md__table {
-  margin: -.5rem;
   padding: .5rem;
+  margin: -.5rem !important;
   overflow: auto; }
   article .md__table::-webkit-scrollbar-track {
     margin: .5rem; }
@@ -902,7 +904,7 @@ article .mermaid svg {
     
         
     
-    <h3>18700</h3>
+    <h3>18735</h3>
     <span>Words</span>
   </div>
   <div class="social">
@@ -1031,39 +1033,72 @@ article .mermaid svg {
       </span>
     </div>
     
-    <h2 id="不动点">不动点 <a class="anchor" href="#%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><p>函数 $f(x)$ 与 $y=x$ 的交点为不动点. 即不动点 $x_0$ 满足</p>
+    <blockquote>
+<p>本篇证明可略过.</p>
+</blockquote>
+<h2 id="不动点">不动点 <a class="anchor" href="#%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><p>$y=f(x)$ 与 $y=x$ 的交点为不动点. 即不动点 $x_0$ 满足</p>
 <p>$$f(x_0)=x_0$$</p>
-<p>若 $a_n=f(a_{n-1})$，则 $f(x)$ 的不动点同时也是数列 $\{a_n\}$ 的不动点.</p>
-<h2 id="一次不动点">一次不动点 <a class="anchor" href="#%e4%b8%80%e6%ac%a1%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><p>已知 $a_1$ 和 $a_n=A\cdot a_{n-1}+B(A\not=0)$，求 $a_n$.</p>
-<p><strong>解：</strong> 设 $x_0$ 是 $f(x)=Ax+B$ 的 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a>，则</p>
+<p>若 $a_n=f(a_{n-1})$，则 $f(x)$ 的不动点也是数列 $\{a_n\}$ 的不动点.</p>
+<h2 id="一次不动点">一次不动点 <a class="anchor" href="#%e4%b8%80%e6%ac%a1%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><p>已知 $a_n=A\cdot a_{n-1}+B(A\not=0)$.</p>
+<p>若 $\{a_n\}$ 有不动点 $x_0$，则 $\{a_n-x_0\}$ 是公比为 $A$ 的等比数列.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>证</summary>
+  <div class="markdown-inner"><p>由 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a> 的定义得</p>
 <p>$$Ax_0+B=x_0$$</p>
-<p>整理得</p>
-<p>$$B-x_0=-Ax_0$$</p>
+<p>$$\therefore B=x_0-Ax_0$$</p>
 <p>$$\therefore a_n-x_0=A\cdot a_{n-1}+B-x_0=A(a_{n-1}-x_0)$$</p>
-<p>$\therefore$ 数列 $\{a_n-x_0\}$ 是首项为 $a_1-x_0$，公比为 $A$ 的等比数列</p>
-<p>$$a_n-x_0=(a_1-x_0)A^{n-1}$$</p>
-<p>$$\therefore a_n=x_0+(a_1-x_0)A^{n-1}$$</p>
-<h2 id="齐次不动点">齐次不动点 <a class="anchor" href="#%e9%bd%90%e6%ac%a1%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><h3 id="单根">单根 <a class="anchor" href="#%e5%8d%95%e6%a0%b9">¶</a></h3><p>已知 $a_1$ 和 $a_n=\dfrac{Aa_{n-1}+B}{Ca_{n-1}+D}(C\not=0)$，方程 $\dfrac{Ax+B}{Cx+D}=x$ 仅有一根，求 $a_n$.</p>
-<p><strong>解：</strong> 设 $x_0$ 是 $f(x)=\dfrac{Ax+B}{Cx+D}$ 的一个 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a>，则</p>
+<p>$\therefore$ 数列 $\{a_n-x_0\}$ 是公比为 $A$ 的等比数列</p>
+</div>
+</details>
+<h2 id="齐次不动点">齐次不动点 <a class="anchor" href="#%e9%bd%90%e6%ac%a1%e4%b8%8d%e5%8a%a8%e7%82%b9">¶</a></h2><p>已知 $a_n=\dfrac{Aa_{n-1}+B}{Ca_{n-1}+D}(C\not=0,AD-BC\not=0)$.</p>
+<h3 id="单根">单根 <a class="anchor" href="#%e5%8d%95%e6%a0%b9">¶</a></h3><p>若 $\{a_n\}$ 有唯一不动点 $x_0$，则 $\left\{\dfrac{1}{a_n-x_0}\right\}$ 是公差为 $\dfrac{2C}{A+D}$ 的等差数列.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>证</summary>
+  <div class="markdown-inner"><p>由 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a> 的定义得</p>
 <p>$$x_0=\frac{Ax_0+B}{Cx_0+D}$$</p>
-<p>整理得</p>
 <p>$$B-Dx_0=Cx_0^2-Ax_0\tag{1}$$</p>
 <p>$$Cx_0^2+(D-A)x_0-B=0\tag{2}$$</p>
-<p>$\because$ 方程 $(2)$ 仅有一根 $\therefore\Delta=0$，故</p>
+<p>$\because$ 方程 $(2)$ 仅有一根，故</p>
 <p>$$x_0=\dfrac{A-D}{2C}\tag{3}$$</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
-<span style="color:#728e00">\therefore</span> a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Aa<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0<span style="color:#728e00">\\</span>
+<span style="color:#728e00">\therefore</span> a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Aa<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span>-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>0+Dx<span style="color:#728e00">_</span>0<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
 <span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(A-Cx<span style="color:#728e00">_</span>0)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B-Dx<span style="color:#728e00">_</span>0<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
-<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(A-Cx<span style="color:#728e00">_</span>0)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+Cx<span style="color:#728e00">_</span>0<span style="color:#728e00">^</span>2-Ax<span style="color:#728e00">_</span>0<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span><span style="color:#728e00">{</span><span style="color:#728e00">\text</span><span style="color:#728e00">{</span><span style="color:#728e00">\footnotesize</span>代入<span style="color:#728e00">}</span> <span style="color:#728e00">\ </span>(1)<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><p>代入 $(1)$：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(A-Cx<span style="color:#728e00">_</span>0)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+Cx<span style="color:#728e00">_</span>0<span style="color:#728e00">^</span>2-Ax<span style="color:#728e00">_</span>0<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)(A-Cx<span style="color:#728e00">_</span>0)<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)(A-Cx<span style="color:#728e00">_</span>0)<span style="color:#728e00">}{</span>C(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)+Cx<span style="color:#728e00">_</span>0+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
 <span style="color:#728e00">\\</span>
-<span style="color:#728e00">\therefore</span> <span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">}&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}{</span>(A-Cx<span style="color:#728e00">_</span>0)a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+Cx<span style="color:#728e00">_</span>0<span style="color:#728e00">^</span>2-Ax<span style="color:#728e00">_</span>0<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
-<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>C(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)+Cx<span style="color:#728e00">_</span>0+D<span style="color:#728e00">}{</span>(A-<span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A-D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span>)(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)<span style="color:#728e00">}</span><span style="color:#728e00">\qquad</span><span style="color:#728e00">{</span><span style="color:#728e00">\text</span><span style="color:#728e00">{</span><span style="color:#728e00">\footnotesize</span>将<span style="color:#728e00">}</span> <span style="color:#728e00">\ </span>(3) <span style="color:#728e00">\ \text</span><span style="color:#728e00">{</span><span style="color:#728e00">\footnotesize</span>代入分母第一个<span style="color:#728e00">}</span> <span style="color:#728e00">\ </span>x<span style="color:#728e00">_</span>0<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
-<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>C<span style="color:#728e00">}{</span><span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A+D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}}</span>+<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span><span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A-D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span>+D<span style="color:#728e00">}{</span><span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A+D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span>(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">\therefore</span> <span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">}&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>C(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)+Cx<span style="color:#728e00">_</span>0+D<span style="color:#728e00">}{</span>(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)(A-Cx<span style="color:#728e00">_</span>0)<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>C<span style="color:#728e00">}{</span>(A-Cx<span style="color:#728e00">_</span>0)<span style="color:#728e00">}</span>+<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Cx<span style="color:#728e00">_</span>0+D<span style="color:#728e00">}{</span>(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)(A-Cx<span style="color:#728e00">_</span>0)<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><p>代入 $(2)$：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>0<span style="color:#728e00">}&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>C<span style="color:#728e00">}{</span><span style="color:#728e00">\left</span>(<span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A+D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">}</span>+<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span><span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A-D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span>+D<span style="color:#728e00">}{</span>(a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0)<span style="color:#728e00">\left</span>(<span style="color:#728e00">\dfrac</span><span style="color:#728e00">{</span>A+D<span style="color:#728e00">}{</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
 <span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>2C<span style="color:#728e00">}{</span>A+D<span style="color:#728e00">}</span>+<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>0<span style="color:#728e00">}</span>
 <span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
-</code></pre></div><p>$\therefore$ 数列 $\left\{\dfrac{1}{a_n-x_0}\right\}$ 是首项为 $\dfrac{1}{a_1-x_0}$，公差为 $\dfrac{2C}{A+D}$ 的等差数列. 据此可求得 $\{a_n\}$ 通项.</p>
-<h3 id="双根">双根 <a class="anchor" href="#%e5%8f%8c%e6%a0%b9">¶</a></h3><p>已知 $a_1$ 和 $a_n=\dfrac{Aa_{n-1}+B}{Ca_{n-1}+D}(C\not=0)$，方程 $\dfrac{Ax+B}{Cx+D}=x$ 有两根，求 $a_n$.</p>
-<p><strong>解：</strong> 设 $x_1,x_2$ 是 $f(x)=\dfrac{Ax+B}{Cx+D}$ 的两个 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a>，则</p>
+</code></pre></div><p>$\therefore$ 数列 $\left\{\dfrac{1}{a_n-x_0}\right\}$ 是公差为 $\dfrac{2C}{A+D}$ 的等差数列.</p>
+</div>
+</details>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>例</summary>
+  <div class="markdown-inner"><p>已知 $a_1=2,a_{n+1}=\dfrac{2a_n-1}{a_n}$，求 $a_n$ 与 $a_1$ 的关系.</p>
+<p><strong>解：</strong> 解 $x=\dfrac{2x-1}{x}$ 得唯一不动点 $x_0=1$.</p>
+<p>$$\therefore\frac{1}{a_n-1}=\frac{1}{\dfrac{2a_{n-1}-1}{a_{n-1}}-1}=\frac{1}{a_{n-1}-1}+1$$</p>
+<p>$\therefore$ $\left\{\dfrac{1}{a_n-1}\right\}$ 是首项为 $1$，公差为 $1$ 的等差数列.</p>
+<p>$$\therefore \frac{1}{a_n-1}=n$$</p>
+<p>$$\therefore a_n=1+\frac{1}{n}$$</p>
+</div>
+</details>
+<h3 id="双根">双根 <a class="anchor" href="#%e5%8f%8c%e6%a0%b9">¶</a></h3><p>若 $\{a_n\}$ 有不动点 $x_1,x_2$，则 $\left\{\dfrac{a_n-x_1}{a_n-x_2}\right\}$ 是公比为 $\dfrac{A-Cx_1}{A-Cx_2}$ 的等比数列.</p>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>证</summary>
+  <div class="markdown-inner"><p>由 <a href="#%E4%B8%8D%E5%8A%A8%E7%82%B9">不动点</a> 的定义得</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
     x<span style="color:#728e00">_</span>1=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Ax<span style="color:#728e00">_</span>1+B<span style="color:#728e00">}{</span>Cx<span style="color:#728e00">_</span>1+D<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
     <span style="color:#728e00">\\</span>
@@ -1071,8 +1106,8 @@ article .mermaid svg {
 <span style="color:#728e00">\end</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
 <span style="color:#728e00">\intro</span>
 <span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
-    Cx<span style="color:#728e00">_</span>1(x<span style="color:#728e00">_</span>1-A)=B-Dx<span style="color:#728e00">_</span>1<span style="color:#728e00">\\</span>
-    Cx<span style="color:#728e00">_</span>2(x<span style="color:#728e00">_</span>2-A)=B-Dx<span style="color:#728e00">_</span>2
+    x<span style="color:#728e00">_</span>1(Cx<span style="color:#728e00">_</span>1-A)=B-Dx<span style="color:#728e00">_</span>1<span style="color:#728e00">\\</span>
+    x<span style="color:#728e00">_</span>2(Cx<span style="color:#728e00">_</span>2-A)=B-Dx<span style="color:#728e00">_</span>2
 <span style="color:#728e00">\end</span><span style="color:#728e00">{</span>dcases<span style="color:#728e00">}</span>
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
 <span style="color:#728e00">\therefore</span> a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>1<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>Aa<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+B<span style="color:#728e00">}{</span>Ca<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>+D<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>1<span style="color:#728e00">\\</span>
@@ -1088,7 +1123,20 @@ article .mermaid svg {
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
 <span style="color:#728e00">\therefore</span> <span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_</span>n-x<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span>=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>A-Cx<span style="color:#728e00">_</span>1<span style="color:#728e00">}{</span>A-Cx<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span><span style="color:#728e00">\cdot\frac</span><span style="color:#728e00">{</span>a<span style="color:#728e00">_{</span>n-1<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>1<span style="color:#728e00">}{</span>a<span style="color:#728e00">_{</span>n-2<span style="color:#728e00">}</span>-x<span style="color:#728e00">_</span>2<span style="color:#728e00">}</span>
 <span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
-</code></pre></div><p>$\therefore$ 数列 $\left\{\dfrac{a_n-x_1}{a_n-x_2}\right\}$ 是首项为 $\dfrac{a_1-x_1}{a_1-x_2}$，公比为 $\dfrac{A-Cx_1}{A-Cx_2}$ 的等比数列. 据此可求得 $\{a_n\}$ 通项.</p>
+</code></pre></div><p>$\therefore$ 数列 $\left\{\dfrac{a_n-x_1}{a_n-x_2}\right\}$ 是公比为 $\dfrac{A-Cx_1}{A-Cx_2}$ 的等比数列.</p>
+</div>
+</details>
+
+<details >
+  <summary><label class="material-icons-round">chevron_right</label>例</summary>
+  <div class="markdown-inner"><p>已知 $a_{n+1}=\dfrac{2a_n}{a_n+1}$，求 $a_n$ 与 $a_1$ 的关系.</p>
+<p><strong>解：</strong> 解 $x=\dfrac{2x}{x+1}$ 得两个相异的不动点 $x_1=0,x_2=1$.</p>
+<p>$$\therefore\frac{a_n-0}{a_n-1}=\frac{\cfrac{2a_{n-1}}{a_{n-1}+1}-0}{\cfrac{2a_{n-1}}{a_{n-1}+1}-1}=2\frac{a_{n-1}-0}{a_{n-1}-1}$$</p>
+<p>$\therefore$ $\left\{\dfrac{a_n}{a_n-1}\right\}$ 是首项为 $\dfrac{a_1}{a_1-1}$，公比为 $2$ 的等比数列.</p>
+<p>$$\therefore \frac{a_n}{a_n-1}=\frac{a_1}{a_1-1}\cdot 2^{n-1}$$</p>
+<p>$$\therefore a_n=\frac{2^{n-1}a_1}{(2^{n-1}-1)a_1+1}$$</p>
+</div>
+</details>
 
   </article>
 </div>

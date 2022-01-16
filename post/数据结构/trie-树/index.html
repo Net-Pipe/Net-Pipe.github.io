@@ -368,7 +368,7 @@ ul > li {
   .flex-left div.categories .post-categories,
   .flex-right div.categories .post-categories {
     display: inline-block;
-    transition: all 0.1s;
+    transition: all 0.05s;
     line-height: 1.7rem; }
     .flex-left div.categories .post-categories:hover,
     .flex-right div.categories .post-categories:hover {
@@ -583,31 +583,37 @@ article {
     flex: 1 1; }
 
 .book-tabs {
+  border: var(--border);
+  border-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
   margin: .5em 0;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap; }
+  .book-tabs:hover {
+    box-shadow: var(--box-shadow-hover); }
   .book-tabs label {
     line-height: 1rem;
     display: inline-block;
     padding: .3rem 16px;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
     cursor: pointer;
     z-index: 999;
     border: 1px solid transparent;
     vertical-align: baseline; }
-  .book-tabs .book-tabs-content,
-  .book-tabs .book-tabs-pure-content {
+  .book-tabs .book-tabs-content {
+    border-top: var(--border);
+    padding: .5rem;
     order: 999;
     width: 100%;
     display: none;
     overflow: hidden;
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius); }
-  .book-tabs .book-tabs-content {
-    border: var(--border);
-    padding: .5rem; }
+    .book-tabs .book-tabs-content > :first-child, .book-tabs .book-tabs-content > :first-child > :first-child, .book-tabs .book-tabs-content > :first-child > :first-child > :first-child {
+      margin-top: 0; }
+    .book-tabs .book-tabs-content > :last-child, .book-tabs .book-tabs-content > :last-child > :last-child, .book-tabs .book-tabs-content > :last-child > :last-child > :last-child {
+      margin-bottom: 0; }
   .book-tabs input[type="radio"] {
     display: none; }
     .book-tabs input[type="radio"]:not(:checked) + label {
@@ -615,12 +621,9 @@ article {
       .book-tabs input[type="radio"]:not(:checked) + label:hover {
         background-color: var(--hover-color); }
     .book-tabs input[type="radio"]:checked + label {
-      border: var(--border);
       border-bottom: none; }
-      .book-tabs input[type="radio"]:checked + label + .book-tabs-content, .book-tabs input[type="radio"]:checked + label + .book-tabs-pure-content {
+      .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
         display: block; }
-    .book-tabs input[type="radio"]:first-of-type:checked + label + .book-tabs-pure-content :first-child {
-      border-top-left-radius: 0; }
 
 details {
   border: var(--border);
@@ -632,14 +635,12 @@ details {
   details:hover {
     box-shadow: var(--box-shadow-hover); }
   details summary {
-    font-size: 12.8px;
-    font-weight: bold; }
+    font-size: 14px;
+    text-shadow: 0 0; }
     details summary::marker {
       content: '';
       font-size: 0; }
-  details ::-webkit-details-marker {
-    content: '';
-    font-size: 0; }
+  details ::-webkit-details-marker,
   details ::-moz-list-bullet {
     content: '';
     font-size: 0; }
@@ -647,7 +648,8 @@ details {
     font-size: 20px !important;
     margin-left: -5px;
     margin-right: 5px;
-    vertical-align: -4.5px; }
+    vertical-align: -4.5px;
+    transition: all .3s; }
   details[open] > summary {
     margin-bottom: 0; }
     details[open] > summary label {
@@ -734,8 +736,8 @@ article code:focus {
   outline: none; }
 
 article .md__table {
-  margin: -.5rem;
   padding: .5rem;
+  margin: -.5rem !important;
   overflow: auto; }
   article .md__table::-webkit-scrollbar-track {
     margin: .5rem; }
@@ -902,7 +904,7 @@ article .mermaid svg {
     
         
     
-    <h3>18700</h3>
+    <h3>18735</h3>
     <span>Words</span>
   </div>
   <div class="social">
@@ -1097,7 +1099,7 @@ article .mermaid svg {
 
 <div class="book-tabs"><input type="radio" class="toggle" name="tabs-%!s(int=0)" id="tabs-%!s(int=0)-0" checked="checked" />
   <label for="tabs-%!s(int=0)-0">结构体</label>
-  <div  class="book-tabs-content" ><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
+  <div class="book-tabs-content"><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
 <span style="color:#00979d">int</span> <span style="color:#434f54">tot</span>;
 <span style="color:#728e00">struct</span> <span style="color:#434f54">Node</span> {
     <span style="color:#00979d">bool</span> <span style="color:#434f54">isEnd</span> <span style="color:#728e00">=</span> <span style="color:#728e00">false</span>;
@@ -1127,7 +1129,7 @@ article .mermaid svg {
 }
 </code></pre></div></div><input type="radio" class="toggle" name="tabs-%!s(int=0)" id="tabs-%!s(int=0)-1"  />
   <label for="tabs-%!s(int=0)-1">二维数组</label>
-  <div  class="book-tabs-content" ><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
+  <div class="book-tabs-content"><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
 <span style="color:#00979d">int</span> <span style="color:#434f54">trie</span>[<span style="color:#434f54">N</span>][<span style="color:#8a7b52">26</span>], <span style="color:#434f54">tot</span>;
 <span style="color:#00979d">bool</span> <span style="color:#434f54">isEnd</span>[<span style="color:#434f54">N</span>];
 
