@@ -14,6 +14,7 @@
   
   <style>* {
   --aside-width: 18rem;
+  --toc-width: 10rem;
   --max-width: 75rem;
   --tag-color: rgb(10, 160, 190);
   --link-color: rgb(71, 148, 211);
@@ -32,6 +33,19 @@
 ::selection {
   background-color: #CCE2FF;
   color: rgba(0, 0, 0, 0.87); }
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #f0f0f0; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #acacac; }
+
+::-webkit-scrollbar-track {
+  border-radius: 10px; }
 
 a {
   text-decoration: none;
@@ -105,7 +119,7 @@ main {
   position: relative;
   padding: .5rem; }
 
-aside, section {
+aside {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   flex: 0 0 var(--aside-width);
@@ -115,15 +129,11 @@ aside, section {
   overflow: hidden auto; }
   aside > :first-child,
   aside > :first-child > :first-child,
-  aside > :first-child > :first-child > :first-child, section > :first-child,
-  section > :first-child > :first-child,
-  section > :first-child > :first-child > :first-child {
+  aside > :first-child > :first-child > :first-child {
     margin-top: 0; }
   aside > :last-child,
   aside > :last-child > :last-child,
-  aside > :last-child > :last-child > :last-child, section > :last-child,
-  section > :last-child > :last-child,
-  section > :last-child > :last-child > :last-child {
+  aside > :last-child > :last-child > :last-child {
     margin-bottom: 0; }
 
 article {
@@ -367,122 +377,136 @@ article.list .post-item {
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius); }
 
-article.markdown h1, article.markdown h1 .katex {
-  font-size: 28px; }
-
-article.markdown h2, article.markdown h2 .katex {
-  font-size: 24px; }
-
-article.markdown h1, article.markdown h2, article.markdown h3, article.markdown h4, article.markdown h5, article.markdown h6 {
-  margin: .5rem 0;
-  font-weight: normal; }
-  article.markdown h1 .anchor, article.markdown h2 .anchor, article.markdown h3 .anchor, article.markdown h4 .anchor, article.markdown h5 .anchor, article.markdown h6 .anchor {
-    opacity: 0; }
-  article.markdown h1:hover .anchor, article.markdown h1:focus .anchor, article.markdown h2:hover .anchor, article.markdown h2:focus .anchor, article.markdown h3:hover .anchor, article.markdown h3:focus .anchor, article.markdown h4:hover .anchor, article.markdown h4:focus .anchor, article.markdown h5:hover .anchor, article.markdown h5:focus .anchor, article.markdown h6:hover .anchor, article.markdown h6:focus .anchor {
-    opacity: 1; }
-
-article.markdown p {
-  margin: .3rem 0; }
-
-article.markdown strong {
-  font-weight: normal;
-  text-shadow: 0 0; }
-
-article.markdown img:not(.alt) {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%; }
-
-article.markdown blockquote {
-  border-top: var(--border);
-  border-bottom: var(--border);
-  border-left: var(--border);
-  border-right: var(--border);
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  color: dimgray;
-  margin: .5rem 0;
-  padding: .5rem; }
-  article.markdown blockquote > :first-child,
-  article.markdown blockquote > :first-child > :first-child,
-  article.markdown blockquote > :first-child > :first-child > :first-child {
-    margin-top: 0; }
-  article.markdown blockquote > :last-child,
-  article.markdown blockquote > :last-child > :last-child,
-  article.markdown blockquote > :last-child > :last-child > :last-child {
-    margin-bottom: 0; }
-
-article.markdown pre {
-  border-top: var(--border);
-  border-bottom: var(--border);
-  border-left: var(--border);
-  border-right: var(--border);
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  user-select: text;
-  -moz-user-select: text;
-  -webkit-user-select: text;
-  margin: .5rem 0;
-  padding: .5rem;
-  overflow: auto;
-  line-height: 1.3rem; }
-  article.markdown pre code {
-    border: none;
-    padding: 0; }
-
-article.markdown table {
-  display: block;
-  margin: .5rem 0;
-  overflow: auto;
-  border-spacing: 0;
-  -webkit-overflow-scrolling: touch; }
-  article.markdown table tr:hover {
-    background-color: var(--hover-color); }
-  article.markdown table tr > :first-child {
-    border-left: var(--border); }
-  article.markdown table tr > :last-child {
-    border-right: var(--border); }
-  article.markdown table th, article.markdown table td {
-    border-top: var(--border);
-    padding: .3rem 16px;
+article.markdown {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  article.markdown h1, article.markdown h1 .katex {
+    font-size: 28px; }
+  article.markdown h2, article.markdown h2 .katex {
+    font-size: 24px; }
+  article.markdown h1, article.markdown h2, article.markdown h3, article.markdown h4, article.markdown h5, article.markdown h6 {
+    margin: .5rem 0;
+    font-weight: normal; }
+    article.markdown h1 .anchor, article.markdown h2 .anchor, article.markdown h3 .anchor, article.markdown h4 .anchor, article.markdown h5 .anchor, article.markdown h6 .anchor {
+      opacity: 0; }
+    article.markdown h1:hover .anchor, article.markdown h1:focus .anchor, article.markdown h2:hover .anchor, article.markdown h2:focus .anchor, article.markdown h3:hover .anchor, article.markdown h3:focus .anchor, article.markdown h4:hover .anchor, article.markdown h4:focus .anchor, article.markdown h5:hover .anchor, article.markdown h5:focus .anchor, article.markdown h6:hover .anchor, article.markdown h6:focus .anchor {
+      opacity: 1; }
+  article.markdown p {
+    margin: .3rem 0; }
+  article.markdown strong {
     font-weight: normal;
-    white-space: nowrap; }
-  article.markdown table th:first-of-type {
-    border-top-left-radius: var(--radius); }
-  article.markdown table th:last-of-type {
-    border-top-right-radius: var(--radius); }
-  article.markdown table > :last-child > :last-child td {
-    border-bottom: var(--border); }
-    article.markdown table > :last-child > :last-child td:first-of-type {
-      border-bottom-left-radius: var(--radius); }
-    article.markdown table > :last-child > :last-child td:last-of-type {
-      border-bottom-right-radius: var(--radius); }
-
-article.markdown > :first-child,
-article.markdown > :first-child > :first-child,
-article.markdown > :first-child > :first-child > :first-child {
-  margin-top: 0; }
-
-article.markdown > :last-child,
-article.markdown > :last-child > :last-child,
-article.markdown > :last-child > :last-child > :last-child {
-  margin-bottom: 0; }
+    text-shadow: 0 0; }
+  article.markdown img:not(.alt) {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; }
+  article.markdown blockquote {
+    border-top: var(--border);
+    border-bottom: var(--border);
+    border-left: var(--border);
+    border-right: var(--border);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    color: #4d4d4d;
+    margin: .5rem 0;
+    padding: .5rem 1rem; }
+    article.markdown blockquote > :first-child,
+    article.markdown blockquote > :first-child > :first-child,
+    article.markdown blockquote > :first-child > :first-child > :first-child {
+      margin-top: 0; }
+    article.markdown blockquote > :last-child,
+    article.markdown blockquote > :last-child > :last-child,
+    article.markdown blockquote > :last-child > :last-child > :last-child {
+      margin-bottom: 0; }
+  article.markdown pre {
+    border-top: var(--border);
+    border-bottom: var(--border);
+    border-left: var(--border);
+    border-right: var(--border);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    margin: .5rem 0;
+    padding: .5rem 1rem;
+    overflow: auto hidden;
+    line-height: 1.3rem; }
+    article.markdown pre code {
+      border: none;
+      padding: 0; }
+  article.markdown table {
+    display: block;
+    margin: .5rem 0;
+    overflow: auto;
+    border-spacing: 0;
+    -webkit-overflow-scrolling: touch; }
+    article.markdown table tr:hover {
+      background-color: var(--hover-color); }
+    article.markdown table tr > :first-child {
+      border-left: var(--border); }
+    article.markdown table tr > :last-child {
+      border-right: var(--border); }
+    article.markdown table th, article.markdown table td {
+      border-top: var(--border);
+      padding: .3rem 16px;
+      font-weight: normal;
+      white-space: nowrap; }
+    article.markdown table th:first-of-type {
+      border-top-left-radius: var(--radius); }
+    article.markdown table th:last-of-type {
+      border-top-right-radius: var(--radius); }
+    article.markdown table > :last-child > :last-child td {
+      border-bottom: var(--border); }
+      article.markdown table > :last-child > :last-child td:first-of-type {
+        border-bottom-left-radius: var(--radius); }
+      article.markdown table > :last-child > :last-child td:last-of-type {
+        border-bottom-right-radius: var(--radius); }
+  article.markdown > :first-child,
+  article.markdown > :first-child > :first-child,
+  article.markdown > :first-child > :first-child > :first-child {
+    margin-top: 0; }
+  article.markdown > :last-child,
+  article.markdown > :last-child > :last-child,
+  article.markdown > :last-child > :last-child > :last-child {
+    margin-bottom: 0; }
+  article.markdown .content {
+    width: calc(100% - var(--toc-width) - 1rem); }
+  article.markdown .toc {
+    width: var(--toc-width);
+    height: calc(100% - 4rem);
+    overflow: auto; }
+    article.markdown .toc > :first-child,
+    article.markdown .toc > :first-child > :first-child,
+    article.markdown .toc > :first-child > :first-child > :first-child {
+      margin-top: 0; }
+    article.markdown .toc > :last-child,
+    article.markdown .toc > :last-child > :last-child,
+    article.markdown .toc > :last-child > :last-child > :last-child {
+      margin-bottom: 0; }
+    article.markdown .toc .inner {
+      margin-left: 1rem; }
 
 @media screen and (max-width: 65rem) {
-  section {
-    display: none; }
-  .post-toc {
-    display: block !important; } }
+  article {
+    display: block !important; }
+    article .content {
+      width: auto !important; }
+    article .toc {
+      display: none; }
+    article .post-toc {
+      display: block !important; } }
 
 @media screen and (max-width: 40rem) {
   main {
     display: block;
     overflow: auto; }
-  aside, section {
+  aside {
     margin-bottom: 1rem; } }
 
 .book-columns {
@@ -595,7 +619,8 @@ details {
 
 <body>
   <main>
-  <aside>
+  
+<aside>
   <a href="../"><img class='author' src='../images/NetPipe.png'></a>
   <h2 class='name'>Net Pipe</h2>
 
@@ -783,6 +808,7 @@ details {
     
   </div>
 </aside>
+
   
 <article class="list">
   <div class="post-item">
@@ -799,9 +825,6 @@ details {
   
 </article>
 
-
-  
-<section></section>
 
   </main>
 
