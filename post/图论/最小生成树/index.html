@@ -177,7 +177,7 @@ code {
     list-style: none; }
 
 aside.meta {
-  border-radius: var(--radius);
+  border-radius: none;
   box-shadow: var(--shadow);
   background-color: var(--hover-color);
   order: 1; }
@@ -227,7 +227,7 @@ aside.meta {
       margin-right: 0.5rem; }
 
 aside.toc {
-  border-radius: var(--radius);
+  border-radius: none;
   box-shadow: var(--shadow);
   background-color: var(--hover-color);
   order: 3; }
@@ -404,7 +404,12 @@ article.markdown .content {
     display: block;
     overflow: auto; }
   aside {
-    border: none !important; } }
+    border: none !important; }
+  article {
+    padding: 0 !important; }
+    article .content {
+      box-shadow: none !important;
+      border-radius: 0 !important; } }
 
 .book-columns {
   display: flex;
