@@ -14,13 +14,10 @@
   
   <style>* {
   --aside-width: 18rem;
-  --toc-width: 10rem;
-  --max-width: 75rem;
-  --tag-color: rgb(10, 160, 190);
   --link-color: rgb(71, 148, 211);
   --hover-color: #F6F8FA;
   --border-color: #d0d7de;
-  --shadow: 0 1px 0 1px rgba(0, 0, 0, .05);
+  --shadow: 0 1px 3px 0 #d4d9e1;
   --border: 1px solid var(--border-color);
   --radius: .3rem; }
 
@@ -111,21 +108,15 @@ body {
   -moz-user-select: none;
   -webkit-user-select: none;
   margin: 0 auto;
-  max-width: var(--max-width);
   background-color: #f7f7f7; }
 
 main {
   display: flex;
-  position: relative;
-  padding: .5rem; }
+  position: relative; }
 
 aside {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
   flex: 0 0 var(--aside-width);
-  margin: .5rem;
-  padding: 1rem;
-  background-color: white;
+  padding: 2rem;
   overflow: hidden auto; }
   aside > :first-child,
   aside > :first-child > :first-child,
@@ -137,12 +128,8 @@ aside {
     margin-bottom: 0; }
 
 article {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
   flex-grow: 1;
-  margin: .5rem;
   padding: 1rem;
-  background-color: white;
   overflow: hidden auto; }
   article .post-toc {
     display: none; }
@@ -162,18 +149,21 @@ code {
   padding: 1px 2px; }
 
 .tag-card {
+  border-top: var(--border);
+  border-bottom: var(--border);
+  border-left: var(--border);
+  border-right: var(--border);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   display: inline-block;
   margin: .3rem 0;
   padding: .1rem .5rem;
-  border-radius: var(--radius);
-  background-color: var(--tag-color); }
+  background-color: white; }
   .tag-card a {
     font-size: 13px;
-    text-shadow: 0 0;
-    color: white; }
-    .tag-card a:hover {
-      color: white;
-      text-decoration: none; }
+    text-shadow: 0 0; }
 
 .post-meta {
   color: gray; }
@@ -186,109 +176,71 @@ code {
   #TableOfContents > ul li {
     list-style: none; }
 
-.toc {
-  position: absolute;
-  display: block;
-  top: 2rem;
-  right: 2.5rem; }
-  .toc img {
-    border-top: var(--border);
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    width: 2.2rem;
-    height: 2.2rem;
-    float: right;
-    background-color: white; }
-    .toc img:hover {
-      background-color: var(--hover-color); }
-  .toc div.toc-content {
-    border-top: var(--border);
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    display: none;
-    margin-top: 3rem;
-    padding: .5rem 1rem;
-    background-color: white;
-    overflow: auto;
-    max-height: 100%; }
-    .toc div.toc-content > :first-child,
-    .toc div.toc-content > :first-child > :first-child,
-    .toc div.toc-content > :first-child > :first-child > :first-child {
-      margin-top: 0; }
-    .toc div.toc-content > :last-child,
-    .toc div.toc-content > :last-child > :last-child,
-    .toc div.toc-content > :last-child > :last-child > :last-child {
-      margin-bottom: 0; }
-
-aside {
-  text-align: center; }
-  aside img.author {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 1rem; }
-  aside h2.name {
-    margin: .5rem; }
-  aside .data {
-    display: flex; }
-    aside .data .data-box {
+aside.meta {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: var(--hover-color);
+  order: 1; }
+  aside.meta .author {
+    text-align: center; }
+    aside.meta .author img {
+      transition: all 0.2s;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 1rem; }
+      aside.meta .author img:hover {
+        transform: perspective(1px) scale(1.04); }
+    aside.meta .author h2.name {
+      margin: .5rem; }
+  aside.meta .data {
+    display: flex;
+    text-align: center; }
+    aside.meta .data .data-box {
       flex: 0 0 50%;
       display: inline-block; }
-      aside .data .data-box:first-of-type {
+      aside.meta .data .data-box:first-of-type {
         border-right: 1px solid black; }
-  aside .social {
-    margin: 1rem 0;
-    text-align: left; }
-    aside .social .social-box {
-      border-top: var(--border);
-      border-bottom: var(--border);
-      border-left: var(--border);
-      border-right: var(--border);
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
+  aside.meta .social {
+    margin: 1rem 0; }
+    aside.meta .social .social-box {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
       margin-top: .5rem;
       padding: .4rem;
-      font-size: 18px; }
-      aside .social .social-box:hover {
-        background-color: var(--hover-color); }
-      aside .social .social-box img {
+      font-size: 18px;
+      background-color: white; }
+      aside.meta .social .social-box:hover {
+        transform: perspective(1px) scale(1.04); }
+      aside.meta .social .social-box img {
         vertical-align: text-bottom;
         width: 20px;
         height: 20px;
         margin-right: .5rem; }
-  aside .tags {
-    text-align: left; }
-    aside .tags h2 {
-      margin: .5rem 0;
-      font-size: 20px; }
-      aside .tags h2 img {
-        width: 20px;
-        height: 20px;
-        vertical-align: bottom;
-        margin-right: 0.5rem; }
+  aside.meta .tags h2 {
+    margin: .5rem 0;
+    font-size: 20px; }
+    aside.meta .tags h2 img {
+      width: 20px;
+      height: 20px;
+      vertical-align: bottom;
+      margin-right: 0.5rem; }
+
+aside.toc {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: var(--hover-color);
+  order: 3; }
+
+article {
+  order: 2; }
 
 article.posts .post {
-  border-top: var(--border);
-  border-bottom: var(--border);
-  border-left: var(--border);
-  border-right: var(--border);
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  margin: 1rem 0;
-  padding: .5rem 1rem; }
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: white; }
   article.posts .post:hover {
     background-color: var(--hover-color); }
   article.posts .post .post-title {
@@ -302,14 +254,8 @@ article.posts .pagination {
   justify-content: center;
   font-size: 18px; }
   article.posts .pagination div.pagination-box {
-    border-top: var(--border);
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     background-color: white;
     color: var(--link-color);
     margin: 0 .5rem;
@@ -345,10 +291,11 @@ article.posts > :last-child > :last-child > :last-child {
 
 article.list .post-item {
   border-bottom: var(--border);
-  border-left: var(--border);
-  border-right: var(--border);
+  border-radius: none;
+  box-shadow: var(--shadow);
   height: 2.3rem;
-  line-height: 2.3rem; }
+  line-height: 2.3rem;
+  background-color: white; }
   article.list .post-item:hover {
     background-color: var(--hover-color); }
   article.list .post-item img {
@@ -357,10 +304,6 @@ article.list .post-item {
     margin-left: .6rem;
     vertical-align: sub; }
   article.list .post-item:first-of-type {
-    border-top: var(--border);
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
     height: 3rem;
@@ -371,65 +314,60 @@ article.list .post-item {
       width: 1.4rem;
       height: 1.4rem; }
   article.list .post-item:last-of-type {
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
+    border: none;
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius); }
 
-article.markdown {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; }
-  article.markdown h1, article.markdown h1 .katex {
+article.markdown .content {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  padding: 1rem; }
+  article.markdown .content > :first-child,
+  article.markdown .content > :first-child > :first-child,
+  article.markdown .content > :first-child > :first-child > :first-child {
+    margin-top: 0; }
+  article.markdown .content > :last-child,
+  article.markdown .content > :last-child > :last-child,
+  article.markdown .content > :last-child > :last-child > :last-child {
+    margin-bottom: 0; }
+  article.markdown .content h1, article.markdown .content h1 .katex {
     font-size: 28px; }
-  article.markdown h2, article.markdown h2 .katex {
+  article.markdown .content h2, article.markdown .content h2 .katex {
     font-size: 24px; }
-  article.markdown h1, article.markdown h2, article.markdown h3, article.markdown h4, article.markdown h5, article.markdown h6 {
+  article.markdown .content h1, article.markdown .content h2, article.markdown .content h3, article.markdown .content h4, article.markdown .content h5, article.markdown .content h6 {
     margin: .5rem 0;
     font-weight: normal; }
-    article.markdown h1 .anchor, article.markdown h2 .anchor, article.markdown h3 .anchor, article.markdown h4 .anchor, article.markdown h5 .anchor, article.markdown h6 .anchor {
+    article.markdown .content h1 .anchor, article.markdown .content h2 .anchor, article.markdown .content h3 .anchor, article.markdown .content h4 .anchor, article.markdown .content h5 .anchor, article.markdown .content h6 .anchor {
       opacity: 0; }
-    article.markdown h1:hover .anchor, article.markdown h1:focus .anchor, article.markdown h2:hover .anchor, article.markdown h2:focus .anchor, article.markdown h3:hover .anchor, article.markdown h3:focus .anchor, article.markdown h4:hover .anchor, article.markdown h4:focus .anchor, article.markdown h5:hover .anchor, article.markdown h5:focus .anchor, article.markdown h6:hover .anchor, article.markdown h6:focus .anchor {
+    article.markdown .content h1:hover .anchor, article.markdown .content h1:focus .anchor, article.markdown .content h2:hover .anchor, article.markdown .content h2:focus .anchor, article.markdown .content h3:hover .anchor, article.markdown .content h3:focus .anchor, article.markdown .content h4:hover .anchor, article.markdown .content h4:focus .anchor, article.markdown .content h5:hover .anchor, article.markdown .content h5:focus .anchor, article.markdown .content h6:hover .anchor, article.markdown .content h6:focus .anchor {
       opacity: 1; }
-  article.markdown p {
+  article.markdown .content p {
     margin: .3rem 0; }
-  article.markdown strong {
+  article.markdown .content strong {
     font-weight: normal;
     text-shadow: 0 0; }
-  article.markdown img:not(.alt) {
+  article.markdown .content img:not(.alt) {
     display: block;
     margin: 0 auto;
     max-width: 100%; }
-  article.markdown blockquote {
-    border-top: var(--border);
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    color: #4d4d4d;
+  article.markdown .content blockquote {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 0.4rem solid var(--border-color);
     margin: .5rem 0;
     padding: .5rem 1rem; }
-    article.markdown blockquote > :first-child,
-    article.markdown blockquote > :first-child > :first-child,
-    article.markdown blockquote > :first-child > :first-child > :first-child {
+    article.markdown .content blockquote > :first-child,
+    article.markdown .content blockquote > :first-child > :first-child,
+    article.markdown .content blockquote > :first-child > :first-child > :first-child {
       margin-top: 0; }
-    article.markdown blockquote > :last-child,
-    article.markdown blockquote > :last-child > :last-child,
-    article.markdown blockquote > :last-child > :last-child > :last-child {
+    article.markdown .content blockquote > :last-child,
+    article.markdown .content blockquote > :last-child > :last-child,
+    article.markdown .content blockquote > :last-child > :last-child > :last-child {
       margin-bottom: 0; }
-  article.markdown pre {
-    border-top: var(--border);
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+  article.markdown .content pre {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
@@ -437,77 +375,36 @@ article.markdown {
     padding: .5rem 1rem;
     overflow: auto hidden;
     line-height: 1.3rem; }
-    article.markdown pre code {
+    article.markdown .content pre code {
       border: none;
       padding: 0; }
-  article.markdown table {
-    display: block;
+  article.markdown .content table {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     margin: .5rem 0;
     overflow: auto;
     border-spacing: 0;
     -webkit-overflow-scrolling: touch; }
-    article.markdown table tr:hover {
+    article.markdown .content table tr:hover {
       background-color: var(--hover-color); }
-    article.markdown table tr > :first-child {
-      border-left: var(--border); }
-    article.markdown table tr > :last-child {
-      border-right: var(--border); }
-    article.markdown table th, article.markdown table td {
-      border-top: var(--border);
+    article.markdown .content table th, article.markdown .content table td {
       padding: .3rem 16px;
-      font-weight: normal;
-      white-space: nowrap; }
-    article.markdown table th:first-of-type {
-      border-top-left-radius: var(--radius); }
-    article.markdown table th:last-of-type {
-      border-top-right-radius: var(--radius); }
-    article.markdown table > :last-child > :last-child td {
-      border-bottom: var(--border); }
-      article.markdown table > :last-child > :last-child td:first-of-type {
-        border-bottom-left-radius: var(--radius); }
-      article.markdown table > :last-child > :last-child td:last-of-type {
-        border-bottom-right-radius: var(--radius); }
-  article.markdown > :first-child,
-  article.markdown > :first-child > :first-child,
-  article.markdown > :first-child > :first-child > :first-child {
-    margin-top: 0; }
-  article.markdown > :last-child,
-  article.markdown > :last-child > :last-child,
-  article.markdown > :last-child > :last-child > :last-child {
-    margin-bottom: 0; }
-  article.markdown .content {
-    width: calc(100% - var(--toc-width) - 1rem); }
-  article.markdown .toc {
-    width: var(--toc-width);
-    height: calc(100% - 4rem);
-    overflow: auto; }
-    article.markdown .toc > :first-child,
-    article.markdown .toc > :first-child > :first-child,
-    article.markdown .toc > :first-child > :first-child > :first-child {
-      margin-top: 0; }
-    article.markdown .toc > :last-child,
-    article.markdown .toc > :last-child > :last-child,
-    article.markdown .toc > :last-child > :last-child > :last-child {
-      margin-bottom: 0; }
-    article.markdown .toc .inner {
-      margin-left: 1rem; }
+      font-weight: normal; }
+    article.markdown .content table td {
+      border-top: var(--border); }
 
 @media screen and (max-width: 65rem) {
-  article {
-    display: block !important; }
-    article .content {
-      width: auto !important; }
-    article .toc {
-      display: none; }
-    article .post-toc {
-      display: block !important; } }
+  aside.toc {
+    display: none; }
+  article .post-toc {
+    display: block !important; } }
 
 @media screen and (max-width: 40rem) {
   main {
     display: block;
     overflow: auto; }
   aside {
-    margin-bottom: 1rem; } }
+    border: none !important; } }
 
 .book-columns {
   display: flex;
@@ -520,21 +417,15 @@ article.markdown {
     flex: 1 1; }
 
 .book-tabs {
-  border-top: var(--border);
-  border-bottom: var(--border);
-  border-left: var(--border);
-  border-right: var(--border);
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   margin: .5em 0;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap; }
   .book-tabs label {
-    height: 1.5rem;
-    line-height: 1.5rem;
+    height: 2rem;
+    line-height: 2rem;
     display: inline-block;
     padding: 0 .5rem;
     min-width: 2.5rem;
@@ -571,16 +462,11 @@ article.markdown {
         display: block; }
 
 details {
-  border-top: var(--border);
-  border-bottom: var(--border);
-  border-left: var(--border);
-  border-right: var(--border);
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   margin: .5rem 0;
-  padding: .5rem; }
+  padding: .5rem;
+  background-color: var(--hover-color); }
   details summary {
     font-size: 14px;
     text-shadow: 0 0; }
@@ -602,7 +488,17 @@ details {
     details[open] > summary img.alt {
       transform: rotate(90deg); }
   details .markdown-inner {
-    padding-top: .5rem; }
+    border-top: var(--border);
+    border-bottom: var(--border);
+    border-left: var(--border);
+    border-right: var(--border);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    margin-top: .5rem;
+    padding: .5rem;
+    background-color: white; }
     details .markdown-inner > :first-child,
     details .markdown-inner > :first-child > :first-child,
     details .markdown-inner > :first-child > :first-child > :first-child {
@@ -620,9 +516,11 @@ details {
 <body>
   <main>
   
-<aside>
-  <a href="../../../"><img class='author' src='../../../images/NetPipe.png'></a>
-  <h2 class='name'>Net Pipe</h2>
+<aside class='meta'>
+  <div class='author'>
+    <a href="../../../"><img src='../../../images/NetPipe.png'></a>
+    <h2 class='name'>Net Pipe</h2>
+  </div>
 
   <div class="data">
     
@@ -771,43 +669,62 @@ details {
     <h2><img src="../../../images/categories.svg" />Tags</h2>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/">基础数学</a>
+      <a class="silent" href="../../../categories/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/">基础数学</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/dp/">DP</a>
+      <a class="silent" href="../../../categories/dp/">DP</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
+      <a class="silent" href="../../../categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
+      <a class="silent" href="../../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
+      <a class="silent" href="../../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E5%9B%BE%E8%AE%BA/">图论</a>
+      <a class="silent" href="../../../categories/%E5%9B%BE%E8%AE%BA/">图论</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+      <a class="silent" href="../../../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+      <a class="silent" href="../../../categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
     </div>
     
     <div class="tag-card">
-      <a class="alt" href="../../../categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+      <a class="silent" href="../../../categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
     </div>
     
   </div>
 </aside>
+
+<aside class='toc'>
+  <h2>TOC</h2>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#选择排序">选择排序</a></li>
+    <li><a href="#冒泡排序">冒泡排序</a></li>
+    <li><a href="#插入排序">插入排序</a></li>
+    <li><a href="#计数排序">计数排序</a></li>
+    <li><a href="#快速排序">快速排序</a></li>
+    <li><a href="#归并排序">归并排序</a></li>
+    <li><a href="#猴子排序">猴子排序</a></li>
+    <li><a href="#逆序对数">逆序对数</a></li>
+    <li><a href="#稳定性">稳定性</a></li>
+  </ul>
+</nav>
+</aside>
+
 
   
 <article class='markdown'>
@@ -824,11 +741,11 @@ details {
 
   
   <div class='tag-card'>
-    <a class='alt' href="../../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
+    <a class='silent' href="../../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
   </div>
   
   <div class='tag-card'>
-    <a class='alt' href="../../../categories/%e5%9f%ba%e7%a1%80%e7%ae%97%e6%b3%95/">基础算法</a>
+    <a class='silent' href="../../../categories/%e5%9f%ba%e7%a1%80%e7%ae%97%e6%b3%95/">基础算法</a>
   </div>
   
 
@@ -849,8 +766,8 @@ details {
     <li><a href="#稳定性">稳定性</a></li>
   </ul>
 </nav>
-    
   </div>
+  
 
   <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>重新排序数组 $a$（长度 $n$）中的元素. <strong>本章只研究升序排序.</strong></p>
 <h2 id="选择排序">选择排序 <a class="anchor" href="#%e9%80%89%e6%8b%a9%e6%8e%92%e5%ba%8f">¶</a></h2><p>在第 $i$ 次遍历中，交换 $a[i]$ 和第 $i$ 小的数.</p>
@@ -1016,28 +933,6 @@ details {
 
   
 </div>
-
-
-<div class='toc'>
-  <div class='inner'>
-    <h2>TOC</h2>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#简介">简介</a></li>
-    <li><a href="#选择排序">选择排序</a></li>
-    <li><a href="#冒泡排序">冒泡排序</a></li>
-    <li><a href="#插入排序">插入排序</a></li>
-    <li><a href="#计数排序">计数排序</a></li>
-    <li><a href="#快速排序">快速排序</a></li>
-    <li><a href="#归并排序">归并排序</a></li>
-    <li><a href="#猴子排序">猴子排序</a></li>
-    <li><a href="#逆序对数">逆序对数</a></li>
-    <li><a href="#稳定性">稳定性</a></li>
-  </ul>
-</nav>
-  </div>
-</div>
-
 
 </article>
 
