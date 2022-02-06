@@ -18,7 +18,7 @@
   --link-color: #003366;
   --hover-color: #F6F8FA;
   --border-color: #CCCCCC;
-  --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --background: rgba(255, 255, 255, 0.2);
   --background-hover: rgba(255, 255, 255, 0.5);
   --border: 1px solid var(--border-color);
@@ -41,9 +41,9 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: #f0f0f03b; }
+  background: #c3c3c33b; }
   ::-webkit-scrollbar-thumb:hover {
-    background: #f0f0f07b; }
+    background: #c3c3c37b; }
 
 ::-webkit-scrollbar-track {
   border-radius: 10px; }
@@ -100,7 +100,7 @@ ul, ol {
   font-weight: bold;
   src: url("/fonts/FantasqueSansMono-BoldItalic.woff2") format("woff2"); }
 
-body, code {
+body, code, input {
   font-family: 'Fantasque Sans Mono', sans-serif; }
 
 html, body, main {
@@ -260,7 +260,21 @@ aside.meta {
         vertical-align: text-bottom;
         width: 20px;
         height: 20px;
-        margin-right: .5rem; }
+        margin-right: 8px; }
+  aside.meta .search {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 35px;
+    right: 0;
+    height: 30px; }
+    aside.meta .search input {
+      display: inline;
+      width: 100%;
+      height: 100%;
+      border: none;
+      font-size: 17px;
+      background-color: transparent; }
 
 aside.toc {
   margin-left: 0;
@@ -378,7 +392,8 @@ article.list .post-item {
     height: 3rem;
     line-height: 3.2rem;
     font-size: 1.2rem;
-    margin-top: 0; }
+    margin-top: 0;
+    margin-bottom: .5rem; }
     article.list .post-item:first-of-type img {
       width: 1.4rem;
       height: 1.4rem; }
@@ -438,7 +453,7 @@ article.markdown .content {
     background: var(--background) !important;
     border-radius: var(--radius);
     margin: .5rem 0;
-    padding: .3rem .5rem; }
+    padding: .5rem 1rem; }
     article.markdown .content blockquote::before {
       background: url(/images/BackGround.jpg) 0/cover fixed;
       content: "";
@@ -458,18 +473,25 @@ article.markdown .content {
     article.markdown .content blockquote > :last-child > :last-child > :last-child {
       margin-bottom: 0 !important; }
   article.markdown .content code {
-    border-top: var(--border);
-    border-bottom: var(--border);
-    border-left: var(--border);
-    border-right: var(--border);
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    background: var(--background) !important;
+    border-radius: var(--radius);
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
     padding: 1px 2px; }
+    article.markdown .content code::before {
+      background: url(/images/BackGround.jpg) 0/cover fixed;
+      content: "";
+      filter: blur(15px);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -999; }
   article.markdown .content pre {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -495,6 +517,8 @@ article.markdown .content {
       z-index: -999; }
     article.markdown .content pre code {
       border: none;
+      background: none !important;
+      box-shadow: none;
       padding: 0; }
   article.markdown .content table {
     border-radius: var(--radius);
@@ -505,6 +529,7 @@ article.markdown .content {
     margin: .5rem 0;
     overflow: auto;
     border-spacing: 0;
+    display: block;
     -webkit-overflow-scrolling: touch; }
     article.markdown .content table::before {
       background: url(/images/BackGround.jpg) 0/cover fixed;
@@ -531,7 +556,7 @@ article.markdown .content {
       flex: 1 1; }
   article.markdown .content .book-tabs {
     margin: .5em 0;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-wrap: wrap; }
     article.markdown .content .book-tabs label {
@@ -544,11 +569,10 @@ article.markdown .content {
       z-index: 999;
       text-align: center; }
     article.markdown .content .book-tabs .book-tabs-content {
-      border-top: var(--border);
       order: 999;
       width: 100%;
       display: none;
-      overflow: hidden;
+      overflow: visible;
       padding-top: .5rem; }
       article.markdown .content .book-tabs .book-tabs-content > :first-child,
       article.markdown .content .book-tabs .book-tabs-content > :first-child > :first-child,
@@ -563,7 +587,21 @@ article.markdown .content {
       article.markdown .content .book-tabs input[type="radio"]:not(:checked) + label:hover {
         background: var(--background-hover) !important; }
       article.markdown .content .book-tabs input[type="radio"]:checked + label {
-        background: var(--background) !important; }
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        position: relative;
+        background: var(--background) !important;
+        border-radius: var(--radius); }
+        article.markdown .content .book-tabs input[type="radio"]:checked + label::before {
+          background: url(/images/BackGround.jpg) 0/cover fixed;
+          content: "";
+          filter: blur(15px);
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -999; }
         article.markdown .content .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
           display: block; }
   article.markdown .content details {
@@ -782,12 +820,28 @@ article::-webkit-scrollbar {
       <span>Posts</span>
     </div>
     <div class='data-box'>
-      <h3>56327</h3>
+      <h3>56246</h3>
       <span>Words</span>
     </div>
   </div>
 
   <div class="social">
+    <a class="silent">
+      <div class="social-box">
+        <img src="../../../../images/search.svg"/>
+        <div class="search">
+          <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
+        </div>
+      </div>
+      <script>
+        function keyup_submit(e){ 
+        var evt = window.event || e; 
+          if (evt.keyCode == 13) {
+            window.location.href = '/s?wd=' + document.getElementById("search-key").value;
+          }
+        }
+      </script>
+    </a>
     <a class="silent" href="../../../../">
       <div class="social-box"><img src="../../../../images/home.svg"/><span>Home</span></div>
     </a>
@@ -840,11 +894,16 @@ article::-webkit-scrollbar {
 
   </div>
 </aside>
-
 <aside class='toc'>
   <h2 class='alt'><img class='alt' src='../../../../images/notice.svg'>Notice</h2>
-<p>网站仍处于建设中. 部分 URL 可能存在跳转错误.</p>
-  <h2 class='alt'><img class='alt' src='../../../../images/toc.svg'>Menu</h2>
+<ul>
+<li>本站还处于建设中</li>
+<li>部分 URL 存在跳转错误</li>
+</ul>
+
+<br>
+  
+    <h2 class='alt'><img class='alt' src='../../../../images/toc.svg'>Menu</h2>
 <nav id="TableOfContents">
   <ul>
     <li><a href="#简介">简介</a></li>
@@ -860,8 +919,8 @@ article::-webkit-scrollbar {
     <li><a href="#模板">模板</a></li>
   </ul>
 </nav>
+  
 </aside>
-
 
   
 <article class='markdown'>
@@ -905,6 +964,8 @@ article::-webkit-scrollbar {
   </ul>
 </nav>
   </div>
+  
+
   
 
   <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>如何统计区间 $[l,r]$ 中有多少整数符合某条件？</p>
@@ -1000,7 +1061,6 @@ $$</p>
     <span style="color:#728e00">return</span> <span style="color:#728e00">++</span> <span style="color:#434f54">ans</span>;
 }
 </code></pre></div>
-  
 </div>
 
 </article>
