@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="">
+  <meta name="description" content="简">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href='../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
-  <link rel='shortcut icon' type='image/x-icon' href='../images/NetPipe.png' />
+  <link href='../../../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
+  <link rel='shortcut icon' type='image/x-icon' href='../../../images/NetPipe.png' />
 
   
   <style>* {
@@ -801,7 +801,7 @@ article::-webkit-scrollbar {
   
 <aside class='meta'>
   <div class='author'>
-    <a href="../"><img src='../images/NetPipe.png'></a>
+    <a href="../../../"><img src='../../../images/NetPipe.png'></a>
     <h2 class='name'>Net Pipe</h2>
   </div>
 
@@ -833,7 +833,7 @@ article::-webkit-scrollbar {
   <div class="social">
     <a class="silent">
       <div class="social-box">
-        <img src="../images/search.svg"/>
+        <img src="../../../images/search.svg"/>
         <div class="search">
           <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
         </div>
@@ -847,28 +847,28 @@ article::-webkit-scrollbar {
         }
       </script>
     </a>
-    <a class="silent" href="../">
-      <div class="social-box"><img src="../images/home.svg"/><span>Home</span></div>
+    <a class="silent" href="../../../">
+      <div class="social-box"><img src="../../../images/home.svg"/><span>Home</span></div>
     </a>
-    <a class="silent" href="../post/">
-      <div class="social-box"><img src="../images/posts.svg"/><span>Posts</span></div>
+    <a class="silent" href="../../../post/">
+      <div class="social-box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" type="application/rss+xml" href="../index.xml">
-      <div class="social-box"><img src="../images/rss.svg"/><span>RSS</span></div>
+    <a class="silent" type="application/rss+xml" href="../../../index.xml">
+      <div class="social-box"><img src="../../../images/rss.svg"/><span>RSS</span></div>
     </a>
   </div>
 
   <div class="tags">
-    <h2 class='alt'><img class='alt' src="../images/categories.svg" />Tags</h2>
+    <h2 class='alt'><img class='alt' src="../../../images/categories.svg" />Tags</h2>
 
 <div class="tag-card">
-  <a class="silent" href="../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="silent" href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
 </div>
 
   </div>
 </aside>
 <aside class='toc'>
-  <h2 class='alt'><img class='alt' src='../images/notice.svg'>Notice</h2>
+  <h2 class='alt'><img class='alt' src='../../../images/notice.svg'>Notice</h2>
 <ul>
 <li>此站点仍在建设中.</li>
 <li>一些 URL 存在跳转错误.</li>
@@ -876,32 +876,149 @@ article::-webkit-scrollbar {
 </ul>
 
 <br>
+  
+    <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#条件">条件</a></li>
+    <li><a href="#原理">原理</a></li>
+    <li><a href="#整数域上的二分">整数域上的二分</a></li>
+    <li><a href="#实数域上的二分">实数域上的二分</a></li>
+  </ul>
+</nav>
+  
 </aside>
 
   
-<article class="list">
-  <div class="post-item">
+<article class='markdown'>
+<div class='content'>
+  
+  <h1>二分</h1>
+  
+  <span class="post-meta">
     
-    <img src="../images/folder.svg" />
+    <img class='alt' src="../../../images/time.svg"></img>
+    Jan 11, 2021
     
-    <span>Posts</span>
+  </span>
+
+  
+  <div class='tag-card'>
+    <a class='silent' href="../../../categories/%e7%ae%97%e6%b3%95/">算法</a>
   </div>
+  
+
+  
+  <div class='post-toc'>
+  <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#条件">条件</a></li>
+    <li><a href="#原理">原理</a></li>
+    <li><a href="#整数域上的二分">整数域上的二分</a></li>
+    <li><a href="#实数域上的二分">实数域上的二分</a></li>
+  </ul>
+</nav>
+  </div>
+  
 
   
 
-  
-  <div class="post-item" onclick="window.location.href=&#34;/post/%E7%AE%97%E6%B3%95/&#34;">
-    <img src="../images/folder.svg" /><span>算法</span>
-  </div>
-  
-  
-  
+  <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>玩过「猜数字」游戏吗？</p>
+<ul>
+<li>叫你的朋友写一个 $(0,1001)$ 内的整数 $n$.</li>
+<li>每轮你要需要给出数字 $x$，你的朋友只能回答「$n&gt;x$」「$n&lt;x$」或「$n=x$」.</li>
+</ul>
+<p>你能用最少次数猜出 $n$ 吗？</p>
+<p>最初 $n\in(0,1001)$. 你可以先猜 $500$.</p>
+<ul>
+<li>若 $n&gt;500$，则可以进一步确定 $n\in(500,1001)$.</li>
+<li>若 $n&lt;500$，则可以进一步确定 $n\in(0,500)$.</li>
+<li>否则 $n=500$.</li>
+</ul>
+<p>重复给出范围的中间数，每次都会将 $n$ 的范围缩小一半，最多 $\log_2{n}$ 次就可以确定 $n$.</p>
+<p>通过若干次折半范围实现快速查询，即为二分算法.</p>
+<blockquote>
+<p>据说只有 10% 的程序员能写对二分. 二分算法原理很简单，细节很魔鬼.</p>
+</blockquote>
+<h2 id="条件">条件 <a class="anchor" href="#%e6%9d%a1%e4%bb%b6">¶</a></h2><p>数组须呈现某种规律（一般是大小顺序）.</p>
+<p>若数组 $a$ 能分为两半，前半段都不满足条件 $P$，后半段都满足条件 $P$，则可用二分算法确定分割点，进而确定「第一个满足条件 $P$ 的元素」.</p>
+<h2 id="原理">原理 <a class="anchor" href="#%e5%8e%9f%e7%90%86">¶</a></h2><p>查找数组 $a$（长度 $n$）中第一个满足条件 $P$ 的元素：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">bool</span> <span style="color:#d35400">check</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">k</span>) {
+	<span style="color:#95a5a6">/* 返回 a[k] 是否满足条件 P */</span>
+}
+
+<span style="color:#00979d">int</span> <span style="color:#d35400">binQuery</span>() {
+	<span style="color:#00979d">int</span> <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>, <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">n</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>;
+	<span style="color:#728e00">while</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">r</span>) {
+		<span style="color:#00979d">int</span> <span style="color:#434f54">m</span> <span style="color:#728e00">=</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#434f54">r</span>) <span style="color:#728e00">/</span> <span style="color:#8a7b52">2</span>;
+		<span style="color:#728e00">if</span> (<span style="color:#434f54">check</span>(<span style="color:#434f54">a</span>[<span style="color:#434f54">m</span>])) <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+		<span style="color:#728e00">else</span> <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+	}
+	<span style="color:#728e00">return</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">r</span>];
+}
+</code></pre></div><p><strong>细节：</strong></p>
+<ul>
+<li>循环的条件必须是 $l+1&lt;r$.</li>
+<li>若查找的对象是 $a_L\cdots a_R$，则最初必须令 $l=L-1,r=R+1$，这样才保证 $m$ 能取到范围端点 $L$ 或 $R$.</li>
+<li>不必担心 $m$ 会溢出 $[L,R]$，因为那时候已经不满足 $l+1&lt;r$ 而退出循环了.</li>
+<li>若数组前半段不满足 $P$，后半段满足 $P$：
+<ul>
+<li>$a[m]$ 满足 $P$ 时应令 $r=m$.</li>
+<li>第一个满足 $P$ 的是 $a_r$.</li>
+</ul>
+</li>
+<li>若数组前半段满足 $P$，后半段不满足 $P$：
+<ul>
+<li>$a[m]$ 满足 $P$ 时应令 $l=m$.</li>
+<li>最后一个满足 $P$ 的是 $a_l$.</li>
+</ul>
+</li>
+</ul>
+<h2 id="整数域上的二分">整数域上的二分 <a class="anchor" href="#%e6%95%b4%e6%95%b0%e5%9f%9f%e4%b8%8a%e7%9a%84%e4%ba%8c%e5%88%86">¶</a></h2><p>在单调递增数组 $a$（长度 $n$）中查找第一个 $\ge x$ 的数：</p>
+<p>前半段 $&lt;x$，后半段 $\ge x$，因此 $a[m]\ge x$ 时应令 $r=m$，最终答案是 $a[r]$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">binQuery</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">x</span>) {
+    <span style="color:#00979d">int</span> <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>, <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">n</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">while</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">r</span>) {
+        <span style="color:#00979d">int</span> <span style="color:#434f54">m</span> <span style="color:#728e00">=</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#434f54">r</span>) <span style="color:#728e00">/</span> <span style="color:#8a7b52">2</span>;
+        <span style="color:#728e00">if</span> (<span style="color:#434f54">a</span>[<span style="color:#434f54">m</span>] <span style="color:#728e00">&gt;=</span> <span style="color:#434f54">x</span>) <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+        <span style="color:#728e00">else</span> <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+    }
+    <span style="color:#728e00">return</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">r</span>];
+}
+</code></pre></div><p>在单调递增数组 $a$（长度 $n$）中查找最后一个 $\le x$ 的数：</p>
+<p>前半段 $\le x$，后半段 $&gt; x$，因此 $a[m]\le x$ 时应令 $l=m$，最终答案是 $a[l]$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">binQuery</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">x</span>) {
+    <span style="color:#00979d">int</span> <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>, <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">n</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">while</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">r</span>) {
+        <span style="color:#00979d">int</span> <span style="color:#434f54">m</span> <span style="color:#728e00">=</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#434f54">r</span>) <span style="color:#728e00">/</span> <span style="color:#8a7b52">2</span>;
+        <span style="color:#728e00">if</span> (<span style="color:#434f54">a</span>[<span style="color:#434f54">m</span>] <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">x</span>) <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+        <span style="color:#728e00">else</span> <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+    }
+    <span style="color:#728e00">return</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">l</span>];
+}
+</code></pre></div><h2 id="实数域上的二分">实数域上的二分 <a class="anchor" href="#%e5%ae%9e%e6%95%b0%e5%9f%9f%e4%b8%8a%e7%9a%84%e4%ba%8c%e5%88%86">¶</a></h2><p>实数域上的二分需要指定精度 $eps$，以 $l+eps&lt;r$ 为循环条件.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">while</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#434f54">eps</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">r</span>) {
+    <span style="color:#00979d">double</span> <span style="color:#434f54">m</span> <span style="color:#728e00">=</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#434f54">r</span>) <span style="color:#728e00">/</span> <span style="color:#8a7b52">2</span>;
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">check</span>(<span style="color:#434f54">m</span>)) <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+    <span style="color:#728e00">else</span> <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+}
+</code></pre></div><p>此外还可采用固定次数的二分. 此方法得到的答案精度通常更高.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;</span> <span style="color:#8a7b52">1000</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+    <span style="color:#00979d">double</span> <span style="color:#434f54">m</span> <span style="color:#728e00">=</span> (<span style="color:#434f54">l</span> <span style="color:#728e00">+</span> <span style="color:#434f54">r</span>) <span style="color:#728e00">/</span> <span style="color:#8a7b52">2</span>;
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">check</span>(<span style="color:#434f54">m</span>)) <span style="color:#434f54">r</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+    <span style="color:#728e00">else</span> <span style="color:#434f54">l</span> <span style="color:#728e00">=</span> <span style="color:#434f54">m</span>;
+}
+</code></pre></div>
+</div>
+
 </article>
-
 
   </main>
 
-  <script src="../js/jquery.min.js"></script>
+  <script src="../../../js/jquery.min.js"></script>
 
 
 
@@ -949,9 +1066,9 @@ $('.markdown').find('img').each(function(id, el, arr) {
 
 
 
-<link rel="stylesheet" href="../katex/katex.min.css">
-<script src="../katex/katex.min.js"></script>
-<script src="../katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../../../katex/katex.min.css">
+<script src="../../../katex/katex.min.js"></script>
+<script src="../../../katex/auto-render.min.js"></script>
 
 <script>
 function renderTex() {

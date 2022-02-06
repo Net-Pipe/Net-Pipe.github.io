@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="">
+  <meta name="description" content="简">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href='../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
-  <link rel='shortcut icon' type='image/x-icon' href='../images/NetPipe.png' />
+  <link href='../../../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
+  <link rel='shortcut icon' type='image/x-icon' href='../../../images/NetPipe.png' />
 
   
   <style>* {
@@ -801,7 +801,7 @@ article::-webkit-scrollbar {
   
 <aside class='meta'>
   <div class='author'>
-    <a href="../"><img src='../images/NetPipe.png'></a>
+    <a href="../../../"><img src='../../../images/NetPipe.png'></a>
     <h2 class='name'>Net Pipe</h2>
   </div>
 
@@ -833,7 +833,7 @@ article::-webkit-scrollbar {
   <div class="social">
     <a class="silent">
       <div class="social-box">
-        <img src="../images/search.svg"/>
+        <img src="../../../images/search.svg"/>
         <div class="search">
           <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
         </div>
@@ -847,28 +847,28 @@ article::-webkit-scrollbar {
         }
       </script>
     </a>
-    <a class="silent" href="../">
-      <div class="social-box"><img src="../images/home.svg"/><span>Home</span></div>
+    <a class="silent" href="../../../">
+      <div class="social-box"><img src="../../../images/home.svg"/><span>Home</span></div>
     </a>
-    <a class="silent" href="../post/">
-      <div class="social-box"><img src="../images/posts.svg"/><span>Posts</span></div>
+    <a class="silent" href="../../../post/">
+      <div class="social-box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" type="application/rss+xml" href="../index.xml">
-      <div class="social-box"><img src="../images/rss.svg"/><span>RSS</span></div>
+    <a class="silent" type="application/rss+xml" href="../../../index.xml">
+      <div class="social-box"><img src="../../../images/rss.svg"/><span>RSS</span></div>
     </a>
   </div>
 
   <div class="tags">
-    <h2 class='alt'><img class='alt' src="../images/categories.svg" />Tags</h2>
+    <h2 class='alt'><img class='alt' src="../../../images/categories.svg" />Tags</h2>
 
 <div class="tag-card">
-  <a class="silent" href="../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="silent" href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
 </div>
 
   </div>
 </aside>
 <aside class='toc'>
-  <h2 class='alt'><img class='alt' src='../images/notice.svg'>Notice</h2>
+  <h2 class='alt'><img class='alt' src='../../../images/notice.svg'>Notice</h2>
 <ul>
 <li>此站点仍在建设中.</li>
 <li>一些 URL 存在跳转错误.</li>
@@ -876,32 +876,147 @@ article::-webkit-scrollbar {
 </ul>
 
 <br>
+  
+    <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a>
+      <ul>
+        <li><a href="#直接递归">直接递归</a></li>
+        <li><a href="#间接递归">间接递归</a></li>
+        <li><a href="#边界条件">边界条件</a></li>
+      </ul>
+    </li>
+    <li><a href="#例-1">例 1</a></li>
+    <li><a href="#例-2">例 2</a></li>
+  </ul>
+</nav>
+  
 </aside>
 
   
-<article class="list">
-  <div class="post-item">
+<article class='markdown'>
+<div class='content'>
+  
+  <h1>递归</h1>
+  
+  <span class="post-meta">
     
-    <img src="../images/folder.svg" />
+    <img class='alt' src="../../../images/time.svg"></img>
+    Jan 7, 2021
     
-    <span>Posts</span>
+  </span>
+
+  
+  <div class='tag-card'>
+    <a class='silent' href="../../../categories/%e7%ae%97%e6%b3%95/">算法</a>
   </div>
+  
+
+  
+  <div class='post-toc'>
+  <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a>
+      <ul>
+        <li><a href="#直接递归">直接递归</a></li>
+        <li><a href="#间接递归">间接递归</a></li>
+        <li><a href="#边界条件">边界条件</a></li>
+      </ul>
+    </li>
+    <li><a href="#例-1">例 1</a></li>
+    <li><a href="#例-2">例 2</a></li>
+  </ul>
+</nav>
+  </div>
+  
 
   
 
-  
-  <div class="post-item" onclick="window.location.href=&#34;/post/%E7%AE%97%E6%B3%95/&#34;">
-    <img src="../images/folder.svg" /><span>算法</span>
-  </div>
-  
-  
-  
+  <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>有天，你去找银行经理办事.</p>
+<ul>
+<li>
+<p>经理 A：不关我的事. 找经理 B.</p>
+</li>
+<li>
+<p>经理 B：不关我的事. 找经理 A.</p>
+</li>
+</ul>
+<p>于是你在两个经理之间往返奔波了一整天. 在程序中，该行为称作 &ldquo;递归&rdquo;.</p>
+<h3 id="直接递归">直接递归 <a class="anchor" href="#%e7%9b%b4%e6%8e%a5%e9%80%92%e5%bd%92">¶</a></h3><p>函数 <code>f()</code> 在内部调用了它自己. 它会永久运行下去.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">void</span> <span style="color:#d35400">f</span>() {
+    <span style="color:#434f54">f</span>();
+}
+</code></pre></div><h3 id="间接递归">间接递归 <a class="anchor" href="#%e9%97%b4%e6%8e%a5%e9%80%92%e5%bd%92">¶</a></h3><p>这类似于两个银行经理的情况.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">void</span> <span style="color:#d35400">A</span>() {
+    <span style="color:#434f54">B</span>();
+}
+
+<span style="color:#00979d">void</span> <span style="color:#d35400">B</span>() {
+    <span style="color:#434f54">A</span>();
+}
+</code></pre></div><h3 id="边界条件">边界条件 <a class="anchor" href="#%e8%be%b9%e7%95%8c%e6%9d%a1%e4%bb%b6">¶</a></h3><p>合法的递归需要边界条件，使函数在恰当的时机停止，而不是永久运行下去.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">void</span> <span style="color:#d35400">f</span>() {
+    <span style="color:#728e00">if</span> (...<span style="color:#95a5a6">/* 边界条件 */</span>)
+        <span style="color:#728e00">return</span>;
+    <span style="color:#434f54">f</span>();
+}
+</code></pre></div><h2 id="例-1">例 1 <a class="anchor" href="#%e4%be%8b-1">¶</a></h2><p>计算阶乘 $n!$.</p>
+<p>$f(n)=n!$ 可以定义为</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f(n)=
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    1 <span style="color:#728e00">&amp;</span> n=0 <span style="color:#728e00">\\</span>
+     f(n-1)<span style="color:#728e00">\times</span> n <span style="color:#728e00">&amp;</span> n<span style="color:#728e00">\geq</span>1
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">f</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>)
+        <span style="color:#728e00">return</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">return</span> <span style="color:#434f54">f</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>) <span style="color:#728e00">*</span> <span style="color:#434f54">n</span>;
+}
+</code></pre></div><p>运行 <code>f(3)</code>:</p>
+<ul>
+<li>A：B，计算 $f(3)$.
+<ul>
+<li>B：C，计算 $f(2)$.
+<ul>
+<li>C：D，计算 $f(1)$.
+<ul>
+<li>D：E，计算 $f(0)$.
+<ul>
+<li>E：D，$f(0)=1$.</li>
+</ul>
+</li>
+<li>D：C，$f(1)=f(0)\times 1=1$.</li>
+</ul>
+</li>
+<li>C：B，$f(2)=f(1)\times 2=2$.</li>
+</ul>
+</li>
+<li>B：A，$f(3)=f(2)\times 3=6$.</li>
+</ul>
+</li>
+<li>A：$f(3)=6$.</li>
+</ul>
+<h2 id="例-2">例 2 <a class="anchor" href="#%e4%be%8b-2">¶</a></h2><p>计算斐波那契数列的第 $i$ 项.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">f(n)=
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    1<span style="color:#728e00">&amp;</span>n=1,2<span style="color:#728e00">\\</span>
+    f(n-1)+f(n-2)<span style="color:#728e00">&amp;</span>n<span style="color:#728e00">\geq</span> 3
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">f</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">||</span> <span style="color:#434f54">n</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">2</span>)
+        <span style="color:#728e00">return</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">return</span> <span style="color:#434f54">f</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>) <span style="color:#728e00">+</span> <span style="color:#434f54">f</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">2</span>);
+}
+</code></pre></div>
+</div>
+
 </article>
-
 
   </main>
 
-  <script src="../js/jquery.min.js"></script>
+  <script src="../../../js/jquery.min.js"></script>
 
 
 
@@ -949,9 +1064,9 @@ $('.markdown').find('img').each(function(id, el, arr) {
 
 
 
-<link rel="stylesheet" href="../katex/katex.min.css">
-<script src="../katex/katex.min.js"></script>
-<script src="../katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../../../katex/katex.min.css">
+<script src="../../../katex/katex.min.js"></script>
+<script src="../../../katex/auto-render.min.js"></script>
 
 <script>
 function renderTex() {

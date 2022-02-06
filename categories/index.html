@@ -19,8 +19,6 @@
   --hover-color: #F6F8FA;
   --border-color: #CCCCCC;
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  --background: rgba(255, 255, 255, 0.2);
-  --background-hover: rgba(255, 255, 255, 0.5);
   --border: 1px solid var(--border-color);
   --radius: 3px; }
 
@@ -73,10 +71,17 @@ a.silent:hover > * {
   color: black;
   text-decoration: none; }
 
-ul, ol {
+ul {
   list-style: circle;
-  padding-left: 1rem; }
-  ul li, ol li {
+  padding-left: 1.7rem; }
+  ul li {
+    margin: .3rem 0; }
+    ul li::marker {
+      font-size: large; }
+
+ol {
+  padding-left: 2.2rem; }
+  ol li {
     margin: .3rem 0; }
 
 @font-face {
@@ -140,18 +145,25 @@ article {
     display: none; }
 
 .tag-card {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
   display: inline-block;
   padding: .1rem .5rem;
   margin: .3rem 0; }
   .tag-card::before {
     background: url(/images/BackGround.jpg) 0/cover fixed;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     content: "";
-    filter: blur(15px);
+    filter: blur(5px);
     position: absolute;
     top: 0;
     right: 0;
@@ -159,7 +171,8 @@ article {
     left: 0;
     z-index: -999; }
   .tag-card:hover {
-    background: var(--background-hover) !important; }
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8) !important; }
   .tag-card a {
     font-size: 13px;
     text-shadow: 0 0; }
@@ -169,6 +182,9 @@ article {
   height: 16px;
   display: inline-block !important;
   vertical-align: text-bottom; }
+
+.post-summary {
+  margin: .2rem 0; }
 
 h2.alt {
   margin: .5rem 0;
@@ -182,20 +198,24 @@ h2.alt {
 .content h2.alt img.alt {
   display: none; }
 
-#TableOfContents > ul li {
-  list-style: none; }
-
 aside {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
   margin: 1rem; }
   aside::before {
     background: url(/images/BackGround.jpg) 0/cover fixed;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     content: "";
-    filter: blur(15px);
+    filter: blur(5px);
     position: absolute;
     top: 0;
     right: 0;
@@ -236,18 +256,25 @@ aside.meta {
   aside.meta .social {
     margin: 1rem 0; }
     aside.meta .social .social-box {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
-      background: var(--background) !important;
-      border-radius: var(--radius);
       margin-top: .5rem;
       padding: .3rem .5rem;
       font-size: 18px; }
       aside.meta .social .social-box::before {
         background: url(/images/BackGround.jpg) 0/cover fixed;
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
         content: "";
-        filter: blur(15px);
+        filter: blur(5px);
         position: absolute;
         top: 0;
         right: 0;
@@ -255,7 +282,8 @@ aside.meta {
         left: 0;
         z-index: -999; }
       aside.meta .social .social-box:hover {
-        background: var(--background-hover) !important; }
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
       aside.meta .social .social-box img {
         vertical-align: text-bottom;
         width: 20px;
@@ -284,17 +312,24 @@ article {
   order: 2; }
 
 article.posts .post {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
   padding: 1rem;
   margin: 1rem 0; }
   article.posts .post::before {
     background: url(/images/BackGround.jpg) 0/cover fixed;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     content: "";
-    filter: blur(15px);
+    filter: blur(5px);
     position: absolute;
     top: 0;
     right: 0;
@@ -302,7 +337,16 @@ article.posts .post {
     left: 0;
     z-index: -999; }
   article.posts .post:hover {
-    background: var(--background-hover) !important; }
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8) !important; }
+  article.posts .post > :first-child,
+  article.posts .post > :first-child > :first-child,
+  article.posts .post > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.posts .post > :last-child,
+  article.posts .post > :last-child > :last-child,
+  article.posts .post > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
   article.posts .post .post-title {
     font-size: 20px; }
 
@@ -315,11 +359,14 @@ article.posts .pagination {
   font-size: 18px;
   margin-top: 1rem; }
   article.posts .pagination div.pagination-box {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     color: var(--link-color);
     margin: 0 .5rem;
     width: 2rem;
@@ -327,12 +374,15 @@ article.posts .pagination {
     line-height: 2rem;
     float: left;
     text-align: center;
-    vertical-align: middle;
-    cursor: default; }
+    vertical-align: middle; }
     article.posts .pagination div.pagination-box::before {
       background: url(/images/BackGround.jpg) 0/cover fixed;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       content: "";
-      filter: blur(15px);
+      filter: blur(5px);
       position: absolute;
       top: 0;
       right: 0;
@@ -340,7 +390,8 @@ article.posts .pagination {
       left: 0;
       z-index: -999; }
     article.posts .pagination div.pagination-box:not(.disabled):hover {
-      background: var(--background-hover) !important; }
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.8) !important; }
   article.posts .pagination div.prev {
     width: 5rem;
     margin-left: 0; }
@@ -363,18 +414,25 @@ article.posts > :last-child > :last-child > :last-child {
   margin-bottom: 0 !important; }
 
 article.list .post-item {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
   height: 2.3rem;
   line-height: 2.3rem;
   margin: .3rem 0; }
   article.list .post-item::before {
     background: url(/images/BackGround.jpg) 0/cover fixed;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     content: "";
-    filter: blur(15px);
+    filter: blur(5px);
     position: absolute;
     top: 0;
     right: 0;
@@ -382,11 +440,12 @@ article.list .post-item {
     left: 0;
     z-index: -999; }
   article.list .post-item:hover {
-    background: var(--background-hover) !important; }
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8) !important; }
   article.list .post-item img {
     width: 1.2rem;
     height: 1.2rem;
-    margin-left: .6rem;
+    margin: 0 .6rem;
     vertical-align: sub; }
   article.list .post-item:first-of-type {
     height: 3rem;
@@ -402,16 +461,23 @@ article.list .post-item {
     margin-bottom: 0; }
 
 article.markdown .content {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
   padding: 1rem; }
   article.markdown .content::before {
     background: url(/images/BackGround.jpg) 0/cover fixed;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     content: "";
-    filter: blur(15px);
+    filter: blur(5px);
     position: absolute;
     top: 0;
     right: 0;
@@ -438,7 +504,8 @@ article.markdown .content {
     article.markdown .content h1:hover .anchor, article.markdown .content h1:focus .anchor, article.markdown .content h2:hover .anchor, article.markdown .content h2:focus .anchor, article.markdown .content h3:hover .anchor, article.markdown .content h3:focus .anchor, article.markdown .content h4:hover .anchor, article.markdown .content h4:focus .anchor, article.markdown .content h5:hover .anchor, article.markdown .content h5:focus .anchor, article.markdown .content h6:hover .anchor, article.markdown .content h6:focus .anchor {
       opacity: 1; }
   article.markdown .content p {
-    margin: .3rem 0; }
+    margin: .5rem 0;
+    line-height: 1.3rem; }
   article.markdown .content strong {
     font-weight: normal;
     text-shadow: 0 0; }
@@ -447,17 +514,24 @@ article.markdown .content {
     margin: 0 auto;
     max-width: 100%; }
   article.markdown .content blockquote {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     margin: .5rem 0;
     padding: .5rem 1rem; }
     article.markdown .content blockquote::before {
       background: url(/images/BackGround.jpg) 0/cover fixed;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       content: "";
-      filter: blur(15px);
+      filter: blur(5px);
       position: absolute;
       top: 0;
       right: 0;
@@ -473,19 +547,26 @@ article.markdown .content {
     article.markdown .content blockquote > :last-child > :last-child > :last-child {
       margin-bottom: 0 !important; }
   article.markdown .content code {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
     padding: 1px 2px; }
     article.markdown .content code::before {
       background: url(/images/BackGround.jpg) 0/cover fixed;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       content: "";
-      filter: blur(15px);
+      filter: blur(5px);
       position: absolute;
       top: 0;
       right: 0;
@@ -493,11 +574,14 @@ article.markdown .content {
       left: 0;
       z-index: -999; }
   article.markdown .content pre {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
@@ -507,8 +591,12 @@ article.markdown .content {
     line-height: 1.3rem; }
     article.markdown .content pre::before {
       background: url(/images/BackGround.jpg) 0/cover fixed;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       content: "";
-      filter: blur(15px);
+      filter: blur(5px);
       position: absolute;
       top: 0;
       right: 0;
@@ -521,11 +609,14 @@ article.markdown .content {
       box-shadow: none;
       padding: 0; }
   article.markdown .content table {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     margin: .5rem 0;
     overflow: auto;
     border-spacing: 0;
@@ -533,8 +624,12 @@ article.markdown .content {
     -webkit-overflow-scrolling: touch; }
     article.markdown .content table::before {
       background: url(/images/BackGround.jpg) 0/cover fixed;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       content: "";
-      filter: blur(15px);
+      filter: blur(5px);
       position: absolute;
       top: 0;
       right: 0;
@@ -547,20 +642,23 @@ article.markdown .content {
       white-space: nowrap; }
   article.markdown .content .book-columns {
     display: flex;
-    flex-wrap: wrap;
-    margin: .5rem;
-    margin-left: -.5rem;
-    margin-right: -.5rem; }
+    flex-wrap: wrap; }
     article.markdown .content .book-columns .markdown-inner {
-      margin: .5rem;
       flex: 1 1; }
+      article.markdown .content .book-columns .markdown-inner > :first-child,
+      article.markdown .content .book-columns .markdown-inner > :first-child > :first-child,
+      article.markdown .content .book-columns .markdown-inner > :first-child > :first-child > :first-child {
+        margin-top: 0 !important; }
+      article.markdown .content .book-columns .markdown-inner > :last-child,
+      article.markdown .content .book-columns .markdown-inner > :last-child > :last-child,
+      article.markdown .content .book-columns .markdown-inner > :last-child > :last-child > :last-child {
+        margin-bottom: 0 !important; }
   article.markdown .content .book-tabs {
     margin: .5em 0;
     overflow: visible;
     display: flex;
     flex-wrap: wrap; }
     article.markdown .content .book-tabs label {
-      height: 2rem;
       line-height: 2rem;
       display: inline-block;
       padding: 0 1rem;
@@ -584,18 +682,23 @@ article.markdown .content {
         margin-bottom: 0 !important; }
     article.markdown .content .book-tabs input[type="radio"] {
       display: none; }
-      article.markdown .content .book-tabs input[type="radio"]:not(:checked) + label:hover {
-        background: var(--background-hover) !important; }
       article.markdown .content .book-tabs input[type="radio"]:checked + label {
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
-        position: relative;
-        background: var(--background) !important;
-        border-radius: var(--radius); }
+        background: rgba(255, 255, 255, 0.2) !important;
+        position: relative; }
         article.markdown .content .book-tabs input[type="radio"]:checked + label::before {
           background: url(/images/BackGround.jpg) 0/cover fixed;
+          border-top-left-radius: var(--radius);
+          border-top-right-radius: var(--radius);
+          border-bottom-left-radius: var(--radius);
+          border-bottom-right-radius: var(--radius);
           content: "";
-          filter: blur(15px);
+          filter: blur(5px);
           position: absolute;
           top: 0;
           right: 0;
@@ -607,18 +710,25 @@ article.markdown .content {
   article.markdown .content details {
     margin: .3rem 0; }
     article.markdown .content details summary {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
-      background: var(--background) !important;
-      border-radius: var(--radius);
       font-size: 14px;
       padding: .3rem;
       text-shadow: 0 0; }
       article.markdown .content details summary::before {
         background: url(/images/BackGround.jpg) 0/cover fixed;
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
         content: "";
-        filter: blur(15px);
+        filter: blur(5px);
         position: absolute;
         top: 0;
         right: 0;
@@ -626,7 +736,8 @@ article.markdown .content {
         left: 0;
         z-index: -999; }
       article.markdown .content details summary:hover {
-        background: var(--background-hover) !important; }
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
       article.markdown .content details summary::marker {
         content: '';
         font-size: 0; }
@@ -709,118 +820,12 @@ article::-webkit-scrollbar {
     
       
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
     <div class='data-box'>
-      <h3>59</h3>
+      <h3>6</h3>
       <span>Posts</span>
     </div>
     <div class='data-box'>
-      <h3>56246</h3>
+      <h3>16,107</h3>
       <span>Words</span>
     </div>
   </div>
@@ -857,39 +862,7 @@ article::-webkit-scrollbar {
     <h2 class='alt'><img class='alt' src="../images/categories.svg" />Tags</h2>
 
 <div class="tag-card">
-  <a class="silent" href="../categories/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/">基础数学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/dp/">DP</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/%E6%95%B0%E8%AE%BA/">数论</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/%E5%9B%BE%E8%AE%BA/">图论</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+  <a class="silent" href="../categories/%E7%AE%97%E6%B3%95/">算法</a>
 </div>
 
   </div>
@@ -897,8 +870,9 @@ article::-webkit-scrollbar {
 <aside class='toc'>
   <h2 class='alt'><img class='alt' src='../images/notice.svg'>Notice</h2>
 <ul>
-<li>本站还处于建设中</li>
-<li>部分 URL 存在跳转错误</li>
+<li>此站点仍在建设中.</li>
+<li>一些 URL 存在跳转错误.</li>
+<li>部分文章正在重构中.</li>
 </ul>
 
 <br>
@@ -916,49 +890,8 @@ article::-webkit-scrollbar {
   
 
   
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/">基础数学</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/dp/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/dp/">DP</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E6%95%B0%E8%AE%BA/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E6%95%B0%E8%AE%BA/">数论</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E5%9B%BE%E8%AE%BA/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E5%9B%BE%E8%AE%BA/">图论</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
-  </div>
-  
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/&#34;">
-    <img src="../images/folder.svg" />
-    <a class="alt" href="../categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+  <div class="post-item" onclick="window.location.href=&#34;/categories/%E7%AE%97%E6%B3%95/&#34;">
+    <img src="../images/folder.svg" /><span>算法</span>
   </div>
   
   

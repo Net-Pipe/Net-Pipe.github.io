@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="">
+  <meta name="description" content="简">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href='../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
-  <link rel='shortcut icon' type='image/x-icon' href='../images/NetPipe.png' />
+  <link href='../../../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
+  <link rel='shortcut icon' type='image/x-icon' href='../../../images/NetPipe.png' />
 
   
   <style>* {
@@ -801,7 +801,7 @@ article::-webkit-scrollbar {
   
 <aside class='meta'>
   <div class='author'>
-    <a href="../"><img src='../images/NetPipe.png'></a>
+    <a href="../../../"><img src='../../../images/NetPipe.png'></a>
     <h2 class='name'>Net Pipe</h2>
   </div>
 
@@ -833,7 +833,7 @@ article::-webkit-scrollbar {
   <div class="social">
     <a class="silent">
       <div class="social-box">
-        <img src="../images/search.svg"/>
+        <img src="../../../images/search.svg"/>
         <div class="search">
           <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
         </div>
@@ -847,28 +847,28 @@ article::-webkit-scrollbar {
         }
       </script>
     </a>
-    <a class="silent" href="../">
-      <div class="social-box"><img src="../images/home.svg"/><span>Home</span></div>
+    <a class="silent" href="../../../">
+      <div class="social-box"><img src="../../../images/home.svg"/><span>Home</span></div>
     </a>
-    <a class="silent" href="../post/">
-      <div class="social-box"><img src="../images/posts.svg"/><span>Posts</span></div>
+    <a class="silent" href="../../../post/">
+      <div class="social-box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" type="application/rss+xml" href="../index.xml">
-      <div class="social-box"><img src="../images/rss.svg"/><span>RSS</span></div>
+    <a class="silent" type="application/rss+xml" href="../../../index.xml">
+      <div class="social-box"><img src="../../../images/rss.svg"/><span>RSS</span></div>
     </a>
   </div>
 
   <div class="tags">
-    <h2 class='alt'><img class='alt' src="../images/categories.svg" />Tags</h2>
+    <h2 class='alt'><img class='alt' src="../../../images/categories.svg" />Tags</h2>
 
 <div class="tag-card">
-  <a class="silent" href="../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="silent" href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
 </div>
 
   </div>
 </aside>
 <aside class='toc'>
-  <h2 class='alt'><img class='alt' src='../images/notice.svg'>Notice</h2>
+  <h2 class='alt'><img class='alt' src='../../../images/notice.svg'>Notice</h2>
 <ul>
 <li>此站点仍在建设中.</li>
 <li>一些 URL 存在跳转错误.</li>
@@ -876,32 +876,204 @@ article::-webkit-scrollbar {
 </ul>
 
 <br>
+  
+    <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#广度优先搜索bfs">广度优先搜索（BFS）</a></li>
+    <li><a href="#深度优先搜索dfs">深度优先搜索（DFS）</a></li>
+    <li><a href="#多维度搜索前驱">多维度搜索：前驱</a></li>
+  </ul>
+</nav>
+  
 </aside>
 
   
-<article class="list">
-  <div class="post-item">
+<article class='markdown'>
+<div class='content'>
+  
+  <h1>搜索</h1>
+  
+  <span class="post-meta">
     
-    <img src="../images/folder.svg" />
+    <img class='alt' src="../../../images/time.svg"></img>
+    Jan 13, 2021
     
-    <span>Posts</span>
+  </span>
+
+  
+  <div class='tag-card'>
+    <a class='silent' href="../../../categories/%e7%ae%97%e6%b3%95/">算法</a>
   </div>
+  
+
+  
+  <div class='post-toc'>
+  <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#广度优先搜索bfs">广度优先搜索（BFS）</a></li>
+    <li><a href="#深度优先搜索dfs">深度优先搜索（DFS）</a></li>
+    <li><a href="#多维度搜索前驱">多维度搜索：前驱</a></li>
+  </ul>
+</nav>
+  </div>
+  
 
   
 
-  
-  <div class="post-item" onclick="window.location.href=&#34;/post/%E7%AE%97%E6%B3%95/&#34;">
-    <img src="../images/folder.svg" /><span>算法</span>
+  <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>搜索算法：枚举问题的所有可能答案，并逐一校验.</p>
+<p>设集合 $A$ 满足以下性质</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">x<span style="color:#728e00">\in</span> A<span style="color:#728e00">\intro</span>
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+  2x<span style="color:#728e00">\in</span> A<span style="color:#728e00">\\</span>
+  3x-1<span style="color:#728e00">\in</span> A
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div><p>已知 $3\in A$，问 $23\in A$ 是否成立？</p>
+<p>$A$ 的性质可抽象为下图：</p>
+<p><img class="md__image" src="0.svg" alt=""  /></p>
+<p>以 $3$ 为树根，向下拓展树形图. 树中的所有节点都属于 $A$. 于是只需查找 $23$ 是否在树中.</p>
+<p><img class="md__image" src="1.svg" alt=""  /></p>
+<p>对于复杂的问题，可以先抽象出关系图，再搜索求解.</p>
+<h2 id="广度优先搜索bfs">广度优先搜索（BFS） <a class="anchor" href="#%e5%b9%bf%e5%ba%a6%e4%bc%98%e5%85%88%e6%90%9c%e7%b4%a2bfs">¶</a></h2><p>广度优先搜索（<code>Breadth First Search</code>，<code>BFS</code>）按层次搜索节点. 其原理如下：</p>
+<ol>
+<li>建立空队列.</li>
+<li>将根节点入队.</li>
+<li>取出队头，将其所有子节点入队.</li>
+<li>重复上一步直到队列为空.</li>
+</ol>
+<p><code>BFS</code> 搜索该图的步骤：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="markdown-inner">
+    <ol>
+<li>节点 $1$ 入队</li>
+<li>节点 $1$ 出队，$2,3$ 入队</li>
+<li>节点 $2$ 出队，$4,5$ 入队</li>
+<li>节点 $3$ 出队，$6,7$ 入队</li>
+<li>节点 $4$ 出队</li>
+<li>节点 $5$ 出队</li>
+<li>节点 $6$ 出队</li>
+<li>节点 $7$ 出队</li>
+</ol>
+
   </div>
-  
-  
-  
+
+  <div class="markdown-inner">
+    <img class="md__image" src="2.svg" alt=""  />
+  </div>
+
+</div>
+
+<blockquote>
+<p>已进过队的节点不能再入队，否则可能导致死循环.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">bool</span> <span style="color:#434f54">vis</span>[];  <span style="color:#95a5a6">// vis[u]：节点 u 是否访问过
+</span><span style="color:#95a5a6"></span>
+<span style="color:#00979d">void</span> <span style="color:#d35400">bfs</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">s</span>) {
+    <span style="color:#434f54">queue</span><span style="color:#728e00">&lt;</span><span style="color:#00979d">int</span><span style="color:#728e00">&gt;</span> <span style="color:#434f54">Q</span>;
+    <span style="color:#434f54">Q</span>.<span style="color:#434f54">push</span>(<span style="color:#434f54">s</span>);
+    <span style="color:#728e00">while</span>(<span style="color:#728e00">!</span><span style="color:#434f54">Q</span>.<span style="color:#434f54">empty</span>()) {
+        <span style="color:#00979d">int</span> <span style="color:#434f54">u</span> <span style="color:#728e00">=</span> <span style="color:#434f54">Q</span>.<span style="color:#434f54">top</span>();
+        <span style="color:#434f54">Q</span>.<span style="color:#434f54">pop</span>();
+        <span style="color:#728e00">for</span> ( <span style="color:#95a5a6">/* 枚举 u 的子节点 v */</span> ) {
+            <span style="color:#728e00">if</span> (<span style="color:#728e00">!</span><span style="color:#434f54">vis</span>[<span style="color:#434f54">v</span>]) {
+                <span style="color:#434f54">Q</span>.<span style="color:#434f54">push</span>(<span style="color:#434f54">v</span>);
+                <span style="color:#434f54">vis</span>[<span style="color:#434f54">v</span>] <span style="color:#728e00">=</span> <span style="color:#728e00">true</span>;
+            }
+        }
+    }
+}
+</code></pre></div><h2 id="深度优先搜索dfs">深度优先搜索（DFS） <a class="anchor" href="#%e6%b7%b1%e5%ba%a6%e4%bc%98%e5%85%88%e6%90%9c%e7%b4%a2dfs">¶</a></h2><p>深度优先搜索（<code>Depth First Search</code>，<code>DFS</code>）尽可能往更深处搜索节点. 其原理为递归访问子节点.</p>
+<p><code>DFS</code> 搜索该图的步骤：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="markdown-inner">
+    <ol>
+<li>访问根节点 $1$.
+<ol>
+<li>访问子节点 $2$.
+<ol>
+<li>访问子节点 $4$.</li>
+<li>访问子节点 $5$.</li>
+</ol>
+</li>
+<li>访问子节点 $3$.
+<ol>
+<li>访问子节点 $6$.</li>
+<li>访问子节点 $7$.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+  </div>
+
+  <div class="markdown-inner">
+    <img class="md__image" src="2.svg" alt=""  />
+  </div>
+
+</div>
+
+<blockquote>
+<p>节点不能被重复访问，否则将导致死循环.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">bool</span> <span style="color:#434f54">vis</span>[];  <span style="color:#95a5a6">// vis[u]：节点 u 是否访问过
+</span><span style="color:#95a5a6"></span>
+<span style="color:#00979d">void</span> <span style="color:#d35400">dfs</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">s</span>) {
+    <span style="color:#434f54">vis</span>[<span style="color:#434f54">s</span>] <span style="color:#728e00">=</span> <span style="color:#728e00">true</span>;
+    <span style="color:#728e00">for</span> ( <span style="color:#95a5a6">/* 枚举 u 的子节点 v */</span> ) {
+        <span style="color:#728e00">if</span> (<span style="color:#728e00">!</span><span style="color:#434f54">vis</span>[<span style="color:#434f54">v</span>]) {
+            <span style="color:#434f54">dfs</span>(<span style="color:#434f54">v</span>);
+        }
+    }
+}
+</code></pre></div><h2 id="多维度搜索前驱">多维度搜索：前驱 <a class="anchor" href="#%e5%a4%9a%e7%bb%b4%e5%ba%a6%e6%90%9c%e7%b4%a2%e5%89%8d%e9%a9%b1">¶</a></h2><p>搜索二维数组 $a[n,m]$ 时，$a[i,j]$ 抽象为节点 $(i,j)$. 其子节点为 $(i+1,j),(i-1,j),(i,j+1),(i,j-1)$，即与其相邻的四个节点.</p>
+<p><img class="md__image" src="3.svg" alt=""  /></p>
+<p>现在从某个节点开始搜索，枚举子节点的工作就显得繁琐. 以 <code>DFS</code> 为例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">bool</span> <span style="color:#434f54">vis</span>[][];   <span style="color:#95a5a6">// vis[x][y]: a[x][y] 是否访问过
+</span><span style="color:#95a5a6"></span>
+<span style="color:#00979d">void</span> <span style="color:#d35400">dfs</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">x</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">y</span>) {
+    <span style="color:#434f54">vis</span>[<span style="color:#434f54">x</span>][<span style="color:#434f54">y</span>] <span style="color:#728e00">=</span> <span style="color:#728e00">true</span>;
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">x</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#728e00">!</span><span style="color:#434f54">vis</span>[<span style="color:#434f54">x</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">y</span>]) {
+        <span style="color:#434f54">dfs</span>(<span style="color:#434f54">x</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>, <span style="color:#434f54">y</span>);
+    }
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">x</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&gt;=</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#728e00">!</span><span style="color:#434f54">vis</span>[<span style="color:#434f54">x</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>][<span style="color:#434f54">y</span>]) {
+        <span style="color:#434f54">dfs</span>(<span style="color:#434f54">x</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>, <span style="color:#434f54">y</span>);
+    }
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">y</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#728e00">!</span><span style="color:#434f54">vis</span>[<span style="color:#434f54">x</span>][<span style="color:#434f54">y</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>]) {
+        <span style="color:#434f54">dfs</span>(<span style="color:#434f54">x</span>, <span style="color:#434f54">y</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>);
+    }
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">y</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&gt;=</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#728e00">!</span><span style="color:#434f54">vis</span>[<span style="color:#434f54">x</span>][<span style="color:#434f54">y</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>]) {
+        <span style="color:#434f54">dfs</span>(<span style="color:#434f54">x</span>, <span style="color:#434f54">y</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>);
+    }
+}
+</code></pre></div><p>届时可以通过前驱节省码量.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">bool</span> <span style="color:#434f54">vis</span>[][];
+
+<span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">dx</span>[] <span style="color:#728e00">=</span> {<span style="color:#8a7b52">1</span>, <span style="color:#8a7b52">0</span>, <span style="color:#728e00">-</span><span style="color:#8a7b52">1</span>, <span style="color:#8a7b52">0</span>}; <span style="color:#95a5a6">// 第一维度前驱
+</span><span style="color:#95a5a6"></span><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">dy</span>[] <span style="color:#728e00">=</span> {<span style="color:#8a7b52">0</span>, <span style="color:#8a7b52">1</span>, <span style="color:#8a7b52">0</span>, <span style="color:#728e00">-</span><span style="color:#8a7b52">1</span>}; <span style="color:#95a5a6">// 第二维度前驱
+</span><span style="color:#95a5a6"></span>
+<span style="color:#00979d">void</span> <span style="color:#d35400">dfs</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">x</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">y</span>) {
+    <span style="color:#434f54">vis</span>[<span style="color:#434f54">x</span>][<span style="color:#434f54">y</span>] <span style="color:#728e00">=</span> <span style="color:#728e00">true</span>;
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;</span> <span style="color:#8a7b52">4</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#00979d">int</span> <span style="color:#434f54">nx</span> <span style="color:#728e00">=</span> <span style="color:#434f54">x</span> <span style="color:#728e00">+</span> <span style="color:#434f54">dx</span>[<span style="color:#434f54">i</span>], <span style="color:#434f54">ny</span> <span style="color:#728e00">=</span> <span style="color:#434f54">y</span> <span style="color:#728e00">+</span> <span style="color:#434f54">dy</span>[<span style="color:#434f54">i</span>];
+        <span style="color:#728e00">if</span> (<span style="color:#434f54">nx</span> <span style="color:#728e00">&gt;=</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#434f54">nx</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#434f54">ny</span> <span style="color:#728e00">&gt;=</span> <span style="color:#8a7b52">1</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#434f54">ny</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">m</span> <span style="color:#728e00">&amp;&amp;</span> <span style="color:#728e00">!</span><span style="color:#434f54">vis</span>[<span style="color:#434f54">nx</span>][<span style="color:#434f54">ny</span>]) {
+            <span style="color:#434f54">dfs</span>(<span style="color:#434f54">nx</span>, <span style="color:#434f54">ny</span>);
+        }
+    }
+}
+</code></pre></div>
+</div>
+
 </article>
-
 
   </main>
 
-  <script src="../js/jquery.min.js"></script>
+  <script src="../../../js/jquery.min.js"></script>
 
 
 
@@ -949,9 +1121,9 @@ $('.markdown').find('img').each(function(id, el, arr) {
 
 
 
-<link rel="stylesheet" href="../katex/katex.min.css">
-<script src="../katex/katex.min.js"></script>
-<script src="../katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../../../katex/katex.min.css">
+<script src="../../../katex/katex.min.js"></script>
+<script src="../../../katex/auto-render.min.js"></script>
 
 <script>
 function renderTex() {

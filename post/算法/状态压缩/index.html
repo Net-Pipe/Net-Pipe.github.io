@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="">
+  <meta name="description" content="简">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href='../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
-  <link rel='shortcut icon' type='image/x-icon' href='../images/NetPipe.png' />
+  <link href='../../../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
+  <link rel='shortcut icon' type='image/x-icon' href='../../../images/NetPipe.png' />
 
   
   <style>* {
@@ -801,7 +801,7 @@ article::-webkit-scrollbar {
   
 <aside class='meta'>
   <div class='author'>
-    <a href="../"><img src='../images/NetPipe.png'></a>
+    <a href="../../../"><img src='../../../images/NetPipe.png'></a>
     <h2 class='name'>Net Pipe</h2>
   </div>
 
@@ -833,7 +833,7 @@ article::-webkit-scrollbar {
   <div class="social">
     <a class="silent">
       <div class="social-box">
-        <img src="../images/search.svg"/>
+        <img src="../../../images/search.svg"/>
         <div class="search">
           <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
         </div>
@@ -847,28 +847,28 @@ article::-webkit-scrollbar {
         }
       </script>
     </a>
-    <a class="silent" href="../">
-      <div class="social-box"><img src="../images/home.svg"/><span>Home</span></div>
+    <a class="silent" href="../../../">
+      <div class="social-box"><img src="../../../images/home.svg"/><span>Home</span></div>
     </a>
-    <a class="silent" href="../post/">
-      <div class="social-box"><img src="../images/posts.svg"/><span>Posts</span></div>
+    <a class="silent" href="../../../post/">
+      <div class="social-box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" type="application/rss+xml" href="../index.xml">
-      <div class="social-box"><img src="../images/rss.svg"/><span>RSS</span></div>
+    <a class="silent" type="application/rss+xml" href="../../../index.xml">
+      <div class="social-box"><img src="../../../images/rss.svg"/><span>RSS</span></div>
     </a>
   </div>
 
   <div class="tags">
-    <h2 class='alt'><img class='alt' src="../images/categories.svg" />Tags</h2>
+    <h2 class='alt'><img class='alt' src="../../../images/categories.svg" />Tags</h2>
 
 <div class="tag-card">
-  <a class="silent" href="../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="silent" href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
 </div>
 
   </div>
 </aside>
 <aside class='toc'>
-  <h2 class='alt'><img class='alt' src='../images/notice.svg'>Notice</h2>
+  <h2 class='alt'><img class='alt' src='../../../images/notice.svg'>Notice</h2>
 <ul>
 <li>此站点仍在建设中.</li>
 <li>一些 URL 存在跳转错误.</li>
@@ -876,32 +876,98 @@ article::-webkit-scrollbar {
 </ul>
 
 <br>
+  
+    <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#lowbit-运算">lowbit 运算</a></li>
+  </ul>
+</nav>
+  
 </aside>
 
   
-<article class="list">
-  <div class="post-item">
+<article class='markdown'>
+<div class='content'>
+  
+  <h1>状态压缩</h1>
+  
+  <span class="post-meta">
     
-    <img src="../images/folder.svg" />
+    <img class='alt' src="../../../images/time.svg"></img>
+    Feb 23, 2021
     
-    <span>Posts</span>
+  </span>
+
+  
+  <div class='tag-card'>
+    <a class='silent' href="../../../categories/%e7%ae%97%e6%b3%95/">算法</a>
   </div>
+  
+
+  
+  <div class='post-toc'>
+  <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#lowbit-运算">lowbit 运算</a></li>
+  </ul>
+</nav>
+  </div>
+  
 
   
 
-  
-  <div class="post-item" onclick="window.location.href=&#34;/post/%E7%AE%97%E6%B3%95/&#34;">
-    <img src="../images/folder.svg" /><span>算法</span>
-  </div>
-  
-  
-  
+  <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>由于 <code>bool</code> 变量只有 $0$ 和 $1$ 两种值，二进制位也具备此特征，故每个 <code>bool</code> 数组都可用一个二进制数表示.</p>
+<p>将 <code>bool</code> 数组 $a$（长为 $n$）用 $n$ 位二进制数表示，它的第 $i$ 位表示 $a[i]$.</p>
+<p>状态压缩的相关操作方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">取出第 $k$ 位数</td>
+<td style="text-align:left"><code>(n &gt;&gt; (k - 1)) &amp; 1</code></td>
+</tr>
+<tr>
+<td style="text-align:left">将第 $k$ 位取反</td>
+<td style="text-align:left"><code>n ^= (1 &lt;&lt; (k - 1))</code></td>
+</tr>
+<tr>
+<td style="text-align:left">将第 $k$ 位赋值为 $1$</td>
+<td style="text-align:left"><code>n |= (1 &lt;&lt; (k - 1))</code></td>
+</tr>
+<tr>
+<td style="text-align:left">将第 $k$ 位赋值为 $0$</td>
+<td style="text-align:left"><code>n &amp;= ~ (1 &lt;&lt; (k - 1))</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lowbit-运算">lowbit 运算 <a class="anchor" href="#lowbit-%e8%bf%90%e7%ae%97">¶</a></h2><p>$lowbit(n)$：$n$ 在二进制下「最低位的 $1$ 和其后所有的 $0$」构成的数.</p>
+<p>例：$n=(101000)_2$，$lowbit(n)=(1000)_2$.</p>
+<p>$n_i$：$n$ 在二进制下的第 $i$ 位数字. 
+设 $n_k=1$，$n_0\cdots n_{k-1}=0$.</p>
+<ol>
+<li>将 $n$ 的每一位取反，此时 $n_k=0$，$n_0\cdots n_{k-1}=1$，其余位和原来相反.</li>
+<li>再令 $n=n+1$，此时 $n_k=1$，$n_0\cdots n_{k-1}=0$，其余位仍和原来相反.</li>
+<li>因此 $n\&amp;(\sim n+1)$ 仅有第 $k$ 位为 $1$.</li>
+</ol>
+<p>由于在补码表示下 $-n=\sim n+1$，故</p>
+<p>$$lowbit(n)=n\&amp;(\sim n+1)=n\&amp;-n$$</p>
+
+</div>
+
 </article>
-
 
   </main>
 
-  <script src="../js/jquery.min.js"></script>
+  <script src="../../../js/jquery.min.js"></script>
 
 
 
@@ -949,9 +1015,9 @@ $('.markdown').find('img').each(function(id, el, arr) {
 
 
 
-<link rel="stylesheet" href="../katex/katex.min.css">
-<script src="../katex/katex.min.js"></script>
-<script src="../katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../../../katex/katex.min.css">
+<script src="../../../katex/katex.min.js"></script>
+<script src="../../../katex/auto-render.min.js"></script>
 
 <script>
 function renderTex() {
