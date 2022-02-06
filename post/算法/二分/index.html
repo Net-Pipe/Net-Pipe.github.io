@@ -156,20 +156,6 @@ article {
   display: inline-block;
   padding: .1rem .5rem;
   margin: .3rem 0; }
-  .tag-card::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    content: "";
-    filter: blur(5px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   .tag-card:hover {
     cursor: pointer;
     background: rgba(255, 255, 255, 0.8) !important; }
@@ -182,9 +168,6 @@ article {
   height: 16px;
   display: inline-block !important;
   vertical-align: text-bottom; }
-
-.post-summary {
-  margin: .2rem 0; }
 
 h2.alt {
   margin: .5rem 0;
@@ -208,20 +191,6 @@ aside {
   background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
   margin: 1rem; }
-  aside::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    content: "";
-    filter: blur(5px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   aside > :first-child,
   aside > :first-child > :first-child,
   aside > :first-child > :first-child > :first-child {
@@ -267,20 +236,6 @@ aside.meta {
       margin-top: .5rem;
       padding: .3rem .5rem;
       font-size: 18px; }
-      aside.meta .social .social-box::before {
-        background: url(/images/BackGround.jpg) 0/cover fixed;
-        border-top-left-radius: var(--radius);
-        border-top-right-radius: var(--radius);
-        border-bottom-left-radius: var(--radius);
-        border-bottom-right-radius: var(--radius);
-        content: "";
-        filter: blur(5px);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -999; }
       aside.meta .social .social-box:hover {
         cursor: pointer;
         background: rgba(255, 255, 255, 0.8) !important; }
@@ -322,20 +277,6 @@ article.posts .post {
   position: relative;
   padding: 1rem;
   margin: 1rem 0; }
-  article.posts .post::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    content: "";
-    filter: blur(5px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   article.posts .post:hover {
     cursor: pointer;
     background: rgba(255, 255, 255, 0.8) !important; }
@@ -375,20 +316,6 @@ article.posts .pagination {
     float: left;
     text-align: center;
     vertical-align: middle; }
-    article.posts .pagination div.pagination-box::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      content: "";
-      filter: blur(5px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
     article.posts .pagination div.pagination-box:not(.disabled):hover {
       cursor: pointer;
       background: rgba(255, 255, 255, 0.8) !important; }
@@ -425,20 +352,6 @@ article.list .post-item {
   height: 2.3rem;
   line-height: 2.3rem;
   margin: .3rem 0; }
-  article.list .post-item::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    content: "";
-    filter: blur(5px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   article.list .post-item:hover {
     cursor: pointer;
     background: rgba(255, 255, 255, 0.8) !important; }
@@ -470,20 +383,6 @@ article.markdown .content {
   background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
   padding: 1rem; }
-  article.markdown .content::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    content: "";
-    filter: blur(5px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   article.markdown .content > :first-child,
   article.markdown .content > :first-child > :first-child,
   article.markdown .content > :first-child > :first-child > :first-child {
@@ -522,22 +421,9 @@ article.markdown .content {
     box-shadow: var(--shadow);
     background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
+    background: rgba(255, 255, 255, 0.5) !important;
     margin: .5rem 0;
     padding: .5rem 1rem; }
-    article.markdown .content blockquote::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      content: "";
-      filter: blur(5px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
     article.markdown .content blockquote > :first-child,
     article.markdown .content blockquote > :first-child > :first-child,
     article.markdown .content blockquote > :first-child > :first-child > :first-child {
@@ -559,20 +445,6 @@ article.markdown .content {
     -moz-user-select: text;
     -webkit-user-select: text;
     padding: 1px 2px; }
-    article.markdown .content code::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      content: "";
-      filter: blur(5px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
   article.markdown .content pre {
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
@@ -582,6 +454,7 @@ article.markdown .content {
     box-shadow: var(--shadow);
     background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
+    background: rgba(255, 255, 255, 0.5) !important;
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
@@ -589,20 +462,6 @@ article.markdown .content {
     padding: .5rem 1rem;
     overflow: auto hidden;
     line-height: 1.3rem; }
-    article.markdown .content pre::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      content: "";
-      filter: blur(5px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
     article.markdown .content pre code {
       border: none;
       background: none !important;
@@ -622,20 +481,6 @@ article.markdown .content {
     border-spacing: 0;
     display: block;
     -webkit-overflow-scrolling: touch; }
-    article.markdown .content table::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      content: "";
-      filter: blur(5px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
     article.markdown .content table th, article.markdown .content table td {
       padding: .3rem 16px;
       font-weight: normal;
@@ -691,20 +536,6 @@ article.markdown .content {
         box-shadow: var(--shadow);
         background: rgba(255, 255, 255, 0.2) !important;
         position: relative; }
-        article.markdown .content .book-tabs input[type="radio"]:checked + label::before {
-          background: url(/images/BackGround.jpg) 0/cover fixed;
-          border-top-left-radius: var(--radius);
-          border-top-right-radius: var(--radius);
-          border-bottom-left-radius: var(--radius);
-          border-bottom-right-radius: var(--radius);
-          content: "";
-          filter: blur(5px);
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          z-index: -999; }
         article.markdown .content .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
           display: block; }
   article.markdown .content details {
@@ -721,20 +552,6 @@ article.markdown .content {
       font-size: 14px;
       padding: .3rem;
       text-shadow: 0 0; }
-      article.markdown .content details summary::before {
-        background: url(/images/BackGround.jpg) 0/cover fixed;
-        border-top-left-radius: var(--radius);
-        border-top-right-radius: var(--radius);
-        border-bottom-left-radius: var(--radius);
-        border-bottom-right-radius: var(--radius);
-        content: "";
-        filter: blur(5px);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -999; }
       article.markdown .content details summary:hover {
         cursor: pointer;
         background: rgba(255, 255, 255, 0.8) !important; }
@@ -825,7 +642,7 @@ article::-webkit-scrollbar {
       <span>Posts</span>
     </div>
     <div class='data-box'>
-      <h3>16,107</h3>
+      <h3>16,684</h3>
       <span>Words</span>
     </div>
   </div>
@@ -883,6 +700,7 @@ article::-webkit-scrollbar {
     <li><a href="#简介">简介</a></li>
     <li><a href="#条件">条件</a></li>
     <li><a href="#原理">原理</a></li>
+    <li><a href="#q--a">Q &amp; A</a></li>
     <li><a href="#整数域上的二分">整数域上的二分</a></li>
     <li><a href="#实数域上的二分">实数域上的二分</a></li>
   </ul>
@@ -910,6 +728,10 @@ article::-webkit-scrollbar {
   
 
   
+  <div class="post-summary">据说只有 10% 的程序员能写对二分.</div>
+  
+
+  
   <div class='post-toc'>
   <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
 <nav id="TableOfContents">
@@ -917,6 +739,7 @@ article::-webkit-scrollbar {
     <li><a href="#简介">简介</a></li>
     <li><a href="#条件">条件</a></li>
     <li><a href="#原理">原理</a></li>
+    <li><a href="#q--a">Q &amp; A</a></li>
     <li><a href="#整数域上的二分">整数域上的二分</a></li>
     <li><a href="#实数域上的二分">实数域上的二分</a></li>
   </ul>
@@ -928,23 +751,20 @@ article::-webkit-scrollbar {
 
   <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>玩过「猜数字」游戏吗？</p>
 <ul>
-<li>叫你的朋友写一个 $(0,1001)$ 内的整数 $n$.</li>
+<li>叫你的朋友写一个 $[1,1000]$ 内的整数 $n$.</li>
 <li>每轮你要需要给出数字 $x$，你的朋友只能回答「$n&gt;x$」「$n&lt;x$」或「$n=x$」.</li>
 </ul>
-<p>你能用最少次数猜出 $n$ 吗？</p>
-<p>最初 $n\in(0,1001)$. 你可以先猜 $500$.</p>
+<p>如何用尽量少的次数猜出 $n$？</p>
+<p>最初 $n\in[1,1000]$. 你可以先猜 $500$.</p>
 <ul>
-<li>若 $n&gt;500$，则可以进一步确定 $n\in(500,1001)$.</li>
-<li>若 $n&lt;500$，则可以进一步确定 $n\in(0,500)$.</li>
+<li>若 $n&gt;500$，则可以进一步确定 $n\in[501,1000]$.</li>
+<li>若 $n&lt;500$，则可以进一步确定 $n\in[1,499]$.</li>
 <li>否则 $n=500$.</li>
 </ul>
-<p>重复给出范围的中间数，每次都会将 $n$ 的范围缩小一半，最多 $\log_2{n}$ 次就可以确定 $n$.</p>
+<p>重复给出范围的中间数，每次将 $n$ 的范围缩小一半，最多 $\log_2{n}$ 次就能确定 $n$.</p>
 <p>通过若干次折半范围实现快速查询，即为二分算法.</p>
-<blockquote>
-<p>据说只有 10% 的程序员能写对二分. 二分算法原理很简单，细节很魔鬼.</p>
-</blockquote>
 <h2 id="条件">条件 <a class="anchor" href="#%e6%9d%a1%e4%bb%b6">¶</a></h2><p>数组须呈现某种规律（一般是大小顺序）.</p>
-<p>若数组 $a$ 能分为两半，前半段都不满足条件 $P$，后半段都满足条件 $P$，则可用二分算法确定分割点，进而确定「第一个满足条件 $P$ 的元素」.</p>
+<p>将数组 $a$ 对半分，前段不满足 $P$，后段都满足 $P$，则可用二分算法确定分割点，进而确定「第一个满足 $P$ 的元素」.</p>
 <h2 id="原理">原理 <a class="anchor" href="#%e5%8e%9f%e7%90%86">¶</a></h2><p>查找数组 $a$（长度 $n$）中第一个满足条件 $P$ 的元素：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">bool</span> <span style="color:#d35400">check</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">k</span>) {
 	<span style="color:#95a5a6">/* 返回 a[k] 是否满足条件 P */</span>
@@ -959,24 +779,35 @@ article::-webkit-scrollbar {
 	}
 	<span style="color:#728e00">return</span> <span style="color:#434f54">a</span>[<span style="color:#434f54">r</span>];
 }
-</code></pre></div><p><strong>细节：</strong></p>
+</code></pre></div><h2 id="q--a">Q &amp; A <a class="anchor" href="#q--a">¶</a></h2><p>作者列出了大家在学习二分算法中的一些疑问和解答，供参考学习.</p>
+<blockquote>
+<p><strong>Q</strong>：为何循环的条件是 $l+1&lt;r$？我在其他参考书上看的是 $l&lt;r$.</p>
+<p><strong>A</strong>：在我的版本中，当 $l+1=r$ 时，$a[l]$ 或 $a[r]$ 就是要找的分割点，此时应退出循环. 故循环能进行的条件是 $l+1&lt;r$.</p>
+</blockquote>
+<blockquote>
+<p><strong>Q</strong>：针对一段数组区间，比如对 $a[L\cdots R]$ 进行二分查找怎么办？</p>
+<p><strong>A</strong>：在程序开头令 $l=L-1,r=R+1$，此举的目的是保证 $m=\left\lfloor\dfrac{ l+r}{2}\right\rfloor$ 能取到范围端点 $L$ 或 $R$.</p>
+</blockquote>
+<blockquote>
+<p><strong>Q</strong>：$m$ 会溢出 $[L,R]$ 的范围吗？</p>
+<p><strong>A</strong>：不会. 那时已因不满足 $l+1&lt;r$ 而退出循环了.</p>
+</blockquote>
+<blockquote>
+<p><strong>Q</strong>：如果反过来，数组 $a$ 的前段满足 $P$，后段不满足 $P$ 怎么办？</p>
+<p><strong>A</strong>：我们把两种情况都讨论一遍，你应该就会茅塞顿开.</p>
+<p>若前段（$a[1\cdots l]$）不满足 $P$，后段（$a[r\cdots n]$）满足 $P$：</p>
 <ul>
-<li>循环的条件必须是 $l+1&lt;r$.</li>
-<li>若查找的对象是 $a_L\cdots a_R$，则最初必须令 $l=L-1,r=R+1$，这样才保证 $m$ 能取到范围端点 $L$ 或 $R$.</li>
-<li>不必担心 $m$ 会溢出 $[L,R]$，因为那时候已经不满足 $l+1&lt;r$ 而退出循环了.</li>
-<li>若数组前半段不满足 $P$，后半段满足 $P$：
+<li>$a[l]$ 总不满足 $P$，$a[r]$ 总满足 $P$.</li>
+<li>因此当 $a[m]$ 满足 $P$ 时，应令 $r=m$，否则令 $l=m$.</li>
+<li>第一个满足 $P$ 的是 $a[r]$.</li>
+</ul>
+<p>若前段（$a[1\cdots l]$）满足 $P$，后段（$a[r\cdots n]$）不满足 $P$：</p>
 <ul>
-<li>$a[m]$ 满足 $P$ 时应令 $r=m$.</li>
-<li>第一个满足 $P$ 的是 $a_r$.</li>
+<li>$a[l]$ 总满足 $P$，$a[r]$ 总不满足 $P$.</li>
+<li>因此当 $a[m]$ 满足 $P$ 时，应令 $l=m$，否则令 $r=m$.</li>
+<li>最后一个满足 $P$ 的是 $a[l]$.</li>
 </ul>
-</li>
-<li>若数组前半段满足 $P$，后半段不满足 $P$：
-<ul>
-<li>$a[m]$ 满足 $P$ 时应令 $l=m$.</li>
-<li>最后一个满足 $P$ 的是 $a_l$.</li>
-</ul>
-</li>
-</ul>
+</blockquote>
 <h2 id="整数域上的二分">整数域上的二分 <a class="anchor" href="#%e6%95%b4%e6%95%b0%e5%9f%9f%e4%b8%8a%e7%9a%84%e4%ba%8c%e5%88%86">¶</a></h2><p>在单调递增数组 $a$（长度 $n$）中查找第一个 $\ge x$ 的数：</p>
 <p>前半段 $&lt;x$，后半段 $\ge x$，因此 $a[m]\ge x$ 时应令 $r=m$，最终答案是 $a[r]$.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">binQuery</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">x</span>) {
