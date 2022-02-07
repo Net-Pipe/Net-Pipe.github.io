@@ -26,8 +26,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: none;
-  transition: all .15s; }
+  outline: none; }
 
 ::selection {
   background-color: #CCE2FF;
@@ -105,7 +104,7 @@ ol {
   font-weight: bold;
   src: url("/fonts/FantasqueSansMono-BoldItalic.woff2") format("woff2"); }
 
-body, code, input {
+body, code, input, button, textarea {
   font-family: 'Fantasque Sans Mono', sans-serif; }
 
 html, body, main {
@@ -153,6 +152,7 @@ article {
   box-shadow: var(--shadow);
   background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
+  transition: all .15s;
   display: inline-block;
   padding: .1rem .5rem;
   margin: .3rem 0; }
@@ -233,6 +233,7 @@ aside.meta {
       box-shadow: var(--shadow);
       background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
+      transition: all .15s;
       margin-top: .5rem;
       padding: .3rem .5rem;
       font-size: 18px; }
@@ -275,6 +276,7 @@ article.posts .post {
   box-shadow: var(--shadow);
   background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
+  transition: all .15s;
   padding: 1rem;
   margin: 1rem 0; }
   article.posts .post:hover {
@@ -316,9 +318,11 @@ article.posts .pagination {
     float: left;
     text-align: center;
     vertical-align: middle; }
-    article.posts .pagination div.pagination-box:not(.disabled):hover {
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.8) !important; }
+    article.posts .pagination div.pagination-box:not(.disabled) {
+      transition: all .15s; }
+      article.posts .pagination div.pagination-box:not(.disabled):hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
   article.posts .pagination div.prev {
     width: 5rem;
     margin-left: 0; }
@@ -349,6 +353,7 @@ article.list .post-item {
   box-shadow: var(--shadow);
   background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
+  transition: all .15s;
   height: 2.3rem;
   line-height: 2.3rem;
   margin: .3rem 0; }
@@ -360,6 +365,8 @@ article.list .post-item {
     height: 1.2rem;
     margin: 0 .6rem;
     vertical-align: sub; }
+  article.list .post-item span {
+    position: absolute; }
   article.list .post-item:first-of-type {
     height: 3rem;
     line-height: 3.2rem;
@@ -408,7 +415,7 @@ article.markdown .content {
   article.markdown .content strong {
     font-weight: normal;
     text-shadow: 0 0; }
-  article.markdown .content img:not(.alt) {
+  article.markdown .content img:not(.alt, .vemoji) {
     display: block;
     margin: 0 auto;
     max-width: 100%; }
@@ -549,6 +556,7 @@ article.markdown .content {
       box-shadow: var(--shadow);
       background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
+      transition: all .15s;
       font-size: 14px;
       padding: .3rem;
       text-shadow: 0 0; }
@@ -584,6 +592,46 @@ article.markdown .content {
       margin-bottom: 0; }
       article.markdown .content details[open] > summary img.alt {
         transform: rotate(90deg); }
+  article.markdown .content #vcomments {
+    margin-bottom: -1rem !important; }
+    article.markdown .content #vcomments div.vwrap {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
+      position: relative;
+      background: rgba(255, 255, 255, 0.5) !important; }
+    article.markdown .content #vcomments button.vbtn {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
+      position: relative;
+      transition: all .15s; }
+      article.markdown .content #vcomments button.vbtn:hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
+    article.markdown .content #vcomments span.vsys,
+    article.markdown .content #vcomments div.vcount {
+      display: none !important; }
+    article.markdown .content #vcomments img.vimg {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
+      position: relative;
+      padding: .2rem; }
+    article.markdown .content #vcomments div.vcard:last-of-type {
+      margin-bottom: -1.5rem; }
 
 article::-webkit-scrollbar {
   width: 0px !important;
@@ -611,6 +659,8 @@ article::-webkit-scrollbar {
     padding: 1rem !important; } }
 </style>
   
+
+  <script src="../js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -642,7 +692,7 @@ article::-webkit-scrollbar {
       <span>Posts</span>
     </div>
     <div class='data-box'>
-      <h3>16,684</h3>
+      <h3>16,853</h3>
       <span>Words</span>
     </div>
   </div>
@@ -670,6 +720,9 @@ article::-webkit-scrollbar {
     <a class="silent" href="../post/">
       <div class="social-box"><img src="../images/posts.svg"/><span>Posts</span></div>
     </a>
+    <a class="silent" href="../discuss/">
+      <div class="social-box"><img src="../images/discuss.svg"/><span>Discuss</span></div>
+    </a>
     <a class="silent" type="application/rss+xml" href="../index.xml">
       <div class="social-box"><img src="../images/rss.svg"/><span>RSS</span></div>
     </a>
@@ -687,9 +740,9 @@ article::-webkit-scrollbar {
 <aside class='toc'>
   <h2 class='alt'><img class='alt' src='../images/notice.svg'>Notice</h2>
 <ul>
-<li>此站点仍在建设中.</li>
-<li>一些 URL 存在跳转错误.</li>
 <li>部分文章正在重构中.</li>
+<li>评论功能开放.</li>
+<li>增加了讨论区（Discuss）.</li>
 </ul>
 
 <br>
@@ -779,15 +832,15 @@ article::-webkit-scrollbar {
   });
 </script>
 
+
+  
 </div>
 
 </article>
 
   </main>
 
-  <script src="../js/jquery.min.js"></script>
-
-
+  
 
 <script defer>
 function IsPC() {  
@@ -818,7 +871,7 @@ function detectZoom() {
   return ratio;
 }
 $('.markdown').find('img').each(function(id, el, arr) {
-  if (el.className == 'alt')
+  if (el.className == 'alt' || el.className == 'vemoji')
     return;
   el.className = "md__image";
   var src = el.getAttribute('src');
@@ -877,17 +930,7 @@ $('.language-latex').each(function(id, el, arr) {
 </script>
 
 
-<script>
-$(window).scroll(function(e) {
-  if ($('main').css('display') == 'flex')
-    $(this).scrollTop(0);
-});
-$('main').scroll(function(e) {
-  if ($('main').css('display') == 'flex')
-    $(this).scrollTop(0);
-});
-document.body.scroll="no";
-</script>
+
 </body>
 
 </html>

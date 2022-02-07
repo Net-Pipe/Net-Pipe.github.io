@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="">
+  <meta name="description" content="#">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -746,28 +746,56 @@ article::-webkit-scrollbar {
 </ul>
 
 <br>
+  
 </aside>
 
   
-<article class="list">
-  <div class="post-item">
+<article class='markdown'>
+<div class='content'>
+  
+  <h1>Discuss</h1>
+  
+  <span class="post-meta">
     
-    <img src="../images/folder.svg" />
-    
-    <span>Categories</span>
-  </div>
+  </span>
 
   
 
   
-  <div class="post-item" onclick="window.location.href=&#34;/categories/%E7%AE%97%E6%B3%95/&#34;">
-    <img src="../images/folder.svg" /><span>算法</span>
-  </div>
+
   
+
   
+
+  <style>#评论 {display: none;}#vcomments{margin-top: 0;}</style>
+
+
   
+  <script src='../valine/dist/Valine.min.js'></script>
+
+<h2 id="评论">
+  评论
+  <a class="anchor" href="#评论">¶</a>
+</h2>
+<div id="vcomments">
+  <script defer>
+    $('#TableOfContents').children().append('<li><a href="#评论">评论</a></li>');
+  
+    new Valine({
+      el: '#vcomments',
+      appId: 'akBOeIgbWfFwxs8NzLNBDFSF-gzGzoHsz',
+      appKey: '0U9keycV2aSP9sSqBBBRJiWV',
+      placeholder: '支持 Markdown 语法',
+      recordIP: true,
+      requiredFields: ['nick', 'mail'],
+      enableQQ: true,
+    })
+  </script>
+</div>
+  
+</div>
+
 </article>
-
 
   </main>
 
