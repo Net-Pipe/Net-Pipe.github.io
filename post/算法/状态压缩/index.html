@@ -689,10 +689,14 @@ article.markdown .content {
       box-shadow: var(--shadow);
       background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
+      transition: all .15s;
       position: absolute;
       width: 3.5rem;
       height: 3.5rem;
       padding: .2rem; }
+      article.markdown .content #vcomments .vcards .vcard img.vimg:hover, article.markdown .content #vcomments .vquote .vcard img.vimg:hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
     article.markdown .content #vcomments .vcards .vcard .vh, article.markdown .content #vcomments .vquote .vcard .vh {
       margin-left: 4.5rem; }
       article.markdown .content #vcomments .vcards .vcard .vh .vhead, article.markdown .content #vcomments .vcards .vcard .vh .vmeta, article.markdown .content #vcomments .vquote .vcard .vh .vhead, article.markdown .content #vcomments .vquote .vcard .vh .vmeta {
@@ -970,8 +974,8 @@ article::-webkit-scrollbar {
 
     new Valine({
       el: '#vcomments',
-      appId: '87JRJPIzBnYRUceL2XVpzlhM-gzGzoHsz',
-      appKey: 'umSNVIWoLOt3pdm0w8ovzgMC',
+      appId: '\x38\x37\x4a\x52\x4a\x50\x49\x7a\x42\x6e\x59\x52\x55\x63\x65\x4c\x32\x58\x56\x70\x7a\x6c\x68\x4d\x2d\x67\x7a\x47\x7a\x6f\x48\x73\x7a',
+      appKey: '\x75\x6d\x53\x4e\x56\x49\x57\x6f\x4c\x4f\x74\x33\x70\x64\x6d\x30\x77\x38\x6f\x76\x7a\x67\x4d\x43',
       placeholder: 'Markdown and KaTeX Supported',
       recordIP: true,
       meta: ['nick', 'mail'],
@@ -989,7 +993,7 @@ article::-webkit-scrollbar {
     textarea.addEventListener('input', (e) => {
       textarea.style.height = '100px';
       textarea.style.height = e.target.scrollHeight + 'px';
-      document.getElementsByClassName('vwrap')[0].scrollIntoView();
+      document.getElementsByClassName('reslength')[0].scrollIntoView();
       res.innerHTML = ($maxlength - textarea.value.length);
     });
   </script>
@@ -1089,6 +1093,7 @@ $('.language-latex').each(function(id, el, arr) {
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
 
 
 

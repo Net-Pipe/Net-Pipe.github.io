@@ -689,10 +689,14 @@ article.markdown .content {
       box-shadow: var(--shadow);
       background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
+      transition: all .15s;
       position: absolute;
       width: 3.5rem;
       height: 3.5rem;
       padding: .2rem; }
+      article.markdown .content #vcomments .vcards .vcard img.vimg:hover, article.markdown .content #vcomments .vquote .vcard img.vimg:hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
     article.markdown .content #vcomments .vcards .vcard .vh, article.markdown .content #vcomments .vquote .vcard .vh {
       margin-left: 4.5rem; }
       article.markdown .content #vcomments .vcards .vcard .vh .vhead, article.markdown .content #vcomments .vcards .vcard .vh .vmeta, article.markdown .content #vcomments .vquote .vcard .vh .vhead, article.markdown .content #vcomments .vquote .vcard .vh .vmeta {
@@ -974,6 +978,7 @@ $('.language-latex').each(function(id, el, arr) {
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
 
 
 
