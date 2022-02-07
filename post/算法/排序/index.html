@@ -592,9 +592,90 @@ article.markdown .content {
       margin-bottom: 0; }
       article.markdown .content details[open] > summary img.alt {
         transform: rotate(90deg); }
-  article.markdown .content #vcomments {
-    margin-bottom: -1rem !important; }
-    article.markdown .content #vcomments div.vwrap {
+  article.markdown .content #vcomments > :first-child,
+  article.markdown .content #vcomments > :first-child > :first-child,
+  article.markdown .content #vcomments > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.markdown .content #vcomments > :last-child,
+  article.markdown .content #vcomments > :last-child > :last-child,
+  article.markdown .content #vcomments > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vempty {
+    display: none !important; }
+  article.markdown .content #vcomments .vpanel > :first-child,
+  article.markdown .content #vcomments .vpanel > :first-child > :first-child,
+  article.markdown .content #vcomments .vpanel > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.markdown .content #vcomments .vpanel > :last-child,
+  article.markdown .content #vcomments .vpanel > :last-child > :last-child,
+  article.markdown .content #vcomments .vpanel > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vwrap {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
+    position: relative;
+    padding: .5rem;
+    margin-top: 1rem; }
+    article.markdown .content #vcomments .vwrap > :first-child,
+    article.markdown .content #vcomments .vwrap > :first-child > :first-child,
+    article.markdown .content #vcomments .vwrap > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    article.markdown .content #vcomments .vwrap > :last-child,
+    article.markdown .content #vcomments .vwrap > :last-child > :last-child,
+    article.markdown .content #vcomments .vwrap > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+    article.markdown .content #vcomments .vwrap .vheader.item2 {
+      display: flex; }
+      article.markdown .content #vcomments .vwrap .vheader.item2 input {
+        flex: 0 0 calc(50% - 1rem);
+        border: none;
+        font-size: 16px;
+        margin: 0 .5rem;
+        line-height: 1.5rem;
+        background-color: transparent;
+        border-bottom: 1px dashed silver;
+        transition: all .2s;
+        min-width: 0; }
+        article.markdown .content #vcomments .vwrap .vheader.item2 input:focus {
+          border-bottom: 1px dashed olivedrab; }
+    article.markdown .content #vcomments .vwrap .vemojis {
+      padding: .5rem; }
+    article.markdown .content #vcomments .vwrap .vpreview {
+      padding: .5rem; }
+    article.markdown .content #vcomments .vwrap textarea.veditor {
+      width: 100%;
+      height: 6rem;
+      line-height: 1.5rem;
+      border: none;
+      font-size: 16px;
+      padding: .5rem;
+      background-color: transparent;
+      resize: none; }
+  article.markdown .content #vcomments .vcount {
+    font-size: 20px;
+    margin: .5rem 0; }
+  article.markdown .content #vcomments .vcards > :first-child,
+  article.markdown .content #vcomments .vcards > :first-child > :first-child,
+  article.markdown .content #vcomments .vcards > :first-child > :first-child > :first-child, article.markdown .content #vcomments .vquote > :first-child,
+  article.markdown .content #vcomments .vquote > :first-child > :first-child,
+  article.markdown .content #vcomments .vquote > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.markdown .content #vcomments .vcards > :last-child,
+  article.markdown .content #vcomments .vcards > :last-child > :last-child,
+  article.markdown .content #vcomments .vcards > :last-child > :last-child > :last-child, article.markdown .content #vcomments .vquote > :last-child,
+  article.markdown .content #vcomments .vquote > :last-child > :last-child,
+  article.markdown .content #vcomments .vquote > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vcards .vcard, article.markdown .content #vcomments .vquote .vcard {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed silver; }
+    article.markdown .content #vcomments .vcards .vcard img.vimg, article.markdown .content #vcomments .vquote .vcard img.vimg {
       border-top-left-radius: var(--radius);
       border-top-right-radius: var(--radius);
       border-bottom-left-radius: var(--radius);
@@ -603,35 +684,68 @@ article.markdown .content {
       box-shadow: var(--shadow);
       background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
-      background: rgba(255, 255, 255, 0.5) !important; }
-    article.markdown .content #vcomments button.vbtn {
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      background: rgba(255, 255, 255, 0.2) !important;
-      position: relative;
-      transition: all .15s; }
-      article.markdown .content #vcomments button.vbtn:hover {
-        cursor: pointer;
-        background: rgba(255, 255, 255, 0.8) !important; }
-    article.markdown .content #vcomments span.vsys,
-    article.markdown .content #vcomments div.vcount {
-      display: none !important; }
-    article.markdown .content #vcomments img.vimg {
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      background: rgba(255, 255, 255, 0.2) !important;
-      position: relative;
+      position: absolute;
+      width: 3.5rem;
+      height: 3.5rem;
       padding: .2rem; }
-    article.markdown .content #vcomments div.vcard:last-of-type {
-      margin-bottom: -1.5rem; }
+    article.markdown .content #vcomments .vcards .vcard .vh, article.markdown .content #vcomments .vquote .vcard .vh {
+      margin-left: 4.5rem; }
+      article.markdown .content #vcomments .vcards .vcard .vh .vhead, article.markdown .content #vcomments .vcards .vcard .vh .vmeta, article.markdown .content #vcomments .vquote .vcard .vh .vhead, article.markdown .content #vcomments .vquote .vcard .vh .vmeta {
+        height: 1.6rem;
+        line-height: 2rem; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vhead .vtime, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vtime, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vtime, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vtime {
+          color: gray;
+          font-size: 14px; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vsys {
+          display: none; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vhead button.vat, article.markdown .content #vcomments .vcards .vcard .vh .vmeta button.vat, article.markdown .content #vcomments .vquote .vcard .vh .vhead button.vat, article.markdown .content #vcomments .vquote .vcard .vh .vmeta button.vat {
+          float: right; }
+      article.markdown .content #vcomments .vcards .vcard .vh .vcontent, article.markdown .content #vcomments .vquote .vcard .vh .vcontent {
+        margin-top: .5rem; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child > :first-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child > :first-child > :first-child, article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child > :first-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child > :first-child > :first-child {
+          margin-top: 0 !important; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child > :last-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child > :last-child > :last-child, article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child > :last-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child > :last-child > :last-child {
+          margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vcards > :last-child, article.markdown .content #vcomments .vquote > :last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none; }
+  article.markdown .content #vcomments .vquote > :first-child {
+    padding-top: 1rem; }
+  article.markdown .content #vcomments img.vemoji {
+    width: 1.5rem;
+    height: 1.5rem; }
+  article.markdown .content #vcomments button.vbtn {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
+    position: relative;
+    transition: all .15s;
+    border: none;
+    padding: .2rem .6rem; }
+    article.markdown .content #vcomments button.vbtn:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.8) !important; }
+  article.markdown .content #vcomments button.vmore {
+    margin: .5rem; }
+  article.markdown .content #vcomments .vcol {
+    padding: .5rem; }
+  article.markdown .content #vcomments .text-right {
+    text-align: right; }
+  article.markdown .content #vcomments .text-center {
+    text-align: center; }
 
 article::-webkit-scrollbar {
   width: 0px !important;
@@ -720,12 +834,10 @@ article::-webkit-scrollbar {
     <a class="silent" href="../../../post/">
       <div class="social-box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" href="../../../discuss/">
-      <div class="social-box"><img src="../../../images/discuss.svg"/><span>Discuss</span></div>
+    <a class="silent" href="../../../issue/">
+      <div class="social-box"><img src="../../../images/issue.svg"/><span>Issue</span></div>
     </a>
-    <a class="silent" type="application/rss+xml" href="../../../index.xml">
-      <div class="social-box"><img src="../../../images/rss.svg"/><span>RSS</span></div>
-    </a>
+    
   </div>
 
   <div class="tags">
@@ -742,7 +854,7 @@ article::-webkit-scrollbar {
 <ul>
 <li>部分文章正在重构中.</li>
 <li>评论功能开放.</li>
-<li>增加了讨论区（Discuss）.</li>
+<li>讨论区（Issue）开放.</li>
 </ul>
 
 <br>
@@ -980,7 +1092,7 @@ article::-webkit-scrollbar {
 
 
   
-  <script src='../../../valine/dist/Valine.min.js'></script>
+  <script src='../../../js/valine.min.js'></script>
 
 <h2 id="评论">
   评论
@@ -992,13 +1104,23 @@ article::-webkit-scrollbar {
   
     new Valine({
       el: '#vcomments',
-      appId: 'akBOeIgbWfFwxs8NzLNBDFSF-gzGzoHsz',
-      appKey: '0U9keycV2aSP9sSqBBBRJiWV',
-      placeholder: '支持 Markdown 语法',
+      appId: '87JRJPIzBnYRUceL2XVpzlhM-gzGzoHsz',
+      appKey: 'umSNVIWoLOt3pdm0w8ovzgMC',
+      placeholder: '支持 Markdown 和 KaTeX',
       recordIP: true,
+      meta: ['nick', 'mail'],
       requiredFields: ['nick', 'mail'],
       enableQQ: true,
-    })
+      
+      
+    });
+
+    var textarea = document.getElementById('veditor');
+    
+    textarea.addEventListener('input', (e) => {
+      textarea.style.height = '100px';
+      textarea.style.height = e.target.scrollHeight + 'px';
+    });
   </script>
 </div>
   
