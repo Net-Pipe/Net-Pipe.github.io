@@ -3,6 +3,58 @@
 
   
   <item>
+    <title>抛物线：二级结论</title>
+    <link>/post/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/%E6%8A%9B%E7%89%A9%E7%BA%BF%E4%BA%8C%E7%BA%A7%E7%BB%93%E8%AE%BA/</link>
+    
+    <summary>难道这些还要等到在考场上才证？</summary>
+    
+    <content>
+      焦半径公式 ¶           |AF|=|AA^{\prime}|=\dfrac{p}{2}&#43;x_A |AF|=\dfrac{p}{1-\cos\theta}               |BF|=|BB^{\prime}|=\dfrac{p}{2}&#43;x_B |BF|=\dfrac{p}{1&#43;\cos\theta}          \dfrac{1}{|AF|}&#43;\dfrac{1}{|BF|}=\dfrac{2}{p}  焦点弦公式 ¶ |AB|=x_A&#43;x_B&#43;p |AB|=\dfrac{p}{1-\cos\theta}&#43;\dfrac{p}{1&#43;\cos\theta}=\dfrac{2p}{\sin^2\theta} |AB|=\dfrac{2p}{\sin^2\theta}=\dfrac{2p(\sin^2\theta&#43;\cos^2\theta)}{\sin^2\theta}=2p(1&#43;\dfrac{1}{\tan^2\theta})=2p(1&#43;\dfrac{1}{k^2})  特殊角和共线 ¶          \angle AHB=90\degree \angle A^{\prime}FB^{\prime}=90\degree \angle AKF=\angle BKF               A^{\prime},O,B 共线 A,O,B^{\prime} 共线         切点 ¶ 以 AF 为直径的圆与 y 轴相切 以 AB 为直径的圆与准线相切  面积 ¶ S_\triangle AOB=\dfrac{p^2}{2\sin\theta}      证     
+    </content>
+  </item>
+  
+
+  
+  <item>
+    <title>数列通项：不动点法</title>
+    <link>/post/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%88%97%E9%80%9A%E9%A1%B9%E4%B8%8D%E5%8A%A8%E7%82%B9%E6%B3%95/</link>
+    
+    <summary>冷知识：不动点不一定就不动.</summary>
+    
+    <content>
+       本篇证明可略过.  不动点 ¶y=f(x) 与 y=x 的交点为不动点. 即不动点 x_0 满足  若 a_n=f(a_{n-1})，则 f(x) 的不动点也是数列 \{a_n\} 的不动点. 一次不动点 ¶已知 a_n=A\cdot a_{n-1}&#43;B(A\not=0). 若 \{a_n\} 有不动点 x_0，则等比数列 \{a_n-x_0\} 公比为 A.     证   由 不动点 的定义得    \therefore 数列 \{a_n-x_0\} 是公比为 A 的等比数列   齐次不动点 ¶已知 a_n=\dfrac{Aa_{n-1}&#43;B}{Ca_{n-1}&#43;D}(C\not=0,AD-BC\not=0). 单根 ¶若 \{a_n\} 有唯一不动点 x_0，则等差数列 \left\{\dfrac{1}{a_n-x_0}\right\} 公差为 \dfrac{2C}{A&#43;D}.     证   由 不动点 的定义得    \because 方程 (2) 仅有一根，故  代入 (1)： 代入 (2)： \therefore 数列 \left\{\dfrac{1}{a_n-x_0}\right\} 是公差为 \dfrac{2C}{A&#43;D} 的等差数列.       例   已知 a_1=2,a_{n&#43;1}=\dfrac{2a_n-1}{a_n}，求 a_n 与 a_1 的关系. 解： 解 x=\dfrac{2x-1}{x} 得唯一不动点 x_0=1.  \therefore \left\{\dfrac{1}{a_n-1}\right\} 是首项为 1，公差为 1 的等差数列.     双根 ¶若 \{a_n\} 有不动点 x_1,x_2，则等比数列 \left\{\dfrac{a_n-x_1}{a_n-x_2}\right\} 公比为 \dfrac{A-Cx_1}{A-Cx_2}.     证   由 不动点 的定义得 即  同理可得  \therefore 数列 \left\{\dfrac{a_n-x_1}{a_n-x_2}\right\} 是公比为 \dfrac{A-Cx_1}{A-Cx_2} 的等比数列.       例   已知 a_{n&#43;1}=\dfrac{2a_n}{a_n&#43;1}，求 a_n 与 a_1 的关系. 解： 解 x=\dfrac{2x}{x&#43;1} 得两个相异的不动点 x_1=0,x_2=1.  \therefore \left\{\dfrac{a_n}{a_n-1}\right\} 是首项为 \dfrac{a_1}{a_1-1}，公比为 2 的等比数列.     
+    </content>
+  </item>
+  
+
+  
+  <item>
+    <title>数列通项：特征根法</title>
+    <link>/post/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%88%97%E9%80%9A%E9%A1%B9%E7%89%B9%E5%BE%81%E6%A0%B9%E6%B3%95/</link>
+    
+    <summary>用这个方法，30 秒速解斐波那契通项.</summary>
+    
+    <content>
+       特征根法在数列通项与线性齐次微分方程的应用中有异曲同工之妙.  二次特征根 ¶已知 f_1,f_2 和 af_{n&#43;2}&#43;bf_{n&#43;1}&#43;cf_n=0(a\not=0)，求 f_n. 解： 两边同除 a：  根据韦达定理，二次方程 ax^2&#43;bx&#43;c=0 的解 x_1,x_2 满足 代入化简得   \therefore 数列 \{f_{n&#43;1}-x_1f_n\} 是首项为 f_2-x_1f_1，公比为 x_2 的等比数列.  由方程解的对称性可知，x_1,x_2 可互换，因此  (2)-(1) 得       例   已知 f_1=f_2=1,f_{n&#43;2}=f_{n&#43;1}&#43;f_n，求 f_n 的通项. 解： 斐波那契数列本质是 二次特征根 在 a=1,b=-1,c=-1 时的情况. 解方程 x^2-x-1=0 得 代入结论得    答题格式   设 a_{n&#43;2}-ra_{n&#43;1}=q(a_{n&#43;1}-ra_n)， 则 a_{n&#43;2}=(q&#43;r)a_{n&#43;1}-q\cdot ra_n. 对比 a_{n&#43;2}=a_{n&#43;1}&#43;a_n 得 解得 ∴ 数列 \{a_{n&#43;1}-ra_n\} 是以 a_2-ra_1 为首项，q 为公比的等比数列. 两式相减得：        三次特征根 ¶已知 f_1,f_2,f_3 和 af_{n&#43;3}&#43;bf_{n&#43;2}&#43;cf_{n&#43;1}&#43;df_n=0(a\not=0)，求 f_n. 解： 两边同除 a：  根据韦达定理，三次方程 ax^3&#43;bx^2&#43;cx&#43;d=0 的解 x_1,x_2,x_3 满足 代入化简得   定义函数  \therefore 数列 \{f_{n&#43;2}-(x_1&#43;x_2)f_{n&#43;1}&#43;x_1x_2f_n\} 是首项为 \varphi(x_1,x_2)，公比为 x_3 的等比数列.  由方程解的对称性可知，x_1,x_2,x_3 可互换，因此  (1)-(2) 得  再由对称性得  (3)-(4) 得 n 次特征根 ¶已知 f_1\sim f_k 和 a_nf_{k&#43;n}&#43;a_{n-1}f_{k&#43;n-1}&#43;\cdots&#43;a_0f_k=0(a_n\not=0)，求 f_k.  通过 二次特征根 和 三次特征根 的解法不难归纳，n&#43;1 项递推式  可通过构造 n 次特征方程  而求解通项 f_k.  解： 两边同除 a_n  既知 n 次方程韦达定理 定义 \su\delta {t\atop n}=\sum_{\small 1\leq i_1 &amp;lt; i_2 &amp;lt; \cdots &amp;lt; i_t \leq n}\prod_{j=1}^tx_{i_j}，即从 x_1\sim x_n 中任取 t 项相乘的所有结果之和. 则韦达定理等价于  代入原递推式得  易知 \delta 函数具有性质  故 (1) 式可化为  ∴ 数列 \su\left\{\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{k&#43;n-i}\right\} 是首项为 \su\sum_{i=1}^n(-1)^{i-1}\delta{i-1\atop n-1}f_{1&#43;n-i}，公差为 x_n 的等差数列.  通过 n 次对称相消可得 f_k 与 n 个等比数列的关系式. 
+    </content>
+  </item>
+  
+
+  
+  <item>
+    <title>三角函数公式</title>
+    <link>/post/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E5%85%AC%E5%BC%8F/</link>
+    
+    <summary>每天睡前过一遍，高考大脑不下线.</summary>
+    
+    <content>
+      诱导公式 ¶奇变偶不变，符号看象限.           \su \sin{(2k\pi&#43;α)}=\sin{α} \su \cos{(2k\pi&#43;α)}=\cos{α} \su \tan{(2k\pi&#43;α)}=\tan{α}               \su \sin{(2k\pi-α)}=-\sin{α} \su \cos{(2k\pi-α)}=\cos{α} \su \tan{(2k\pi-α)}=-\tan{α}                   \su \sin{(\pi&#43;α)}=-\sin{α} \su \cos{(\pi&#43;α)}=\cos{α} \su \tan{(\pi&#43;α)}=\tan{α}               \su \sin{(\pi-α)}=\sin{α} \su \cos{(\pi-α)}=-\cos{α} \su \tan{(\pi-α)}=-\tan{α}                   \su \sin{(\frac{\pi}{2}&#43;α)}=\cos{α} \su \cos{(\frac{\pi}{2}&#43;α)}=-\sin{α} \su \tan{(\frac{\pi}{2}&#43;α)}=-\frac{1}{\tan{α}}               \su \sin{(\frac{\pi}{2}-α)}=\cos{α} \su \cos{(\frac{\pi}{2}-α)}=\sin{α} \su \tan{(\frac{\pi}{2}-α)}=\frac{1}{\tan{α}}                   \su \sin{(\frac{3\pi}{2}&#43;α)}=-\cos{α} \su \cos{(\frac{3\pi}{2}&#43;α)}=\sin{α} \su \tan{(\frac{3\pi}{2}&#43;α)}=-\frac{1}{\tan{α}}               \su \sin{(\frac{3\pi}{2}-α)}=-\cos{α} \su \cos{(\frac{3\pi}{2}-α)}=-\sin{α} \su \tan{(\frac{3\pi}{2}-α)}=\frac{1}{\tan{α}}          \su \sin{(-α)}=-\sin{α} \su \cos{(-α)}=\cos{α} \su \tan{(-α)}=-\tan{α}  和差角公式 ¶ \su \sin{(α&#43;β)}=\sin{α}\cos{β}&#43;\cos{α}\sin{β} \su \sin{(α-β)}=\sin{α}\cos{β}-\cos{α}\sin{β} \su \cos{(α&#43;β)}=\cos{α}\cos{β}-\sin{α}\sin{β} \su \cos{(α-β)}=\cos{α}\cos{β}&#43;\sin{α}\sin{β} \su \tan{(α&#43;β)}=\frac{\tan{α}&#43;\tan{β}}{1-\tan{α}\tan{β}} \su \tan{(α-β)}=\frac{\tan{α}-\tan{β}}{1&#43;\tan{α}\tan{β}}  二倍角公式 ¶降幂扩角 升幂缩角.   \su \sin{2α}=2\sin{α}\cos{α}   \su \cos{2α}=\cos^2{α}-\sin^2{α}=1-2\sin^2{α}=2\cos^2{α}-1   \su \tan{2α}=\frac{2\tan{α}}{1-\tan^2{α}}   \su 1&#43;\sin{2α}=(\sin{α}&#43;\cos{α})^2   \su 1-\sin{2α}=(\sin{α}-\cos{α})^2   \su 1&#43;\cos{2α}=2\cos^2{α}   \su 1-\cos{2α}=2\sin^2{α}   三倍角公式 ¶ \su \sin{3α}=3\sin{α}-4\sin^3{α} \su \cos{3α}=-3\cos{α}&#43;4\cos^3{α} \su \tan{3α}=\frac{3\tan{α}-\tan^3{α}}{1-3\tan^2{α}}=\tan{α}\tan{(\frac{\pi}{3}&#43;α)}\tan{(\frac{\pi}{3}-α)}  半角公式 ¶ \su \sin{\frac{α}{2}}=±\sqrt{\frac{1-\cos{α}}{2}} \su \cos{\frac{α}{2}}=±\sqrt{\frac{1&#43;\cos{α}}{2}} \su \tan{\frac{α}{2}}=\frac{\sin{α}}{1&#43;\cos{α}}=\frac{1-\cos{α}}{\sin{α}}=±\sqrt{\frac{1-\cos{α}}{1&#43;\cos{α}}}  辅助角公式 ¶其中 \su \sin{φ}=\frac{b}{\sqrt{a^2&#43;b^2}},\quad\cos{φ}=\frac{a}{\sqrt{a^2&#43;b^2}},\quad\tan{φ}=\frac{b}{a}. 万能公式 ¶ \su\sin{α}=\frac{2\tan{\large\frac{α}{2}}}{1&#43;\tan^2{\large\frac{α}{2}}} \su\cos{α}=\frac{1-\tan^2{\large\frac{α}{2}}}{1&#43;\tan^2{\large\frac{α}{2}}} \su\tan{α}=\frac{2\tan{\large\frac{α}{2}}}{1-\tan^2{\large\frac{α}{2}}}  和差化积 ¶ \su \sin{α}&#43;\sin{β}=2\sin{\frac{α&#43;β}{2}}\cos{\frac{α-β}{2}} \su \sin{α}-\sin{β}=2\sin{\frac{α-β}{2}}\cos{\frac{α&#43;β}{2}} \su \cos{α}&#43;\cos{β}=2\cos{\frac{α&#43;β}{2}}\cos{\frac{α-β}{2}} \su \cos{α}-\cos{β}=-2\sin{\frac{α&#43;β}{2}}\sin{\frac{α-β}{2}} \su \tan{α}&#43;\tan{β}=\frac{\sin(α&#43;β)}{\cos{α}\cos{β}} \su \tan{α}-\tan{β}=\frac{\sin(α-β)}{\cos{α}\cos{β}}  积化和差 ¶ \su \sin{α}\cos{β}=\frac{1}{2}[\sin{(α&#43;β)}&#43;\sin{(α-β)}] \su \cos{α}\sin{β}=\frac{1}{2}[\sin{(α&#43;β)}-\sin{(α-β)}] \su \cos{α}\cos{β}=\frac{1}{2}[\cos{(α&#43;β)}&#43;\cos{(α-β)}] \su \sin{α}\sin{β}=-\frac{1}{2}[\cos{(α&#43;β)}-\cos{(α-β)}]  正弦定理 ¶其中 R 为 ΔABC 外接圆半径. 余弦定理 ¶ \su a^2=b^2&#43;c^2-2bc\cos{A} \su b^2=a^2&#43;c^2-2ac\cos{B} \su c^2=a^2&#43;b^2-2ab\cos{B}  三角形面积公式 ¶ \su S_{ΔABC}=\frac{1}{2}\cdot a\cdot h \su S_{ΔABC}=\frac{1}{2}ab\sin{C}=\frac{1}{2}bc\sin{A}=\frac{1}{2}ac\sin{B} \su S_{ΔABC}=\frac{abc}{4R}（R 为 ΔABC 外接圆半径） \su S_{ΔABC}=\frac{a&#43;b&#43;c}{2}\cdot r（r 为 ΔABC 内接圆半径） \su S_{ΔABC}=\sqrt{p(p-a)(p-b)(p-c)},p=\frac{a&#43;b&#43;c}{2}  其它公式 ¶ \su \sin^2{θ}&#43;\cos^2{θ}=1 \su 1&#43;\tan^2{θ}=\frac{1}{\cos^2{θ}} \su 1&#43;\frac{1}{\tan^2{θ}}=\frac{1}{\sin^2{θ}} \su \tan{A}&#43;\tan{B}&#43;\tan{C}=\tan{A}\tan{B}\tan{C}（ΔABC 非 Rt 三角形） \su \sin^2{A}&#43;\sin^2{B}&#43;\sin^2{C}=2&#43;2\cos{A}\cos{B}\cos{C}（在 ΔABC 中） \su \cos^2{A}&#43;\cos^2{B}&#43;\cos^2{C}=1-2\cos{A}\cos{B}\cos{C}（在 ΔABC 中）  
+    </content>
+  </item>
+  
+
+  
+  <item>
     <title>状态压缩</title>
     <link>/post/%E7%AE%97%E6%B3%95/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/</link>
     

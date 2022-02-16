@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="焦半径公式 ¶ $|AF|=|AA^{\prime}|=\dfrac{p}{2}&#43;x_A$ $|AF|=\dfrac{p}{1-\cos\theta}$ $|BF|=|BB^{\prime}|=\dfrac{p}{2}&#43;x_B$ $|BF|=\dfrac{p}{1&#43;\cos\theta}$ $\dfrac{1}{|AF|}&#43;\dfrac{1}{|BF|}=\dfrac{2}{p}$ 焦点弦公式 ¶ $|AB|=x_A&#43;x_B&#43;p$ $|AB|=\dfrac{p}{1-\cos\theta}&#43;\dfrac{p}{1&#43;\cos\theta}=\dfrac{2p}{\sin^2\theta}$ $|AB|=\dfrac{2p}{\sin^2\theta}=\dfrac{2p(\sin^2\theta&#43;\cos^2\theta)}{\sin^2\theta}=2p(1&#43;\dfrac{1}{\tan^2\theta})=2p(1&#43;\dfrac{1}{k^2})$">
+  <meta name="description" content="焦">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,8 +19,6 @@
   --hover-color: #F6F8FA;
   --border-color: #CCCCCC;
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  --background: rgba(255, 255, 255, 0.2);
-  --background-hover: rgba(255, 255, 255, 0.5);
   --border: 1px solid var(--border-color);
   --radius: 3px; }
 
@@ -28,8 +26,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: none;
-  transition: all .15s; }
+  outline: none; }
 
 ::selection {
   background-color: #CCE2FF;
@@ -73,10 +70,17 @@ a.silent:hover > * {
   color: black;
   text-decoration: none; }
 
-ul, ol {
+ul {
   list-style: circle;
-  padding-left: 1rem; }
-  ul li, ol li {
+  padding-left: 1.7rem; }
+  ul li {
+    margin: .3rem 0; }
+    ul li::marker {
+      font-size: large; }
+
+ol {
+  padding-left: 2.2rem; }
+  ol li {
     margin: .3rem 0; }
 
 @font-face {
@@ -100,7 +104,7 @@ ul, ol {
   font-weight: bold;
   src: url("/fonts/FantasqueSansMono-BoldItalic.woff2") format("woff2"); }
 
-body, code, input {
+body, code, input, button, textarea {
   font-family: 'Fantasque Sans Mono', sans-serif; }
 
 html, body, main {
@@ -140,26 +144,21 @@ article {
     display: none; }
 
 .tag-card {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
+  transition: all .15s;
   display: inline-block;
   padding: .1rem .5rem;
   margin: .3rem 0; }
-  .tag-card::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   .tag-card:hover {
-    background: var(--background-hover) !important; }
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8) !important; }
   .tag-card a {
     font-size: 13px;
     text-shadow: 0 0; }
@@ -182,26 +181,16 @@ h2.alt {
 .content h2.alt img.alt {
   display: none; }
 
-#TableOfContents > ul li {
-  list-style: none; }
-
 aside {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
   margin: 1rem; }
-  aside::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   aside > :first-child,
   aside > :first-child > :first-child,
   aside > :first-child > :first-child > :first-child {
@@ -236,26 +225,21 @@ aside.meta {
   aside.meta .social {
     margin: 1rem 0; }
     aside.meta .social .social-box {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
-      background: var(--background) !important;
-      border-radius: var(--radius);
+      transition: all .15s;
       margin-top: .5rem;
       padding: .3rem .5rem;
       font-size: 18px; }
-      aside.meta .social .social-box::before {
-        background: url(/images/BackGround.jpg) 0/cover fixed;
-        content: "";
-        filter: blur(15px);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -999; }
       aside.meta .social .social-box:hover {
-        background: var(--background-hover) !important; }
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
       aside.meta .social .social-box img {
         vertical-align: text-bottom;
         width: 20px;
@@ -284,25 +268,28 @@ article {
   order: 2; }
 
 article.posts .post {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
+  transition: all .15s;
   padding: 1rem;
   margin: 1rem 0; }
-  article.posts .post::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   article.posts .post:hover {
-    background: var(--background-hover) !important; }
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8) !important; }
+  article.posts .post > :first-child,
+  article.posts .post > :first-child > :first-child,
+  article.posts .post > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.posts .post > :last-child,
+  article.posts .post > :last-child > :last-child,
+  article.posts .post > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
   article.posts .post .post-title {
     font-size: 20px; }
 
@@ -315,11 +302,14 @@ article.posts .pagination {
   font-size: 18px;
   margin-top: 1rem; }
   article.posts .pagination div.pagination-box {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     color: var(--link-color);
     margin: 0 .5rem;
     width: 2rem;
@@ -327,20 +317,12 @@ article.posts .pagination {
     line-height: 2rem;
     float: left;
     text-align: center;
-    vertical-align: middle;
-    cursor: default; }
-    article.posts .pagination div.pagination-box::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
-    article.posts .pagination div.pagination-box:not(.disabled):hover {
-      background: var(--background-hover) !important; }
+    vertical-align: middle; }
+    article.posts .pagination div.pagination-box:not(.disabled) {
+      transition: all .15s; }
+      article.posts .pagination div.pagination-box:not(.disabled):hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
   article.posts .pagination div.prev {
     width: 5rem;
     margin-left: 0; }
@@ -363,31 +345,28 @@ article.posts > :last-child > :last-child > :last-child {
   margin-bottom: 0 !important; }
 
 article.list .post-item {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
+  transition: all .15s;
   height: 2.3rem;
   line-height: 2.3rem;
   margin: .3rem 0; }
-  article.list .post-item::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   article.list .post-item:hover {
-    background: var(--background-hover) !important; }
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8) !important; }
   article.list .post-item img {
     width: 1.2rem;
     height: 1.2rem;
-    margin-left: .6rem;
+    margin: 0 .6rem;
     vertical-align: sub; }
+  article.list .post-item span {
+    position: absolute; }
   article.list .post-item:first-of-type {
     height: 3rem;
     line-height: 3.2rem;
@@ -402,22 +381,15 @@ article.list .post-item {
     margin-bottom: 0; }
 
 article.markdown .content {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.2) !important;
   position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
   padding: 1rem; }
-  article.markdown .content::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
   article.markdown .content > :first-child,
   article.markdown .content > :first-child > :first-child,
   article.markdown .content > :first-child > :first-child > :first-child {
@@ -438,32 +410,27 @@ article.markdown .content {
     article.markdown .content h1:hover .anchor, article.markdown .content h1:focus .anchor, article.markdown .content h2:hover .anchor, article.markdown .content h2:focus .anchor, article.markdown .content h3:hover .anchor, article.markdown .content h3:focus .anchor, article.markdown .content h4:hover .anchor, article.markdown .content h4:focus .anchor, article.markdown .content h5:hover .anchor, article.markdown .content h5:focus .anchor, article.markdown .content h6:hover .anchor, article.markdown .content h6:focus .anchor {
       opacity: 1; }
   article.markdown .content p {
-    margin: .3rem 0; }
+    margin: .5rem 0;
+    line-height: 1.3rem; }
   article.markdown .content strong {
     font-weight: normal;
     text-shadow: 0 0; }
-  article.markdown .content img:not(.alt) {
+  article.markdown .content img:not(.alt, .vemoji) {
     display: block;
     margin: 0 auto;
     max-width: 100%; }
   article.markdown .content blockquote {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.5) !important;
     margin: .5rem 0;
     padding: .5rem 1rem; }
-    article.markdown .content blockquote::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
     article.markdown .content blockquote > :first-child,
     article.markdown .content blockquote > :first-child > :first-child,
     article.markdown .content blockquote > :first-child > :first-child > :first-child {
@@ -473,31 +440,28 @@ article.markdown .content {
     article.markdown .content blockquote > :last-child > :last-child > :last-child {
       margin-bottom: 0 !important; }
   article.markdown .content code {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
     padding: 1px 2px; }
-    article.markdown .content code::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
   article.markdown .content pre {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.5) !important;
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
@@ -505,62 +469,48 @@ article.markdown .content {
     padding: .5rem 1rem;
     overflow: auto hidden;
     line-height: 1.3rem; }
-    article.markdown .content pre::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
     article.markdown .content pre code {
       border: none;
       background: none !important;
       box-shadow: none;
       padding: 0; }
   article.markdown .content table {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
     position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
     margin: .5rem 0;
     overflow: auto;
     border-spacing: 0;
     display: block;
     -webkit-overflow-scrolling: touch; }
-    article.markdown .content table::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
     article.markdown .content table th, article.markdown .content table td {
       padding: .3rem 16px;
       font-weight: normal;
       white-space: nowrap; }
   article.markdown .content .book-columns {
     display: flex;
-    flex-wrap: wrap;
-    margin: .5rem;
-    margin-left: -.5rem;
-    margin-right: -.5rem; }
+    flex-wrap: wrap; }
     article.markdown .content .book-columns .markdown-inner {
-      margin: .5rem;
       flex: 1 1; }
+      article.markdown .content .book-columns .markdown-inner > :first-child,
+      article.markdown .content .book-columns .markdown-inner > :first-child > :first-child,
+      article.markdown .content .book-columns .markdown-inner > :first-child > :first-child > :first-child {
+        margin-top: 0 !important; }
+      article.markdown .content .book-columns .markdown-inner > :last-child,
+      article.markdown .content .book-columns .markdown-inner > :last-child > :last-child,
+      article.markdown .content .book-columns .markdown-inner > :last-child > :last-child > :last-child {
+        margin-bottom: 0 !important; }
   article.markdown .content .book-tabs {
     margin: .5em 0;
     overflow: visible;
     display: flex;
     flex-wrap: wrap; }
     article.markdown .content .book-tabs label {
-      height: 2rem;
       line-height: 2rem;
       display: inline-block;
       padding: 0 1rem;
@@ -584,49 +534,35 @@ article.markdown .content {
         margin-bottom: 0 !important; }
     article.markdown .content .book-tabs input[type="radio"] {
       display: none; }
-      article.markdown .content .book-tabs input[type="radio"]:not(:checked) + label:hover {
-        background: var(--background-hover) !important; }
       article.markdown .content .book-tabs input[type="radio"]:checked + label {
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
-        position: relative;
-        background: var(--background) !important;
-        border-radius: var(--radius); }
-        article.markdown .content .book-tabs input[type="radio"]:checked + label::before {
-          background: url(/images/BackGround.jpg) 0/cover fixed;
-          content: "";
-          filter: blur(15px);
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          z-index: -999; }
+        background: rgba(255, 255, 255, 0.2) !important;
+        position: relative; }
         article.markdown .content .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
           display: block; }
   article.markdown .content details {
     margin: .3rem 0; }
     article.markdown .content details summary {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
       position: relative;
-      background: var(--background) !important;
-      border-radius: var(--radius);
+      transition: all .15s;
       font-size: 14px;
       padding: .3rem;
       text-shadow: 0 0; }
-      article.markdown .content details summary::before {
-        background: url(/images/BackGround.jpg) 0/cover fixed;
-        content: "";
-        filter: blur(15px);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -999; }
       article.markdown .content details summary:hover {
-        background: var(--background-hover) !important; }
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
       article.markdown .content details summary::marker {
         content: '';
         font-size: 0; }
@@ -656,6 +592,171 @@ article.markdown .content {
       margin-bottom: 0; }
       article.markdown .content details[open] > summary img.alt {
         transform: rotate(90deg); }
+  article.markdown .content #vcomments > :first-child,
+  article.markdown .content #vcomments > :first-child > :first-child,
+  article.markdown .content #vcomments > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.markdown .content #vcomments > :last-child,
+  article.markdown .content #vcomments > :last-child > :last-child,
+  article.markdown .content #vcomments > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vempty {
+    display: none !important; }
+  article.markdown .content #vcomments .vpanel > :first-child,
+  article.markdown .content #vcomments .vpanel > :first-child > :first-child,
+  article.markdown .content #vcomments .vpanel > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.markdown .content #vcomments .vpanel > :last-child,
+  article.markdown .content #vcomments .vpanel > :last-child > :last-child,
+  article.markdown .content #vcomments .vpanel > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vwrap {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
+    position: relative;
+    padding: .5rem;
+    margin-top: 1rem; }
+    article.markdown .content #vcomments .vwrap > :first-child,
+    article.markdown .content #vcomments .vwrap > :first-child > :first-child,
+    article.markdown .content #vcomments .vwrap > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    article.markdown .content #vcomments .vwrap > :last-child,
+    article.markdown .content #vcomments .vwrap > :last-child > :last-child,
+    article.markdown .content #vcomments .vwrap > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+    article.markdown .content #vcomments .vwrap .vheader.item2 {
+      display: flex; }
+      article.markdown .content #vcomments .vwrap .vheader.item2 input {
+        flex: 0 0 calc(50% - 1rem);
+        border: none;
+        font-size: 16px;
+        margin: 0 .5rem;
+        line-height: 1.5rem;
+        background-color: transparent;
+        border-bottom: 1px dashed silver;
+        transition: all .2s;
+        min-width: 0; }
+        article.markdown .content #vcomments .vwrap .vheader.item2 input:focus {
+          border-bottom: 1px dashed olivedrab; }
+    article.markdown .content #vcomments .vwrap .vemojis {
+      padding: .5rem; }
+    article.markdown .content #vcomments .vwrap .vpreview {
+      padding: .5rem; }
+    article.markdown .content #vcomments .vwrap textarea.veditor {
+      width: 100%;
+      height: 6rem;
+      line-height: 1.5rem;
+      border: none;
+      font-size: 16px;
+      padding: .5rem;
+      background-color: transparent;
+      resize: none; }
+    article.markdown .content #vcomments .vwrap .reslength {
+      float: left;
+      color: gray;
+      font-size: 14px;
+      line-height: 1.2rem; }
+  article.markdown .content #vcomments .vcount {
+    font-size: 20px;
+    margin: .5rem 0; }
+  article.markdown .content #vcomments .vcards > :first-child,
+  article.markdown .content #vcomments .vcards > :first-child > :first-child,
+  article.markdown .content #vcomments .vcards > :first-child > :first-child > :first-child, article.markdown .content #vcomments .vquote > :first-child,
+  article.markdown .content #vcomments .vquote > :first-child > :first-child,
+  article.markdown .content #vcomments .vquote > :first-child > :first-child > :first-child {
+    margin-top: 0 !important; }
+  article.markdown .content #vcomments .vcards > :last-child,
+  article.markdown .content #vcomments .vcards > :last-child > :last-child,
+  article.markdown .content #vcomments .vcards > :last-child > :last-child > :last-child, article.markdown .content #vcomments .vquote > :last-child,
+  article.markdown .content #vcomments .vquote > :last-child > :last-child,
+  article.markdown .content #vcomments .vquote > :last-child > :last-child > :last-child {
+    margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vcards .vcard, article.markdown .content #vcomments .vquote .vcard {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed silver; }
+    article.markdown .content #vcomments .vcards .vcard img.vimg, article.markdown .content #vcomments .vquote .vcard img.vimg {
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.2) !important;
+      position: relative;
+      transition: all .15s;
+      position: absolute;
+      width: 3.5rem;
+      height: 3.5rem;
+      padding: .2rem; }
+      article.markdown .content #vcomments .vcards .vcard img.vimg:hover, article.markdown .content #vcomments .vquote .vcard img.vimg:hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.8) !important; }
+    article.markdown .content #vcomments .vcards .vcard .vh, article.markdown .content #vcomments .vquote .vcard .vh {
+      margin-left: 4.5rem; }
+      article.markdown .content #vcomments .vcards .vcard .vh .vhead, article.markdown .content #vcomments .vcards .vcard .vh .vmeta, article.markdown .content #vcomments .vquote .vcard .vh .vhead, article.markdown .content #vcomments .vquote .vcard .vh .vmeta {
+        height: 1.6rem;
+        line-height: 2rem; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vhead .vtime, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vtime, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vtime, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vtime {
+          color: gray;
+          font-size: 14px; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vsys {
+          display: none; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vhead button.vat, article.markdown .content #vcomments .vcards .vcard .vh .vmeta button.vat, article.markdown .content #vcomments .vquote .vcard .vh .vhead button.vat, article.markdown .content #vcomments .vquote .vcard .vh .vmeta button.vat {
+          float: right; }
+      article.markdown .content #vcomments .vcards .vcard .vh .vcontent, article.markdown .content #vcomments .vquote .vcard .vh .vcontent {
+        margin-top: .5rem; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child > :first-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child > :first-child > :first-child, article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child > :first-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child > :first-child > :first-child {
+          margin-top: 0 !important; }
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child > :last-child,
+        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child > :last-child > :last-child, article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child > :last-child,
+        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child > :last-child > :last-child {
+          margin-bottom: 0 !important; }
+  article.markdown .content #vcomments .vcards > :last-child, article.markdown .content #vcomments .vquote > :last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none; }
+  article.markdown .content #vcomments .vquote > :first-child {
+    padding-top: 1rem; }
+  article.markdown .content #vcomments img.vemoji {
+    width: 1.5rem;
+    height: 1.5rem; }
+  article.markdown .content #vcomments button.vbtn {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.2) !important;
+    position: relative;
+    transition: all .15s;
+    border: none;
+    padding: .2rem .6rem; }
+    article.markdown .content #vcomments button.vbtn:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.8) !important; }
+  article.markdown .content #vcomments button.vmore {
+    margin: .5rem; }
+  article.markdown .content #vcomments .vcol {
+    padding: 0 .5rem; }
+  article.markdown .content #vcomments .vrow {
+    padding: .5rem 0; }
+  article.markdown .content #vcomments .text-right {
+    text-align: right; }
+  article.markdown .content #vcomments .text-center {
+    text-align: center; }
 
 article::-webkit-scrollbar {
   width: 0px !important;
@@ -683,6 +784,8 @@ article::-webkit-scrollbar {
     padding: 1rem !important; } }
 </style>
   
+
+  <script src="../../../js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -717,110 +820,12 @@ article::-webkit-scrollbar {
     
       
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
     <div class='data-box'>
-      <h3>59</h3>
+      <h3>10</h3>
       <span>Posts</span>
     </div>
     <div class='data-box'>
-      <h3>56246</h3>
+      <h3>31,626</h3>
       <span>Words</span>
     </div>
   </div>
@@ -848,9 +853,10 @@ article::-webkit-scrollbar {
     <a class="silent" href="../../../post/">
       <div class="social-box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" type="application/rss+xml" href="../../../index.xml">
-      <div class="social-box"><img src="../../../images/rss.svg"/><span>RSS</span></div>
+    <a class="silent" href="../../../issue/">
+      <div class="social-box"><img src="../../../images/issue.svg"/><span>Issue</span></div>
     </a>
+    
   </div>
 
   <div class="tags">
@@ -861,35 +867,7 @@ article::-webkit-scrollbar {
 </div>
 
 <div class="tag-card">
-  <a class="silent" href="../../../categories/dp/">DP</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E5%9B%BE%E8%AE%BA/">图论</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+  <a class="silent" href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
 </div>
 
   </div>
@@ -897,8 +875,9 @@ article::-webkit-scrollbar {
 <aside class='toc'>
   <h2 class='alt'><img class='alt' src='../../../images/notice.svg'>Notice</h2>
 <ul>
-<li>本站还处于建设中</li>
-<li>部分 URL 存在跳转错误</li>
+<li>部分文章正在重构中.</li>
+<li>评论功能开放.</li>
+<li>讨论区（Issue）开放.</li>
 </ul>
 
 <br>
@@ -933,6 +912,10 @@ article::-webkit-scrollbar {
   <div class='tag-card'>
     <a class='silent' href="../../../categories/%e5%9f%ba%e7%a1%80%e6%95%b0%e5%ad%a6/">基础数学</a>
   </div>
+  
+
+  
+  <div class="post-summary">难道这些还要等到在考场上才证？</div>
   
 
   
@@ -1027,15 +1010,54 @@ S<span style="color:#728e00">_</span><span style="color:#728e00">\triangle</span
 </code></pre></div></div>
 </details>
 
+
+  
+  <script src='../../../js/valine.min.js'></script>
+
+<h2 id="评论">
+  评论
+  <a class="anchor" href="#评论">¶</a>
+</h2>
+<div id="vcomments">
+  <script defer>
+    $('#TableOfContents').children().append('<li><a href="#评论">评论</a></li>');
+  
+    $maxlength = 1000;
+
+    new Valine({
+      el: '#vcomments',
+      appId: '\x38\x37\x4a\x52\x4a\x50\x49\x7a\x42\x6e\x59\x52\x55\x63\x65\x4c\x32\x58\x56\x70\x7a\x6c\x68\x4d\x2d\x67\x7a\x47\x7a\x6f\x48\x73\x7a',
+      appKey: '\x75\x6d\x53\x4e\x56\x49\x57\x6f\x4c\x4f\x74\x33\x70\x64\x6d\x30\x77\x38\x6f\x76\x7a\x67\x4d\x43',
+      placeholder: 'Markdown and KaTeX Supported',
+      recordIP: true,
+      meta: ['nick', 'mail'],
+      requiredFields: ['nick', 'mail'],
+      enableQQ: true,
+      lang: 'en',
+      maxlength: $maxlength,
+      
+      
+    });
+
+    var textarea = document.getElementById('veditor');
+    var res = document.getElementsByClassName('reslength')[0];
+
+    textarea.addEventListener('input', (e) => {
+      textarea.style.height = '100px';
+      textarea.style.height = e.target.scrollHeight + 'px';
+      document.getElementsByClassName('reslength')[0].scrollIntoView();
+      res.innerHTML = ($maxlength - textarea.value.length);
+    });
+  </script>
+</div>
+  
 </div>
 
 </article>
 
   </main>
 
-  <script src="../../../js/jquery.min.js"></script>
-
-
+  
 
 <script defer>
 function IsPC() {  
@@ -1066,7 +1088,7 @@ function detectZoom() {
   return ratio;
 }
 $('.markdown').find('img').each(function(id, el, arr) {
-  if (el.className == 'alt')
+  if (el.className == 'alt' || el.className == 'vemoji')
     return;
   el.className = "md__image";
   var src = el.getAttribute('src');
@@ -1125,17 +1147,8 @@ $('.language-latex').each(function(id, el, arr) {
 </script>
 
 
-<script>
-$(window).scroll(function(e) {
-  if ($('main').css('display') == 'flex')
-    $(this).scrollTop(0);
-});
-$('main').scroll(function(e) {
-  if ($('main').css('display') == 'flex')
-    $(this).scrollTop(0);
-});
-document.body.scroll="no";
-</script>
+
+
 </body>
 
 </html>
