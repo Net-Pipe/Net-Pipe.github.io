@@ -46,9 +46,19 @@
 a {
   color: var(--primary-color);
   text-decoration: none; }
-  a:hover {
+  a:focus, a:hover {
     text-decoration: underline;
     text-decoration-color: var(--primary-color); }
+
+a.alt {
+  color: black; }
+  a.alt:focus, a.alt:hover {
+    text-decoration: none; }
+
+a.black {
+  color: black; }
+  a.black:focus, a.black:hover {
+    text-decoration-color: black; }
 
 ul {
   list-style: circle;
@@ -73,6 +83,17 @@ ol {
   display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
+
+.shadow {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white; }
+
+.hover {
+  transition: all .15s; }
+  .hover:hover {
+    cursor: pointer;
+    background-color: var(--block-color); }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -99,9 +120,6 @@ body, code, input, button, textarea {
   font-family: 'Fantasque Sans Mono', sans-serif; }
 
 aside {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background-color: white;
   padding: 1rem; }
 
 aside.left .author {
@@ -116,18 +134,15 @@ aside.left .author {
 aside.left .data {
   display: flex;
   text-align: center; }
-  aside.left .data .data-box {
+  aside.left .data .box {
     flex: 0 0 50%;
     display: inline-block; }
-    aside.left .data .data-box:first-of-type {
-      border-right: 1px solid black; }
+    aside.left .data .box:first-of-type {
+      border-right: 2px solid black; }
 
 aside.left .social {
   margin: 1rem 0; }
   aside.left .social .box {
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    background-color: white;
     background-color: var(--block-color);
     margin-top: .5rem;
     padding: .3rem .5rem;
@@ -144,14 +159,13 @@ aside.left .search {
   top: 0;
   bottom: 0;
   left: 35px;
-  right: 0;
-  height: 30px; }
+  right: 0; }
   aside.left .search input {
     display: inline;
     width: 100%;
     height: 100%;
     border: none;
-    font-size: 17px;
+    font-size: 16px;
     background-color: transparent; }
 
 .core > :first-child,
@@ -182,15 +196,18 @@ aside.left .search {
     vertical-align: text-bottom; }
 
 .core.posts .post {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background-color: white;
-  transition: all .15s;
   padding: 1rem;
   margin: 1rem 0; }
-  .core.posts .post:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
+
+.core.posts .result > :first-child,
+.core.posts .result > :first-child > :first-child,
+.core.posts .result > :first-child > :first-child > :first-child {
+  margin-top: 0 !important; }
+
+.core.posts .result > :last-child,
+.core.posts .result > :last-child > :last-child,
+.core.posts .result > :last-child > :last-child > :last-child {
+  margin-bottom: 0 !important; }
 
 .core.posts > :first-child {
   margin-top: 0; }
@@ -204,20 +221,12 @@ aside.left .search {
   justify-content: center;
   font-size: 18px; }
   .core.posts .pages .box {
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    background-color: white;
     color: var(--primary-color);
     margin: 0 .5rem;
     width: 2rem;
     height: 2rem;
     line-height: 2rem;
     text-align: center; }
-    .core.posts .pages .box:not(.disabled) {
-      transition: all .15s; }
-      .core.posts .pages .box:not(.disabled):hover {
-        cursor: pointer;
-        background-color: var(--block-color); }
   .core.posts .pages .box.prev {
     width: 5rem;
     margin-left: 0; }
@@ -230,16 +239,9 @@ aside.left .search {
     color: black; }
 
 .core.list .post-item {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background-color: white;
-  transition: all .15s;
   height: 2.3rem;
   line-height: 2.3rem;
   margin: .3rem 0; }
-  .core.list .post-item:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
   .core.list .post-item img {
     width: 1.2rem;
     height: 1.2rem;
@@ -262,17 +264,17 @@ aside.left .search {
     margin-bottom: 0; }
 
 .core.markdown {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background-color: white;
   padding: 1rem; }
+  .core.markdown h1, .core.markdown h1 .katex {
+    font-size: 28px; }
   .core.markdown h2, .core.markdown h2 .katex {
     font-size: 24px; }
   .core.markdown h3, .core.markdown h3 .katex {
     font-size: 20px; }
   .core.markdown h1, .core.markdown h2, .core.markdown h3, .core.markdown h4, .core.markdown h5, .core.markdown h6 {
     font-weight: normal;
-    text-shadow: 0 0; }
+    text-shadow: 0 0;
+    margin: .5rem 0; }
     .core.markdown h1 .anchor, .core.markdown h2 .anchor, .core.markdown h3 .anchor, .core.markdown h4 .anchor, .core.markdown h5 .anchor, .core.markdown h6 .anchor {
       color: transparent; }
     .core.markdown h1:hover .anchor, .core.markdown h2:hover .anchor, .core.markdown h3:hover .anchor, .core.markdown h4:hover .anchor, .core.markdown h5:hover .anchor, .core.markdown h6:hover .anchor {
@@ -284,9 +286,10 @@ aside.left .search {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     background-color: white;
+    padding: .2rem .5rem;
+    margin: .5rem 0;
     background-color: var(--block-color);
-    padding: .5rem 1rem;
-    margin: .5rem 0; }
+    border-left: 0.3rem solid var(--primary-color); }
     .core.markdown blockquote > :first-child,
     .core.markdown blockquote > :first-child > :first-child,
     .core.markdown blockquote > :first-child > :first-child > :first-child {
@@ -315,9 +318,9 @@ aside.left .search {
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
-    background-color: var(--block-color) !important;
+    border: 0.5rem solid var(--block-color);
     margin: .5rem 0;
-    padding: .5rem 1rem;
+    padding: 0 .5rem;
     overflow: auto hidden;
     line-height: 1.3rem; }
     .core.markdown pre code {
@@ -351,7 +354,7 @@ html {
 main {
   display: flex;
   margin: 0 auto;
-  max-width: 80rem; }
+  max-width: 70rem; }
 
 .left, .right, .core {
   overflow: hidden auto;
@@ -367,6 +370,23 @@ main {
 
 .core {
   flex-grow: 1; }
+
+@media screen and (max-width: 65rem) {
+  aside.right {
+    display: none; } }
+
+@media screen and (max-width: 40rem) {
+  main {
+    display: block;
+    overflow: auto; }
+    main::-webkit-scrollbar {
+      width: 0px !important;
+      height: 0px !important; }
+  .pages .box {
+    margin: 0 .3rem !important; }
+  aside {
+    margin-right: 1rem !important;
+    margin-bottom: 0 !important; } }
 
 details {
   margin: .3rem 0; }
@@ -397,6 +417,44 @@ details {
     margin-bottom: 0; }
     details[open] > summary img.alt {
       transform: rotate(90deg); }
+
+.book-columns {
+  display: flex;
+  flex-wrap: wrap; }
+  .book-columns .markdown-inner {
+    flex: 1 1; }
+
+.book-tabs {
+  margin: .5em 0;
+  overflow: visible;
+  display: flex;
+  flex-wrap: wrap; }
+  .book-tabs label {
+    line-height: 2rem;
+    display: inline-block;
+    padding: 0 1rem;
+    min-width: 2.5rem;
+    cursor: pointer;
+    z-index: 999;
+    text-align: center; }
+  .book-tabs .book-tabs-content {
+    order: 999;
+    width: 100%;
+    display: none;
+    overflow: visible;
+    padding-top: .5rem; }
+    .book-tabs .book-tabs-content > :first-child,
+    .book-tabs .book-tabs-content > :first-child > :first-child,
+    .book-tabs .book-tabs-content > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    .book-tabs .book-tabs-content > :last-child,
+    .book-tabs .book-tabs-content > :last-child > :last-child,
+    .book-tabs .book-tabs-content > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+  .book-tabs input[type="radio"] {
+    display: none; }
+    .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
+      display: block; }
 </style>
   
 
@@ -409,48 +467,47 @@ details {
 <body>
   <main>
   
-<aside class="left">
+<aside class="left shadow">
   <div class='author'>
-    <a href="../"><img src='../images/NetPipe.png'></a>
-    <h2 class='name'>Net Pipe</h2>
-  </div>
-
+  <a href="../"><img src='../images/NetPipe.png'></a>
+  <h2 class='name'>Net Pipe</h2>
+</div>
   <div class="data">
+  
+  
     
+  
     
-      
+  
     
-      
+  
     
-      
+  
     
-      
+  
     
-      
+  
     
-      
+  
     
-      
+  
     
-      
+  
     
-      
-    
-      
-    
-    <div class='data-box'>
-      <h3>10</h3>
-      <span>Posts</span>
-    </div>
-    <div class='data-box'>
-      <h3>29,565</h3>
-      <span>Words</span>
-    </div>
+  
+  <div class='box'>
+    <h3>10</h3>
+    <span>Posts</span>
   </div>
+  <div class='box'>
+    <h3>29,565</h3>
+    <span>Words</span>
+  </div>
+</div>
 
   <div class="social">
-    <a>
-      <div class="box">
+    <a class="black">
+      <div class="box shadow">
         <img src="../images/search.svg"/>
         <div class="search">
           <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
@@ -465,14 +522,14 @@ details {
         }
       </script>
     </a>
-    <a href="../">
-      <div class="box"><img src="../images/home.svg"/><span>Home</span></div>
+    <a class="black" href="../">
+      <div class="box shadow"><img src="../images/home.svg"/><span>Home</span></div>
     </a>
-    <a href="../post/">
-      <div class="box"><img src="../images/posts.svg"/><span>Posts</span></div>
+    <a class="black" href="../post/">
+      <div class="box shadow"><img src="../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a type="application/rss+xml" href="../index.xml">
-      <div class="box"><img src="../images/rss.svg"/><span>RSS</span></div>
+    <a class="black" type="application/rss+xml" href="../index.xml">
+      <div class="box shadow"><img src="../images/rss.svg"/><span>RSS</span></div>
     </a>
   </div>
 
@@ -501,12 +558,11 @@ details {
 </aside>
 
   
-<article class='core markdown'>
+<article class='core markdown shadow'>
 <div class='content'>
   
 
-  <div class="result" id="result"></div>
-<script type="text/javascript">
+  <script type="text/javascript">
   function search() {
     document.getElementById('result').innerHTML = "";
     key =  decodeURIComponent(window.location.search).substr(1);
@@ -582,13 +638,14 @@ details {
     search();
   });
 </script>
+<div class="result" id="result"></div>
 
 </div>
 
 </article>
 
   
-<aside class="right">
+<aside class="right shadow">
   <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
