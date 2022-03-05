@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="简">
+  <meta name="description" content="简介 ¶由于 bool 变量只有 $0$ 和 $1$ 两种值，二进制">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,6 @@
   
   <style>* {
   --primary-color: #005ab4;
-  --link-color: #90cff9;
   --block-color: #f7faff;
   --radius: .2rem;
   --shadow: 0 1px 0 1px rgba(0, 0, 0, .05); }
@@ -58,7 +57,7 @@ a.alt {
 a.black {
   color: black; }
   a.black:focus, a.black:hover {
-    text-decoration-color: black; }
+    color: var(--primary-color); }
 
 ul {
   list-style: circle;
@@ -69,7 +68,7 @@ ul {
       font-size: large; }
 
 ol {
-  padding-left: 2.7rem; }
+  padding-left: 1.7rem; }
   ol li {
     margin: .3rem 0; }
 
@@ -83,6 +82,8 @@ ol {
   display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
+  .card .count {
+    display: inline-block; }
 
 .shadow {
   border-radius: var(--radius);
@@ -182,22 +183,22 @@ aside.left .search {
   width: 0px !important;
   height: 0px !important; }
 
-.core.posts, .core.list {
-  margin: 0 !important;
-  padding: 1rem; }
-
-.core.posts .title h1, .core.posts .title h2, .core.posts .title h3, .core.posts .title h4, .core.posts .title h5, .core.posts .title h6 {
+.core .title h1, .core .title h2, .core .title h3, .core .title h4, .core .title h5, .core .title h6 {
   font-weight: normal;
   text-shadow: 0 0; }
 
-.core.posts .time {
+.core .time {
   line-height: 20px; }
-  .core.posts .time img {
+  .core .time img {
     vertical-align: text-bottom; }
 
-.core.posts .post {
+.core .post {
   padding: 1rem;
   margin: 1rem 0; }
+
+.core.posts, .core.list {
+  margin: 0;
+  padding: 1rem; }
 
 .core.posts .result > :first-child,
 .core.posts .result > :first-child > :first-child,
@@ -239,16 +240,14 @@ aside.left .search {
     color: black; }
 
 .core.list .post-item {
-  height: 2.3rem;
-  line-height: 2.3rem;
+  height: 2rem;
+  line-height: 2rem;
   margin: .3rem 0; }
   .core.list .post-item img {
     width: 1.2rem;
     height: 1.2rem;
     margin: 0 .6rem;
     vertical-align: sub; }
-  .core.list .post-item span {
-    position: absolute; }
   .core.list .post-item:first-of-type {
     height: 3rem;
     line-height: 3.2rem;
@@ -279,6 +278,8 @@ aside.left .search {
       color: transparent; }
     .core.markdown h1:hover .anchor, .core.markdown h2:hover .anchor, .core.markdown h3:hover .anchor, .core.markdown h4:hover .anchor, .core.markdown h5:hover .anchor, .core.markdown h6:hover .anchor {
       color: var(--primary-color); }
+  .core.markdown p {
+    margin: .5rem 0; }
   .core.markdown strong {
     font-weight: normal;
     text-shadow: 0 0; }
@@ -286,7 +287,7 @@ aside.left .search {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     background-color: white;
-    padding: .2rem .5rem;
+    padding: .3rem .5rem;
     margin: .5rem 0;
     background-color: var(--block-color);
     border-left: 0.3rem solid var(--primary-color); }
@@ -318,11 +319,11 @@ aside.left .search {
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
-    border: 0.5rem solid var(--block-color);
     margin: .5rem 0;
-    padding: 0 .5rem;
+    padding: .5rem 1rem;
     overflow: auto hidden;
-    line-height: 1.3rem; }
+    line-height: 1.3rem;
+    background-color: var(--block-color) !important; }
     .core.markdown pre code {
       border: none;
       background: none !important;
@@ -354,7 +355,7 @@ html {
 main {
   display: flex;
   margin: 0 auto;
-  max-width: 70rem; }
+  max-width: 75rem; }
 
 .left, .right, .core {
   overflow: hidden auto;
@@ -390,33 +391,34 @@ main {
 
 details {
   margin: .3rem 0; }
-  details summary {
+  details summary, details .details-inner {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     background-color: white;
+    border-left: 0.3rem solid var(--primary-color);
+    padding: .3rem .5rem; }
+  details summary {
     background-color: var(--block-color);
     font-size: 12.8px;
     font-weight: bold;
-    padding: .3rem; }
-    details summary::marker {
-      content: '';
-      font-size: 0; }
+    padding-left: .8rem; }
+    details summary::marker, details summary::-webkit-details-marker {
+      content: ""; }
     details summary img.alt {
       width: 18px;
       height: 18px;
-      margin-right: .2rem;
+      float: right;
       vertical-align: sub;
       transition: .2s all; }
-  details ::-webkit-details-marker,
-  details ::-moz-list-bullet {
-    content: '' !important;
-    font-size: 0 !important; }
-  details:focus {
-    outline: none; }
   details[open] > summary {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
     details[open] > summary img.alt {
       transform: rotate(90deg); }
+  details[open] > .details-inner {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
 
 .book-columns {
   display: flex;
@@ -495,12 +497,50 @@ details {
   
     
   
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
   <div class='box'>
-    <h3>10</h3>
+    <h3>29</h3>
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>29,565</h3>
+    <h3>74,020</h3>
     <span>Words</span>
   </div>
 </div>
@@ -535,23 +575,43 @@ details {
 
   
   <div class="card">
-    <a href="../../../categories/%E6%95%B0%E5%AD%A6/">数学</a>
-  </div>
-  
-  <div class="card">
-    <a href="../../../categories/%E6%95%B0%E5%88%97/">数列</a>
-  </div>
-  
-  <div class="card">
+    <div class="count">1</div>
     <a href="../../../categories/%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F/">万能公式</a>
   </div>
   
   <div class="card">
+    <div class="count">1</div>
     <a href="../../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
   </div>
   
   <div class="card">
+    <div class="count">2</div>
+    <a href="../../../categories/%E6%95%B0%E5%88%97/">数列</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">4</div>
+    <a href="../../../categories/%E6%95%B0%E5%AD%A6/">数学</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">19</div>
+    <a href="../../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">1</div>
+    <a href="../../../categories/%E7%9F%A9%E9%98%B5/">矩阵</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">6</div>
     <a href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">5</div>
+    <a href="../../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
   </div>
   
 
@@ -573,12 +633,12 @@ details {
   </div>
 
 </span>
-  <div class="description">
   
-    用二进制数存储 bool 数组.
-  
+<div class="description">
+  用二进制数存储 bool 数组.
 </div>
-  <br>
+
+
   
 
   <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>由于 <code>bool</code> 变量只有 $0$ 和 $1$ 两种值，二进制位也具备此特征，故每个 <code>bool</code> 数组都可用一个二进制数表示.</p>
@@ -631,7 +691,8 @@ details {
   <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
-<li>评论区因安全问题被暂停.</li>
+<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
+<li>评论区因安全问题被关闭.</li>
 </ul>
 
 <br>
@@ -678,7 +739,7 @@ function renderTex() {
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
       "\\mex": "\\text\{mex\} \\, ",
-      "\\wave": "\\raisebox\{-0.1em\}\{\\small～\}",
+      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
     }
   });
 }
@@ -700,10 +761,13 @@ $('.language-latex').each(function(id, el, arr) {
 
 <script>
   $(window).scroll(function(e) {
-    if ($('main').css('display') == 'flex')
+    if ($('main').css('display') == 'flex') {
       $(this).scrollTop(0);
+    }
   });
-  document.body.scroll="no";
+  $(window).ready(function() {
+    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+  });
 </script>
 
 

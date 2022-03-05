@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Net Pipe&#39;s Blog</title>  
+  <meta name="description" content="注意：若无特殊说明，本章涉及的变量皆为正">
+  <meta name="author" content="Net Pipe">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='../../../../../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
+  <link rel='shortcut icon' type='image/x-icon' href='../../../../../images/NetPipe.png' />
+
+  
+  <style>* {
+  --primary-color: #005ab4;
+  --block-color: #f7faff;
+  --radius: .2rem;
+  --shadow: 0 1px 0 1px rgba(0, 0, 0, .05); }
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%; }
+
+::selection {
+  background-color: #CCE2FF;
+  color: rgba(0, 0, 0, 0.87); }
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #c3c3c33b; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c3c3c37b; }
+
+::-webkit-scrollbar-track {
+  border-radius: 10px; }
+
+a {
+  color: var(--primary-color);
+  text-decoration: none; }
+  a:focus, a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--primary-color); }
+
+a.alt {
+  color: black; }
+  a.alt:focus, a.alt:hover {
+    text-decoration: none; }
+
+a.black {
+  color: black; }
+  a.black:focus, a.black:hover {
+    color: var(--primary-color); }
+
+ul {
+  list-style: circle;
+  padding-left: 1.2rem; }
+  ul li {
+    margin: .3rem 0; }
+    ul li::marker {
+      font-size: large; }
+
+ol {
+  padding-left: 1.7rem; }
+  ol li {
+    margin: .3rem 0; }
+
+.card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  background-color: var(--block-color);
+  padding: .1rem .5rem;
+  margin: .3rem 0;
+  display: inline-block;
+  font-size: 12.8px;
+  font-weight: bold; }
+  .card .count {
+    display: inline-block; }
+
+.shadow {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white; }
+
+.hover {
+  transition: all .15s; }
+  .hover:hover {
+    cursor: pointer;
+    background-color: var(--block-color); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url("/fonts/FantasqueSansMono-Regular.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/FantasqueSansMono-Bold.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: italic;
+  src: url("/fonts/FantasqueSansMono-Italic.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: italic;
+  font-weight: bold;
+  src: url("/fonts/FantasqueSansMono-BoldItalic.woff2") format("woff2"); }
+
+body, code, input, button, textarea {
+  font-family: 'Fantasque Sans Mono', sans-serif; }
+
+aside {
+  padding: 1rem; }
+
+aside.left .author {
+  text-align: center; }
+  aside.left .author img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1rem; }
+  aside.left .author h2.name {
+    margin: .5rem; }
+
+aside.left .data {
+  display: flex;
+  text-align: center; }
+  aside.left .data .box {
+    flex: 0 0 50%;
+    display: inline-block; }
+    aside.left .data .box:first-of-type {
+      border-right: 2px solid black; }
+
+aside.left .social {
+  margin: 1rem 0; }
+  aside.left .social .box {
+    background-color: var(--block-color);
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    font-size: 18px;
+    position: relative; }
+    aside.left .social .box img {
+      vertical-align: text-bottom;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px; }
+
+aside.left .search {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35px;
+  right: 0; }
+  aside.left .search input {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 16px;
+    background-color: transparent; }
+
+.core > :first-child,
+.core > :first-child > :first-child,
+.core > :first-child > :first-child > :first-child {
+  margin-top: 0 !important; }
+
+.core > :last-child,
+.core > :last-child > :last-child,
+.core > :last-child > :last-child > :last-child {
+  margin-bottom: 0 !important; }
+
+.core::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important; }
+
+.core .title h1, .core .title h2, .core .title h3, .core .title h4, .core .title h5, .core .title h6 {
+  font-weight: normal;
+  text-shadow: 0 0; }
+
+.core .time {
+  line-height: 20px; }
+  .core .time img {
+    vertical-align: text-bottom; }
+
+.core .post {
+  padding: 1rem;
+  margin: 1rem 0; }
+
+.core.posts, .core.list {
+  margin: 0;
+  padding: 1rem; }
+
+.core.posts .result > :first-child,
+.core.posts .result > :first-child > :first-child,
+.core.posts .result > :first-child > :first-child > :first-child {
+  margin-top: 0 !important; }
+
+.core.posts .result > :last-child,
+.core.posts .result > :last-child > :last-child,
+.core.posts .result > :last-child > :last-child > :last-child {
+  margin-bottom: 0 !important; }
+
+.core.posts > :first-child {
+  margin-top: 0; }
+
+.core.posts > :last-child {
+  margin-bottom: 0; }
+
+.core.posts .pages {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  font-size: 18px; }
+  .core.posts .pages .box {
+    color: var(--primary-color);
+    margin: 0 .5rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center; }
+  .core.posts .pages .box.prev {
+    width: 5rem;
+    margin-left: 0; }
+  .core.posts .pages .box.next {
+    width: 5rem;
+    margin-right: 0; }
+  .core.posts .pages .box.eldivpsis {
+    width: 3rem; }
+  .core.posts .pages .box.disabled {
+    color: black; }
+
+.core.list .post-item {
+  height: 2rem;
+  line-height: 2rem;
+  margin: .3rem 0; }
+  .core.list .post-item img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 .6rem;
+    vertical-align: sub; }
+  .core.list .post-item:first-of-type {
+    height: 3rem;
+    line-height: 3.2rem;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    padding-left: 1rem; }
+    .core.list .post-item:first-of-type img {
+      width: 1.4rem;
+      height: 1.4rem; }
+  .core.list .post-item:last-of-type {
+    border: none;
+    margin-bottom: 0; }
+
+.core.markdown {
+  padding: 1rem; }
+  .core.markdown h1, .core.markdown h1 .katex {
+    font-size: 28px; }
+  .core.markdown h2, .core.markdown h2 .katex {
+    font-size: 24px; }
+  .core.markdown h3, .core.markdown h3 .katex {
+    font-size: 20px; }
+  .core.markdown h1, .core.markdown h2, .core.markdown h3, .core.markdown h4, .core.markdown h5, .core.markdown h6 {
+    font-weight: normal;
+    text-shadow: 0 0;
+    margin: .5rem 0; }
+    .core.markdown h1 .anchor, .core.markdown h2 .anchor, .core.markdown h3 .anchor, .core.markdown h4 .anchor, .core.markdown h5 .anchor, .core.markdown h6 .anchor {
+      color: transparent; }
+    .core.markdown h1:hover .anchor, .core.markdown h2:hover .anchor, .core.markdown h3:hover .anchor, .core.markdown h4:hover .anchor, .core.markdown h5:hover .anchor, .core.markdown h6:hover .anchor {
+      color: var(--primary-color); }
+  .core.markdown p {
+    margin: .5rem 0; }
+  .core.markdown strong {
+    font-weight: normal;
+    text-shadow: 0 0; }
+  .core.markdown blockquote {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    padding: .3rem .5rem;
+    margin: .5rem 0;
+    background-color: var(--block-color);
+    border-left: 0.3rem solid var(--primary-color); }
+    .core.markdown blockquote > :first-child,
+    .core.markdown blockquote > :first-child > :first-child,
+    .core.markdown blockquote > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    .core.markdown blockquote > :last-child,
+    .core.markdown blockquote > :last-child > :last-child,
+    .core.markdown blockquote > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+  .core.markdown img:not(.alt) {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; }
+  .core.markdown code {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    padding: 1px 2px;
+    background-color: var(--block-color); }
+  .core.markdown pre {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    margin: .5rem 0;
+    padding: .5rem 1rem;
+    overflow: auto hidden;
+    line-height: 1.3rem;
+    background-color: var(--block-color) !important; }
+    .core.markdown pre code {
+      border: none;
+      background: none !important;
+      box-shadow: none;
+      padding: 0; }
+  .core.markdown table {
+    margin: .5rem 0;
+    border-spacing: 0 5px;
+    -webkit-overflow-scrolling: touch; }
+    .core.markdown table th, .core.markdown table td {
+      padding: .3rem 16px;
+      font-weight: normal; }
+    .core.markdown table tr {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background-color: white;
+      background-color: var(--block-color); }
+
+html, body, main {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  height: 100%;
+  overflow: hidden; }
+
+html {
+  background-color: #f7f7f7; }
+
+main {
+  display: flex;
+  margin: 0 auto;
+  max-width: 75rem; }
+
+.left, .right, .core {
+  overflow: hidden auto;
+  margin: 1rem; }
+
+.left {
+  flex: 0 0 16rem;
+  margin-right: 0; }
+
+.right {
+  flex: 0 0 16rem;
+  margin-left: 0; }
+
+.core {
+  flex-grow: 1; }
+
+@media screen and (max-width: 65rem) {
+  aside.right {
+    display: none; } }
+
+@media screen and (max-width: 40rem) {
+  main {
+    display: block;
+    overflow: auto; }
+    main::-webkit-scrollbar {
+      width: 0px !important;
+      height: 0px !important; }
+  .pages .box {
+    margin: 0 .3rem !important; }
+  aside {
+    margin-right: 1rem !important;
+    margin-bottom: 0 !important; } }
+
+details {
+  margin: .3rem 0; }
+  details summary, details .details-inner {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    border-left: 0.3rem solid var(--primary-color);
+    padding: .3rem .5rem; }
+  details summary {
+    background-color: var(--block-color);
+    font-size: 12.8px;
+    font-weight: bold;
+    padding-left: .8rem; }
+    details summary::marker, details summary::-webkit-details-marker {
+      content: ""; }
+    details summary img.alt {
+      width: 18px;
+      height: 18px;
+      float: right;
+      vertical-align: sub;
+      transition: .2s all; }
+  details[open] > summary {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+    details[open] > summary img.alt {
+      transform: rotate(90deg); }
+  details[open] > .details-inner {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
+
+.book-columns {
+  display: flex;
+  flex-wrap: wrap; }
+  .book-columns .markdown-inner {
+    flex: 1 1; }
+
+.book-tabs {
+  margin: .5em 0;
+  overflow: visible;
+  display: flex;
+  flex-wrap: wrap; }
+  .book-tabs label {
+    line-height: 2rem;
+    display: inline-block;
+    padding: 0 1rem;
+    min-width: 2.5rem;
+    cursor: pointer;
+    z-index: 999;
+    text-align: center; }
+  .book-tabs .book-tabs-content {
+    order: 999;
+    width: 100%;
+    display: none;
+    overflow: visible;
+    padding-top: .5rem; }
+    .book-tabs .book-tabs-content > :first-child,
+    .book-tabs .book-tabs-content > :first-child > :first-child,
+    .book-tabs .book-tabs-content > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    .book-tabs .book-tabs-content > :last-child,
+    .book-tabs .book-tabs-content > :last-child > :last-child,
+    .book-tabs .book-tabs-content > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+  .book-tabs input[type="radio"] {
+    display: none; }
+    .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
+      display: block; }
+</style>
+  
+
+  <script src="../../../../../js/jquery.min.js"></script>
+</head>
+
+
+
+
+<body>
+  <main>
+  
+<aside class="left shadow">
+  <div class='author'>
+  <a href="../../../../../"><img src='../../../../../images/NetPipe.png'></a>
+  <h2 class='name'>Net Pipe</h2>
+</div>
+  <div class="data">
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class='box'>
+    <h3>29</h3>
+    <span>Posts</span>
+  </div>
+  <div class='box'>
+    <h3>74,020</h3>
+    <span>Words</span>
+  </div>
+</div>
+
+  <div class="social">
+    <a class="black">
+      <div class="box shadow">
+        <img src="../../../../../images/search.svg"/>
+        <div class="search">
+          <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
+        </div>
+      </div>
+      <script>
+        function keyup_submit(e){ 
+        var evt = window.event || e; 
+          if (evt.keyCode == 13) {
+            window.location.href = '/s?wd=' + document.getElementById("search-key").value;
+          }
+        }
+      </script>
+    </a>
+    <a class="black" href="../../../../../">
+      <div class="box shadow"><img src="../../../../../images/home.svg"/><span>Home</span></div>
+    </a>
+    <a class="black" href="../../../../../post/">
+      <div class="box shadow"><img src="../../../../../images/posts.svg"/><span>Posts</span></div>
+    </a>
+    <a class="black" type="application/rss+xml" href="../../../../../index.xml">
+      <div class="box shadow"><img src="../../../../../images/rss.svg"/><span>RSS</span></div>
+    </a>
+  </div>
+
+  
+  <div class="card">
+    <div class="count">1</div>
+    <a href="../../../../../categories/%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F/">万能公式</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">1</div>
+    <a href="../../../../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">2</div>
+    <a href="../../../../../categories/%E6%95%B0%E5%88%97/">数列</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">4</div>
+    <a href="../../../../../categories/%E6%95%B0%E5%AD%A6/">数学</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">19</div>
+    <a href="../../../../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">1</div>
+    <a href="../../../../../categories/%E7%9F%A9%E9%98%B5/">矩阵</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">6</div>
+    <a href="../../../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">5</div>
+    <a href="../../../../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
+  </div>
+  
+
+</aside>
+
+  
+<article class='core markdown shadow'>
+<div class='content'>
+  
+  <h1>欧拉函数</h1>
+  <span class="time">
+  <img class='alt' src="../../../../../images/time.svg"></img>
+  Aug 20, 2021
+</span>
+  <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../../../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+  
+
+  
+
+  <p><strong>注意</strong>：若无特殊说明，本章涉及的变量皆为正整数.</p>
+<h2 id="定义">定义 <a class="anchor" href="#%e5%ae%9a%e4%b9%89">¶</a></h2><p>$n$ 的欧拉函数为 $[1,n]$ 中与 $n$ 互质的数的个数，记为 $\varphi(n)$. 特别地，$\varphi(1)=1$.</p>
+<h2 id="性质">性质 <a class="anchor" href="#%e6%80%a7%e8%b4%a8">¶</a></h2><h3 id="质数的欧拉函数">质数的欧拉函数 <a class="anchor" href="#%e8%b4%a8%e6%95%b0%e7%9a%84%e6%ac%a7%e6%8b%89%e5%87%bd%e6%95%b0">¶</a></h3><p>$p$ 为质数，则 $\varphi(p)=p-1$.</p>
+
+<details >
+  <summary>证<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'>$p$ 与 $[1,p-1]$ 中的每个数互质.</div>
+</details>
+<h3 id="pk-的欧拉函数">$p^k$ 的欧拉函数 <a class="anchor" href="#pk-%e7%9a%84%e6%ac%a7%e6%8b%89%e5%87%bd%e6%95%b0">¶</a></h3><p>$p$ 为质数，$n=p^k$，则 $\varphi(n)=p^k-p^{k-1}$.</p>
+
+<details >
+  <summary>证<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>在 $[1,n]$ 中，只有 $p$ 的倍数不与 $n=p^k$ 互质.</p>
+<p>$∵\;[1,n]$ 中 $p$ 的倍数有 $\dfrac{n}{p}=\dfrac{p^k}{p}=p^{k-1}$ 个，</p>
+<p>$∴\varphi(n)=n-p^{k-1}=p^k-p^{k-1}$.</p>
+</div>
+</details>
+<h3 id="通项公式">通项公式 <a class="anchor" href="#%e9%80%9a%e9%a1%b9%e5%85%ac%e5%bc%8f">¶</a></h3><p>$n$ 有 $m$ 个质因子 $p_1∼p_m$，则 $\su\varphi(n)=n\prod_{i=1}^{m}(1-\frac{1}{p_i})$.</p>
+
+<details >
+  <summary>证<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>若 $n$ 有质因子 $p$，则 $p$ 的倍数不与 $n$ 互质.</p>
+<p>$[1,n]$ 中 $p$ 的倍数有 $\dfrac{n}{p}$ 个，则剩下的 $n-\dfrac{n}{p}=n\cdot(1-\dfrac{1}{p})$ 个数不是 $p$ 的倍数. 也就是说，这 $n$ 个数中，非 $p$ 的倍数占比为 $1-\dfrac{1}{p}$.</p>
+<p>根据定义，$[1,n]$ 中有 $\varphi(n)$ 个数不是 $p_1∼p_m$ 的倍数（即与 $n$ 互质）. 由乘法原理得：</p>
+<p>$$\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots(1-\frac{1}{p_m})=n\prod_{i=1}^{m}(1-\frac{1}{p_i})$$</p>
+</div>
+</details>
+<h3 id="积性函数">积性函数 <a class="anchor" href="#%e7%a7%af%e6%80%a7%e5%87%bd%e6%95%b0">¶</a></h3><p>$n,m$ 互质，则 $\varphi(nm)=\varphi(n)\cdot \varphi(m)$.</p>
+
+<details >
+  <summary>证<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>设 $n$ 有 $x$ 个质因子 $p_1\sim p_x$，</p>
+<p>设 $m$ 有 $y$ 个质因子 $q_1\sim q_y$，</p>
+<p>$∵n,m$ 互质，$∴n,m$ 的质因子互不相同.</p>
+<p>$∴nm$ 有 $x+y$ 个质因子 $p_1\sim p_x,q_1\sim q_y$.</p>
+<p>由 $\varphi$ 函数的通项公式可得：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">\varphi</span>(n)<span style="color:#728e00">\cdot</span> <span style="color:#728e00">\varphi</span>(m)<span style="color:#728e00">&amp;</span>=(n<span style="color:#728e00">\prod</span><span style="color:#728e00">_{</span>i=1<span style="color:#728e00">}^{</span>x<span style="color:#728e00">}</span>(1-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>p<span style="color:#728e00">_</span>i<span style="color:#728e00">}</span>))<span style="color:#728e00">\cdot</span> (m<span style="color:#728e00">\prod</span><span style="color:#728e00">_{</span>i=1<span style="color:#728e00">}^{</span>y<span style="color:#728e00">}</span>(1-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>q<span style="color:#728e00">_</span>i<span style="color:#728e00">}</span>))<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=nm<span style="color:#728e00">\prod</span><span style="color:#728e00">_{</span>i=1<span style="color:#728e00">}^{</span>x<span style="color:#728e00">}</span>(1-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>p<span style="color:#728e00">_</span>i<span style="color:#728e00">}</span>)<span style="color:#728e00">\prod</span><span style="color:#728e00">_{</span>i=1<span style="color:#728e00">}^{</span>y<span style="color:#728e00">}</span>(1-<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>q<span style="color:#728e00">_</span>i<span style="color:#728e00">}</span>)<span style="color:#728e00">\\</span>
+<span style="color:#728e00">&amp;</span>=<span style="color:#728e00">\varphi</span>(nm)
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><p>即证.</p>
+</div>
+</details>
+<h2 id="定理">定理 <a class="anchor" href="#%e5%ae%9a%e7%90%86">¶</a></h2><h3 id="欧拉定理">欧拉定理 <a class="anchor" href="#%e6%ac%a7%e6%8b%89%e5%ae%9a%e7%90%86">¶</a></h3><p>若 $a,n$ 互质，则 $a^{\footnotesize\varphi(n)}≡1\pmod{n}$.</p>
+
+<details >
+  <summary>证<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>设 $C=\{C_1,C_2,\cdots,C_{\varphi(n)}\}$ 为模 $n$ 的 <a href="../../../../../docs/NOI/Math/mod/#%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB">简化剩余系</a>.</p>
+<p>设 $aC=\{aC_1,aC_2,\cdots,aC_{\varphi(n)}\}$，即 $C$ 中的每个元素乘 $a$.</p>
+<details >
+  <summary>引理 1<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>由 <a href="../../../../../docs/NOI/Math/mod/#%E5%89%A9%E4%BD%99%E7%B3%BB">剩余系</a> 的定义得：</p>
+<p>$$C_i\not≡C_j \ (\bmod \ n)(i≠j)$$</p>
+<p>$∵a,n$ 互质，由同余的 <a href="../../../../../docs/NOI/Math/mod/#%E6%80%A7%E8%B4%A8">同乘性</a> 可知：</p>
+<p>$$aC_i\not≡aC_j \ (\bmod \ n)(i≠j)$$</p>
+<p>$∴aC$ 为模 $n$ 的剩余系.</p>
+</div>
+</details>
+<details >
+  <summary>引理 2<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>$∵a,n$ 互质，根据 <a href="../../../../../docs/NOI/Math/mod/gcd/">欧几里得算法</a> 有：</p>
+<p>$$gcd(a,n)=gcd(n,a \bmod n)=1$$</p>
+<p>$∴a \bmod n$ 也与 $n$ 互质. 根据 <a href="../../../../../docs/NOI/Math/mod/#%E7%AE%80%E5%8C%96%E5%89%A9%E4%BD%99%E7%B3%BB">简化剩余系</a> 的定义可知：</p>
+<p>$$a \bmod n\in C$$</p>
+<p>$∵\;$简化剩余系满足 <a href="../../../../../docs/NOI/Math/mod/#%E4%B9%98%E6%B3%95%E5%B0%81%E9%97%AD">乘法封闭</a> 性质，所以：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\left\{\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+  <span style="color:#728e00">&amp;</span>a <span style="color:#728e00">\bmod</span> n<span style="color:#728e00">\in</span> C<span style="color:#728e00">\\</span>
+  <span style="color:#728e00">&amp;</span>C<span style="color:#728e00">_</span>i<span style="color:#728e00">\in</span> C
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>.
+<span style="color:#728e00">\eq</span>(a <span style="color:#728e00">\bmod</span> n)<span style="color:#728e00">\cdot</span> C<span style="color:#728e00">_</span>i <span style="color:#728e00">\bmod</span> n<span style="color:#728e00">\in</span> C
+<span style="color:#728e00">\eq</span> aC<span style="color:#728e00">_</span>i <span style="color:#728e00">\bmod</span> n<span style="color:#728e00">\in</span> C
+</code></pre></div><p>$∴aC_i \bmod n$ 与 $n$ 互质，即 $aC$ 中的任意元素模 $n$ 后与 $n$ 互质.</p>
+</div>
+</details>
+<p>结合引理 $1$、引理 $2$ 可知 $aC$ 也为 $n$ 的简化剩余系.</p>
+<p>显然，$C$ 的所有元素之积和 $aC$ 的所有元素之积模 $n$ 同余，即：</p>
+<p>$$\prod_{i=1}^{\varphi(n)}C_i≡\prod_{i=1}^{\varphi(n)}aC_i \ (\bmod \ n)$$</p>
+<p>$$\prod_{i=1}^{\varphi(n)}C_i≡a^{\varphi(n)}\cdot \prod_{i=1}^{\varphi(n)}C_i \ (\bmod \ n)$$</p>
+<p>$$(a^{\varphi(n)}-1)\prod_{i=1}^{\varphi(n)}C_i≡0 \ (\bmod \ n)$$</p>
+<p>$∵C$ 中的所有元素模 $n$ 后与 $n$ 互质，所以：</p>
+<p>$$\prod_{i=1}^{\varphi(n)}C_i\not≡0 \ (\bmod \ n)$$</p>
+<p>$∴a^{\varphi(n)}-1≡0\pmod{n}$，即 $a^{\varphi(n)}≡1\pmod{n}$.</p>
+</div>
+</details>
+<h3 id="费马小定理">费马小定理 <a class="anchor" href="#%e8%b4%b9%e9%a9%ac%e5%b0%8f%e5%ae%9a%e7%90%86">¶</a></h3><p>若 $p$ 为质数，则 $a^{p-1}≡a\pmod{p}$.</p>
+
+<details >
+  <summary>证<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>当 $p\mid a$ 时，费马小定理显然成立，故只需讨论 $p\nmid a$ 的情况.</p>
+<p>当 $p\nmid a$ 时，$∵p$ 是质数 $∴a,p$ 没有公因数（即 $a,p$ 互质）. 根据 <a href="../../../../../docs/NOI/Math/mod/euler/#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86">欧拉定理</a> 有：</p>
+<p>$$a^{\footnotesize\varphi(p)}≡1 \ (\bmod \ p)$$</p>
+<p>$∵p$ 为质数，由 <a href="../../../../../docs/NOI/Math/mod/euler/#%E6%80%A7%E8%B4%A8">性质</a> 可知 $\varphi(p)=p-1$. 代入上式：</p>
+<p>$$a^{\footnotesize p-1}≡1 \ (\bmod \ p)$$</p>
+<p>即证.</p>
+<!-- 当 $p\mid a$ 时，费马小定理显然成立，故只需讨论 $p\nmid a$ 的情况. 
+
+设 $C=\\{0,1,2,\cdots,p-1\\}$ 为 $p$ 的 [完全剩余系](/docs/NOI/Math/mod/#完全剩余系). 
+
+设 $aC=\\{0,a,2a,\cdots,(p-1)\cdot a\\}$，即 $C$ 中的每个元素乘 $a$. 
+
+由 [剩余系](/docs/NOI/Math/mod/#剩余系) 的定义得：
+
+$$C_i\not≡C_j \ (\bmod \ p)(i≠j)$$
+
+$∵p\nmid a$，由同余的 [同乘性](/docs/NOI/Math/mod/#性质) 可知：
+
+$$aC_i\not≡aC_j \ (\bmod \ p)(i≠j)$$
+
+$∴aC$ 为模 $p$ 的剩余系. 
+
+$∵aC$ 有 $p$ 个元素 $∴aC$ 也为 $p$ 的完全剩余系. 
+
+显然，$C$ 的非零元素之积和 $aC$ 的非零元素之积模 $p$ 同余，即：
+
+$$\prod_{i=2}^{p}C_i≡\prod_{i=2}^{p}aC_i \ (\bmod \ p)$$
+
+$$(p-1)!≡a^{p-1}\cdot (p-1)! \ (\bmod \ p)$$
+
+$$(a^{p-1}-1)(p-1)!≡0 \ (\bmod \ p)$$
+
+$∵p$ 是质数，$(p-1)!\not≡0\pmod{p}$，
+
+$∴a^{p-1}-1≡0\pmod{p}$，即 $a^p≡a\pmod{p}$.  -->
+</div>
+</details>
+<h3 id="扩展欧拉定理">扩展欧拉定理 <a class="anchor" href="#%e6%89%a9%e5%b1%95%e6%ac%a7%e6%8b%89%e5%ae%9a%e7%90%86">¶</a></h3><p>若 $a,n$ 互质，则对于任意 $b$，有 $a^b≡a^{b \bmod \varphi(n)}\pmod{n}$.</p>
+
+<details >
+  <summary>证<img class='alt' src='../../../../../images/right.svg'></summary>
+  <div class='details-inner'><p>设 $b \bmod \varphi(n)=q$，则 $b$ 可以表示为 $k\cdot \varphi(n)+q$. 代入 $a^b$ 得：</p>
+<p>$$a^b=a^{k\cdot \varphi(n)+q}=\big(a^{\varphi(n)}\big)^k\cdot a^q$$</p>
+<p>根据 <a href="../../../../../docs/NOI/Math/mod/#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86">欧拉定理</a>，当 $a,n$ 互质时，有：</p>
+<p>$$a^{\varphi(n)}≡1 \ (\bmod \ n)$$</p>
+<p>由同余的 <a href="../../../../../docs/NOI/Math/mod/#%E6%80%A7%E8%B4%A8">同幂性</a>、<a href="../../../../../docs/NOI/Math/mod/#%E6%80%A7%E8%B4%A8">同乘性</a> 可知：</p>
+<p>$$\big(a^{\varphi(n)}\big)^k≡1^k=1 \ (\bmod \ n)$$</p>
+<p>$$\big(a^{\varphi(n)}\big)^k\cdot a^q≡a^q \ (\bmod \ n)$$</p>
+<p>$$a^b≡a^q \ (\bmod \ n)$$</p>
+<p>即 $a^b≡a^{b \bmod \varphi(n)}\pmod{n}$.</p>
+</div>
+</details>
+<h2 id="模板">模板 <a class="anchor" href="#%e6%a8%a1%e6%9d%bf">¶</a></h2><h3 id="欧拉函数">欧拉函数 <a class="anchor" href="#%e6%ac%a7%e6%8b%89%e5%87%bd%e6%95%b0">¶</a></h3><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">varphi</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
+    <span style="color:#00979d">int</span> <span style="color:#434f54">ans</span> <span style="color:#728e00">=</span> <span style="color:#434f54">n</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">sqrt</span>(<span style="color:#434f54">n</span>); <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#728e00">if</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) {
+            <span style="color:#434f54">ans</span> <span style="color:#728e00">=</span> <span style="color:#434f54">ans</span> <span style="color:#728e00">/</span> <span style="color:#434f54">i</span> <span style="color:#728e00">*</span> (<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>);
+            <span style="color:#728e00">while</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) <span style="color:#434f54">n</span> <span style="color:#728e00">/=</span> <span style="color:#434f54">i</span>;
+        }
+    }
+    <span style="color:#728e00">if</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">&gt;</span> <span style="color:#8a7b52">1</span>)
+        <span style="color:#434f54">ans</span> <span style="color:#728e00">=</span> <span style="color:#434f54">ans</span> <span style="color:#728e00">/</span> <span style="color:#434f54">n</span> <span style="color:#728e00">*</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>);
+    <span style="color:#728e00">return</span> <span style="color:#434f54">ans</span>;
+}
+</code></pre></div><h3 id="线性欧拉算法">线性欧拉算法 <a class="anchor" href="#%e7%ba%bf%e6%80%a7%e6%ac%a7%e6%8b%89%e7%ae%97%e6%b3%95">¶</a></h3><blockquote>
+<p>求 $1\sim n$ 的欧拉函数.</p>
+</blockquote>
+<p>对质数的 <a href="../../../../../docs/NOI/Math/prime/#%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95">线性筛法</a> 加以改造.</p>
+<ul>
+<li>
+<p>若 $i$ 为质数，则 $\varphi(i)=i-1$.</p>
+</li>
+<li>
+<p>利用 $i$ 和 $prime_j$ 生成合数时，利用 <a href="../../../../../docs/NOI/Math/mod/euler/#%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0">积性函数</a> 这一性质：</p>
+</li>
+</ul>
+<p>$$\varphi(i\cdot prime_j)=\varphi(i)\cdot\varphi(prime_j)$$</p>
+<p>时间复杂度为 $O(n)$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
+<span style="color:#00979d">int</span> <span style="color:#434f54">phi</span>[<span style="color:#434f54">N</span>];
+<span style="color:#434f54">vector</span><span style="color:#728e00">&lt;</span><span style="color:#00979d">int</span><span style="color:#728e00">&gt;</span> <span style="color:#434f54">prime</span>;
+
+<span style="color:#00979d">void</span> <span style="color:#d35400">varphi</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
+    <span style="color:#434f54">phi</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#728e00">if</span>(<span style="color:#728e00">!</span><span style="color:#434f54">phi</span>[<span style="color:#434f54">i</span>])
+            <span style="color:#434f54">phi</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>, <span style="color:#434f54">prime</span>.<span style="color:#434f54">push_back</span>(<span style="color:#434f54">i</span>);
+        <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">prime</span>.<span style="color:#434f54">size</span>(); <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>) {
+            <span style="color:#728e00">if</span>(<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">&gt;</span> <span style="color:#434f54">n</span>) <span style="color:#728e00">break</span>;
+            <span style="color:#434f54">phi</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>]] <span style="color:#728e00">=</span> <span style="color:#434f54">phi</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">phi</span>[<span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>]]; <span style="color:#95a5a6">// 积性函数
+</span><span style="color:#95a5a6"></span>            <span style="color:#728e00">if</span>(<span style="color:#434f54">i</span> <span style="color:#728e00">%</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) <span style="color:#728e00">break</span>;
+        }
+    }
+}
+</code></pre></div>
+</div>
+
+</article>
+
+  
+<aside class="right shadow">
+  <h2>Notice</h2>
+<ul>
+<li>网站架构变更，部分文章正在重构中.</li>
+<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
+<li>评论区因安全问题被关闭.</li>
+</ul>
+
+<br>
+  
+  <h2>TOC</h2>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#定义">定义</a></li>
+    <li><a href="#性质">性质</a>
+      <ul>
+        <li><a href="#质数的欧拉函数">质数的欧拉函数</a></li>
+        <li><a href="#pk-的欧拉函数">$p^k$ 的欧拉函数</a></li>
+        <li><a href="#通项公式">通项公式</a></li>
+        <li><a href="#积性函数">积性函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#定理">定理</a>
+      <ul>
+        <li><a href="#欧拉定理">欧拉定理</a></li>
+        <li><a href="#费马小定理">费马小定理</a></li>
+        <li><a href="#扩展欧拉定理">扩展欧拉定理</a></li>
+      </ul>
+    </li>
+    <li><a href="#模板">模板</a>
+      <ul>
+        <li><a href="#欧拉函数">欧拉函数</a></li>
+        <li><a href="#线性欧拉算法">线性欧拉算法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+  
+</aside>
+
+  </main>
+</body>
+
+<script src="../../../../../js/jquery.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../../../js/katex/katex.min.css">
+<script src="../../../../../js/katex/katex.min.js"></script>
+<script src="../../../../../js/katex/auto-render.min.js"></script>
+
+<script>
+function renderTex() {
+  renderMathInElement(document.body, {
+    trust: true,
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$", right: "$", display: false }
+    ],
+    macros: {
+      
+      "\\d": "\\text{d}",
+      "\\zh": "\\footnotesize \\ ",
+      "\\en": "\\normalsize \\ ",
+      "\\su": "\\displaystyle",
+      "\\eq": "\\Longleftrightarrow",
+      "\\intro": "\\Longrightarrow",
+      "\\mathring": "\\overset\{\\normalsizeₒ\}",
+      "\\arccot": "\\text\{arccot\} \\, ",
+      "\\xor": "\\text\{xor\} \\, ",
+      "\\mex": "\\text\{mex\} \\, ",
+      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+    }
+  });
+}
+document.addEventListener("DOMContentLoaded", function() {
+  renderTex();
+});
+$('.language-latex').each(function(id, el, arr) {
+  function toText(text) { 
+    var temp = document.createElement("div"); 
+    temp.innerHTML = text; 
+    var output = temp.innerText || temp.textContent; 
+    temp = null; 
+    return output; 
+  } 
+  tex = toText(el.innerHTML);
+  el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
+});
+</script>
+
+<script>
+  $(window).scroll(function(e) {
+    if ($('main').css('display') == 'flex') {
+      $(this).scrollTop(0);
+    }
+  });
+  $(window).ready(function() {
+    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+  });
+</script>
+
+
+</html>

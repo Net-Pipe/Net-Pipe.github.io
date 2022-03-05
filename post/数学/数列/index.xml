@@ -5,7 +5,7 @@
   <item>
     <title>构造函数</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
-    <summary>手玩数学的最高境界.</summary>
+    <summary>严格上说，这已经属于微积分的范畴了.</summary>
     <content>简介 ¶已知 f(x)&amp;gt;0（或 &amp;lt;0），可以构造函数 F(x) 使 F&#39;(x)=K\cdot f(x) (K&amp;gt;0)，利用 f 的正负性判断 F 的单调性，以解决问题. 基本构造 ¶和差构造 ¶ f&#39;(x)&#43;g&#39;(x)&amp;gt;0\intro F(x)=f(x)&#43;g(x) f&#39;(x)-g&#39;(x)&amp;gt;0\intro F(x)=f(x)-g(x)  积商构造 ¶ f&#39;(x)g(x)&#43;f(x)g&#39;(x)&amp;gt;0\intro F(x)=f(x)g(x) f&#39;(x)g(x)-f(x)g&#39;(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{g(x)}\big(g(x)\not=0\big)  变形 ¶含 x 形构造 ¶ xf&#39;(x)&#43;nf(x)&amp;gt;0\intro F(x)=x^nf(x) xf&#39;(x)-nf(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{x^n}\big(x\not=0\big)  含 e 形构造 ¶ f&#39;(x)&#43;nf(x)&amp;gt;0\intro F(x)=e^{nx}f(x) f&#39;(x)-nf(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{e^{nx}}  三角构造 ¶  f(x)&#43;f&#39;(x)\tan x&amp;gt;0\intro F(x)=\sin x f(x)   f(x)-f&#39;(x)\tan x&amp;gt;0\intro F(x)=\dfrac{f(x)}{\sin x}\big(\sin x\not=0\big)   f(x)\tan x&#43;f&#39;(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{\cos x}\big(\cos x\not=0\big)   f(x)\tan x-f&#39;(x)&amp;gt;0\intro F(x)=\cos x f(x)   对数形构造 ¶ f&#39;(x)&#43;\ln af(x)&amp;gt;0\intro F(x)=a^xf(x) f&#39;(x)-\ln af(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{a^x}      例   已知 f(x)&#43;f&#39;(x)&amp;gt;0，f(0)=1，求证当 x\in[0,&#43;\infty) 时 f(x)\geq\dfrac{1}{3^x}. 证：令 g(x)=e^xf(x)，则  \therefore 当 x\in[0,&#43;\infty) 时，g(x) 单调递增，g(x)\geq g(0)，即 e^xf(x)\geq e^0f(0)=1. \therefore f(x)\geq \dfrac{1}{e^x}\geq \dfrac{1}{3^x}. 即证.   </content>
   </item>
   
@@ -14,7 +14,7 @@
   <item>
     <title>数列通项：不动点法</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%88%97/%E6%95%B0%E5%88%97%E9%80%9A%E9%A1%B9%E4%B8%8D%E5%8A%A8%E7%82%B9%E6%B3%95/</link>
-    <summary>不动点不一定就不动.</summary>
+    <summary>冷知识：不动点不一定就不动.</summary>
     <content> 本篇证明可略过.  不动点 ¶函数不动点 ¶y=f(x) 与 y=x 的交点是 f(x) 的不动点，即不动点 x_0 满足  数列不动点 ¶若 a_n=f(a_{n-1})，则 f(x) 的不动点也是数列 \{a_n\} 的不动点. 一次不动点 ¶已知 a_n=A\cdot a_{n-1}&#43;B(A\not=0). 若 \{a_n\} 有不动点 x_0，则 \{a_n-x_0\} 是公比为 A 的等比数列.     证   由 不动点 的定义得    \therefore 数列 \{a_n-x_0\} 是公比为 A 的等比数列   齐次不动点 ¶已知 a_n=\dfrac{Aa_{n-1}&#43;B}{Ca_{n-1}&#43;D}(C\not=0,AD-BC\not=0). 单根 ¶若 \{a_n\} 有唯一不动点 x_0，则 \left\{\dfrac{1}{a_n-x_0}\right\} 是公差为 \dfrac{2C}{A&#43;D} 的等差数列.     证   由 不动点 的定义得    \because 方程 (2) 仅有一根，故  代入 (1)： 代入 (2)： \therefore 数列 \left\{\dfrac{1}{a_n-x_0}\right\} 是公差为 \dfrac{2C}{A&#43;D} 的等差数列.       例   已知 a_1=2,a_{n&#43;1}=\dfrac{2a_n-1}{a_n}，求 a_n 与 a_1 的关系. 解： 解 x=\dfrac{2x-1}{x} 得唯一不动点 x_0=1.  \therefore \left\{\dfrac{1}{a_n-1}\right\} 是首项为 1，公差为 1 的等差数列.     双根 ¶若 \{a_n\} 有不动点 x_1,x_2，则 \left\{\dfrac{a_n-x_1}{a_n-x_2}\right\} 是公比为 \dfrac{A-Cx_1}{A-Cx_2} 的等比数列.     证   由 不动点 的定义得 即  同理可得  \therefore 数列 \left\{\dfrac{a_n-x_1}{a_n-x_2}\right\} 是公比为 \dfrac{A-Cx_1}{A-Cx_2} 的等比数列.       例   已知 a_{n&#43;1}=\dfrac{2a_n}{a_n&#43;1}，求 a_n 与 a_1 的关系. 解： 解 x=\dfrac{2x}{x&#43;1} 得两个相异的不动点 x_1=0,x_2=1.  \therefore \left\{\dfrac{a_n}{a_n-1}\right\} 是首项为 \dfrac{a_1}{a_1-1}，公比为 2 的等比数列.     </content>
   </item>
   
@@ -23,7 +23,7 @@
   <item>
     <title>数列通项：特征根法</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%88%97/%E6%95%B0%E5%88%97%E9%80%9A%E9%A1%B9%E7%89%B9%E5%BE%81%E6%A0%B9%E6%B3%95/</link>
-    <summary>用这个方法，30 秒速解斐波那契通项.</summary>
+    <summary>30 秒速解斐波那契通项.</summary>
     <content>二次特征根 ¶已知 af_{n&#43;2}&#43;bf_{n&#43;1}&#43;cf_n=0.     解   两边同除 a：  根据韦达定理，方程 ax^2&#43;bx&#43;c=0 的解满足 代入化简得   \therefore 数列 \{f_{n&#43;1}-x_1f_n\} 是公比为 x_2 的等比数列. 由韦达定理的对称性知，x_1,x_2 可互换.   联立 (1)(2) 可解得 f_n 通项.       例   已知 f_1=f_2=1,f_{n&#43;2}=f_{n&#43;1}&#43;f_n，求 f_n 的通项. 解：设 f_{n&#43;2}-rf_{n&#43;1}=q(f_{n&#43;1}-rf_n)， 则 f_{n&#43;2}=(q&#43;r)f_{n&#43;1}-q\cdot rf_n. 对比 f_{n&#43;2}=f_{n&#43;1}&#43;f_n 得 解得 ∴ 数列 \{f_{n&#43;1}-rf_n\} 是以 f_2-rf_1 为首项，q 为公比的等比数列. 两式相减得：     三次特征根 ¶已知 af_{n&#43;3}&#43;bf_{n&#43;2}&#43;cf_{n&#43;1}&#43;df_n=0.     解   两边同除 a：  根据韦达定理，方程 ax^3&#43;bx^2&#43;cx&#43;d=0 的解满足 代入化简得   \therefore 数列 \{f_{n&#43;2}-(x_1&#43;x_2)f_{n&#43;1}&#43;x_1x_2f_n\} 是公比为 x_3 的等比数列.   n 次特征根 ¶已知 a_nf_{k&#43;n}&#43;a_{n-1}f_{k&#43;n-1}&#43;\cdots&#43;a_0f_k=0.     解   两边同除 a_n  根据韦达定理，方程 a_nx^n&#43;a_{n-1}x^{n-1}&#43;\cdots&#43;a_1x_1&#43;a_0=0 的根满足 即从 x_1\wave x_n 中任取 m 项相乘，所得的结果之和为 (-1)^m\dfrac{a_{n-m}}{a_n}.  代入得  易知 W 函数具有性质  故 (1) 式可化为  ∴ 数列 \su\left\{\sum_{i=1}^n(-1)^{i-1}W_{n-1}^{i-1}f_{k&#43;n-i}\right\} 是公比为 x_n 的等比数列.   </content>
   </item>
   
@@ -34,6 +34,177 @@
     <link>/post/%E6%95%B0%E5%AD%A6/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E5%85%AC%E5%BC%8F/</link>
     <summary>为什么不尝试一下万能公式？</summary>
     <content>诱导公式 ¶奇变偶不变，符号看象限.           \su \sin{(2k\pi&#43;α)}=\sin{α} \su \cos{(2k\pi&#43;α)}=\cos{α} \su \tan{(2k\pi&#43;α)}=\tan{α}               \su \sin{(2k\pi-α)}=-\sin{α} \su \cos{(2k\pi-α)}=\cos{α} \su \tan{(2k\pi-α)}=-\tan{α}                   \su \sin{(\pi&#43;α)}=-\sin{α} \su \cos{(\pi&#43;α)}=\cos{α} \su \tan{(\pi&#43;α)}=\tan{α}               \su \sin{(\pi-α)}=\sin{α} \su \cos{(\pi-α)}=-\cos{α} \su \tan{(\pi-α)}=-\tan{α}                   \su \sin{(\frac{\pi}{2}&#43;α)}=\cos{α} \su \cos{(\frac{\pi}{2}&#43;α)}=-\sin{α} \su \tan{(\frac{\pi}{2}&#43;α)}=-\frac{1}{\tan{α}}               \su \sin{(\frac{\pi}{2}-α)}=\cos{α} \su \cos{(\frac{\pi}{2}-α)}=\sin{α} \su \tan{(\frac{\pi}{2}-α)}=\frac{1}{\tan{α}}                   \su \sin{(\frac{3\pi}{2}&#43;α)}=-\cos{α} \su \cos{(\frac{3\pi}{2}&#43;α)}=\sin{α} \su \tan{(\frac{3\pi}{2}&#43;α)}=-\frac{1}{\tan{α}}               \su \sin{(\frac{3\pi}{2}-α)}=-\cos{α} \su \cos{(\frac{3\pi}{2}-α)}=-\sin{α} \su \tan{(\frac{3\pi}{2}-α)}=\frac{1}{\tan{α}}          \su \sin{(-α)}=-\sin{α} \su \cos{(-α)}=\cos{α} \su \tan{(-α)}=-\tan{α}  和差角公式 ¶ \su \sin{(α&#43;β)}=\sin{α}\cos{β}&#43;\cos{α}\sin{β} \su \sin{(α-β)}=\sin{α}\cos{β}-\cos{α}\sin{β} \su \cos{(α&#43;β)}=\cos{α}\cos{β}-\sin{α}\sin{β} \su \cos{(α-β)}=\cos{α}\cos{β}&#43;\sin{α}\sin{β} \su \tan{(α&#43;β)}=\frac{\tan{α}&#43;\tan{β}}{1-\tan{α}\tan{β}} \su \tan{(α-β)}=\frac{\tan{α}-\tan{β}}{1&#43;\tan{α}\tan{β}}  二倍角公式 ¶降幂扩角 升幂缩角.   \su \sin{2α}=2\sin{α}\cos{α}   \su \cos{2α}=\cos^2{α}-\sin^2{α}=1-2\sin^2{α}=2\cos^2{α}-1   \su \tan{2α}=\frac{2\tan{α}}{1-\tan^2{α}}   \su 1&#43;\sin{2α}=(\sin{α}&#43;\cos{α})^2   \su 1-\sin{2α}=(\sin{α}-\cos{α})^2   \su 1&#43;\cos{2α}=2\cos^2{α}   \su 1-\cos{2α}=2\sin^2{α}   三倍角公式 ¶ \su \sin{3α}=3\sin{α}-4\sin^3{α} \su \cos{3α}=-3\cos{α}&#43;4\cos^3{α} \su \tan{3α}=\frac{3\tan{α}-\tan^3{α}}{1-3\tan^2{α}}=\tan{α}\tan{(\frac{\pi}{3}&#43;α)}\tan{(\frac{\pi}{3}-α)}  半角公式 ¶ \su \sin{\frac{α}{2}}=±\sqrt{\frac{1-\cos{α}}{2}} \su \cos{\frac{α}{2}}=±\sqrt{\frac{1&#43;\cos{α}}{2}} \su \tan{\frac{α}{2}}=\frac{\sin{α}}{1&#43;\cos{α}}=\frac{1-\cos{α}}{\sin{α}}=±\sqrt{\frac{1-\cos{α}}{1&#43;\cos{α}}}  辅助角公式 ¶其中 \su \sin{φ}=\frac{b}{\sqrt{a^2&#43;b^2}},\quad\cos{φ}=\frac{a}{\sqrt{a^2&#43;b^2}},\quad\tan{φ}=\frac{b}{a}. 万能公式 ¶ \su\sin{α}=\frac{2\tan{\large\frac{α}{2}}}{1&#43;\tan^2{\large\frac{α}{2}}} \su\cos{α}=\frac{1-\tan^2{\large\frac{α}{2}}}{1&#43;\tan^2{\large\frac{α}{2}}} \su\tan{α}=\frac{2\tan{\large\frac{α}{2}}}{1-\tan^2{\large\frac{α}{2}}}  和差化积 ¶ \su \sin{α}&#43;\sin{β}=2\sin{\frac{α&#43;β}{2}}\cos{\frac{α-β}{2}} \su \sin{α}-\sin{β}=2\sin{\frac{α-β}{2}}\cos{\frac{α&#43;β}{2}} \su \cos{α}&#43;\cos{β}=2\cos{\frac{α&#43;β}{2}}\cos{\frac{α-β}{2}} \su \cos{α}-\cos{β}=-2\sin{\frac{α&#43;β}{2}}\sin{\frac{α-β}{2}} \su \tan{α}&#43;\tan{β}=\frac{\sin(α&#43;β)}{\cos{α}\cos{β}} \su \tan{α}-\tan{β}=\frac{\sin(α-β)}{\cos{α}\cos{β}}  积化和差 ¶ \su \sin{α}\cos{β}=\frac{1}{2}[\sin{(α&#43;β)}&#43;\sin{(α-β)}] \su \cos{α}\sin{β}=\frac{1}{2}[\sin{(α&#43;β)}-\sin{(α-β)}] \su \cos{α}\cos{β}=\frac{1}{2}[\cos{(α&#43;β)}&#43;\cos{(α-β)}] \su \sin{α}\sin{β}=-\frac{1}{2}[\cos{(α&#43;β)}-\cos{(α-β)}]  正弦定理 ¶其中 R 为 ΔABC 外接圆半径. 余弦定理 ¶ \su a^2=b^2&#43;c^2-2bc\cos{A} \su b^2=a^2&#43;c^2-2ac\cos{B} \su c^2=a^2&#43;b^2-2ab\cos{B}  三角形面积公式 ¶ \su S_{ΔABC}=\frac{1}{2}\cdot a\cdot h \su S_{ΔABC}=\frac{1}{2}ab\sin{C}=\frac{1}{2}bc\sin{A}=\frac{1}{2}ac\sin{B} \su S_{ΔABC}=\frac{abc}{4R}（R 为 ΔABC 外接圆半径） \su S_{ΔABC}=\frac{a&#43;b&#43;c}{2}\cdot r（r 为 ΔABC 内接圆半径） \su S_{ΔABC}=\sqrt{p(p-a)(p-b)(p-c)},p=\frac{a&#43;b&#43;c}{2}  其它公式 ¶ \su \sin^2{θ}&#43;\cos^2{θ}=1 \su 1&#43;\tan^2{θ}=\frac{1}{\cos^2{θ}} \su 1&#43;\frac{1}{\tan^2{θ}}=\frac{1}{\sin^2{θ}} \su \tan{A}&#43;\tan{B}&#43;\tan{C}=\tan{A}\tan{B}\tan{C}（ΔABC 非 Rt 三角形） \su \sin^2{A}&#43;\sin^2{B}&#43;\sin^2{C}=2&#43;2\cos{A}\cos{B}\cos{C}（在 ΔABC 中） \su \cos^2{A}&#43;\cos^2{B}&#43;\cos^2{C}=1-2\cos{A}\cos{B}\cos{C}（在 ΔABC 中）  </content>
+  </item>
+  
+
+  
+  <item>
+    <title>矩阵快速幂</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/</link>
+    <summary>看起来很荒谬.</summary>
+    <content>简介 ¶矩阵快速幂能将 O(n) 的线性递推优化成 O(\log n). 矩阵 ¶矩阵相当于二维数组.   矩阵 A 有 m 行 n 列，称为 m×n 矩阵，简记为 A_{mn}.   矩阵 A 第 i 行 j 列的元素写作 a_{ij}.   单位矩阵 ¶主对角线上的元素都为 1，其余元素为 0 的 n×n 矩阵称为 n 阶单位矩阵，记作 I_n 或 E_n. 矩阵加、减法 ¶矩阵的加减法就是将两个矩阵对应位置上的元素相加减.  矩阵乘法 ¶定义矩阵 A×B=C：   必须满足 A 的列数 = B 的行数.   A_{mr}×B_{rn} 会得到一个 m×n 矩阵.    任意矩阵乘 I_n 都等于它本身.    矩阵乘法满足结合律，不满足交换律.   只有行数 = 列数的矩阵才能进行乘幂运算.    矩阵快速幂 ¶基于 快速幂 的思想求 n 阶矩阵的 x 次方. 时间复杂度：O(n^3\log x).  矩阵运算可能需要高精度或取模.  应用 ¶若已知 f(1),f(2)，且有矩阵 A 满足 就可推出 f(n) 的值. 可用矩阵快速幂求 A^{n-2}. 时间复杂度：O(\log n). 例 1 ¶求斐波那契数列的第 n 项 f(n)（n\geq 10^{12}）. 设矩阵 A=\begin{bmatrix}a_{11}&amp;amp;a_{12}\newline a_{21}&amp;amp;a_{22}\end{bmatrix} 满足 即 解得 因此 将 f(1)=f(2)=1 代入即可. 例 2 ¶求数列的第 n 项 f(n)（n\geq 10^{12}）. 设 4 阶矩阵 A 满足 解得 </content>
+  </item>
+  
+
+  
+  <item>
+    <title>莫比乌斯反演</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/</link>
+    <summary>信息学不需要证明，但人的好奇心需要.</summary>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  简介 ¶由函数 f 定义一个函数 g：  如果已知 g(n) 的值，就可以用莫比乌斯反演推出 f(n) 的值. 莫比乌斯函数 ¶定义 ¶n 的莫比乌斯函数记为 μ(n)，定义为： 特别地，μ(1)=1. 性质 ¶性质 1 ¶     证   设 n 有 k 个质因子 p_1,p_2,\cdots,p_k，则：       由 二项式定理 得：  当且仅当 n=1 时，k=1. 因此：    性质 2 ¶     证   根据 性质 1 自证.     证   动一动你聪明的小脑瓜.  --&gt;  积性函数 ¶     证   读者自证.  模板 ¶基于质数的 线性筛法 求 μ(1)\simμ(n). 狄利克雷卷积 ¶定义 ¶函数 f(x) 和 g(x) 的狄利克雷卷积 h(x) 定义为：  简记为：  性质 ¶  交换律：f* g=g*f.   结合律：(f* g)*h=f *(g *h).   分配律：(f&#43;g)*h=f *h&#43;g *h.   等式的性质：f=g\eq f* h=g*h,h(1)≠0.   单位元：即单位函数 ε，满足 f*ε=f.        值为常数的函数，如 f(n)=C，在狄利克雷卷积中简记为 C.   重要结论 ¶     证   由 μ 函数的 性质 1 得：     莫比乌斯反演 ¶形式 1 ¶     证   原式可简记为：  由 重要结论 得：  即证.   形式 2 ¶     证         即证.  </content>
+  </item>
+  
+
+  
+  <item>
+    <title>博弈论</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%8D%9A%E5%BC%88%E8%AE%BA/</link>
+    <summary>我预判了你对我预判的预判.</summary>
+    <content>简介 ¶博弈论主要研究，在一个游戏中，如何最优化多位玩家的策略. 公平组合游戏 ICG ¶  由两名玩家轮流做出行动.   两名玩家的行动规则相同.   不能行动的玩家判负.   NIM 游戏 ¶简介 ¶有 n 堆石子，第 i 堆有 A_i 个石子. 两个玩家轮流取走任意一堆的任意个石子，但不能不取. 取走最后一个石子的玩家胜. NIM 游戏属于公平组合游戏，且不存在平局，只有「先手必胜」和「后手必胜」两种情况. 策略 ¶当且仅当 A_1\oplus A_2\oplus\cdots\oplus A_n≠0 时，先手必胜（\oplus 表示异或）.     证      引理 1   设 A_1\oplus A_2\oplus\cdots\oplus A_n=k≠0，则：  根据异或的定义，若 k 在二进制下有 {\rm len}(k) 位，则至少有 1 个 A_i 的第 {\rm len}(k) 位为 1，也就必然存在 A_i&amp;gt;A_i\oplus k，因此将 A_i 变为 A_i\oplus k 可以是合法的操作.       引理 2   设 A_1\oplus A_2\oplus\cdots\oplus A_n=0，则：  即更改任意一个 A_i 为 A_i&#39;，都会导致异或和不为 0.    结合引理 1，引理 2 可得：   石子被取光时失败（对手取走最后一个石子，获胜），此时异或和为 0.   异或和 ≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 =0.   异或和 =0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 ≠0.   当 A_1\oplus A_2\oplus\cdots\oplus A_n≠0 时，先手可以使博弈进入一种循环：  轮到后手时，异或和必为 0，即失败的局面只可能轮到后手. 先手必胜. 当 A_1\oplus A_2\oplus\cdots\oplus A_n=0 时，先手失去了主动权，后手可以同样的方法制胜. 此时先手必败.   有向图游戏 ¶简介 ¶在一个有向无环图中，只有一个起点，上面有一枚棋子. 两名玩家轮轮流沿有向边推动棋子，无法移动者判负. 任何公平组合游戏都可以转换为有向图游戏：每个节点表示一个状态，并且向后继状态连有向边. 策略 ¶Mex 运算 ¶设 S% 为非负整数集合. \mex(S) 为不属于 S 的最小非负整数.  SG 函数 ¶状态 x 有 k 个后继状态 y_1,y_2,\cdots,y_k，定义 SG 函数：  单图游戏 ¶设起点为 s，当且仅当 SG(s)≠0 时，先手必胜.     证     当棋子无法移动时失败，此时没有后继状态，SG(s)=\mex(\varnothing)=0.   SG(s)≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}}SG(s)=0.   SG(s)=0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}}SG(s)≠0.   当 SG(s)≠0 时，先手可以通过类似于 NIM 游戏 的方法制胜.  当 SG(s)=0 时，后手必胜.   组合图游戏 ¶对于 n 个有向图游戏组合成的游戏，起点分别为 s_1,s_2,\cdots,s_n. 当且仅当 SG(s_1)\oplus SG(s_2)\oplus\cdots\oplus SG(s_n)≠0 时，先手必胜（\oplus 表示异或）.     证   由 单图游戏 可知：   SG(s_i)=0（无法移动每个棋子）时失败，此时异或和 =0.   异或和 ≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 =0.   异或和 =0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 ≠0.   当 SG(s_1)\oplus SG(s_2)\oplus\cdots\oplus SG(s_n)≠0 时，先手可以通过类似于 NIM 游戏 的方法制胜.    </content>
+  </item>
+  
+
+  
+  <item>
+    <title>容斥原理</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶容斥原理是一种不重不漏的计数原理. 举个例子，A,B,C 三人竞选扫黄队长：            15 人投给 A   16 人投给 B   17 人投给 C   2 人同时投给 A,B,C                 4 人同时投给 A,B   5 人同时投给 A,C   6 人同时投给 B,C          问共有多少人参与投票. A,B,C 三人的得票情况可以用小学二年级就学过的韦恩图描述：             |A|=15   |B|=16   |C|=17   |A∩B∩C|=2                 |A∩B|=4   |A∩C|=5   |B∩C|=6          问题是求投票人数，即 |A∪B∪C|.  将上述问题推广到普遍情况，就是容斥原理. 公式 ¶并集 ¶对于 n 个集合 S_1,S_2\cdots S_n，|S| 表示集合 S 的元素数，则：      证   设 x\in S_{a_1},S_{a_2},\cdots,S_{a_m}，根据公式，\su\left|\bigcup_{i=1}^nS_i\right| 中包含元素 x 的个数为：  根据 二项式定理 有：   每个元素只出现一次，等价于并集，证毕.   交集 ¶对于 n 个集合 S_1,S_2\cdots S_n，已知全集为 U：  其中 \su\left|\bigcup_{i=1}^n\overline{S_i}\right| 套用 并集 的公式计算即可. 多重集的排列数 ¶普通集合中，不允许有相同的元素；多重集中，相同的元素可以出现多次. 设 S=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\} 是由 n_1 个 a_1，n_2 个 a_2 &amp;hellip; n_k 个 a_k 组成的多重集，\su n=\sum_{i=1}^kn_i. S 的全排列个数为：      证   n 个不同元素的全排列有 n! 种. 若其中有 j 个元素相同，则 n! 种全排列中有部分也是相同的. 单独看这 j 个元素，有 j! 种排列，但它们现在是一样的. 于是总的排列数为：  根据 乘法原理，多重集的全排列个数为：    多重集的组合数 1 ¶设 S=\{∞\cdot a_1,∞\cdot a_2,\cdots,∞\cdot a_k\}，从 S 中任取 λ 个元素的方案数为：      证   原问题等价于求以下方程非负整数解的个数：  解的个数用插板法计算： 在 λ 个 1 之间插 k-1 块板，使其分为 k 个区间. 第 i 个区间的和代表 x_i. 这样就构造出了一组解.  需要注意，板插在两端或同一个空隙中是允许的. 最初有 λ&#43;1 个空隙. 插第一块板有 λ&#43;1 种方法，第二块有 λ&#43;2 种，第三块有 λ&#43;3 种 &amp;hellip; 第 k-1 块有 λ&#43;k-1 种. 根据 乘法原理，总的方案数为：  但是插板的顺序与答案无关. 这么算显然会包含一些重复情况：  每一个方案都有 (k-1)! 种不同的插板顺序，故答案为：    多重集的组合数 2 ¶设 S=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\}，从 S 中任取 λ(λ≤\sum_in_i) 个元素的方案数为：           证   考虑容斥原理： 合法方案数 = 总方案数 - 不合法方案数  总方案数 \su={k&#43;λ-1\choose k-1}，详见 多重集的组合数 1. 于是问题转化为求不合法方案数.   设 T_i 为 a_i 超标的多重集. 先取 n_i&#43;1 个 a_i，再任取 λ-n_i-1 个元素，加入 T_i. 不同 T_i 的数量为 \su{k&#43;λ-n_i-2\choose k-1}.   设 T_{ij} 为 a_i,a_j 超标的多重集. 先取 n_i&#43;1 个 a_i 和 n_j&#43;1 个 a_j，再任取 λ-n_i-n_j-2 个元素，加入 T_{ij}. 不同 T_{ij} 的数量为 \su{k&#43;λ-n_i-n_j-3\choose k-1}.   依次类推，由容斥原理可得，不合法的方案数为：  于是合法的方案数为：    </content>
+  </item>
+  
+
+  
+  <item>
+    <title>中国剩余定理</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶中国剩余定理最早发现于《孙子算经》中.  有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二. 问物几何？  即求满足下列条件的 x： 它的通解公式为 x=233&#43;105k. 《孙子算经》中只给出了最小正整数解，也就是 k=-2 时的解：x=23. 至于古人是如何发现这个解的，有个网站记载得很详细：百度一下，你就知道. 不过，今天我们只关心中国剩余定理更普遍的应用. 问题 ¶中国剩余定理指关于 x 的同余方程组的解法： 其中 a_1, a_2, \cdots, a_k 两两互质. 解法 ¶设 M=\prod^k_{i=1}m_i，即所有 m 的乘积. 设 \su M_i=\frac{M}{m_i}，即除 m_i 外，其余所有 m 的乘积. 设 M_it_i≡1\pmod{m_i}，t_i 为 M_i 关于模 m_i 的 乘法逆元. 利用刚才设的一大坨东西，我们可以构造出一个解： 计算 x \bmod m_i 时，含 m_i 的项都被模没了，故原式可化简为 (a_iM_it_i) \bmod m_i. 而 t_i 为 M_i 的乘法逆元，因此 x \bmod m_i=a_i. 因此构造出的 x 满足每一个线性同余方程. 模板 ¶</content>
+  </item>
+  
+
+  
+  <item>
+    <title>卡特兰数列</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0%E5%88%97/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶卡特兰数列可以是许多看似毫不相关的问题的解.   n 个节点能构成 Cat_n 种不同的二叉树.   n 个左括号和 n 个右括号组成的合法序列有 Cat_n 种.   n 个元素的进栈顺序为 1,2,\cdots,n，合法的出栈顺序有 Cat_n 种.   在圆上选择 2n 个点成对连接，使得 n 条线段不相交的方法数为 Cat_n.   通过若干条互不相交的对角线,把凸 n 边形拆分成若干个三角形的方案数为 Cat_{n-2}.   在平面直角坐标系上，每一步只能向上或向右走 1 个单位，从 (0,0) 走到 (n,n) 且不接触直线 y=x 的路径数量为 2Cat_n-1.   通项公式 ¶ 递推公式 ¶ 附表 ¶   Cat_0 Cat_1 Cat_2 Cat_3 Cat_4 Cat_5 Cat_6 Cat_7 Cat_8 \cdots     1     1     2     5     14    42    132   429   1430  \cdots    </content>
+  </item>
+  
+
+  
+  <item>
+    <title>卢卡斯定理</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶Lucas 定理用于求解大组合数对质数 p 取模：  适用范围是 p≤10^6. 证明 ¶ Under Construction ...  解法 ¶对于 n,m≤10^6 的组合数 \su{n\choose m}，可以直接代入 公式，并使用 乘法逆元 将除法转为乘法.  对于更大的组合数，套用 Lucas 定理.  其中 \su{n \bmod p\choose m \bmod p} 可以直接算，\su{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor} 需要递归求解. 算上预处理，总时间复杂度为 O(p&#43;\log_p{n}). 预处理 ¶  fac[i]=i!\bmod p，线性递推：    inv[i]=(i!)^{-1}，参考 线性求逆元：     模板 ¶</content>
+  </item>
+  
+
+  
+  <item>
+    <title>二项式定理</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶ 证明 ¶使用数学归纳法. 设 n=k 时二项式定理成立，考察 n=k&#43;1 时是否也成立：       ∴\,二项式定理满足递推成立关系： n=k 时成立 \Longrightarrow n=k&#43;1 时成立  ∵n=1 时 \su(a&#43;b)^1=\sum_{i=0}^1\binom{n}{i}a^{n-i}b^i=a&#43;b 成立， ∴\,二项式定理在 n=1 之后的任何整数都成立. </content>
+  </item>
+  
+
+  
+  <item>
+    <title>组合数学</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶  排列：从 n 个元素中取出 m 个，按一定顺序排列.   组合：从 n 个元素中取出 m 个，不计排列顺序.   加法原理 ¶做一件事情有 n 种方式，第 i 种方式有 a_i 种方法，则做成这件事共有 \sum_{i=1}^na_i 种方法.     例子   从 A 地到 B 地有爬行、骑车、飞行三种方式，可以任选一个. 而爬行、骑车、飞行分别有 a_1,a_2,a_3 种方法，那么 A→B 共有 a_1&#43;a_2&#43;a_3 种方法.  乘法原理 ¶做一件事情有 n 个步骤，第 i 个步骤有 a_i 种方法，则做成这件事共有 \prod_{i=1}^na_i 种方法.     例子   从 A 地到 B 地必须先爬行到车站，再骑车到机场，最后飞行到北京，而爬行、骑车、飞行分别有 a_1,a_2,a_3 种方法，那么 A→B 共有 a_1\cdot a_2\cdot a_3 种方法.  排列数 ¶从 n 个元素中取出 m 个，按一定顺序排列的方案数，用符号 A_n^m 表示.  n=m 时的排列称为全排列，A_n^n=n!. 组合数 ¶从 n 个元素中取出 m 个，不计排列顺序的方案数，用符号 C_n^m 或 \su{n\choose m} 表示.   特别地，当 m&amp;gt;n 时，A_n^m=C_n^m=0  互补性 ¶     证     帕斯卡法则 ¶     证     </content>
+  </item>
+  
+
+  
+  <item>
+    <title>欧拉函数</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 定义 ¶n 的欧拉函数为 [1,n] 中与 n 互质的数的个数，记为 \varphi(n). 特别地，\varphi(1)=1. 性质 ¶质数的欧拉函数 ¶p 为质数，则 \varphi(p)=p-1.     证   p 与 [1,p-1] 中的每个数互质.  p^k 的欧拉函数 ¶p 为质数，n=p^k，则 \varphi(n)=p^k-p^{k-1}.     证   在 [1,n] 中，只有 p 的倍数不与 n=p^k 互质. ∵\;[1,n] 中 p 的倍数有 \dfrac{n}{p}=\dfrac{p^k}{p}=p^{k-1} 个， ∴\varphi(n)=n-p^{k-1}=p^k-p^{k-1}.   通项公式 ¶n 有 m 个质因子 p_1∼p_m，则 \su\varphi(n)=n\prod_{i=1}^{m}(1-\frac{1}{p_i}).     证   若 n 有质因子 p，则 p 的倍数不与 n 互质. [1,n] 中 p 的倍数有 \dfrac{n}{p} 个，则剩下的 n-\dfrac{n}{p}=n\cdot(1-\dfrac{1}{p}) 个数不是 p 的倍数. 也就是说，这 n 个数中，非 p 的倍数占比为 1-\dfrac{1}{p}. 根据定义，[1,n] 中有 \varphi(n) 个数不是 p_1∼p_m 的倍数（即与 n 互质）. 由乘法原理得：    积性函数 ¶n,m 互质，则 \varphi(nm)=\varphi(n)\cdot \varphi(m).     证   设 n 有 x 个质因子 p_1\sim p_x， 设 m 有 y 个质因子 q_1\sim q_y， ∵n,m 互质，∴n,m 的质因子互不相同. ∴nm 有 x&#43;y 个质因子 p_1\sim p_x,q_1\sim q_y. 由 \varphi 函数的通项公式可得： 即证.   定理 ¶欧拉定理 ¶若 a,n 互质，则 a^{\footnotesize\varphi(n)}≡1\pmod{n}.     证   设 C=\{C_1,C_2,\cdots,C_{\varphi(n)}\} 为模 n 的 简化剩余系. 设 aC=\{aC_1,aC_2,\cdots,aC_{\varphi(n)}\}，即 C 中的每个元素乘 a.    引理 1   由 剩余系 的定义得：  ∵a,n 互质，由同余的 同乘性 可知：  ∴aC 为模 n 的剩余系.       引理 2   ∵a,n 互质，根据 欧几里得算法 有：  ∴a \bmod n 也与 n 互质. 根据 简化剩余系 的定义可知：  ∵\;简化剩余系满足 乘法封闭 性质，所以： ∴aC_i \bmod n 与 n 互质，即 aC 中的任意元素模 n 后与 n 互质.    结合引理 1、引理 2 可知 aC 也为 n 的简化剩余系. 显然，C 的所有元素之积和 aC 的所有元素之积模 n 同余，即：    ∵C 中的所有元素模 n 后与 n 互质，所以：  ∴a^{\varphi(n)}-1≡0\pmod{n}，即 a^{\varphi(n)}≡1\pmod{n}.   费马小定理 ¶若 p 为质数，则 a^{p-1}≡a\pmod{p}.     证   当 p\mid a 时，费马小定理显然成立，故只需讨论 p\nmid a 的情况. 当 p\nmid a 时，∵p 是质数 ∴a,p 没有公因数（即 a,p 互质）. 根据 欧拉定理 有：  ∵p 为质数，由 性质 可知 \varphi(p)=p-1. 代入上式：  即证.     扩展欧拉定理 ¶若 a,n 互质，则对于任意 b，有 a^b≡a^{b \bmod \varphi(n)}\pmod{n}.     证   设 b \bmod \varphi(n)=q，则 b 可以表示为 k\cdot \varphi(n)&#43;q. 代入 a^b 得：  根据 欧拉定理，当 a,n 互质时，有：  由同余的 同幂性、同乘性 可知：    即 a^b≡a^{b \bmod \varphi(n)}\pmod{n}.   模板 ¶欧拉函数 ¶线性欧拉算法 ¶ 求 1\sim n 的欧拉函数.  对质数的 线性筛法 加以改造.   若 i 为质数，则 \varphi(i)=i-1.   利用 i 和 prime_j 生成合数时，利用 积性函数 这一性质：    时间复杂度为 O(n). </content>
+  </item>
+  
+
+  
+  <item>
+    <title>乘法逆元</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 定义 ¶若 a\cdot b≡1\pmod{p}，则 b 为 a 在模 p 意义下的逆元，记作 a^{-1} 或 inv(a).  乘法逆元能够很好地将模运算中的除法转为乘法：   在模运算中，a^{-1} 是整数，并不是 a 的 -1 次方.  解法 ¶对于整数 x，可以求解关于 x^{-1} 的 线性同余方程 x\cdot x^{-1}≡1 \ (\bmod \ p)，其中 x 为已知常数. 质数的逆元 ¶当 p 为质数时，由 费马小定理 得： ∴p^{-1}=a^{p-2} \bmod p. 其中 a^{p-2} 可用 快速幂 求解. 线性求逆元 ¶ 求 1\sim n 在模 p 意义下的逆元.  假设已经求出了 1\sim i-1 的乘法逆元. 设 \su m=p \bmod i=p-\Big\lfloor\frac{p}{i}\Big\rfloor\cdot i，则有：  两边同乘 m^{-1}i^{-1}：  由于 m=p \bmod i≤i-1，所以 m^{-1} 已知. 于是得到 i^{-1} 的表达式：  </content>
+  </item>
+  
+
+  
+  <item>
+    <title>线性同余方程</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶形如 ax≡c\pmod{b} 的方程称为线性同余方程. 特殊解 ¶ax≡c\pmod{b}\eq ax&#43;by=c. 由 裴蜀定理 可知：当且仅当 gcd(a,b)\mid c 时有整数解. 先用 扩展欧几里得算法 求出一组 x_0,y_0，使得：  两边同时乘 \su\frac{c}{gcd(a,b)}：  于是找到方程 ax&#43;by=c 的一组特殊解： </content>
+  </item>
+  
+
+  
+  <item>
+    <title>欧几里得算法</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/</link>
+    <summary></summary>
+    <content>最大公因数 ¶a 和 b 的最大公因数记作 gcd(a,b)，简记为 (a,b). 设 a &amp;gt; b，d 是 a,b 的任意一个公因数，则： ∴a 和 b 的所有公因数，同时也是 b 和 a \bmod b 的公因数，因此它们的最大公因数也相等.  使用递归求解. 递归进行到 b=0 时，a 即为 gcd(a,b). 时间复杂度为 O(log{(a&#43;b)}). 最小公倍数 ¶a 和 b 的最小公倍数记作 lcm(a,b)，简记为 [a,b]. 设 gcd(a,b)=d，则 a=k_1d,b=k_2d，所以：  时间复杂度为 O(log{(a&#43;b)}). 扩展欧几里得算法 ¶扩展欧几里得算法用于求方程 ax&#43;by=gcd(a,b) 关于 x,y 的解，其中 a,b 是常数. 设 ax_1&#43;by_1=gcd(a,b), 设 bx_2&#43;(a \bmod b)y_2=gcd(b,a \bmod b), 由 gcd(a,b)=gcd(b,a \bmod b) 可知：  自此，我们可以通过 bx_2&#43;(a \bmod b)\,y_2=gcd(a,b) 的解推出 ax&#43;by=gcd(b,a \bmod b) 的解. 原问题的求解就可以放进递归里. 那么这个递归的边界条件是什么呢？ 当递归到 b=0 时，a=gcd(a,b)，此时一定有一组解 \left\{\begin{aligned}x&amp;amp;=1\\y&amp;amp;=0\end{aligned}\right. 满足 ax&#43;by=gcd(a,b). 这个特殊解可以作为递归的边界条件. </content>
+  </item>
+  
+
+  
+  <item>
+    <title>贝祖定理</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶对于任意 a,b，ax&#43;by=c\eq gcd(a,b)\mid c. 证明 ¶设 gcd(a,b)=d，则： 即 gcd(a,b)\mid c. </content>
+  </item>
+  
+
+  
+  <item>
+    <title>快速幂</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BF%AB%E9%80%9F%E5%B9%82/</link>
+    <summary></summary>
+    <content>快速幂 ¶如何快速求 a^b（a,b\in\mathbb{Z}）？ 递归写法 ¶根据乘方公式 a^{m&#43;n}=a^m\cdot a^n，有：    边界条件 时间复杂度     a^0=1 O(\log{b})    递推写法 ¶若 b 在二进制下的第 k_1,k_2,k_3,\cdots 位为 1，则 b=2^{k_1}&#43;2^{k_2}&#43;2^{k_3}&#43;\cdots(k_i≤\log{b}). 举个例子，(14)_{10}=(1011)_2，二进制下 14 的第 0,1,3 位都为 1，那么 14=2^0&#43;2^1&#43;2^3. 将 b=2^{k_1}&#43;2^{k_2}&#43;2^{k_3}&#43;\cdots 代入 a^b： 扫描 b 的每个二进制位，如果第 k 位是 1，则将答案乘上 a^{2^k}. 时间复杂度为 O(\log{b}). </content>
+  </item>
+  
+
+  
+  <item>
+    <title>数学期望</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B/</link>
+    <summary></summary>
+    <content>定义 ¶数学期望 =(每种结果 × 该结果的概率) 的总和，简称期望. 若随机数 x 有 n 个可能的值，取值为 x_i 的概率为 P(x_i)，则它的期望为：  数学期望可以理解为加权平均数. 性质 ¶设 A,B,C 为常数，X,Y 为随机变量，则：   E(C)=C.   E(CX)=CE(X).   E(X&#43;Y)=E(X)&#43;E(Y).   当 X,Y 互相独立时，E(XY)=E(X)E(Y).   当 X,Y 互相独立时，E(AX&#43;BY)=AE(X)&#43;BE(Y).    X 和 Y 相互独立，指 P(X) 和 P(Y) 不相互影响.  </content>
+  </item>
+  
+
+  
+  <item>
+    <title>同余</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E5%90%8C%E4%BD%99/</link>
+    <summary></summary>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 定义 ¶若 a \bmod m=b \bmod m，则 a 和 b 模 m 同余，记作 a≡b\pmod{m}.  性质 ¶  自反性：a≡a\pmod{m}.   对称性：a≡b\pmod{m}\eq b≡a\pmod{m}.   传递性：\left\{\begin{aligned}a&amp;amp;≡b \ (\bmod \ m)\\b&amp;amp;≡c \ (\bmod \ m)\end{aligned}\right.\eq a≡c\pmod{m}.   同加性：a≡b\pmod{m}\eq a&#43;c≡b&#43;c\pmod{m}.   同乘性：a≡b\pmod{m}\eq ac≡bc\pmod{m}.   同幂性：a≡b\pmod{m}\eq a^n≡b^n\pmod{m}.    同余不满足同除性. 当 a≡b \ (\bmod \ m) 时不一定有 \su\frac{a}{n}≡\frac{b}{n} \ (\bmod \ m).  同余类 ¶集合 A 是模 m 的同余类，当且仅当：  A 中的所有元素模 m 都等于同一个值 a.   a 称为该同余类的代表元. 模 m 的同余类有 m 个，其代表元分别为 0,1,2,\cdots,m-1. 剩余系 ¶集合 A 是模 m 的剩余系，当且仅当：  A 中的元素模 m 互不相同.   完全剩余系 ¶模 m 的完全剩余系有 m 个元素，是元素最多的剩余系. 简化剩余系 ¶模 m 的简化剩余系有 \varphi(m) 个元素，每个元素模 m 后都与 m 互质. 乘法封闭 ¶从模 m 的简化剩余系中任取两个数 a, b，则 ab \bmod m 也在模 m 的简化剩余系中.     证   设 a,b 属于模 m 的简化剩余系，则 a \bmod m,b \bmod m 与 m 互质，(a \bmod m)(b \bmod m) 也与 m 互质. 根据 欧几里得算法 有：       ∴ab \bmod m 与 m 互质，也属于模 m 的简化剩余系.   </content>
+  </item>
+  
+
+  
+  <item>
+    <title>因数</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%9B%A0%E6%95%B0/</link>
+    <summary></summary>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  定义 ¶a÷b 的余数为 c，则称 a 模 b 等于 c，记作 a \bmod b=c. 若 n \bmod d=0，则 d 是 n 的因数，记为 d\mid n. 算数基本定理 ¶任意正整数 n 都能唯一分解为有限个质数的乘积：  分解质因数 ¶试除法 ¶ 将 n 分解成 算数基本定理 中的形式.  判断 n 能否整除 [2,\sqrt{n}] 中的所有整数 i，如果能，则从 n 中除掉所有的因子 i，并记录因子 i 的个数. 时间复杂度为 O(\sqrt n). 倍数法 ¶ 求 [1,n] 中所有整数的因数集合.  用 试除法 很容易超时，此时考虑倍数法： i 一定是 i 的倍数的因数. 枚举 [1,n] 中每个数的倍数即可. 时间复杂度为 O(n\log{n}). </content>
+  </item>
+  
+
+  
+  <item>
+    <title>质数</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E8%B4%A8%E6%95%B0/</link>
+    <summary>人类至今对它仍是一知半解.</summary>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  定义 ¶ 若 n 只能被 1 和 n 整除，则 n 是质数，否则是合数. \pi(n)：n 以内的质数个数，\su\pi(n)≈\frac{n}{\ln{n}}. p(n)：第 n 个质数，p(n)≈n\ln{n}.  质数判定 ¶若 n 为合数，则必定存在 i≤\sqrt{n}，使 n 能整除 i. n=0,1 需要特判. 时间复杂度：O(\sqrt n). 质数筛法 ¶求 n 以内的所有质数. 暴力算法 ¶对 [2,n] 中的所有整数进行一次 质数判定. 时间复杂度：O(n\sqrt{n}). 埃氏筛法 ¶ 任意数的倍数必定是合数.  划掉 [2,n] 中每个数的倍数，剩下的就是质数.  划掉 2 的倍数：4,6,8,\cdots 划掉 3 的倍数：6,9,12,\cdots 4 已划，则 4 的倍数也已划，跳过. 划掉 5 的倍数：10,15,20,\cdots 6 已划，跳过. \cdots  时间复杂度：O(n\log{n}).  埃氏筛法优化：i 的倍数中，2i 已被 2 划掉，3i 已被 3 划掉，\cdots，(i-1)i 已被 i-1 划掉，故只需从 i^2 开始划. 时间复杂度：O(n\log\log n). 线性筛法 ¶埃氏筛法 中，有些数会被重复划，如 i=2,3 时都划了 12. 针对此问题，线性筛法改变了划数的策略：  使每个合数只被其最小质因子划去.  在第 i 次循环中，埃氏筛法 简单地划掉了 i 的倍数 i^2,i(i&#43;1),i(i&#43;2),\cdots. 而线性筛法划掉的是 i\times p[j=0,1,\cdots]，且 i\times p[j] 的最小质因子必须是 p[j]. 对于任意 n 以内的合数 v，若 v 的最小质因子是 p，则 v 会且仅会在 i=\dfrac{v}{p} 时被划掉，真正做到了不重不漏. 现在只需讨论 if() 的条件. 举个例子：i=15 时 p=\{2,3,5,7,11,13\}：  15\times 2=30，最小质因子是 2，可以划. 15\times 3=45，最小质因子是 3，可以划. 15\times 5=75，最小质因子是 3\not=5，跳过. 15\times 7=105，最小质因子是 3\not=7，跳过. 15\times 11=165，最小质因子是 3\not=11，跳过. \cdots  不难发现，由于 15 本身有因数 3，这导致 15\times 3 之后的情况都可以跳过. 因此当 i\mod p[j]==0 时直接跳出循环. 时间复杂度：O(n). </content>
   </item>
   
 

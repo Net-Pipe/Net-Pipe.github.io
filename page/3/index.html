@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="generator" content="Hugo 0.89.4" />
+  <meta charset="utf-8">
+  <title>Net Pipe&#39;s Blog</title>  
+  <meta name="description" content="">
+  <meta name="author" content="Net Pipe">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='../../index.xml' rel='alt' type='application/rss+xml' title='Net Pipe&#39;s Blog' />
+  <link rel='shortcut icon' type='image/x-icon' href='../../images/NetPipe.png' />
+
+  
+  <style>* {
+  --primary-color: #005ab4;
+  --block-color: #f7faff;
+  --radius: .2rem;
+  --shadow: 0 1px 0 1px rgba(0, 0, 0, .05); }
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%; }
+
+::selection {
+  background-color: #CCE2FF;
+  color: rgba(0, 0, 0, 0.87); }
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #c3c3c33b; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c3c3c37b; }
+
+::-webkit-scrollbar-track {
+  border-radius: 10px; }
+
+a {
+  color: var(--primary-color);
+  text-decoration: none; }
+  a:focus, a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--primary-color); }
+
+a.alt {
+  color: black; }
+  a.alt:focus, a.alt:hover {
+    text-decoration: none; }
+
+a.black {
+  color: black; }
+  a.black:focus, a.black:hover {
+    color: var(--primary-color); }
+
+ul {
+  list-style: circle;
+  padding-left: 1.2rem; }
+  ul li {
+    margin: .3rem 0; }
+    ul li::marker {
+      font-size: large; }
+
+ol {
+  padding-left: 1.7rem; }
+  ol li {
+    margin: .3rem 0; }
+
+.card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  background-color: var(--block-color);
+  padding: .1rem .5rem;
+  margin: .3rem 0;
+  display: inline-block;
+  font-size: 12.8px;
+  font-weight: bold; }
+  .card .count {
+    display: inline-block; }
+
+.shadow {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white; }
+
+.hover {
+  transition: all .15s; }
+  .hover:hover {
+    cursor: pointer;
+    background-color: var(--block-color); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url("/fonts/FantasqueSansMono-Regular.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/FantasqueSansMono-Bold.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: italic;
+  src: url("/fonts/FantasqueSansMono-Italic.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  font-style: italic;
+  font-weight: bold;
+  src: url("/fonts/FantasqueSansMono-BoldItalic.woff2") format("woff2"); }
+
+body, code, input, button, textarea {
+  font-family: 'Fantasque Sans Mono', sans-serif; }
+
+aside {
+  padding: 1rem; }
+
+aside.left .author {
+  text-align: center; }
+  aside.left .author img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1rem; }
+  aside.left .author h2.name {
+    margin: .5rem; }
+
+aside.left .data {
+  display: flex;
+  text-align: center; }
+  aside.left .data .box {
+    flex: 0 0 50%;
+    display: inline-block; }
+    aside.left .data .box:first-of-type {
+      border-right: 2px solid black; }
+
+aside.left .social {
+  margin: 1rem 0; }
+  aside.left .social .box {
+    background-color: var(--block-color);
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    font-size: 18px;
+    position: relative; }
+    aside.left .social .box img {
+      vertical-align: text-bottom;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px; }
+
+aside.left .search {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35px;
+  right: 0; }
+  aside.left .search input {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 16px;
+    background-color: transparent; }
+
+.core > :first-child,
+.core > :first-child > :first-child,
+.core > :first-child > :first-child > :first-child {
+  margin-top: 0 !important; }
+
+.core > :last-child,
+.core > :last-child > :last-child,
+.core > :last-child > :last-child > :last-child {
+  margin-bottom: 0 !important; }
+
+.core::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important; }
+
+.core .title h1, .core .title h2, .core .title h3, .core .title h4, .core .title h5, .core .title h6 {
+  font-weight: normal;
+  text-shadow: 0 0; }
+
+.core .time {
+  line-height: 20px; }
+  .core .time img {
+    vertical-align: text-bottom; }
+
+.core .post {
+  padding: 1rem;
+  margin: 1rem 0; }
+
+.core.posts, .core.list {
+  margin: 0;
+  padding: 1rem; }
+
+.core.posts .result > :first-child,
+.core.posts .result > :first-child > :first-child,
+.core.posts .result > :first-child > :first-child > :first-child {
+  margin-top: 0 !important; }
+
+.core.posts .result > :last-child,
+.core.posts .result > :last-child > :last-child,
+.core.posts .result > :last-child > :last-child > :last-child {
+  margin-bottom: 0 !important; }
+
+.core.posts > :first-child {
+  margin-top: 0; }
+
+.core.posts > :last-child {
+  margin-bottom: 0; }
+
+.core.posts .pages {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  font-size: 18px; }
+  .core.posts .pages .box {
+    color: var(--primary-color);
+    margin: 0 .5rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center; }
+  .core.posts .pages .box.prev {
+    width: 5rem;
+    margin-left: 0; }
+  .core.posts .pages .box.next {
+    width: 5rem;
+    margin-right: 0; }
+  .core.posts .pages .box.eldivpsis {
+    width: 3rem; }
+  .core.posts .pages .box.disabled {
+    color: black; }
+
+.core.list .post-item {
+  height: 2rem;
+  line-height: 2rem;
+  margin: .3rem 0; }
+  .core.list .post-item img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 .6rem;
+    vertical-align: sub; }
+  .core.list .post-item:first-of-type {
+    height: 3rem;
+    line-height: 3.2rem;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    padding-left: 1rem; }
+    .core.list .post-item:first-of-type img {
+      width: 1.4rem;
+      height: 1.4rem; }
+  .core.list .post-item:last-of-type {
+    border: none;
+    margin-bottom: 0; }
+
+.core.markdown {
+  padding: 1rem; }
+  .core.markdown h1, .core.markdown h1 .katex {
+    font-size: 28px; }
+  .core.markdown h2, .core.markdown h2 .katex {
+    font-size: 24px; }
+  .core.markdown h3, .core.markdown h3 .katex {
+    font-size: 20px; }
+  .core.markdown h1, .core.markdown h2, .core.markdown h3, .core.markdown h4, .core.markdown h5, .core.markdown h6 {
+    font-weight: normal;
+    text-shadow: 0 0;
+    margin: .5rem 0; }
+    .core.markdown h1 .anchor, .core.markdown h2 .anchor, .core.markdown h3 .anchor, .core.markdown h4 .anchor, .core.markdown h5 .anchor, .core.markdown h6 .anchor {
+      color: transparent; }
+    .core.markdown h1:hover .anchor, .core.markdown h2:hover .anchor, .core.markdown h3:hover .anchor, .core.markdown h4:hover .anchor, .core.markdown h5:hover .anchor, .core.markdown h6:hover .anchor {
+      color: var(--primary-color); }
+  .core.markdown p {
+    margin: .5rem 0; }
+  .core.markdown strong {
+    font-weight: normal;
+    text-shadow: 0 0; }
+  .core.markdown blockquote {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    padding: .3rem .5rem;
+    margin: .5rem 0;
+    background-color: var(--block-color);
+    border-left: 0.3rem solid var(--primary-color); }
+    .core.markdown blockquote > :first-child,
+    .core.markdown blockquote > :first-child > :first-child,
+    .core.markdown blockquote > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    .core.markdown blockquote > :last-child,
+    .core.markdown blockquote > :last-child > :last-child,
+    .core.markdown blockquote > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+  .core.markdown img:not(.alt) {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; }
+  .core.markdown code {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    padding: 1px 2px;
+    background-color: var(--block-color); }
+  .core.markdown pre {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    margin: .5rem 0;
+    padding: .5rem 1rem;
+    overflow: auto hidden;
+    line-height: 1.3rem;
+    background-color: var(--block-color) !important; }
+    .core.markdown pre code {
+      border: none;
+      background: none !important;
+      box-shadow: none;
+      padding: 0; }
+  .core.markdown table {
+    margin: .5rem 0;
+    border-spacing: 0 5px;
+    -webkit-overflow-scrolling: touch; }
+    .core.markdown table th, .core.markdown table td {
+      padding: .3rem 16px;
+      font-weight: normal; }
+    .core.markdown table tr {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background-color: white;
+      background-color: var(--block-color); }
+
+html, body, main {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  height: 100%;
+  overflow: hidden; }
+
+html {
+  background-color: #f7f7f7; }
+
+main {
+  display: flex;
+  margin: 0 auto;
+  max-width: 75rem; }
+
+.left, .right, .core {
+  overflow: hidden auto;
+  margin: 1rem; }
+
+.left {
+  flex: 0 0 16rem;
+  margin-right: 0; }
+
+.right {
+  flex: 0 0 16rem;
+  margin-left: 0; }
+
+.core {
+  flex-grow: 1; }
+
+@media screen and (max-width: 65rem) {
+  aside.right {
+    display: none; } }
+
+@media screen and (max-width: 40rem) {
+  main {
+    display: block;
+    overflow: auto; }
+    main::-webkit-scrollbar {
+      width: 0px !important;
+      height: 0px !important; }
+  .pages .box {
+    margin: 0 .3rem !important; }
+  aside {
+    margin-right: 1rem !important;
+    margin-bottom: 0 !important; } }
+
+details {
+  margin: .3rem 0; }
+  details summary, details .details-inner {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    border-left: 0.3rem solid var(--primary-color);
+    padding: .3rem .5rem; }
+  details summary {
+    background-color: var(--block-color);
+    font-size: 12.8px;
+    font-weight: bold;
+    padding-left: .8rem; }
+    details summary::marker, details summary::-webkit-details-marker {
+      content: ""; }
+    details summary img.alt {
+      width: 18px;
+      height: 18px;
+      float: right;
+      vertical-align: sub;
+      transition: .2s all; }
+  details[open] > summary {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+    details[open] > summary img.alt {
+      transform: rotate(90deg); }
+  details[open] > .details-inner {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
+
+.book-columns {
+  display: flex;
+  flex-wrap: wrap; }
+  .book-columns .markdown-inner {
+    flex: 1 1; }
+
+.book-tabs {
+  margin: .5em 0;
+  overflow: visible;
+  display: flex;
+  flex-wrap: wrap; }
+  .book-tabs label {
+    line-height: 2rem;
+    display: inline-block;
+    padding: 0 1rem;
+    min-width: 2.5rem;
+    cursor: pointer;
+    z-index: 999;
+    text-align: center; }
+  .book-tabs .book-tabs-content {
+    order: 999;
+    width: 100%;
+    display: none;
+    overflow: visible;
+    padding-top: .5rem; }
+    .book-tabs .book-tabs-content > :first-child,
+    .book-tabs .book-tabs-content > :first-child > :first-child,
+    .book-tabs .book-tabs-content > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    .book-tabs .book-tabs-content > :last-child,
+    .book-tabs .book-tabs-content > :last-child > :last-child,
+    .book-tabs .book-tabs-content > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+  .book-tabs input[type="radio"] {
+    display: none; }
+    .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
+      display: block; }
+</style>
+  
+
+  <script src="../../js/jquery.min.js"></script>
+</head>
+
+
+
+
+<body>
+  <main>
+  
+<aside class="left shadow">
+  <div class='author'>
+  <a href="../../"><img src='../../images/NetPipe.png'></a>
+  <h2 class='name'>Net Pipe</h2>
+</div>
+  <div class="data">
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <div class='box'>
+    <h3>29</h3>
+    <span>Posts</span>
+  </div>
+  <div class='box'>
+    <h3>74,020</h3>
+    <span>Words</span>
+  </div>
+</div>
+
+  <div class="social">
+    <a class="black">
+      <div class="box shadow">
+        <img src="../../images/search.svg"/>
+        <div class="search">
+          <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
+        </div>
+      </div>
+      <script>
+        function keyup_submit(e){ 
+        var evt = window.event || e; 
+          if (evt.keyCode == 13) {
+            window.location.href = '/s?wd=' + document.getElementById("search-key").value;
+          }
+        }
+      </script>
+    </a>
+    <a class="black" href="../../">
+      <div class="box shadow"><img src="../../images/home.svg"/><span>Home</span></div>
+    </a>
+    <a class="black" href="../../post/">
+      <div class="box shadow"><img src="../../images/posts.svg"/><span>Posts</span></div>
+    </a>
+    <a class="black" type="application/rss+xml" href="../../index.xml">
+      <div class="box shadow"><img src="../../images/rss.svg"/><span>RSS</span></div>
+    </a>
+  </div>
+
+  
+  <div class="card">
+    <div class="count">1</div>
+    <a href="../../categories/%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F/">万能公式</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">1</div>
+    <a href="../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">2</div>
+    <a href="../../categories/%E6%95%B0%E5%88%97/">数列</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">4</div>
+    <a href="../../categories/%E6%95%B0%E5%AD%A6/">数学</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">19</div>
+    <a href="../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">1</div>
+    <a href="../../categories/%E7%9F%A9%E9%98%B5/">矩阵</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">6</div>
+    <a href="../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">5</div>
+    <a href="../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
+  </div>
+  
+
+</aside>
+
+  
+<div class='core posts'>
+  
+  
+  <div class="post shadow hover">
+    <a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">
+      <div>
+        <div class="title">
+  <h3><object><a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a></object></h3>
+</div>
+        <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Aug 19, 2021
+</span>
+        <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+        
+
+      </div>
+    </a>
+  </div>
+  
+  <div class="post shadow hover">
+    <a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/">
+      <div>
+        <div class="title">
+  <h3><object><a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/">线性同余方程</a></object></h3>
+</div>
+        <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Aug 16, 2021
+</span>
+        <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+        
+
+      </div>
+    </a>
+  </div>
+  
+  <div class="post shadow hover">
+    <a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/">
+      <div>
+        <div class="title">
+  <h3><object><a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/">欧几里得算法</a></object></h3>
+</div>
+        <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Aug 14, 2021
+</span>
+        <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+        
+
+      </div>
+    </a>
+  </div>
+  
+  <div class="post shadow hover">
+    <a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86/">
+      <div>
+        <div class="title">
+  <h3><object><a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86/">贝祖定理</a></object></h3>
+</div>
+        <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Aug 14, 2021
+</span>
+        <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+        
+
+      </div>
+    </a>
+  </div>
+  
+  <div class="post shadow hover">
+    <a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BF%AB%E9%80%9F%E5%B9%82/">
+      <div>
+        <div class="title">
+  <h3><object><a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a></object></h3>
+</div>
+        <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Jul 31, 2021
+</span>
+        <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+        
+
+      </div>
+    </a>
+  </div>
+  
+  <div class="post shadow hover">
+    <a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B/">
+      <div>
+        <div class="title">
+  <h3><object><a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B/">数学期望</a></object></h3>
+</div>
+        <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Jul 20, 2021
+</span>
+        <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+        
+
+      </div>
+    </a>
+  </div>
+  
+  <div class="post shadow hover">
+    <a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E5%90%8C%E4%BD%99/">
+      <div>
+        <div class="title">
+  <h3><object><a class="alt" href="../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E5%90%8C%E4%BD%99/">同余</a></object></h3>
+</div>
+        <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Jul 12, 2021
+</span>
+        <span class="categories">
+
+  <div class='card'>
+    <object><a href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a></object>
+  </div>
+
+</span>
+        
+
+      </div>
+    </a>
+  </div>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pages">
+    
+    <div class="box prev shadow hover" onclick='window.location.href=&#34;/page/2/&#34;'>Prev</div>
+    
+
+    
+        
+            
+            <div class="box shadow hover" onclick='window.location.href=&#34;/&#34;'>1</div>
+            
+            
+        
+    
+        
+            
+            <div class="box shadow hover" onclick='window.location.href=&#34;/page/2/&#34;'>2</div>
+            
+            
+        
+    
+        
+            
+            <div class="box disabled shadow">3</div>
+            
+            
+        
+    
+        
+            
+            <div class="box shadow hover" onclick='window.location.href=&#34;/page/4/&#34;'>4</div>
+            
+            
+        
+    
+        
+            
+            <div class="box shadow hover" onclick='window.location.href=&#34;/page/5/&#34;'>5</div>
+            
+            
+        
+    
+
+    
+    <div class="box next shadow hover" onclick='window.location.href=&#34;/page/4/&#34;'>Next</div>
+    
+</div>
+
+</div>
+
+  
+<aside class="right shadow">
+<h2>Notice</h2>
+<ul>
+<li>网站架构变更，部分文章正在重构中.</li>
+<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
+<li>评论区因安全问题被关闭.</li>
+</ul>
+
+<br>
+</aside>
+
+  </main>
+</body>
+
+<script src="../../js/jquery.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../js/katex/katex.min.css">
+<script src="../../js/katex/katex.min.js"></script>
+<script src="../../js/katex/auto-render.min.js"></script>
+
+<script>
+function renderTex() {
+  renderMathInElement(document.body, {
+    trust: true,
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$", right: "$", display: false }
+    ],
+    macros: {
+      
+      "\\d": "\\text{d}",
+      "\\zh": "\\footnotesize \\ ",
+      "\\en": "\\normalsize \\ ",
+      "\\su": "\\displaystyle",
+      "\\eq": "\\Longleftrightarrow",
+      "\\intro": "\\Longrightarrow",
+      "\\mathring": "\\overset\{\\normalsizeₒ\}",
+      "\\arccot": "\\text\{arccot\} \\, ",
+      "\\xor": "\\text\{xor\} \\, ",
+      "\\mex": "\\text\{mex\} \\, ",
+      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+    }
+  });
+}
+document.addEventListener("DOMContentLoaded", function() {
+  renderTex();
+});
+$('.language-latex').each(function(id, el, arr) {
+  function toText(text) { 
+    var temp = document.createElement("div"); 
+    temp.innerHTML = text; 
+    var output = temp.innerText || temp.textContent; 
+    temp = null; 
+    return output; 
+  } 
+  tex = toText(el.innerHTML);
+  el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
+});
+</script>
+
+<script>
+  $(window).scroll(function(e) {
+    if ($('main').css('display') == 'flex') {
+      $(this).scrollTop(0);
+    }
+  });
+  $(window).ready(function() {
+    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+  });
+</script>
+
+
+</html>

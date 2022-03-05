@@ -140,7 +140,7 @@
 
 .katex {
     text-rendering: auto;
-    font: normal 17px KaTeX_Main, Times New Roman, 'Microsoft YaHei', serif;
+    font: normal 16px KaTeX_Main, Times New Roman, 'Microsoft YaHei', serif;
     line-height: 1.2;
     text-indent: 0;
     text-shadow: 0 0;
