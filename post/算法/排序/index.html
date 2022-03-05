@@ -13,20 +13,18 @@
 
   
   <style>* {
-  --aside-width: 16rem;
-  --max-width: 80rem;
-  --link-color: #003366;
-  --hover-color: #F6F8FA;
-  --border-color: #CCCCCC;
-  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  --border: 1px solid var(--border-color);
-  --radius: 3px; }
+  --primary-color: #005ab4;
+  --link-color: #90cff9;
+  --block-color: #f7faff;
+  --radius: .2rem;
+  --shadow: 0 1px 0 1px rgba(0, 0, 0, .05); }
 
 * {
   margin: 0;
   padding: 0;
+  outline: none;
   box-sizing: border-box;
-  outline: none; }
+  -webkit-text-size-adjust: 100%; }
 
 ::selection {
   background-color: #CCE2FF;
@@ -46,42 +44,35 @@
   border-radius: 10px; }
 
 a {
-  text-decoration: none;
-  color: var(--link-color); }
-
-a:focus, a:hover {
-  outline: none;
-  text-decoration: underline; }
-
-a.alt, a.silent {
-  color: black; }
-
-a.alt:focus,
-a.alt:hover,
-a.alt:focus > *,
-a.alt:hover > * {
-  color: var(--link-color);
-  text-decoration: underline; }
-
-a.silent:focus,
-a.silent:hover,
-a.silent:focus > *,
-a.silent:hover > * {
-  color: black;
+  color: var(--primary-color);
   text-decoration: none; }
+  a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--primary-color); }
 
 ul {
   list-style: circle;
-  padding-left: 1.7rem; }
+  padding-left: 1.2rem; }
   ul li {
     margin: .3rem 0; }
     ul li::marker {
       font-size: large; }
 
 ol {
-  padding-left: 2.2rem; }
+  padding-left: 2.7rem; }
   ol li {
     margin: .3rem 0; }
+
+.card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  background-color: var(--block-color);
+  padding: .1rem .5rem;
+  margin: .3rem 0;
+  display: inline-block;
+  font-size: 12.8px;
+  font-weight: bold; }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -107,673 +98,318 @@ ol {
 body, code, input, button, textarea {
   font-family: 'Fantasque Sans Mono', sans-serif; }
 
-html, body, main {
-  height: 100%;
-  overflow: hidden; }
+aside {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  padding: 1rem; }
 
-body {
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  background: url(/images/BackGround.jpg) 0/cover fixed;
-  margin: 0 auto;
-  max-width: var(--max-width); }
+aside.left .author {
+  text-align: center; }
+  aside.left .author img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1rem; }
+  aside.left .author h2.name {
+    margin: .5rem; }
 
-main {
+aside.left .data {
   display: flex;
-  position: relative; }
+  text-align: center; }
+  aside.left .data .data-box {
+    flex: 0 0 50%;
+    display: inline-block; }
+    aside.left .data .data-box:first-of-type {
+      border-right: 1px solid black; }
 
-aside {
-  flex: 0 0 var(--aside-width);
-  padding: 1rem;
-  overflow: hidden auto; }
-  aside > :first-child,
-  aside > :first-child > :first-child,
-  aside > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  aside > :last-child,
-  aside > :last-child > :last-child,
-  aside > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
+aside.left .social {
+  margin: 1rem 0; }
+  aside.left .social .box {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    background-color: var(--block-color);
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    font-size: 18px;
+    position: relative; }
+    aside.left .social .box img {
+      vertical-align: text-bottom;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px; }
 
-article {
-  flex-grow: 1;
-  padding: 1rem;
-  overflow: hidden auto; }
-  article .post-toc {
-    display: none; }
+aside.left .search {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35px;
+  right: 0;
+  height: 30px; }
+  aside.left .search input {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 17px;
+    background-color: transparent; }
 
-.tag-card {
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+.core > :first-child,
+.core > :first-child > :first-child,
+.core > :first-child > :first-child > :first-child {
+  margin-top: 0 !important; }
+
+.core > :last-child,
+.core > :last-child > :last-child,
+.core > :last-child > :last-child > :last-child {
+  margin-bottom: 0 !important; }
+
+.core::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important; }
+
+.core.posts, .core.list {
+  margin: 0 !important;
+  padding: 1rem; }
+
+.core.posts .title h1, .core.posts .title h2, .core.posts .title h3, .core.posts .title h4, .core.posts .title h5, .core.posts .title h6 {
+  font-weight: normal;
+  text-shadow: 0 0; }
+
+.core.posts .time {
+  line-height: 20px; }
+  .core.posts .time img {
+    vertical-align: text-bottom; }
+
+.core.posts .post {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  background: rgba(255, 255, 255, 0.2) !important;
-  position: relative;
-  transition: all .15s;
-  display: inline-block;
-  padding: .1rem .5rem;
-  margin: .3rem 0; }
-  .tag-card:hover {
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.8) !important; }
-  .tag-card a {
-    font-size: 13px;
-    text-shadow: 0 0; }
-
-.post-meta img {
-  width: 16px;
-  height: 16px;
-  display: inline-block !important;
-  vertical-align: text-bottom; }
-
-h2.alt {
-  margin: .5rem 0;
-  font-size: 22px; }
-  h2.alt img.alt {
-    width: 20px;
-    height: 20px;
-    vertical-align: text-top;
-    margin-right: 0.5rem; }
-
-.content h2.alt img.alt {
-  display: none; }
-
-aside {
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background: rgba(255, 255, 255, 0.2) !important;
-  position: relative;
-  margin: 1rem; }
-  aside > :first-child,
-  aside > :first-child > :first-child,
-  aside > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  aside > :last-child,
-  aside > :last-child > :last-child,
-  aside > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-
-aside.meta {
-  margin-right: 0;
-  order: 1; }
-  aside.meta .author {
-    text-align: center; }
-    aside.meta .author img {
-      transition: all 0.2s;
-      width: 6rem;
-      height: 6rem;
-      border-radius: 1rem; }
-      aside.meta .author img:hover {
-        transform: perspective(1px) scale(1.04); }
-    aside.meta .author h2.name {
-      margin: .5rem; }
-  aside.meta .data {
-    display: flex;
-    text-align: center; }
-    aside.meta .data .data-box {
-      flex: 0 0 50%;
-      display: inline-block; }
-      aside.meta .data .data-box:first-of-type {
-        border-right: 1px solid black; }
-  aside.meta .social {
-    margin: 1rem 0; }
-    aside.meta .social .social-box {
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      background: rgba(255, 255, 255, 0.2) !important;
-      position: relative;
-      transition: all .15s;
-      margin-top: .5rem;
-      padding: .3rem .5rem;
-      font-size: 18px; }
-      aside.meta .social .social-box:hover {
-        cursor: pointer;
-        background: rgba(255, 255, 255, 0.8) !important; }
-      aside.meta .social .social-box img {
-        vertical-align: text-bottom;
-        width: 20px;
-        height: 20px;
-        margin-right: 8px; }
-  aside.meta .search {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 35px;
-    right: 0;
-    height: 30px; }
-    aside.meta .search input {
-      display: inline;
-      width: 100%;
-      height: 100%;
-      border: none;
-      font-size: 17px;
-      background-color: transparent; }
-
-aside.toc {
-  margin-left: 0;
-  order: 3; }
-
-article {
-  order: 2; }
-
-article.posts .post {
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background: rgba(255, 255, 255, 0.2) !important;
-  position: relative;
+  background-color: white;
   transition: all .15s;
   padding: 1rem;
   margin: 1rem 0; }
-  article.posts .post:hover {
+  .core.posts .post:hover {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.8) !important; }
-  article.posts .post > :first-child,
-  article.posts .post > :first-child > :first-child,
-  article.posts .post > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  article.posts .post > :last-child,
-  article.posts .post > :last-child > :last-child,
-  article.posts .post > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-  article.posts .post .post-title {
-    font-size: 20px; }
+    background-color: var(--block-color); }
 
-article.posts .pagination {
-  width: 100%;
+.core.posts > :first-child {
+  margin-top: 0; }
+
+.core.posts > :last-child {
+  margin-bottom: 0; }
+
+.core.posts .pages {
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
   justify-content: center;
-  font-size: 18px;
-  margin-top: 1rem; }
-  article.posts .pagination div.pagination-box {
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+  font-size: 18px; }
+  .core.posts .pages .box {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.2) !important;
-    position: relative;
-    color: var(--link-color);
+    background-color: white;
+    color: var(--primary-color);
     margin: 0 .5rem;
     width: 2rem;
     height: 2rem;
     line-height: 2rem;
-    float: left;
-    text-align: center;
-    vertical-align: middle; }
-    article.posts .pagination div.pagination-box:not(.disabled) {
+    text-align: center; }
+    .core.posts .pages .box:not(.disabled) {
       transition: all .15s; }
-      article.posts .pagination div.pagination-box:not(.disabled):hover {
+      .core.posts .pages .box:not(.disabled):hover {
         cursor: pointer;
-        background: rgba(255, 255, 255, 0.8) !important; }
-  article.posts .pagination div.prev {
+        background-color: var(--block-color); }
+  .core.posts .pages .box.prev {
     width: 5rem;
     margin-left: 0; }
-  article.posts .pagination div.next {
+  .core.posts .pages .box.next {
     width: 5rem;
     margin-right: 0; }
-  article.posts .pagination div.pagination-eldivpsis {
+  .core.posts .pages .box.eldivpsis {
     width: 3rem; }
-  article.posts .pagination div.disabled {
+  .core.posts .pages .box.disabled {
     color: black; }
 
-article.posts > :first-child,
-article.posts > :first-child > :first-child,
-article.posts > :first-child > :first-child > :first-child {
-  margin-top: 0 !important; }
-
-article.posts > :last-child,
-article.posts > :last-child > :last-child,
-article.posts > :last-child > :last-child > :last-child {
-  margin-bottom: 0 !important; }
-
-article.list .post-item {
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+.core.list .post-item {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  background: rgba(255, 255, 255, 0.2) !important;
-  position: relative;
+  background-color: white;
   transition: all .15s;
   height: 2.3rem;
   line-height: 2.3rem;
   margin: .3rem 0; }
-  article.list .post-item:hover {
+  .core.list .post-item:hover {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.8) !important; }
-  article.list .post-item img {
+    background-color: var(--block-color); }
+  .core.list .post-item img {
     width: 1.2rem;
     height: 1.2rem;
     margin: 0 .6rem;
     vertical-align: sub; }
-  article.list .post-item span {
+  .core.list .post-item span {
     position: absolute; }
-  article.list .post-item:first-of-type {
+  .core.list .post-item:first-of-type {
     height: 3rem;
     line-height: 3.2rem;
     font-size: 1.2rem;
     margin-top: 0;
     margin-bottom: .5rem;
     padding-left: 1rem; }
-    article.list .post-item:first-of-type img {
+    .core.list .post-item:first-of-type img {
       width: 1.4rem;
       height: 1.4rem; }
-  article.list .post-item:last-of-type {
+  .core.list .post-item:last-of-type {
     border: none;
     margin-bottom: 0; }
 
-article.markdown .content {
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+.core.markdown {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  background: rgba(255, 255, 255, 0.2) !important;
-  position: relative;
+  background-color: white;
   padding: 1rem; }
-  article.markdown .content > :first-child,
-  article.markdown .content > :first-child > :first-child,
-  article.markdown .content > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  article.markdown .content > :last-child,
-  article.markdown .content > :last-child > :last-child,
-  article.markdown .content > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-  article.markdown .content h1, article.markdown .content h1 .katex {
-    font-size: 28px; }
-  article.markdown .content h2, article.markdown .content h2 .katex {
+  .core.markdown h2, .core.markdown h2 .katex {
     font-size: 24px; }
-  article.markdown .content h1, article.markdown .content h2, article.markdown .content h3, article.markdown .content h4, article.markdown .content h5, article.markdown .content h6 {
-    margin: .5rem 0;
-    font-weight: normal; }
-    article.markdown .content h1 .anchor, article.markdown .content h2 .anchor, article.markdown .content h3 .anchor, article.markdown .content h4 .anchor, article.markdown .content h5 .anchor, article.markdown .content h6 .anchor {
-      opacity: 0; }
-    article.markdown .content h1:hover .anchor, article.markdown .content h1:focus .anchor, article.markdown .content h2:hover .anchor, article.markdown .content h2:focus .anchor, article.markdown .content h3:hover .anchor, article.markdown .content h3:focus .anchor, article.markdown .content h4:hover .anchor, article.markdown .content h4:focus .anchor, article.markdown .content h5:hover .anchor, article.markdown .content h5:focus .anchor, article.markdown .content h6:hover .anchor, article.markdown .content h6:focus .anchor {
-      opacity: 1; }
-  article.markdown .content p {
-    margin: .5rem 0;
-    line-height: 1.3rem; }
-  article.markdown .content strong {
+  .core.markdown h3, .core.markdown h3 .katex {
+    font-size: 20px; }
+  .core.markdown h1, .core.markdown h2, .core.markdown h3, .core.markdown h4, .core.markdown h5, .core.markdown h6 {
     font-weight: normal;
     text-shadow: 0 0; }
-  article.markdown .content img:not(.alt, .vemoji) {
+    .core.markdown h1 .anchor, .core.markdown h2 .anchor, .core.markdown h3 .anchor, .core.markdown h4 .anchor, .core.markdown h5 .anchor, .core.markdown h6 .anchor {
+      color: transparent; }
+    .core.markdown h1:hover .anchor, .core.markdown h2:hover .anchor, .core.markdown h3:hover .anchor, .core.markdown h4:hover .anchor, .core.markdown h5:hover .anchor, .core.markdown h6:hover .anchor {
+      color: var(--primary-color); }
+  .core.markdown strong {
+    font-weight: normal;
+    text-shadow: 0 0; }
+  .core.markdown blockquote {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    background-color: var(--block-color);
+    padding: .5rem 1rem;
+    margin: .5rem 0; }
+    .core.markdown blockquote > :first-child,
+    .core.markdown blockquote > :first-child > :first-child,
+    .core.markdown blockquote > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    .core.markdown blockquote > :last-child,
+    .core.markdown blockquote > :last-child > :last-child,
+    .core.markdown blockquote > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+  .core.markdown img:not(.alt) {
     display: block;
     margin: 0 auto;
     max-width: 100%; }
-  article.markdown .content blockquote {
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+  .core.markdown code {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.2) !important;
-    position: relative;
-    margin: .5rem 0;
-    padding: .5rem 1rem; }
-    article.markdown .content blockquote > :first-child,
-    article.markdown .content blockquote > :first-child > :first-child,
-    article.markdown .content blockquote > :first-child > :first-child > :first-child {
-      margin-top: 0 !important; }
-    article.markdown .content blockquote > :last-child,
-    article.markdown .content blockquote > :last-child > :last-child,
-    article.markdown .content blockquote > :last-child > :last-child > :last-child {
-      margin-bottom: 0 !important; }
-  article.markdown .content code {
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.2) !important;
-    position: relative;
+    background-color: white;
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
-    padding: 1px 2px; }
-  article.markdown .content pre {
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+    padding: 1px 2px;
+    background-color: var(--block-color); }
+  .core.markdown pre {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.2) !important;
-    position: relative;
-    background: rgba(255, 255, 255, 0.5) !important;
+    background-color: white;
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
+    background-color: var(--block-color) !important;
     margin: .5rem 0;
     padding: .5rem 1rem;
     overflow: auto hidden;
     line-height: 1.3rem; }
-    article.markdown .content pre code {
+    .core.markdown pre code {
       border: none;
       background: none !important;
       box-shadow: none;
       padding: 0; }
-  article.markdown .content table {
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.2) !important;
-    position: relative;
+  .core.markdown table {
     margin: .5rem 0;
-    overflow: auto;
-    border-spacing: 0;
-    display: block;
+    border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
-    article.markdown .content table th, article.markdown .content table td {
+    .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
-      font-weight: normal;
-      white-space: nowrap; }
-  article.markdown .content .book-columns {
-    display: flex;
-    flex-wrap: wrap; }
-    article.markdown .content .book-columns .markdown-inner {
-      flex: 1 1; }
-  article.markdown .content .book-tabs {
-    margin: .5em 0;
-    overflow: visible;
-    display: flex;
-    flex-wrap: wrap; }
-    article.markdown .content .book-tabs label {
-      line-height: 2rem;
-      display: inline-block;
-      padding: 0 1rem;
-      min-width: 2.5rem;
-      cursor: pointer;
-      z-index: 999;
-      text-align: center; }
-    article.markdown .content .book-tabs .book-tabs-content {
-      order: 999;
-      width: 100%;
-      display: none;
-      overflow: visible;
-      padding-top: .5rem; }
-      article.markdown .content .book-tabs .book-tabs-content > :first-child,
-      article.markdown .content .book-tabs .book-tabs-content > :first-child > :first-child,
-      article.markdown .content .book-tabs .book-tabs-content > :first-child > :first-child > :first-child {
-        margin-top: 0 !important; }
-      article.markdown .content .book-tabs .book-tabs-content > :last-child,
-      article.markdown .content .book-tabs .book-tabs-content > :last-child > :last-child,
-      article.markdown .content .book-tabs .book-tabs-content > :last-child > :last-child > :last-child {
-        margin-bottom: 0 !important; }
-    article.markdown .content .book-tabs input[type="radio"] {
-      display: none; }
-      article.markdown .content .book-tabs input[type="radio"]:checked + label {
-        border-top-left-radius: var(--radius);
-        border-top-right-radius: var(--radius);
-        border-bottom-left-radius: var(--radius);
-        border-bottom-right-radius: var(--radius);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        background: rgba(255, 255, 255, 0.2) !important;
-        position: relative; }
-        article.markdown .content .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
-          display: block; }
-  article.markdown .content details {
-    margin: .3rem 0; }
-    article.markdown .content details summary {
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
+      font-weight: normal; }
+    .core.markdown table tr {
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      background: rgba(255, 255, 255, 0.2) !important;
-      position: relative;
-      transition: all .15s;
-      font-size: 14px;
-      padding: .3rem;
-      text-shadow: 0 0; }
-      article.markdown .content details summary:hover {
-        cursor: pointer;
-        background: rgba(255, 255, 255, 0.8) !important; }
-      article.markdown .content details summary::marker {
-        content: '';
-        font-size: 0; }
-      article.markdown .content details summary img.alt {
-        width: 18px;
-        height: 18px;
-        margin-right: .2rem;
-        vertical-align: sub;
-        transition: .2s all; }
-    article.markdown .content details ::-webkit-details-marker,
-    article.markdown .content details ::-moz-list-bullet {
-      content: '' !important;
-      font-size: 0 !important; }
-    article.markdown .content details:focus {
-      outline: none; }
-    article.markdown .content details[open] > summary {
-      margin-bottom: 0; }
-      article.markdown .content details[open] > summary img.alt {
-        transform: rotate(90deg); }
-  article.markdown .content #vcomments > :first-child,
-  article.markdown .content #vcomments > :first-child > :first-child,
-  article.markdown .content #vcomments > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  article.markdown .content #vcomments > :last-child,
-  article.markdown .content #vcomments > :last-child > :last-child,
-  article.markdown .content #vcomments > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-  article.markdown .content #vcomments .vempty {
-    display: none !important; }
-  article.markdown .content #vcomments .vpanel > :first-child,
-  article.markdown .content #vcomments .vpanel > :first-child > :first-child,
-  article.markdown .content #vcomments .vpanel > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  article.markdown .content #vcomments .vpanel > :last-child,
-  article.markdown .content #vcomments .vpanel > :last-child > :last-child,
-  article.markdown .content #vcomments .vpanel > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-  article.markdown .content #vcomments .vwrap {
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
+      background-color: white;
+      background-color: var(--block-color); }
+
+html, body, main {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  height: 100%;
+  overflow: hidden; }
+
+html {
+  background-color: #f7f7f7; }
+
+main {
+  display: flex;
+  margin: 0 auto;
+  max-width: 80rem; }
+
+.left, .right, .core {
+  overflow: hidden auto;
+  margin: 1rem; }
+
+.left {
+  flex: 0 0 16rem;
+  margin-right: 0; }
+
+.right {
+  flex: 0 0 16rem;
+  margin-left: 0; }
+
+.core {
+  flex-grow: 1; }
+
+details {
+  margin: .3rem 0; }
+  details summary {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.2) !important;
-    position: relative;
-    padding: .5rem;
-    margin-top: 1rem; }
-    article.markdown .content #vcomments .vwrap > :first-child,
-    article.markdown .content #vcomments .vwrap > :first-child > :first-child,
-    article.markdown .content #vcomments .vwrap > :first-child > :first-child > :first-child {
-      margin-top: 0 !important; }
-    article.markdown .content #vcomments .vwrap > :last-child,
-    article.markdown .content #vcomments .vwrap > :last-child > :last-child,
-    article.markdown .content #vcomments .vwrap > :last-child > :last-child > :last-child {
-      margin-bottom: 0 !important; }
-    article.markdown .content #vcomments .vwrap .vheader.item2 {
-      display: flex; }
-      article.markdown .content #vcomments .vwrap .vheader.item2 input {
-        flex: 0 0 calc(50% - 1rem);
-        border: none;
-        font-size: 16px;
-        margin: 0 .5rem;
-        line-height: 1.5rem;
-        background-color: transparent;
-        border-bottom: 1px dashed silver;
-        transition: all .2s;
-        min-width: 0; }
-        article.markdown .content #vcomments .vwrap .vheader.item2 input:focus {
-          border-bottom: 1px dashed olivedrab; }
-    article.markdown .content #vcomments .vwrap .vemojis {
-      padding: .5rem; }
-    article.markdown .content #vcomments .vwrap .vpreview {
-      padding: .5rem; }
-    article.markdown .content #vcomments .vwrap textarea.veditor {
-      width: 100%;
-      height: 6rem;
-      line-height: 1.5rem;
-      border: none;
-      font-size: 16px;
-      padding: .5rem;
-      background-color: transparent;
-      resize: none; }
-    article.markdown .content #vcomments .vwrap .reslength {
-      float: left;
-      color: gray;
-      font-size: 14px;
-      line-height: 1.2rem; }
-  article.markdown .content #vcomments .vcount {
-    font-size: 20px;
-    margin: .5rem 0; }
-  article.markdown .content #vcomments .vcards > :first-child,
-  article.markdown .content #vcomments .vcards > :first-child > :first-child,
-  article.markdown .content #vcomments .vcards > :first-child > :first-child > :first-child, article.markdown .content #vcomments .vquote > :first-child,
-  article.markdown .content #vcomments .vquote > :first-child > :first-child,
-  article.markdown .content #vcomments .vquote > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  article.markdown .content #vcomments .vcards > :last-child,
-  article.markdown .content #vcomments .vcards > :last-child > :last-child,
-  article.markdown .content #vcomments .vcards > :last-child > :last-child > :last-child, article.markdown .content #vcomments .vquote > :last-child,
-  article.markdown .content #vcomments .vquote > :last-child > :last-child,
-  article.markdown .content #vcomments .vquote > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-  article.markdown .content #vcomments .vcards .vcard, article.markdown .content #vcomments .vquote .vcard {
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px dashed silver; }
-    article.markdown .content #vcomments .vcards .vcard img.vimg, article.markdown .content #vcomments .vquote .vcard img.vimg {
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      border-bottom-left-radius: var(--radius);
-      border-bottom-right-radius: var(--radius);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      background: rgba(255, 255, 255, 0.2) !important;
-      position: relative;
-      transition: all .15s;
-      position: absolute;
-      width: 3.5rem;
-      height: 3.5rem;
-      padding: .2rem; }
-      article.markdown .content #vcomments .vcards .vcard img.vimg:hover, article.markdown .content #vcomments .vquote .vcard img.vimg:hover {
-        cursor: pointer;
-        background: rgba(255, 255, 255, 0.8) !important; }
-    article.markdown .content #vcomments .vcards .vcard .vh, article.markdown .content #vcomments .vquote .vcard .vh {
-      margin-left: 4.5rem; }
-      article.markdown .content #vcomments .vcards .vcard .vh .vhead, article.markdown .content #vcomments .vcards .vcard .vh .vmeta, article.markdown .content #vcomments .vquote .vcard .vh .vhead, article.markdown .content #vcomments .vquote .vcard .vh .vmeta {
-        height: 1.6rem;
-        line-height: 2rem; }
-        article.markdown .content #vcomments .vcards .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vhead .vtime, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vtime, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vtime, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vtime {
-          color: gray;
-          font-size: 14px; }
-        article.markdown .content #vcomments .vcards .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vcards .vcard .vh .vmeta .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vhead .vsys, article.markdown .content #vcomments .vquote .vcard .vh .vmeta .vsys {
-          display: none; }
-        article.markdown .content #vcomments .vcards .vcard .vh .vhead button.vat, article.markdown .content #vcomments .vcards .vcard .vh .vmeta button.vat, article.markdown .content #vcomments .vquote .vcard .vh .vhead button.vat, article.markdown .content #vcomments .vquote .vcard .vh .vmeta button.vat {
-          float: right; }
-      article.markdown .content #vcomments .vcards .vcard .vh .vcontent, article.markdown .content #vcomments .vquote .vcard .vh .vcontent {
-        margin-top: .5rem; }
-        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child,
-        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child > :first-child,
-        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :first-child > :first-child > :first-child, article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child,
-        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child > :first-child,
-        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :first-child > :first-child > :first-child {
-          margin-top: 0 !important; }
-        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child,
-        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child > :last-child,
-        article.markdown .content #vcomments .vcards .vcard .vh .vcontent > :last-child > :last-child > :last-child, article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child,
-        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child > :last-child,
-        article.markdown .content #vcomments .vquote .vcard .vh .vcontent > :last-child > :last-child > :last-child {
-          margin-bottom: 0 !important; }
-  article.markdown .content #vcomments .vcards > :last-child, article.markdown .content #vcomments .vquote > :last-child {
-    padding-bottom: 0;
-    margin-bottom: 0;
-    border-bottom: none; }
-  article.markdown .content #vcomments .vquote > :first-child {
-    padding-top: 1rem; }
-  article.markdown .content #vcomments img.vemoji {
-    width: 1.5rem;
-    height: 1.5rem; }
-  article.markdown .content #vcomments button.vbtn {
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.2) !important;
-    position: relative;
-    transition: all .15s;
-    border: none;
-    padding: .2rem .6rem; }
-    article.markdown .content #vcomments button.vbtn:hover {
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.8) !important; }
-  article.markdown .content #vcomments button.vmore {
-    margin: .5rem; }
-  article.markdown .content #vcomments .vcol {
-    padding: 0 .5rem; }
-  article.markdown .content #vcomments .vrow {
-    padding: .5rem 0; }
-  article.markdown .content #vcomments .text-right {
-    text-align: right; }
-  article.markdown .content #vcomments .text-center {
-    text-align: center; }
-
-article::-webkit-scrollbar {
-  width: 0px !important;
-  height: 0px !important; }
-
-@media screen and (max-width: 65rem) {
-  aside.toc {
-    display: none; }
-  article .post-toc {
-    display: block !important; } }
-
-@media screen and (max-width: 40rem) {
-  main {
-    display: block;
-    overflow: auto; }
-    main::-webkit-scrollbar {
-      width: 0px !important;
-      height: 0px !important; }
-  .pagination-box {
-    margin: 0 .3rem !important; }
-  aside {
-    margin-right: 1rem !important;
-    margin-bottom: 0 !important; }
-  article.markdown {
-    padding: 1rem !important; } }
+    background-color: white;
+    background-color: var(--block-color);
+    font-size: 12.8px;
+    font-weight: bold;
+    padding: .3rem; }
+    details summary::marker {
+      content: '';
+      font-size: 0; }
+    details summary img.alt {
+      width: 18px;
+      height: 18px;
+      margin-right: .2rem;
+      vertical-align: sub;
+      transition: .2s all; }
+  details ::-webkit-details-marker,
+  details ::-moz-list-bullet {
+    content: '' !important;
+    font-size: 0 !important; }
+  details:focus {
+    outline: none; }
+  details[open] > summary {
+    margin-bottom: 0; }
+    details[open] > summary img.alt {
+      transform: rotate(90deg); }
 </style>
   
 
   <script src="../../../js/jquery.min.js"></script>
 </head>
 
+
+
+
 <body>
   <main>
   
-<aside class='meta'>
+<aside class="left">
   <div class='author'>
     <a href="../../../"><img src='../../../images/NetPipe.png'></a>
     <h2 class='name'>Net Pipe</h2>
@@ -813,8 +449,8 @@ article::-webkit-scrollbar {
   </div>
 
   <div class="social">
-    <a class="silent">
-      <div class="social-box">
+    <a>
+      <div class="box">
         <img src="../../../images/search.svg"/>
         <div class="search">
           <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
@@ -829,114 +465,63 @@ article::-webkit-scrollbar {
         }
       </script>
     </a>
-    <a class="silent" href="../../../">
-      <div class="social-box"><img src="../../../images/home.svg"/><span>Home</span></div>
+    <a href="../../../">
+      <div class="box"><img src="../../../images/home.svg"/><span>Home</span></div>
     </a>
-    <a class="silent" href="../../../post/">
-      <div class="social-box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
+    <a href="../../../post/">
+      <div class="box"><img src="../../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" href="../../../issue/">
-      <div class="social-box"><img src="../../../images/issue.svg"/><span>Issue</span></div>
+    <a type="application/rss+xml" href="../../../index.xml">
+      <div class="box"><img src="../../../images/rss.svg"/><span>RSS</span></div>
     </a>
-    
   </div>
 
-  <div class="tags">
-    <h2 class='alt'><img class='alt' src="../../../images/categories.svg" />Tags</h2>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E6%95%B0%E5%AD%A6/">数学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E6%95%B0%E5%88%97/">数列</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F/">万能公式</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
-</div>
-
+  
+  <div class="card">
+    <a href="../../../categories/%E6%95%B0%E5%AD%A6/">数学</a>
   </div>
-</aside>
-<aside class='toc'>
-  <h2 class='alt'><img class='alt' src='../../../images/notice.svg'>Notice</h2>
-<ul>
-<li>部分文章正在重构中.</li>
-<li>评论功能开放.</li>
-<li>讨论区（Issue）开放.</li>
-</ul>
+  
+  <div class="card">
+    <a href="../../../categories/%E6%95%B0%E5%88%97/">数列</a>
+  </div>
+  
+  <div class="card">
+    <a href="../../../categories/%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F/">万能公式</a>
+  </div>
+  
+  <div class="card">
+    <a href="../../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
+  </div>
+  
+  <div class="card">
+    <a href="../../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+  
 
-<br>
-  
-    <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#简介">简介</a></li>
-    <li><a href="#选择排序">选择排序</a></li>
-    <li><a href="#冒泡排序">冒泡排序</a></li>
-    <li><a href="#插入排序">插入排序</a></li>
-    <li><a href="#计数排序">计数排序</a></li>
-    <li><a href="#快速排序">快速排序</a></li>
-    <li><a href="#归并排序">归并排序</a></li>
-    <li><a href="#猴子排序">猴子排序</a></li>
-    <li><a href="#逆序对数">逆序对数</a></li>
-    <li><a href="#稳定性">稳定性</a></li>
-  </ul>
-</nav>
-  
 </aside>
 
   
-<article class='markdown'>
+<article class='core markdown'>
 <div class='content'>
   
   <h1>排序</h1>
-  
-  <span class="post-meta">
-    
-    <img class='alt' src="../../../images/time.svg"></img>
-    Jan 10, 2021
-    
-  </span>
+  <span class="time">
+  <img class='alt' src="../../../images/time.svg"></img>
+  Jan 10, 2021
+</span>
+  <span class="categories">
 
-  
-  <div class='tag-card'>
-    <a class='silent' href="../../../categories/%e7%ae%97%e6%b3%95/">算法</a>
+  <div class='card'>
+    <a href="../../../categories/%e7%ae%97%e6%b3%95/">算法</a>
   </div>
-  
 
+</span>
+  <div class="description">
   
-  <div class="post-summary">你听说过猴子排序吗？</div>
+    你听说过猴子排序吗？
   
-
-  
-  <div class='post-toc'>
-  <h2 class='alt'><img class='alt' src='../../../images/toc.svg'>Menu</h2>
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#简介">简介</a></li>
-    <li><a href="#选择排序">选择排序</a></li>
-    <li><a href="#冒泡排序">冒泡排序</a></li>
-    <li><a href="#插入排序">插入排序</a></li>
-    <li><a href="#计数排序">计数排序</a></li>
-    <li><a href="#快速排序">快速排序</a></li>
-    <li><a href="#归并排序">归并排序</a></li>
-    <li><a href="#猴子排序">猴子排序</a></li>
-    <li><a href="#逆序对数">逆序对数</a></li>
-    <li><a href="#稳定性">稳定性</a></li>
-  </ul>
-</nav>
-  </div>
-  
-
+</div>
+  <br>
   
 
   <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>排序数组 $a$（长度 $n$）中的元素. <strong>本章只研究升序排序.</strong></p>
@@ -1107,102 +692,49 @@ article::-webkit-scrollbar {
 </tbody>
 </table>
 
-
-  
-  <script src='../../../js/valine.min.js'></script>
-
-<h2 id="评论">
-  评论
-  <a class="anchor" href="#评论">¶</a>
-</h2>
-<div id="vcomments">
-  <script defer>
-    $('#TableOfContents').children().append('<li><a href="#评论">评论</a></li>');
-  
-    $maxlength = 1000;
-
-    new Valine({
-      el: '#vcomments',
-      appId: '\x38\x37\x4a\x52\x4a\x50\x49\x7a\x42\x6e\x59\x52\x55\x63\x65\x4c\x32\x58\x56\x70\x7a\x6c\x68\x4d\x2d\x67\x7a\x47\x7a\x6f\x48\x73\x7a',
-      appKey: '\x75\x6d\x53\x4e\x56\x49\x57\x6f\x4c\x4f\x74\x33\x70\x64\x6d\x30\x77\x38\x6f\x76\x7a\x67\x4d\x43',
-      placeholder: 'Markdown and KaTeX Supported',
-      recordIP: true,
-      meta: ['nick', 'mail'],
-      requiredFields: ['nick', 'mail'],
-      enableQQ: true,
-      lang: 'en',
-      maxlength: $maxlength,
-      
-      
-    });
-
-    var textarea = document.getElementById('veditor');
-    var res = document.getElementsByClassName('reslength')[0];
-
-    textarea.addEventListener('input', (e) => {
-      textarea.style.height = '100px';
-      textarea.style.height = e.target.scrollHeight + 'px';
-      document.getElementsByClassName('reslength')[0].scrollIntoView();
-      res.innerHTML = ($maxlength - textarea.value.length);
-    });
-  </script>
-</div>
-  
 </div>
 
 </article>
 
+  
+<aside class="right">
+  <h2>Notice</h2>
+<ul>
+<li>网站架构变更，部分文章正在重构中.</li>
+<li>评论区因安全问题被暂停.</li>
+</ul>
+
+<br>
+  
+  <h2>TOC</h2>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#选择排序">选择排序</a></li>
+    <li><a href="#冒泡排序">冒泡排序</a></li>
+    <li><a href="#插入排序">插入排序</a></li>
+    <li><a href="#计数排序">计数排序</a></li>
+    <li><a href="#快速排序">快速排序</a></li>
+    <li><a href="#归并排序">归并排序</a></li>
+    <li><a href="#猴子排序">猴子排序</a></li>
+    <li><a href="#逆序对数">逆序对数</a></li>
+    <li><a href="#稳定性">稳定性</a></li>
+  </ul>
+</nav>
+  </div>
+  
+</aside>
+
   </main>
+</body>
 
-  
-
-<script defer>
-function IsPC() {  
-  var userAgentInfo = navigator.userAgent;
-  var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
-  for (var v = 0; v < Agents.length; v ++) {  
-    if (userAgentInfo.indexOf(Agents[v]) > 0) {
-      return false;
-    }
-  }
-  return true;
-}
-function detectZoom() {
-  var ratio = 0,
-  screen = window.screen,
-  ua = navigator.userAgent.toLowerCase();
-  if (window.devicePixelRatio !== undefined)
-    ratio = window.devicePixelRatio;
-  else if (~ua.indexOf('msie')) {
-    if (screen.deviceXDPI && screen.logicalXDPI)
-      ratio = screen.deviceXDPI / screen.logicalXDPI;
-  }
-  else if (window.outerWidth !== undefined && window.innerWidth !== undefined)
-    ratio = window.outerWidth / window.innerWidth;
-  
-  if (ratio)
-    ratio = Math.round(ratio * 100);
-  return ratio;
-}
-$('.markdown').find('img').each(function(id, el, arr) {
-  if (el.className == 'alt' || el.className == 'vemoji')
-    return;
-  el.className = "md__image";
-  var src = el.getAttribute('src');
-  if (IsPC()) {
-    if (el.style.zoom)
-      el.style.zoom = parseFloat(el.style.zoom) / detectZoom();
-    else
-      el.style.zoom = 100 / detectZoom();
-  }
-});
-</script>
+<script src="../../../js/jquery.min.js"></script>
 
 
 
-<link rel="stylesheet" href="../../../katex/katex.min.css">
-<script src="../../../katex/katex.min.js"></script>
-<script src="../../../katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../../../js/katex/katex.min.css">
+<script src="../../../js/katex/katex.min.js"></script>
+<script src="../../../js/katex/auto-render.min.js"></script>
 
 <script>
 function renderTex() {
@@ -1244,9 +776,13 @@ $('.language-latex').each(function(id, el, arr) {
 });
 </script>
 
+<script>
+  $(window).scroll(function(e) {
+    if ($('main').css('display') == 'flex')
+      $(this).scrollTop(0);
+  });
+  document.body.scroll="no";
+</script>
 
-
-
-</body>
 
 </html>

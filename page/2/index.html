@@ -14,23 +14,18 @@
 
   
   <style>* {
-  --aside-width: 16rem;
-  --max-width: 80rem;
-  --link-color: #003366;
-  --hover-color: #F6F8FA;
-  --border-color: #CCCCCC;
-  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  --background: rgba(255, 255, 255, 0.2);
-  --background-hover: rgba(255, 255, 255, 0.5);
-  --border: 1px solid var(--border-color);
-  --radius: 3px; }
+  --primary-color: #005ab4;
+  --link-color: #90cff9;
+  --block-color: #f7faff;
+  --radius: .2rem;
+  --shadow: 0 1px 0 1px rgba(0, 0, 0, .05); }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   outline: none;
-  transition: all .15s; }
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%; }
 
 ::selection {
   background-color: #CCE2FF;
@@ -50,35 +45,35 @@
   border-radius: 10px; }
 
 a {
-  text-decoration: none;
-  color: var(--link-color); }
-
-a:focus, a:hover {
-  outline: none;
-  text-decoration: underline; }
-
-a.alt, a.silent {
-  color: black; }
-
-a.alt:focus,
-a.alt:hover,
-a.alt:focus > *,
-a.alt:hover > * {
-  color: var(--link-color);
-  text-decoration: underline; }
-
-a.silent:focus,
-a.silent:hover,
-a.silent:focus > *,
-a.silent:hover > * {
-  color: black;
+  color: var(--primary-color);
   text-decoration: none; }
+  a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--primary-color); }
 
-ul, ol {
+ul {
   list-style: circle;
-  padding-left: 1rem; }
-  ul li, ol li {
+  padding-left: 1.2rem; }
+  ul li {
     margin: .3rem 0; }
+    ul li::marker {
+      font-size: large; }
+
+ol {
+  padding-left: 2.7rem; }
+  ol li {
+    margin: .3rem 0; }
+
+.card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  background-color: var(--block-color);
+  padding: .1rem .5rem;
+  margin: .3rem 0;
+  display: inline-block;
+  font-size: 12.8px;
+  font-weight: bold; }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -101,595 +96,321 @@ ul, ol {
   font-weight: bold;
   src: url("/fonts/FantasqueSansMono-BoldItalic.woff2") format("woff2"); }
 
-body, code, input {
+body, code, input, button, textarea {
   font-family: 'Fantasque Sans Mono', sans-serif; }
 
-html, body, main {
-  height: 100%;
-  overflow: hidden; }
+aside {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  padding: 1rem; }
 
-body {
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  background: url(/images/BackGround.jpg) 0/cover fixed;
-  margin: 0 auto;
-  max-width: var(--max-width); }
+aside.left .author {
+  text-align: center; }
+  aside.left .author img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1rem; }
+  aside.left .author h2.name {
+    margin: .5rem; }
 
-main {
+aside.left .data {
   display: flex;
-  position: relative; }
+  text-align: center; }
+  aside.left .data .data-box {
+    flex: 0 0 50%;
+    display: inline-block; }
+    aside.left .data .data-box:first-of-type {
+      border-right: 1px solid black; }
 
-aside {
-  flex: 0 0 var(--aside-width);
-  padding: 1rem;
-  overflow: hidden auto; }
-  aside > :first-child,
-  aside > :first-child > :first-child,
-  aside > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  aside > :last-child,
-  aside > :last-child > :last-child,
-  aside > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-
-article {
-  flex-grow: 1;
-  padding: 1rem;
-  overflow: hidden auto; }
-  article .post-toc {
-    display: none; }
-
-.tag-card {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
-  display: inline-block;
-  padding: .1rem .5rem;
-  margin: .3rem 0; }
-  .tag-card::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
-  .tag-card:hover {
-    background: var(--background-hover) !important; }
-  .tag-card a {
-    font-size: 13px;
-    text-shadow: 0 0; }
-
-.post-meta img {
-  width: 16px;
-  height: 16px;
-  display: inline-block !important;
-  vertical-align: text-bottom; }
-
-h2.alt {
-  margin: .5rem 0;
-  font-size: 22px; }
-  h2.alt img.alt {
-    width: 20px;
-    height: 20px;
-    vertical-align: text-top;
-    margin-right: 0.5rem; }
-
-.content h2.alt img.alt {
-  display: none; }
-
-#TableOfContents > ul li {
-  list-style: none; }
-
-aside {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
-  margin: 1rem; }
-  aside::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
-  aside > :first-child,
-  aside > :first-child > :first-child,
-  aside > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  aside > :last-child,
-  aside > :last-child > :last-child,
-  aside > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-
-aside.meta {
-  margin-right: 0;
-  order: 1; }
-  aside.meta .author {
-    text-align: center; }
-    aside.meta .author img {
-      transition: all 0.2s;
-      width: 6rem;
-      height: 6rem;
-      border-radius: 1rem; }
-      aside.meta .author img:hover {
-        transform: perspective(1px) scale(1.04); }
-    aside.meta .author h2.name {
-      margin: .5rem; }
-  aside.meta .data {
-    display: flex;
-    text-align: center; }
-    aside.meta .data .data-box {
-      flex: 0 0 50%;
-      display: inline-block; }
-      aside.meta .data .data-box:first-of-type {
-        border-right: 1px solid black; }
-  aside.meta .social {
-    margin: 1rem 0; }
-    aside.meta .social .social-box {
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      position: relative;
-      background: var(--background) !important;
-      border-radius: var(--radius);
-      margin-top: .5rem;
-      padding: .3rem .5rem;
-      font-size: 18px; }
-      aside.meta .social .social-box::before {
-        background: url(/images/BackGround.jpg) 0/cover fixed;
-        content: "";
-        filter: blur(15px);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -999; }
-      aside.meta .social .social-box:hover {
-        background: var(--background-hover) !important; }
-      aside.meta .social .social-box img {
-        vertical-align: text-bottom;
-        width: 20px;
-        height: 20px;
-        margin-right: 8px; }
-  aside.meta .search {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 35px;
-    right: 0;
-    height: 30px; }
-    aside.meta .search input {
-      display: inline;
-      width: 100%;
-      height: 100%;
-      border: none;
-      font-size: 17px;
-      background-color: transparent; }
-
-aside.toc {
-  margin-left: 0;
-  order: 3; }
-
-article {
-  order: 2; }
-
-article.posts .post {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
-  padding: 1rem;
+aside.left .social {
   margin: 1rem 0; }
-  article.posts .post::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
-  article.posts .post:hover {
-    background: var(--background-hover) !important; }
-  article.posts .post .post-title {
-    font-size: 20px; }
-
-article.posts .pagination {
-  width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin-top: 1rem; }
-  article.posts .pagination div.pagination-box {
+  aside.left .social .box {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    position: relative;
-    background: var(--background) !important;
+    background-color: white;
+    background-color: var(--block-color);
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    font-size: 18px;
+    position: relative; }
+    aside.left .social .box img {
+      vertical-align: text-bottom;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px; }
+
+aside.left .search {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35px;
+  right: 0;
+  height: 30px; }
+  aside.left .search input {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 17px;
+    background-color: transparent; }
+
+.core > :first-child,
+.core > :first-child > :first-child,
+.core > :first-child > :first-child > :first-child {
+  margin-top: 0 !important; }
+
+.core > :last-child,
+.core > :last-child > :last-child,
+.core > :last-child > :last-child > :last-child {
+  margin-bottom: 0 !important; }
+
+.core::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important; }
+
+.core.posts, .core.list {
+  margin: 0 !important;
+  padding: 1rem; }
+
+.core.posts .title h1, .core.posts .title h2, .core.posts .title h3, .core.posts .title h4, .core.posts .title h5, .core.posts .title h6 {
+  font-weight: normal;
+  text-shadow: 0 0; }
+
+.core.posts .time {
+  line-height: 20px; }
+  .core.posts .time img {
+    vertical-align: text-bottom; }
+
+.core.posts .post {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  transition: all .15s;
+  padding: 1rem;
+  margin: 1rem 0; }
+  .core.posts .post:hover {
+    cursor: pointer;
+    background-color: var(--block-color); }
+
+.core.posts > :first-child {
+  margin-top: 0; }
+
+.core.posts > :last-child {
+  margin-bottom: 0; }
+
+.core.posts .pages {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  font-size: 18px; }
+  .core.posts .pages .box {
     border-radius: var(--radius);
-    color: var(--link-color);
+    box-shadow: var(--shadow);
+    background-color: white;
+    color: var(--primary-color);
     margin: 0 .5rem;
     width: 2rem;
     height: 2rem;
     line-height: 2rem;
-    float: left;
-    text-align: center;
-    vertical-align: middle;
-    cursor: default; }
-    article.posts .pagination div.pagination-box::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
-    article.posts .pagination div.pagination-box:not(.disabled):hover {
-      background: var(--background-hover) !important; }
-  article.posts .pagination div.prev {
+    text-align: center; }
+    .core.posts .pages .box:not(.disabled) {
+      transition: all .15s; }
+      .core.posts .pages .box:not(.disabled):hover {
+        cursor: pointer;
+        background-color: var(--block-color); }
+  .core.posts .pages .box.prev {
     width: 5rem;
     margin-left: 0; }
-  article.posts .pagination div.next {
+  .core.posts .pages .box.next {
     width: 5rem;
     margin-right: 0; }
-  article.posts .pagination div.pagination-eldivpsis {
+  .core.posts .pages .box.eldivpsis {
     width: 3rem; }
-  article.posts .pagination div.disabled {
+  .core.posts .pages .box.disabled {
     color: black; }
 
-article.posts > :first-child,
-article.posts > :first-child > :first-child,
-article.posts > :first-child > :first-child > :first-child {
-  margin-top: 0 !important; }
-
-article.posts > :last-child,
-article.posts > :last-child > :last-child,
-article.posts > :last-child > :last-child > :last-child {
-  margin-bottom: 0 !important; }
-
-article.list .post-item {
+.core.list .post-item {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
+  background-color: white;
+  transition: all .15s;
   height: 2.3rem;
   line-height: 2.3rem;
   margin: .3rem 0; }
-  article.list .post-item::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
-  article.list .post-item:hover {
-    background: var(--background-hover) !important; }
-  article.list .post-item img {
+  .core.list .post-item:hover {
+    cursor: pointer;
+    background-color: var(--block-color); }
+  .core.list .post-item img {
     width: 1.2rem;
     height: 1.2rem;
-    margin-left: .6rem;
+    margin: 0 .6rem;
     vertical-align: sub; }
-  article.list .post-item:first-of-type {
+  .core.list .post-item span {
+    position: absolute; }
+  .core.list .post-item:first-of-type {
     height: 3rem;
     line-height: 3.2rem;
     font-size: 1.2rem;
     margin-top: 0;
-    margin-bottom: .5rem; }
-    article.list .post-item:first-of-type img {
+    margin-bottom: .5rem;
+    padding-left: 1rem; }
+    .core.list .post-item:first-of-type img {
       width: 1.4rem;
       height: 1.4rem; }
-  article.list .post-item:last-of-type {
+  .core.list .post-item:last-of-type {
     border: none;
     margin-bottom: 0; }
 
-article.markdown .content {
+.core.markdown {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  position: relative;
-  background: var(--background) !important;
-  border-radius: var(--radius);
+  background-color: white;
   padding: 1rem; }
-  article.markdown .content::before {
-    background: url(/images/BackGround.jpg) 0/cover fixed;
-    content: "";
-    filter: blur(15px);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -999; }
-  article.markdown .content > :first-child,
-  article.markdown .content > :first-child > :first-child,
-  article.markdown .content > :first-child > :first-child > :first-child {
-    margin-top: 0 !important; }
-  article.markdown .content > :last-child,
-  article.markdown .content > :last-child > :last-child,
-  article.markdown .content > :last-child > :last-child > :last-child {
-    margin-bottom: 0 !important; }
-  article.markdown .content h1, article.markdown .content h1 .katex {
-    font-size: 28px; }
-  article.markdown .content h2, article.markdown .content h2 .katex {
+  .core.markdown h2, .core.markdown h2 .katex {
     font-size: 24px; }
-  article.markdown .content h1, article.markdown .content h2, article.markdown .content h3, article.markdown .content h4, article.markdown .content h5, article.markdown .content h6 {
-    margin: .5rem 0;
-    font-weight: normal; }
-    article.markdown .content h1 .anchor, article.markdown .content h2 .anchor, article.markdown .content h3 .anchor, article.markdown .content h4 .anchor, article.markdown .content h5 .anchor, article.markdown .content h6 .anchor {
-      opacity: 0; }
-    article.markdown .content h1:hover .anchor, article.markdown .content h1:focus .anchor, article.markdown .content h2:hover .anchor, article.markdown .content h2:focus .anchor, article.markdown .content h3:hover .anchor, article.markdown .content h3:focus .anchor, article.markdown .content h4:hover .anchor, article.markdown .content h4:focus .anchor, article.markdown .content h5:hover .anchor, article.markdown .content h5:focus .anchor, article.markdown .content h6:hover .anchor, article.markdown .content h6:focus .anchor {
-      opacity: 1; }
-  article.markdown .content p {
-    margin: .3rem 0; }
-  article.markdown .content strong {
+  .core.markdown h3, .core.markdown h3 .katex {
+    font-size: 20px; }
+  .core.markdown h1, .core.markdown h2, .core.markdown h3, .core.markdown h4, .core.markdown h5, .core.markdown h6 {
     font-weight: normal;
     text-shadow: 0 0; }
-  article.markdown .content img:not(.alt) {
+    .core.markdown h1 .anchor, .core.markdown h2 .anchor, .core.markdown h3 .anchor, .core.markdown h4 .anchor, .core.markdown h5 .anchor, .core.markdown h6 .anchor {
+      color: transparent; }
+    .core.markdown h1:hover .anchor, .core.markdown h2:hover .anchor, .core.markdown h3:hover .anchor, .core.markdown h4:hover .anchor, .core.markdown h5:hover .anchor, .core.markdown h6:hover .anchor {
+      color: var(--primary-color); }
+  .core.markdown strong {
+    font-weight: normal;
+    text-shadow: 0 0; }
+  .core.markdown blockquote {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    background-color: var(--block-color);
+    padding: .5rem 1rem;
+    margin: .5rem 0; }
+    .core.markdown blockquote > :first-child,
+    .core.markdown blockquote > :first-child > :first-child,
+    .core.markdown blockquote > :first-child > :first-child > :first-child {
+      margin-top: 0 !important; }
+    .core.markdown blockquote > :last-child,
+    .core.markdown blockquote > :last-child > :last-child,
+    .core.markdown blockquote > :last-child > :last-child > :last-child {
+      margin-bottom: 0 !important; }
+  .core.markdown img:not(.alt) {
     display: block;
     margin: 0 auto;
     max-width: 100%; }
-  article.markdown .content blockquote {
+  .core.markdown code {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
-    margin: .5rem 0;
-    padding: .5rem 1rem; }
-    article.markdown .content blockquote::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
-    article.markdown .content blockquote > :first-child,
-    article.markdown .content blockquote > :first-child > :first-child,
-    article.markdown .content blockquote > :first-child > :first-child > :first-child {
-      margin-top: 0 !important; }
-    article.markdown .content blockquote > :last-child,
-    article.markdown .content blockquote > :last-child > :last-child,
-    article.markdown .content blockquote > :last-child > :last-child > :last-child {
-      margin-bottom: 0 !important; }
-  article.markdown .content code {
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
+    background-color: white;
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
-    padding: 1px 2px; }
-    article.markdown .content code::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
-  article.markdown .content pre {
+    padding: 1px 2px;
+    background-color: var(--block-color); }
+  .core.markdown pre {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
+    background-color: white;
     user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
+    background-color: var(--block-color) !important;
     margin: .5rem 0;
     padding: .5rem 1rem;
     overflow: auto hidden;
     line-height: 1.3rem; }
-    article.markdown .content pre::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
-    article.markdown .content pre code {
+    .core.markdown pre code {
       border: none;
       background: none !important;
       box-shadow: none;
       padding: 0; }
-  article.markdown .content table {
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    position: relative;
-    background: var(--background) !important;
-    border-radius: var(--radius);
+  .core.markdown table {
     margin: .5rem 0;
-    overflow: auto;
-    border-spacing: 0;
-    display: block;
+    border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
-    article.markdown .content table::before {
-      background: url(/images/BackGround.jpg) 0/cover fixed;
-      content: "";
-      filter: blur(15px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -999; }
-    article.markdown .content table th, article.markdown .content table td {
+    .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
-      font-weight: normal;
-      white-space: nowrap; }
-  article.markdown .content .book-columns {
-    display: flex;
-    flex-wrap: wrap;
-    margin: .5rem;
-    margin-left: -.5rem;
-    margin-right: -.5rem; }
-    article.markdown .content .book-columns .markdown-inner {
-      margin: .5rem;
-      flex: 1 1; }
-  article.markdown .content .book-tabs {
-    margin: .5em 0;
-    overflow: visible;
-    display: flex;
-    flex-wrap: wrap; }
-    article.markdown .content .book-tabs label {
-      height: 2rem;
-      line-height: 2rem;
-      display: inline-block;
-      padding: 0 1rem;
-      min-width: 2.5rem;
-      cursor: pointer;
-      z-index: 999;
-      text-align: center; }
-    article.markdown .content .book-tabs .book-tabs-content {
-      order: 999;
-      width: 100%;
-      display: none;
-      overflow: visible;
-      padding-top: .5rem; }
-      article.markdown .content .book-tabs .book-tabs-content > :first-child,
-      article.markdown .content .book-tabs .book-tabs-content > :first-child > :first-child,
-      article.markdown .content .book-tabs .book-tabs-content > :first-child > :first-child > :first-child {
-        margin-top: 0 !important; }
-      article.markdown .content .book-tabs .book-tabs-content > :last-child,
-      article.markdown .content .book-tabs .book-tabs-content > :last-child > :last-child,
-      article.markdown .content .book-tabs .book-tabs-content > :last-child > :last-child > :last-child {
-        margin-bottom: 0 !important; }
-    article.markdown .content .book-tabs input[type="radio"] {
-      display: none; }
-      article.markdown .content .book-tabs input[type="radio"]:not(:checked) + label:hover {
-        background: var(--background-hover) !important; }
-      article.markdown .content .book-tabs input[type="radio"]:checked + label {
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        position: relative;
-        background: var(--background) !important;
-        border-radius: var(--radius); }
-        article.markdown .content .book-tabs input[type="radio"]:checked + label::before {
-          background: url(/images/BackGround.jpg) 0/cover fixed;
-          content: "";
-          filter: blur(15px);
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          z-index: -999; }
-        article.markdown .content .book-tabs input[type="radio"]:checked + label + .book-tabs-content {
-          display: block; }
-  article.markdown .content details {
-    margin: .3rem 0; }
-    article.markdown .content details summary {
+      font-weight: normal; }
+    .core.markdown table tr {
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      position: relative;
-      background: var(--background) !important;
-      border-radius: var(--radius);
-      font-size: 14px;
-      padding: .3rem;
-      text-shadow: 0 0; }
-      article.markdown .content details summary::before {
-        background: url(/images/BackGround.jpg) 0/cover fixed;
-        content: "";
-        filter: blur(15px);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -999; }
-      article.markdown .content details summary:hover {
-        background: var(--background-hover) !important; }
-      article.markdown .content details summary::marker {
-        content: '';
-        font-size: 0; }
-      article.markdown .content details summary img.alt {
-        width: 18px;
-        height: 18px;
-        margin-right: .2rem;
-        vertical-align: sub;
-        transition: .2s all; }
-    article.markdown .content details ::-webkit-details-marker,
-    article.markdown .content details ::-moz-list-bullet {
+      background-color: white;
+      background-color: var(--block-color); }
+
+html, body, main {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  height: 100%;
+  overflow: hidden; }
+
+html {
+  background-color: #f7f7f7; }
+
+main {
+  display: flex;
+  margin: 0 auto;
+  max-width: 80rem; }
+
+.left, .right, .core {
+  overflow: hidden auto;
+  margin: 1rem; }
+
+.left {
+  flex: 0 0 16rem;
+  margin-right: 0; }
+
+.right {
+  flex: 0 0 16rem;
+  margin-left: 0; }
+
+.core {
+  flex-grow: 1; }
+
+details {
+  margin: .3rem 0; }
+  details summary {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: white;
+    background-color: var(--block-color);
+    font-size: 12.8px;
+    font-weight: bold;
+    padding: .3rem; }
+    details summary::marker {
       content: '';
       font-size: 0; }
-    article.markdown .content details .markdown-inner {
-      margin-top: .5rem; }
-      article.markdown .content details .markdown-inner > :first-child,
-      article.markdown .content details .markdown-inner > :first-child > :first-child,
-      article.markdown .content details .markdown-inner > :first-child > :first-child > :first-child {
-        margin-top: 0 !important; }
-      article.markdown .content details .markdown-inner > :last-child,
-      article.markdown .content details .markdown-inner > :last-child > :last-child,
-      article.markdown .content details .markdown-inner > :last-child > :last-child > :last-child {
-        margin-bottom: 0 !important; }
-    article.markdown .content details:focus {
-      outline: none; }
-    article.markdown .content details[open] > summary {
-      margin-bottom: 0; }
-      article.markdown .content details[open] > summary img.alt {
-        transform: rotate(90deg); }
-
-article::-webkit-scrollbar {
-  width: 0px !important;
-  height: 0px !important; }
-
-@media screen and (max-width: 65rem) {
-  aside.toc {
-    display: none; }
-  article .post-toc {
-    display: block !important; } }
-
-@media screen and (max-width: 40rem) {
-  main {
-    display: block;
-    overflow: auto; }
-    main::-webkit-scrollbar {
-      width: 0px !important;
-      height: 0px !important; }
-  .pagination-box {
-    margin: 0 .3rem !important; }
-  aside {
-    margin-right: 1rem !important;
-    margin-bottom: 0 !important; }
-  article.markdown {
-    padding: 1rem !important; } }
+    details summary img.alt {
+      width: 18px;
+      height: 18px;
+      margin-right: .2rem;
+      vertical-align: sub;
+      transition: .2s all; }
+  details ::-webkit-details-marker,
+  details ::-moz-list-bullet {
+    content: '' !important;
+    font-size: 0 !important; }
+  details:focus {
+    outline: none; }
+  details[open] > summary {
+    margin-bottom: 0; }
+    details[open] > summary img.alt {
+      transform: rotate(90deg); }
 </style>
   
+
+  <script src="../../js/jquery.min.js"></script>
 </head>
+
+
+
 
 <body>
   <main>
   
-<aside class='meta'>
+<aside class="left">
   <div class='author'>
     <a href="../../"><img src='../../images/NetPipe.png'></a>
     <h2 class='name'>Net Pipe</h2>
@@ -718,117 +439,19 @@ article::-webkit-scrollbar {
     
       
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
     <div class='data-box'>
-      <h3>59</h3>
+      <h3>10</h3>
       <span>Posts</span>
     </div>
     <div class='data-box'>
-      <h3>56246</h3>
+      <h3>29,565</h3>
       <span>Words</span>
     </div>
   </div>
 
   <div class="social">
-    <a class="silent">
-      <div class="social-box">
+    <a>
+      <div class="box">
         <img src="../../images/search.svg"/>
         <div class="search">
           <input type="text" placeholder="Search" id="search-key" maxlength="64" data-hotkeys="s/" onkeydown="keyup_submit(event);" />
@@ -843,542 +466,171 @@ article::-webkit-scrollbar {
         }
       </script>
     </a>
-    <a class="silent" href="../../">
-      <div class="social-box"><img src="../../images/home.svg"/><span>Home</span></div>
+    <a href="../../">
+      <div class="box"><img src="../../images/home.svg"/><span>Home</span></div>
     </a>
-    <a class="silent" href="../../post/">
-      <div class="social-box"><img src="../../images/posts.svg"/><span>Posts</span></div>
+    <a href="../../post/">
+      <div class="box"><img src="../../images/posts.svg"/><span>Posts</span></div>
     </a>
-    <a class="silent" type="application/rss+xml" href="../../index.xml">
-      <div class="social-box"><img src="../../images/rss.svg"/><span>RSS</span></div>
+    <a type="application/rss+xml" href="../../index.xml">
+      <div class="box"><img src="../../images/rss.svg"/><span>RSS</span></div>
     </a>
   </div>
 
-  <div class="tags">
-    <h2 class='alt'><img class='alt' src="../../images/categories.svg" />Tags</h2>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6/">基础数学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/dp/">DP</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E6%95%B0%E8%AE%BA/">数论</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E5%9B%BE%E8%AE%BA/">图论</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
-</div>
-
-<div class="tag-card">
-  <a class="silent" href="../../categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
-</div>
-
+  
+  <div class="card">
+    <a href="../../categories/%E6%95%B0%E5%AD%A6/">数学</a>
   </div>
+  
+  <div class="card">
+    <a href="../../categories/%E6%95%B0%E5%88%97/">数列</a>
+  </div>
+  
+  <div class="card">
+    <a href="../../categories/%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F/">万能公式</a>
+  </div>
+  
+  <div class="card">
+    <a href="../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
+  </div>
+  
+  <div class="card">
+    <a href="../../categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+  
+
 </aside>
-<aside class='toc'>
-  <h2 class='alt'><img class='alt' src='../../images/notice.svg'>Notice</h2>
+
+  
+<div class='core posts'>
+  
+  
+  <div class="post">
+    <div class="title"><a href="../../post/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86/"><h3>二分</h3></a></div>
+    <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Jan 11, 2021
+</span>
+    <span class="categories">
+
+  <div class='card'>
+    <a href="../../categories/%e7%ae%97%e6%b3%95/">算法</a>
+  </div>
+
+</span>
+    <div class="description">
+  
+    据说只有 10% 的程序员能写对二分.
+  
+</div>
+  </div>
+  
+  <div class="post">
+    <div class="title"><a href="../../post/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/"><h3>排序</h3></a></div>
+    <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Jan 10, 2021
+</span>
+    <span class="categories">
+
+  <div class='card'>
+    <a href="../../categories/%e7%ae%97%e6%b3%95/">算法</a>
+  </div>
+
+</span>
+    <div class="description">
+  
+    你听说过猴子排序吗？
+  
+</div>
+  </div>
+  
+  <div class="post">
+    <div class="title"><a href="../../post/%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92/"><h3>递归</h3></a></div>
+    <span class="time">
+  <img class='alt' src="../../images/time.svg"></img>
+  Jan 7, 2021
+</span>
+    <span class="categories">
+
+  <div class='card'>
+    <a href="../../categories/%e7%ae%97%e6%b3%95/">算法</a>
+  </div>
+
+</span>
+    <div class="description">
+  
+    递归的定义：参见递归.
+  
+</div>
+  </div>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pages">
+    
+    <div class="box prev" onclick='window.location.href=&#34;/&#34;'>Prev</div>
+    
+
+    
+        
+            
+            <div class="box" onclick='window.location.href=&#34;/&#34;'>1</div>
+            
+            
+        
+    
+        
+            
+            <div class="box disabled">2</div>
+            
+            
+        
+    
+
+    
+    <div class="box next disabled">Next</div>
+    
+</div>
+
+</div>
+
+  
+<aside class="right">
+<h2>Notice</h2>
 <ul>
-<li>本站还处于建设中</li>
-<li>部分 URL 存在跳转错误</li>
+<li>网站架构变更，部分文章正在重构中.</li>
+<li>评论区因安全问题被暂停.</li>
 </ul>
 
 <br>
 </aside>
 
-  
-<article class='posts'>
-  
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0%E5%88%97/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0%E5%88%97/">卡特兰数列</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 23, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e7%bb%84%e5%90%88%e6%95%b0%e5%ad%a6/">组合数学</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/">卢卡斯定理</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 23, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e7%bb%84%e5%90%88%e6%95%b0%e5%ad%a6/">组合数学</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/">二项式定理</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 22, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e7%bb%84%e5%90%88%e6%95%b0%e5%ad%a6/">组合数学</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 21, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e7%bb%84%e5%90%88%e6%95%b0%e5%ad%a6/">组合数学</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">欧拉函数</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 20, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 19, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/">线性同余方程</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 16, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/">欧几里得算法</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 14, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">$a$ 和 $b$ 的最大公因数记作 $</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E8%B4%9D%E7%A5%96%E5%AE%9A%E7%90%86/">贝祖定理</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Aug 14, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">注意：若无特殊说明，本章涉及的变量皆为正</div>
-    
-  </div>
-  
-  <div class="post" onclick="window.location.href=&#34;/post/%E6%95%B0%E8%AE%BA/%E5%BF%AB%E9%80%9F%E5%B9%82/&#34;">
-    
-    <div class="post-title">
-      <a class='silent' href="../../post/%E6%95%B0%E8%AE%BA/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
-    </div>
-    
-    
-    <span class="post-meta">
-      <img src="../../images/time.svg"></img>
-      Jul 31, 2021
-    </span>
-
-    
-    <span class="post-tags">
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e4%bf%a1%e6%81%af%e5%ad%a6/">信息学</a>
-      </div>
-      
-      <div class='tag-card'>
-        <a class='silent' href="../../categories/%e6%95%b0%e8%ae%ba/">数论</a>
-      </div>
-      
-    </span>
-
-    
-    
-    <div class="post-summary">如何快速求 $a^b$（$a,b\</div>
-    
-  </div>
-  
-
-  <div class="post-pagination">
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-    
-    
-        
-        
-        
-            
-        
-        
-        
-            
-        
-    
-
-
-
-
-    <div class="pagination">
-    
-    <div class="pagination-box prev" onclick='window.location.href=&#34;/&#34;'>Prev</div>
-    
-
-    
-        
-            
-            <div class="pagination-box" onclick='window.location.href=&#34;/&#34;'>1</div>
-            
-            
-        
-    
-        
-            
-            <div class="pagination-box disabled">2</div>
-            
-            
-        
-    
-        
-            
-            <div class="pagination-box" onclick='window.location.href=&#34;/page/3/&#34;'>3</div>
-            
-            
-            <div class="pagination-box pagination-eldivpsis disabled">...</div>
-            
-        
-    
-        
-    
-        
-    
-        
-            
-            <div class="pagination-box" onclick='window.location.href=&#34;/page/6/&#34;'>6</div>
-            
-            
-        
-    
-
-    
-    <div class="pagination-box next" onclick='window.location.href=&#34;/page/3/&#34;'>Next</div>
-    
-    </div>
-
-  </div>
-</article>
-
   </main>
+</body>
 
-  <script src="../../js/jquery.min.js"></script>
-
-
-
-<script defer>
-function IsPC() {  
-  var userAgentInfo = navigator.userAgent;
-  var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
-  for (var v = 0; v < Agents.length; v ++) {  
-    if (userAgentInfo.indexOf(Agents[v]) > 0) {
-      return false;
-    }
-  }
-  return true;
-}
-function detectZoom() {
-  var ratio = 0,
-  screen = window.screen,
-  ua = navigator.userAgent.toLowerCase();
-  if (window.devicePixelRatio !== undefined)
-    ratio = window.devicePixelRatio;
-  else if (~ua.indexOf('msie')) {
-    if (screen.deviceXDPI && screen.logicalXDPI)
-      ratio = screen.deviceXDPI / screen.logicalXDPI;
-  }
-  else if (window.outerWidth !== undefined && window.innerWidth !== undefined)
-    ratio = window.outerWidth / window.innerWidth;
-  
-  if (ratio)
-    ratio = Math.round(ratio * 100);
-  return ratio;
-}
-$('.markdown').find('img').each(function(id, el, arr) {
-  if (el.className == 'alt')
-    return;
-  el.className = "md__image";
-  var src = el.getAttribute('src');
-  if (IsPC()) {
-    if (el.style.zoom)
-      el.style.zoom = parseFloat(el.style.zoom) / detectZoom();
-    else
-      el.style.zoom = 100 / detectZoom();
-  }
-});
-</script>
+<script src="../../js/jquery.min.js"></script>
 
 
 
-<link rel="stylesheet" href="../../katex/katex.min.css">
-<script src="../../katex/katex.min.js"></script>
-<script src="../../katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../../js/katex/katex.min.css">
+<script src="../../js/katex/katex.min.js"></script>
+<script src="../../js/katex/auto-render.min.js"></script>
 
 <script>
 function renderTex() {
@@ -1399,10 +651,11 @@ function renderTex() {
       "\\mathring": "\\overset\{\\normalsizeₒ\}",
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
-      "\\mex": "\\text\{mex\} \\, "
+      "\\mex": "\\text\{mex\} \\, ",
+      "\\wave": "\\raisebox\{-0.1em\}\{\\small～\}",
     }
   });
-}  
+}
 document.addEventListener("DOMContentLoaded", function() {
   renderTex();
 });
@@ -1419,18 +672,13 @@ $('.language-latex').each(function(id, el, arr) {
 });
 </script>
 
-
 <script>
-$(window).scroll(function(e) {
-  if ($('main').css('display') == 'flex')
-    $(this).scrollTop(0);
-});
-$('main').scroll(function(e) {
-  if ($('main').css('display') == 'flex')
-    $(this).scrollTop(0);
-});
-document.body.scroll="no";
+  $(window).scroll(function(e) {
+    if ($('main').css('display') == 'flex')
+      $(this).scrollTop(0);
+  });
+  document.body.scroll="no";
 </script>
-</body>
+
 
 </html>
