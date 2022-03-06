@@ -549,7 +549,7 @@ details {
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>73,676</h3>
+    <h3>73,667</h3>
     <span>Words</span>
   </div>
 </div>
@@ -657,47 +657,38 @@ details {
 
 <p><strong>注意</strong>：若无特殊说明，本章涉及的变量皆为正整数.</p>
 <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>形如 $ax≡c\pmod{b}$ 的方程称为线性同余方程.</p>
-<h2 id="特殊解">特殊解 <a class="anchor" href="#%e7%89%b9%e6%ae%8a%e8%a7%a3">¶</a></h2><p>$ax≡c\pmod{b}\eq ax+by=c$. 由 <a href="../../../../../docs/NOI/Math/mod/bezout/">裴蜀定理</a> 可知：当且仅当 $gcd(a,b)\mid c$ 时有整数解.</p>
+<h2 id="特殊解">特殊解 <a class="anchor" href="#%e7%89%b9%e6%ae%8a%e8%a7%a3">¶</a></h2><p>$ax≡c\pmod{b}\eq ax+by=c$. 由 <a href="../../../../../docs/NOI/Math/mod/bezout/">裴蜀定理</a> 可知，当且仅当 $gcd(a,b)\mid c$ 时有整数解.</p>
 <p>先用 <a href="../../../../../docs/NOI/Math/mod/exgcd/">扩展欧几里得算法</a> 求出一组 $x_0,y_0$，使得：</p>
 <p>$$ax_0+by_0=gcd(a,b)$$</p>
 <p>两边同时乘 $\su\frac{c}{gcd(a,b)}$：</p>
 <p>$$a\frac{c}{gcd(a,b)}x_0+b\frac{c}{gcd(a,b)}y_0=c$$</p>
 <p>于是找到方程 $ax+by=c$ 的一组特殊解：</p>
-<pre tabindex="0"><code class="language-latex\left\{\begin{aligned}" data-lang="latex\left\{\begin{aligned}">x=\frac{c}{gcd(a,b)}x_0\\
-y=\frac{c}{gcd(a,b)}y_0
-\end{aligned}\right.```
-
-## 通解
-
-若 $x_0,y_0$ 为方程 $ax+by=c$ 的一组解，则该方程的任意解可表示为：
-
-``` latex\left\{\begin{aligned}
-x=x_0+bt\\
-y=y_0-at
-\end{aligned}\right.```
-
-在实际问题中，往往只需要最小正整数解：
-
-``` latexx=(x_0 \bmod t+t) \bmod t, \ t=\frac{b}{gcd(a,b)}```
-
-## 模板
-
-``` cpp
-int exGcd(int a, int b, int&amp; x, int&amp; y) {
-    if(b == 0) { x = 1, y = 0; return a; }
-    int d = exGcd(b, a % b, x, y);
-    int t = x; x = y, y = t - a / b * y;
-    return d;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\left\{\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+x=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>c<span style="color:#728e00">}{</span>gcd(a,b)<span style="color:#728e00">}</span>x<span style="color:#728e00">_</span>0<span style="color:#728e00">\\</span>
+y=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>c<span style="color:#728e00">}{</span>gcd(a,b)<span style="color:#728e00">}</span>y<span style="color:#728e00">_</span>0
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>.
+</code></pre></div><h2 id="通解">通解 <a class="anchor" href="#%e9%80%9a%e8%a7%a3">¶</a></h2><p>若 $x_0,y_0$ 为方程 $ax+by=c$ 的一组解，则该方程的任意解可表示为：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\left\{\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+x=x<span style="color:#728e00">_</span>0+bt<span style="color:#728e00">\\</span>
+y=y<span style="color:#728e00">_</span>0-at
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>.
+</code></pre></div><p>在实际问题中，往往只需要最小正整数解：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">x=(x<span style="color:#728e00">_</span>0 <span style="color:#728e00">\bmod</span> t+t) <span style="color:#728e00">\bmod</span> t, <span style="color:#728e00">\ </span>t=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>b<span style="color:#728e00">}{</span>gcd(a,b)<span style="color:#728e00">}</span>
+</code></pre></div><h2 id="模板">模板 <a class="anchor" href="#%e6%a8%a1%e6%9d%bf">¶</a></h2><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">int</span> <span style="color:#d35400">exGcd</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">a</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">b</span>, <span style="color:#00979d">int</span><span style="color:#728e00">&amp;</span> <span style="color:#434f54">x</span>, <span style="color:#00979d">int</span><span style="color:#728e00">&amp;</span> <span style="color:#434f54">y</span>) {
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">b</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) { <span style="color:#434f54">x</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>, <span style="color:#434f54">y</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>; <span style="color:#728e00">return</span> <span style="color:#434f54">a</span>; }
+    <span style="color:#00979d">int</span> <span style="color:#434f54">d</span> <span style="color:#728e00">=</span> <span style="color:#434f54">exGcd</span>(<span style="color:#434f54">b</span>, <span style="color:#434f54">a</span> <span style="color:#728e00">%</span> <span style="color:#434f54">b</span>, <span style="color:#434f54">x</span>, <span style="color:#434f54">y</span>);
+    <span style="color:#00979d">int</span> <span style="color:#434f54">t</span> <span style="color:#728e00">=</span> <span style="color:#434f54">x</span>; <span style="color:#434f54">x</span> <span style="color:#728e00">=</span> <span style="color:#434f54">y</span>, <span style="color:#434f54">y</span> <span style="color:#728e00">=</span> <span style="color:#434f54">t</span> <span style="color:#728e00">-</span> <span style="color:#434f54">a</span> <span style="color:#728e00">/</span> <span style="color:#434f54">b</span> <span style="color:#728e00">*</span> <span style="color:#434f54">y</span>;
+    <span style="color:#728e00">return</span> <span style="color:#434f54">d</span>;
 }
 
-int liEu(int a, int b, int c) { // ax ≡ c (mod b)
-    int x, y, d = exGcd(a, b, x, y);
-    if (c % d != 0) return -1;          // 没有整数解
-    return x * (c / d);                 // 特殊解
-    // int t = b / d;
-    // return x = (x % t + t) % t;      // 最小正整数解
-}
-</code></pre>
+<span style="color:#00979d">int</span> <span style="color:#d35400">liEu</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">a</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">b</span>, <span style="color:#00979d">int</span> <span style="color:#434f54">c</span>) { <span style="color:#95a5a6">// ax ≡ c (mod b)
+</span><span style="color:#95a5a6"></span>    <span style="color:#00979d">int</span> <span style="color:#434f54">x</span>, <span style="color:#434f54">y</span>, <span style="color:#434f54">d</span> <span style="color:#728e00">=</span> <span style="color:#434f54">exGcd</span>(<span style="color:#434f54">a</span>, <span style="color:#434f54">b</span>, <span style="color:#434f54">x</span>, <span style="color:#434f54">y</span>);
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">c</span> <span style="color:#728e00">%</span> <span style="color:#434f54">d</span> <span style="color:#728e00">!=</span> <span style="color:#8a7b52">0</span>) <span style="color:#728e00">return</span> <span style="color:#728e00">-</span><span style="color:#8a7b52">1</span>;          <span style="color:#95a5a6">// 没有整数解
+</span><span style="color:#95a5a6"></span>    <span style="color:#728e00">return</span> <span style="color:#434f54">x</span> <span style="color:#728e00">*</span> (<span style="color:#434f54">c</span> <span style="color:#728e00">/</span> <span style="color:#434f54">d</span>);                 <span style="color:#95a5a6">// 特殊解
+</span><span style="color:#95a5a6"></span>    <span style="color:#95a5a6">// int t = b / d;
+</span><span style="color:#95a5a6"></span>    <span style="color:#95a5a6">// return x = (x % t + t) % t;      // 最小正整数解
+</span><span style="color:#95a5a6"></span>}
+</code></pre></div>
 </article>
 
   
@@ -715,6 +706,8 @@ int liEu(int a, int b, int c) { // ax ≡ c (mod b)
   <ul>
     <li><a href="#简介">简介</a></li>
     <li><a href="#特殊解">特殊解</a></li>
+    <li><a href="#通解">通解</a></li>
+    <li><a href="#模板">模板</a></li>
   </ul>
 </nav>
   </div>

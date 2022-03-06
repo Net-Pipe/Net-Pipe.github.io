@@ -141,7 +141,7 @@
     <title>线性同余方程</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/</link>
     <summary></summary>
-    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶形如 ax≡c\pmod{b} 的方程称为线性同余方程. 特殊解 ¶ax≡c\pmod{b}\eq ax&#43;by=c. 由 裴蜀定理 可知：当且仅当 gcd(a,b)\mid c 时有整数解. 先用 扩展欧几里得算法 求出一组 x_0,y_0，使得：  两边同时乘 \su\frac{c}{gcd(a,b)}：  于是找到方程 ax&#43;by=c 的一组特殊解： </content>
+    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶形如 ax≡c\pmod{b} 的方程称为线性同余方程. 特殊解 ¶ax≡c\pmod{b}\eq ax&#43;by=c. 由 裴蜀定理 可知，当且仅当 gcd(a,b)\mid c 时有整数解. 先用 扩展欧几里得算法 求出一组 x_0,y_0，使得：  两边同时乘 \su\frac{c}{gcd(a,b)}：  于是找到方程 ax&#43;by=c 的一组特殊解： 通解 ¶若 x_0,y_0 为方程 ax&#43;by=c 的一组解，则该方程的任意解可表示为： 在实际问题中，往往只需要最小正整数解： 模板 ¶</content>
   </item>
   
 
