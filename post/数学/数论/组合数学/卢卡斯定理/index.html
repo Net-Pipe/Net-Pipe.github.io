@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="注意：若无特殊说明，本章涉及的变量皆为正">
+  <meta name="description" content="若无特殊说明，本章涉及的变量皆为正整数.">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -76,10 +76,10 @@ ol {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   background-color: white;
+  display: inline-block;
   background-color: var(--block-color);
   padding: .1rem .5rem;
   margin: .3rem 0;
-  display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
   .card .count {
@@ -90,11 +90,9 @@ ol {
   box-shadow: var(--shadow);
   background-color: white; }
 
-.hover {
-  transition: all .15s; }
-  .hover:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
+.hover:hover {
+  cursor: pointer;
+  background-color: var(--block-color); }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -126,9 +124,12 @@ aside {
 aside.left .author {
   text-align: center; }
   aside.left .author img {
+    transition: all 0.2s;
     width: 6rem;
     height: 6rem;
     border-radius: 1rem; }
+    aside.left .author img:hover {
+      transform: perspective(1px) scale(1.05); }
   aside.left .author h2.name {
     margin: .5rem; }
 
@@ -191,6 +192,9 @@ aside.left .search {
   line-height: 20px; }
   .core .time img {
     vertical-align: text-bottom; }
+
+.core .categories {
+  margin: .5rem 0; }
 
 .core .post {
   padding: 1rem;
@@ -330,9 +334,14 @@ aside.left .search {
       box-shadow: none;
       padding: 0; }
   .core.markdown table {
-    margin: .5rem 0;
+    display: block;
+    overflow: auto;
+    margin: .5rem -2px;
+    padding: 0 2px;
     border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
+    .core.markdown table::-webkit-scrollbar-track {
+      margin: 0 2px; }
     .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
       font-weight: normal; }
@@ -420,10 +429,10 @@ details {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
-.book-columns {
+.columns {
   display: flex;
   flex-wrap: wrap; }
-  .book-columns .markdown-inner {
+  .columns .markdown-inner {
     flex: 1 1; }
 
 .book-tabs {
@@ -540,7 +549,7 @@ details {
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>74,020</h3>
+    <h3>73,676</h3>
     <span>Words</span>
   </div>
 </div>
@@ -585,6 +594,11 @@ details {
   </div>
   
   <div class="card">
+    <div class="count">7</div>
+    <a href="../../../../../categories/%E5%90%8C%E4%BD%99/">同余</a>
+  </div>
+  
+  <div class="card">
     <div class="count">2</div>
     <a href="../../../../../categories/%E6%95%B0%E5%88%97/">数列</a>
   </div>
@@ -619,9 +633,8 @@ details {
 
   
 <article class='core markdown shadow'>
-<div class='content'>
   
-  <h1>卢卡斯定理</h1>
+  <h1>Lucas 定理</h1>
   <span class="time">
   <img class='alt' src="../../../../../images/time.svg"></img>
   Aug 23, 2021
@@ -638,31 +651,35 @@ details {
 
 </span>
   
+  
 
   
 
-  <p><strong>注意</strong>：若无特殊说明，本章涉及的变量皆为正整数.</p>
-<h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p><code>Lucas</code> 定理用于求解大组合数对质数 $p$ 取模：</p>
-<p>$${n\choose m}≡{n \bmod p\choose m \bmod p}\cdot{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor} \ (\bmod \ p)$$</p>
-<p>适用范围是 $p≤10^6$.</p>
-<h2 id="证明">证明 <a class="anchor" href="#%e8%af%81%e6%98%8e">¶</a></h2><blockquote>
-<p><code>Under Construction ...</code></p>
+<blockquote>
+<p>若无特殊说明，本章涉及的变量皆为正整数.</p>
 </blockquote>
-<h2 id="解法">解法 <a class="anchor" href="#%e8%a7%a3%e6%b3%95">¶</a></h2><p>对于 $n,m≤10^6$ 的组合数 $\su{n\choose m}$，可以直接代入 <a href="../../../../../docs/NOI/Math/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/#%E7%BB%84%E5%90%88%E6%95%B0">公式</a>，并使用 <a href="../../../../../docs/NOI/Math/mod/inverse/">乘法逆元</a> 将除法转为乘法.</p>
+<h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p><code>Lucas</code> 定理用于求解大组合数对质数 $p$（$p≤10^6$）取模：</p>
+<p>$${n\choose m}≡{n \bmod p\choose m \bmod p}\cdot{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor} \ (\bmod \ p)$$</p>
+<h2 id="证明">证明 <a class="anchor" href="#%e8%af%81%e6%98%8e">¶</a></h2><blockquote>
+<p>我不会，长大后再学习.</p>
+</blockquote>
+<h2 id="解法">解法 <a class="anchor" href="#%e8%a7%a3%e6%b3%95">¶</a></h2><p>对于 $n,m≤10^6$ 的组合数 $\su{n\choose m}$，可以直接代入 <a href="../../../../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/#%E7%BB%84%E5%90%88%E6%95%B0">公式</a>，并使用 <a href="../../../../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a> 将除法转为乘法.</p>
 <p>$$\binom{n}{m}=\frac{n!}{m!(n-m)!}≡n!\cdot(m!)^{-1}\cdot[(n-m)!]^{-1} \ (\bmod \ p)$$</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#95a5a6">/* fac[x]: x!
 </span><span style="color:#95a5a6"> * inv[x]: x! 关于模 p 的乘法逆元（注意有阶乘）
 </span><span style="color:#95a5a6"> * 以上需要预处理
 </span><span style="color:#95a5a6"> */</span>
 <span style="color:#434f54">LL</span> <span style="color:#d35400">C</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">n</span>, <span style="color:#434f54">LL</span> <span style="color:#434f54">m</span>) {
-    <span style="color:#728e00">if</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">m</span>) <span style="color:#728e00">return</span> <span style="color:#8a7b52">0</span>;
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">m</span>)
+        <span style="color:#728e00">return</span> <span style="color:#8a7b52">0</span>;
     <span style="color:#728e00">return</span> <span style="color:#434f54">fac</span>[<span style="color:#434f54">n</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">m</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span> <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">n</span> <span style="color:#728e00">-</span> <span style="color:#434f54">m</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
 }
 </code></pre></div><p>对于更大的组合数，套用 <code>Lucas</code> 定理.</p>
 <p>$${n\choose m}≡{n \bmod p\choose m \bmod p}\cdot{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor} \ (\bmod \ p)$$</p>
-<p>其中 $\su{n \bmod p\choose m \bmod p}$ 可以直接算，$\su{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor}$ 需要递归求解. 算上预处理，总时间复杂度为 $O(p+\log_p{n})$.</p>
+<p>其中 $\su{n \bmod p\choose m \bmod p}$ 可以直接算，$\su{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor}$ 需要递归求解.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#434f54">LL</span> <span style="color:#d35400">lucas</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">n</span>, <span style="color:#434f54">LL</span> <span style="color:#434f54">m</span>) {
-    <span style="color:#728e00">if</span>(<span style="color:#434f54">m</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) <span style="color:#728e00">return</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">m</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>)
+        <span style="color:#728e00">return</span> <span style="color:#8a7b52">1</span>;
     <span style="color:#728e00">return</span> <span style="color:#434f54">C</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>, <span style="color:#434f54">m</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>) <span style="color:#728e00">*</span> <span style="color:#434f54">lucas</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">/</span> <span style="color:#434f54">P</span>, <span style="color:#434f54">m</span> <span style="color:#728e00">/</span> <span style="color:#434f54">P</span>) <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
 }
 </code></pre></div><h2 id="预处理">预处理 <a class="anchor" href="#%e9%a2%84%e5%a4%84%e7%90%86">¶</a></h2><ul>
@@ -671,44 +688,51 @@ details {
 <p>$$fac[i]=fac[i-1]\cdot i\bmod p$$</p>
 </li>
 <li>
-<p>$inv[i]=(i!)^{-1}$，参考 <a href="../../../../../docs/NOI/Math/mod/inverse/#%E7%BA%BF%E6%80%A7%E6%B1%82%E9%80%86%E5%85%83">线性求逆元</a>：</p>
+<p>$inv[i]=(i!)^{-1}$，参考 <a href="../../../../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/#%E7%BA%BF%E6%80%A7%E6%B1%82%E9%80%86%E5%85%83">线性求逆元</a>：</p>
 <p>$$i^{-1}=(-\Big\lfloor\frac{p}{i}\Big\rfloor\cdot(p\bmod i)^{-1}) \bmod p$$</p>
 <p>$$inv[i]=inv[i - 1]\cdot i^{-1}\bmod p$$</p>
 </li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#00979d">void</span> <span style="color:#d35400">init</span>() {
-    <span style="color:#95a5a6">// fac[]
-</span><span style="color:#95a5a6"></span>    <span style="color:#434f54">fac</span>[<span style="color:#8a7b52">0</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">fac</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
-    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">i</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
-    <span style="color:#95a5a6">// inv[]
-</span><span style="color:#95a5a6"></span>    <span style="color:#434f54">inv</span>[<span style="color:#8a7b52">0</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">inv</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
-    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> (<span style="color:#434f54">P</span> <span style="color:#728e00">-</span> <span style="color:#434f54">P</span> <span style="color:#728e00">/</span> <span style="color:#434f54">i</span>) <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">P</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
-    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
+    <span style="color:#434f54">fac</span>[<span style="color:#8a7b52">0</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">fac</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">i</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
+
+    <span style="color:#434f54">inv</span>[<span style="color:#8a7b52">0</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">inv</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> (<span style="color:#434f54">P</span> <span style="color:#728e00">-</span> <span style="color:#434f54">P</span> <span style="color:#728e00">/</span> <span style="color:#434f54">i</span>) <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">P</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
 }
-</code></pre></div><h2 id="模板">模板 <a class="anchor" href="#%e6%a8%a1%e6%9d%bf">¶</a></h2><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">typedef</span> <span style="color:#00979d">long</span> <span style="color:#00979d">long</span> <span style="color:#434f54">LL</span>;
+</code></pre></div><h2 id="模板">模板 <a class="anchor" href="#%e6%a8%a1%e6%9d%bf">¶</a></h2><p>总时间复杂度：$O(p+\log_p{n})$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">typedef</span> <span style="color:#00979d">long</span> <span style="color:#00979d">long</span> <span style="color:#434f54">LL</span>;
 <span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span> <span style="color:#728e00">+</span> <span style="color:#8a7b52">1</span>, <span style="color:#434f54">P</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">10007</span>;
 <span style="color:#434f54">LL</span> <span style="color:#434f54">fac</span>[<span style="color:#434f54">N</span>], <span style="color:#434f54">inv</span>[<span style="color:#434f54">N</span>];
 
 <span style="color:#00979d">void</span> <span style="color:#d35400">init</span>() {
     <span style="color:#434f54">fac</span>[<span style="color:#8a7b52">0</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">fac</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
-    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">i</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">fac</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">i</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
+
     <span style="color:#434f54">inv</span>[<span style="color:#8a7b52">0</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">inv</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
-    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> (<span style="color:#434f54">P</span> <span style="color:#728e00">-</span> <span style="color:#434f54">P</span> <span style="color:#728e00">/</span> <span style="color:#434f54">i</span>) <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">P</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
-    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> (<span style="color:#434f54">P</span> <span style="color:#728e00">-</span> <span style="color:#434f54">P</span> <span style="color:#728e00">/</span> <span style="color:#434f54">i</span>) <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">P</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
+    <span style="color:#728e00">for</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">P</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
+        <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">-</span> <span style="color:#8a7b52">1</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
 }
 
 <span style="color:#434f54">LL</span> <span style="color:#d35400">C</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">n</span>, <span style="color:#434f54">LL</span> <span style="color:#434f54">m</span>) {
-    <span style="color:#728e00">if</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">m</span>) <span style="color:#728e00">return</span> <span style="color:#8a7b52">0</span>;
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">m</span>)
+        <span style="color:#728e00">return</span> <span style="color:#8a7b52">0</span>;
     <span style="color:#728e00">return</span> <span style="color:#434f54">fac</span>[<span style="color:#434f54">n</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">m</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span> <span style="color:#728e00">*</span> <span style="color:#434f54">inv</span>[<span style="color:#434f54">n</span> <span style="color:#728e00">-</span> <span style="color:#434f54">m</span>] <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
 }
 
 <span style="color:#434f54">LL</span> <span style="color:#d35400">lucas</span>(<span style="color:#434f54">LL</span> <span style="color:#434f54">n</span>, <span style="color:#434f54">LL</span> <span style="color:#434f54">m</span>) {
-    <span style="color:#728e00">if</span>(<span style="color:#434f54">m</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) <span style="color:#728e00">return</span> <span style="color:#8a7b52">1</span>;
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">m</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>)
+        <span style="color:#728e00">return</span> <span style="color:#8a7b52">1</span>;
     <span style="color:#728e00">return</span> <span style="color:#434f54">C</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>, <span style="color:#434f54">m</span> <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>) <span style="color:#728e00">*</span> <span style="color:#434f54">lucas</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">/</span> <span style="color:#434f54">P</span>, <span style="color:#434f54">m</span> <span style="color:#728e00">/</span> <span style="color:#434f54">P</span>) <span style="color:#728e00">%</span> <span style="color:#434f54">P</span>;
 }
 </code></pre></div>
-</div>
-
 </article>
 
   
@@ -716,7 +740,6 @@ details {
   <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
-<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
 <li>评论区因安全问题被关闭.</li>
 </ul>
 
@@ -767,7 +790,9 @@ function renderTex() {
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
       "\\mex": "\\text\{mex\} \\, ",
-      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+      
+      "\\wave": "\{ \\ \\small\\sim \\ \}",
+      ",": "\\raisebox\{-.6em\}\{\\text\{\\textquoteright\}\} \\ \\ ",
     }
   });
 }
@@ -776,16 +801,18 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 $('.language-latex').each(function(id, el, arr) {
   function toText(text) { 
-    var temp = document.createElement("div"); 
-    temp.innerHTML = text; 
-    var output = temp.innerText || temp.textContent; 
-    temp = null; 
-    return output; 
+    var div = document.createElement("div"); 
+    div.innerHTML = text; 
+    var output = div.innerText || div.textContent; 
+    div = null; 
+    return output;
   } 
   tex = toText(el.innerHTML);
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
+
 
 <script>
   $(window).scroll(function(e) {
@@ -794,8 +821,11 @@ $('.language-latex').each(function(id, el, arr) {
     }
   });
   $(window).ready(function() {
-    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    if (window.location.hash) {
+      $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    }
   });
+  document.body.scroll="no";
 </script>
 
 

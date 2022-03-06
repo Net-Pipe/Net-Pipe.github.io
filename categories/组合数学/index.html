@@ -76,10 +76,10 @@ ol {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   background-color: white;
+  display: inline-block;
   background-color: var(--block-color);
   padding: .1rem .5rem;
   margin: .3rem 0;
-  display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
   .card .count {
@@ -90,11 +90,9 @@ ol {
   box-shadow: var(--shadow);
   background-color: white; }
 
-.hover {
-  transition: all .15s; }
-  .hover:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
+.hover:hover {
+  cursor: pointer;
+  background-color: var(--block-color); }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -126,9 +124,12 @@ aside {
 aside.left .author {
   text-align: center; }
   aside.left .author img {
+    transition: all 0.2s;
     width: 6rem;
     height: 6rem;
     border-radius: 1rem; }
+    aside.left .author img:hover {
+      transform: perspective(1px) scale(1.05); }
   aside.left .author h2.name {
     margin: .5rem; }
 
@@ -191,6 +192,9 @@ aside.left .search {
   line-height: 20px; }
   .core .time img {
     vertical-align: text-bottom; }
+
+.core .categories {
+  margin: .5rem 0; }
 
 .core .post {
   padding: 1rem;
@@ -330,9 +334,14 @@ aside.left .search {
       box-shadow: none;
       padding: 0; }
   .core.markdown table {
-    margin: .5rem 0;
+    display: block;
+    overflow: auto;
+    margin: .5rem -2px;
+    padding: 0 2px;
     border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
+    .core.markdown table::-webkit-scrollbar-track {
+      margin: 0 2px; }
     .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
       font-weight: normal; }
@@ -420,10 +429,10 @@ details {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
-.book-columns {
+.columns {
   display: flex;
   flex-wrap: wrap; }
-  .book-columns .markdown-inner {
+  .columns .markdown-inner {
     flex: 1 1; }
 
 .book-tabs {
@@ -540,7 +549,7 @@ details {
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>74,020</h3>
+    <h3>73,676</h3>
     <span>Words</span>
   </div>
 </div>
@@ -582,6 +591,11 @@ details {
   <div class="card">
     <div class="count">1</div>
     <a href="../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">7</div>
+    <a href="../../categories/%E5%90%8C%E4%BD%99/">同余</a>
   </div>
   
   <div class="card">
@@ -628,24 +642,24 @@ details {
   
   
   
-  <div class="post-item shadow hover" onclick="window.location.href=&#34;/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/&#34;">
-    <img src="../../images/file.svg" /><span>组合数学</span>
+  <div class="post-item shadow hover">
+    <a class='black' href=../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/><div><img src="../../images/file.svg" /><span>组合数学</span></div></a>
   </div>
   
-  <div class="post-item shadow hover" onclick="window.location.href=&#34;/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/&#34;">
-    <img src="../../images/file.svg" /><span>二项式定理</span>
+  <div class="post-item shadow hover">
+    <a class='black' href=../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/><div><img src="../../images/file.svg" /><span>二项式定理</span></div></a>
   </div>
   
-  <div class="post-item shadow hover" onclick="window.location.href=&#34;/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/&#34;">
-    <img src="../../images/file.svg" /><span>卢卡斯定理</span>
+  <div class="post-item shadow hover">
+    <a class='black' href=../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0%E5%88%97/><div><img src="../../images/file.svg" /><span>卡特兰数列</span></div></a>
   </div>
   
-  <div class="post-item shadow hover" onclick="window.location.href=&#34;/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0%E5%88%97/&#34;">
-    <img src="../../images/file.svg" /><span>卡特兰数列</span>
+  <div class="post-item shadow hover">
+    <a class='black' href=../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/><div><img src="../../images/file.svg" /><span>Lucas 定理</span></div></a>
   </div>
   
-  <div class="post-item shadow hover" onclick="window.location.href=&#34;/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/&#34;">
-    <img src="../../images/file.svg" /><span>容斥原理</span>
+  <div class="post-item shadow hover">
+    <a class='black' href=../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/><div><img src="../../images/file.svg" /><span>容斥原理</span></div></a>
   </div>
   
 </article>
@@ -656,7 +670,6 @@ details {
 <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
-<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
 <li>评论区因安全问题被关闭.</li>
 </ul>
 
@@ -694,7 +707,9 @@ function renderTex() {
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
       "\\mex": "\\text\{mex\} \\, ",
-      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+      
+      "\\wave": "\{ \\ \\small\\sim \\ \}",
+      ",": "\\raisebox\{-.6em\}\{\\text\{\\textquoteright\}\} \\ \\ ",
     }
   });
 }
@@ -703,16 +718,18 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 $('.language-latex').each(function(id, el, arr) {
   function toText(text) { 
-    var temp = document.createElement("div"); 
-    temp.innerHTML = text; 
-    var output = temp.innerText || temp.textContent; 
-    temp = null; 
-    return output; 
+    var div = document.createElement("div"); 
+    div.innerHTML = text; 
+    var output = div.innerText || div.textContent; 
+    div = null; 
+    return output;
   } 
   tex = toText(el.innerHTML);
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
+
 
 <script>
   $(window).scroll(function(e) {
@@ -721,8 +738,11 @@ $('.language-latex').each(function(id, el, arr) {
     }
   });
   $(window).ready(function() {
-    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    if (window.location.hash) {
+      $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    }
   });
+  document.body.scroll="no";
 </script>
 
 

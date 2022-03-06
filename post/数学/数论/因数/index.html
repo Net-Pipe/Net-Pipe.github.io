@@ -76,10 +76,10 @@ ol {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   background-color: white;
+  display: inline-block;
   background-color: var(--block-color);
   padding: .1rem .5rem;
   margin: .3rem 0;
-  display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
   .card .count {
@@ -90,11 +90,9 @@ ol {
   box-shadow: var(--shadow);
   background-color: white; }
 
-.hover {
-  transition: all .15s; }
-  .hover:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
+.hover:hover {
+  cursor: pointer;
+  background-color: var(--block-color); }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -126,9 +124,12 @@ aside {
 aside.left .author {
   text-align: center; }
   aside.left .author img {
+    transition: all 0.2s;
     width: 6rem;
     height: 6rem;
     border-radius: 1rem; }
+    aside.left .author img:hover {
+      transform: perspective(1px) scale(1.05); }
   aside.left .author h2.name {
     margin: .5rem; }
 
@@ -191,6 +192,9 @@ aside.left .search {
   line-height: 20px; }
   .core .time img {
     vertical-align: text-bottom; }
+
+.core .categories {
+  margin: .5rem 0; }
 
 .core .post {
   padding: 1rem;
@@ -330,9 +334,14 @@ aside.left .search {
       box-shadow: none;
       padding: 0; }
   .core.markdown table {
-    margin: .5rem 0;
+    display: block;
+    overflow: auto;
+    margin: .5rem -2px;
+    padding: 0 2px;
     border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
+    .core.markdown table::-webkit-scrollbar-track {
+      margin: 0 2px; }
     .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
       font-weight: normal; }
@@ -420,10 +429,10 @@ details {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
-.book-columns {
+.columns {
   display: flex;
   flex-wrap: wrap; }
-  .book-columns .markdown-inner {
+  .columns .markdown-inner {
     flex: 1 1; }
 
 .book-tabs {
@@ -540,7 +549,7 @@ details {
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>74,020</h3>
+    <h3>73,676</h3>
     <span>Words</span>
   </div>
 </div>
@@ -585,6 +594,11 @@ details {
   </div>
   
   <div class="card">
+    <div class="count">7</div>
+    <a href="../../../../categories/%E5%90%8C%E4%BD%99/">同余</a>
+  </div>
+  
+  <div class="card">
     <div class="count">2</div>
     <a href="../../../../categories/%E6%95%B0%E5%88%97/">数列</a>
   </div>
@@ -619,7 +633,6 @@ details {
 
   
 <article class='core markdown shadow'>
-<div class='content'>
   
   <h1>因数</h1>
   <span class="time">
@@ -634,52 +647,64 @@ details {
 
 </span>
   
+  
 
   
 
-  <blockquote>
+<blockquote>
 <p>若无特殊说明，本章涉及的变量皆为正整数.</p>
 </blockquote>
 <h2 id="定义">定义 <a class="anchor" href="#%e5%ae%9a%e4%b9%89">¶</a></h2><p>$a÷b$ 的余数为 $c$，则称 $a$ 模 $b$ 等于 $c$，记作 $a \bmod b=c$.</p>
 <p>若 $n \bmod d=0$，则 $d$ 是 $n$ 的因数，记为 $d\mid n$.</p>
-<h3 id="算数基本定理">算数基本定理 <a class="anchor" href="#%e7%ae%97%e6%95%b0%e5%9f%ba%e6%9c%ac%e5%ae%9a%e7%90%86">¶</a></h3><p>任意正整数 $n$ 都能唯一分解为有限个质数的乘积：</p>
-<p>$$n=p_1^{c_1}\cdot p_2^{c_2}\cdots p_m^{c_m}$$</p>
+<h3 id="算数基本定理">算数基本定理 <a class="anchor" href="#%e7%ae%97%e6%95%b0%e5%9f%ba%e6%9c%ac%e5%ae%9a%e7%90%86">¶</a></h3><p>任意正整数 $n$ 都能唯一分解为有限个质数的乘积.</p>
+<p>$$n=p_1^{\normalsize c_1}\cdot p_2^{\normalsize c_2}\cdots p_m^{\normalsize c_m}$$</p>
 <h2 id="分解质因数">分解质因数 <a class="anchor" href="#%e5%88%86%e8%a7%a3%e8%b4%a8%e5%9b%a0%e6%95%b0">¶</a></h2><h3 id="试除法">试除法 <a class="anchor" href="#%e8%af%95%e9%99%a4%e6%b3%95">¶</a></h3><blockquote>
-<p>将 $n$ 分解成 <a href="../../../../docs/NOI/Math/factor/#%E7%AE%97%E6%95%B0%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86">算数基本定理</a> 中的形式.</p>
+<p>将 $n$ 分解成 <a href="#%E7%AE%97%E6%95%B0%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86">算数基本定理</a> 的形式. 如</p>
+<ul>
+<li>$360=2^3\times 3^2\times 5$</li>
+</ul>
 </blockquote>
-<p>判断 $n$ 能否整除 $[2,\sqrt{n}]$ 中的所有整数 $i$，如果能，则从 $n$ 中除掉所有的因子 $i$，并记录因子 $i$ 的个数. 时间复杂度为 $O(\sqrt n)$.</p>
+<p>枚举 $i=2,3,\cdots,\sqrt{n}$，除尽 $n$ 中的 $i$，并记录除的次数.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
 <span style="color:#434f54">vector</span><span style="color:#728e00">&lt;</span><span style="color:#00979d">int</span><span style="color:#728e00">&gt;</span> <span style="color:#434f54">P</span>, <span style="color:#434f54">C</span>;
 
-<span style="color:#00979d">void</span> <span style="color:#d35400">devide</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
-    <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">sqrt</span>(<span style="color:#434f54">n</span>); <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
-        <span style="color:#728e00">if</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) {
+<span style="color:#00979d">void</span> <span style="color:#d35400">factor</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">sqrt</span>(<span style="color:#434f54">n</span>); <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#728e00">if</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) {
             <span style="color:#434f54">P</span>.<span style="color:#434f54">push_back</span>(<span style="color:#434f54">i</span>), <span style="color:#434f54">C</span>.<span style="color:#434f54">push_back</span>(<span style="color:#8a7b52">1</span>);
-            <span style="color:#728e00">while</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>)
+            <span style="color:#728e00">while</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">%</span> <span style="color:#434f54">i</span> <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>)
                 <span style="color:#434f54">n</span> <span style="color:#728e00">/=</span> <span style="color:#434f54">i</span>, <span style="color:#434f54">C</span>.<span style="color:#434f54">back</span>() <span style="color:#728e00">++</span>;
         }
     }
-    <span style="color:#728e00">if</span>(<span style="color:#434f54">n</span> <span style="color:#728e00">!=</span> <span style="color:#8a7b52">1</span>)
-        <span style="color:#434f54">P</span>.<span style="color:#434f54">push_back</span>(<span style="color:#434f54">n</span>), <span style="color:#434f54">C</span>.<span style="color:#434f54">push_back</span>(<span style="color:#8a7b52">1</span>);
+    <span style="color:#728e00">if</span> (<span style="color:#434f54">n</span> <span style="color:#728e00">!=</span> <span style="color:#8a7b52">1</span>) {
+        <span style="color:#434f54">P</span>.<span style="color:#434f54">push_back</span>(<span style="color:#434f54">n</span>);
+        <span style="color:#434f54">C</span>.<span style="color:#434f54">push_back</span>(<span style="color:#8a7b52">1</span>);
+    }
 }
 </code></pre></div><h3 id="倍数法">倍数法 <a class="anchor" href="#%e5%80%8d%e6%95%b0%e6%b3%95">¶</a></h3><blockquote>
-<p>求 $[1,n]$ 中所有整数的因数集合.</p>
+<p>求 $[1,n]$ 中各整数的因数集 $fact$. 如</p>
+<ul>
+<li>$fact[12]=\{1,2,3,4,6,12\}$</li>
+</ul>
 </blockquote>
-<p>用 <a href="../../../../docs/NOI/Math/factor/#%E8%AF%95%E9%99%A4%E6%B3%95">试除法</a> 很容易超时，此时考虑倍数法：</p>
-<p>$i$ 一定是 $i$ 的倍数的因数. 枚举 $[1,n]$ 中每个数的倍数即可.</p>
+<p>对各整数依次进行 <a href="#%E8%AF%95%E9%99%A4%E6%B3%95">试除法</a> 太慢，此时考虑倍数法：</p>
+<blockquote>
+<p>$i$ 的倍数必有因数 $i$.</p>
+</blockquote>
+<p>枚举 $i=1,2,\cdots,n$，并在 $fact[i$ 的倍数$]$ 中加入 $i$.</p>
 <p>时间复杂度为 $O(n\log{n})$.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
 
 <span style="color:#434f54">vector</span><span style="color:#728e00">&lt;</span><span style="color:#00979d">int</span><span style="color:#728e00">&gt;</span> <span style="color:#434f54">fact</span>[<span style="color:#434f54">N</span>];
 
 <span style="color:#00979d">void</span> <span style="color:#d35400">factor</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
-    <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>)
-        <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>)
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>) {
             <span style="color:#434f54">fact</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">j</span>].<span style="color:#434f54">push_back</span>(<span style="color:#434f54">i</span>);
+        }
+    }
 }
 </code></pre></div>
-</div>
-
 </article>
 
   
@@ -687,7 +712,6 @@ details {
   <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
-<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
 <li>评论区因安全问题被关闭.</li>
 </ul>
 
@@ -744,7 +768,9 @@ function renderTex() {
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
       "\\mex": "\\text\{mex\} \\, ",
-      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+      
+      "\\wave": "\{ \\ \\small\\sim \\ \}",
+      ",": "\\raisebox\{-.6em\}\{\\text\{\\textquoteright\}\} \\ \\ ",
     }
   });
 }
@@ -753,16 +779,18 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 $('.language-latex').each(function(id, el, arr) {
   function toText(text) { 
-    var temp = document.createElement("div"); 
-    temp.innerHTML = text; 
-    var output = temp.innerText || temp.textContent; 
-    temp = null; 
-    return output; 
+    var div = document.createElement("div"); 
+    div.innerHTML = text; 
+    var output = div.innerText || div.textContent; 
+    div = null; 
+    return output;
   } 
   tex = toText(el.innerHTML);
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
+
 
 <script>
   $(window).scroll(function(e) {
@@ -771,8 +799,11 @@ $('.language-latex').each(function(id, el, arr) {
     }
   });
   $(window).ready(function() {
-    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    if (window.location.hash) {
+      $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    }
   });
+  document.body.scroll="no";
 </script>
 
 

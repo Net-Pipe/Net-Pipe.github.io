@@ -140,7 +140,7 @@
 
 .katex {
     text-rendering: auto;
-    font: normal 16px KaTeX_Main, Times New Roman, 'Microsoft YaHei', serif;
+    font: normal 17px KaTeX_Main, Times New Roman, 'Microsoft YaHei', serif;
     line-height: 1.2;
     text-indent: 0;
     text-shadow: 0 0;
@@ -149,6 +149,11 @@
 .katex * {
     -ms-high-contrast-adjust: none!important;
     border-color: currentColor
+}
+
+.cjk_fallback {
+    text-shadow: none;
+    font-size: 16px;
 }
 
 .katex .katex-version:after {

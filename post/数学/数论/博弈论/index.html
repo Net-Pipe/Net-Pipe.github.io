@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Net Pipe&#39;s Blog</title>  
-  <meta name="description" content="简介 ¶博弈论主要研究，在一个游戏中，如何">
+  <meta name="description" content="简介 ¶博弈论研究在一局博弈中如何最优化玩">
   <meta name="author" content="Net Pipe">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -76,10 +76,10 @@ ol {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   background-color: white;
+  display: inline-block;
   background-color: var(--block-color);
   padding: .1rem .5rem;
   margin: .3rem 0;
-  display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
   .card .count {
@@ -90,11 +90,9 @@ ol {
   box-shadow: var(--shadow);
   background-color: white; }
 
-.hover {
-  transition: all .15s; }
-  .hover:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
+.hover:hover {
+  cursor: pointer;
+  background-color: var(--block-color); }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -126,9 +124,12 @@ aside {
 aside.left .author {
   text-align: center; }
   aside.left .author img {
+    transition: all 0.2s;
     width: 6rem;
     height: 6rem;
     border-radius: 1rem; }
+    aside.left .author img:hover {
+      transform: perspective(1px) scale(1.05); }
   aside.left .author h2.name {
     margin: .5rem; }
 
@@ -191,6 +192,9 @@ aside.left .search {
   line-height: 20px; }
   .core .time img {
     vertical-align: text-bottom; }
+
+.core .categories {
+  margin: .5rem 0; }
 
 .core .post {
   padding: 1rem;
@@ -330,9 +334,14 @@ aside.left .search {
       box-shadow: none;
       padding: 0; }
   .core.markdown table {
-    margin: .5rem 0;
+    display: block;
+    overflow: auto;
+    margin: .5rem -2px;
+    padding: 0 2px;
     border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
+    .core.markdown table::-webkit-scrollbar-track {
+      margin: 0 2px; }
     .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
       font-weight: normal; }
@@ -420,10 +429,10 @@ details {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
-.book-columns {
+.columns {
   display: flex;
   flex-wrap: wrap; }
-  .book-columns .markdown-inner {
+  .columns .markdown-inner {
     flex: 1 1; }
 
 .book-tabs {
@@ -540,7 +549,7 @@ details {
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>74,020</h3>
+    <h3>73,676</h3>
     <span>Words</span>
   </div>
 </div>
@@ -585,6 +594,11 @@ details {
   </div>
   
   <div class="card">
+    <div class="count">7</div>
+    <a href="../../../../categories/%E5%90%8C%E4%BD%99/">同余</a>
+  </div>
+  
+  <div class="card">
     <div class="count">2</div>
     <a href="../../../../categories/%E6%95%B0%E5%88%97/">数列</a>
   </div>
@@ -619,7 +633,6 @@ details {
 
   
 <article class='core markdown shadow'>
-<div class='content'>
   
   <h1>博弈论</h1>
   <span class="time">
@@ -634,61 +647,55 @@ details {
 
 </span>
   
-<div class="description">
-  我预判了你对我预判的预判.
-</div>
-
+  
 
   
 
-  <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>博弈论主要研究，在一个游戏中，如何最优化多位玩家的策略.</p>
+<h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>博弈论研究在一局博弈中如何最优化玩家的策略.</p>
 <h2 id="公平组合游戏-icg">公平组合游戏 ICG <a class="anchor" href="#%e5%85%ac%e5%b9%b3%e7%bb%84%e5%90%88%e6%b8%b8%e6%88%8f-icg">¶</a></h2><ul>
-<li>
-<p>由两名玩家轮流做出行动.</p>
-</li>
-<li>
-<p>两名玩家的行动规则相同.</p>
-</li>
-<li>
-<p>不能行动的玩家判负.</p>
-</li>
+<li>两名玩家轮流行动，且行动规则相同.</li>
+<li>最终不能行动的玩家判负.</li>
 </ul>
-<h2 id="nim-游戏">NIM 游戏 <a class="anchor" href="#nim-%e6%b8%b8%e6%88%8f">¶</a></h2><h3 id="简介-1">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b-1">¶</a></h3><p>有 $n$ 堆石子，第 $i$ 堆有 $A_i$ 个石子. 两个玩家轮流取走任意一堆的任意个石子，但不能不取. 取走最后一个石子的玩家胜.</p>
-<p>NIM 游戏属于公平组合游戏，且不存在平局，只有「先手必胜」和「后手必胜」两种情况.</p>
-<h3 id="策略">策略 <a class="anchor" href="#%e7%ad%96%e7%95%a5">¶</a></h3><p>当且仅当 $A_1\oplus A_2\oplus\cdots\oplus A_n≠0$ 时，先手必胜（$\oplus$ 表示异或）.</p>
+<h2 id="nim-游戏">NIM 游戏 <a class="anchor" href="#nim-%e6%b8%b8%e6%88%8f">¶</a></h2><h3 id="简介-1">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b-1">¶</a></h3><p>有 $n$ 堆石子，第 $i$ 堆石子数为 $A_i$. 两名玩家轮流取走任意一堆的任意个石子，但不能不取. 取走最后一个石子的玩家胜.</p>
+<p>NIM 游戏属于 <a href="#%E5%85%AC%E5%B9%B3%E7%BB%84%E5%90%88%E6%B8%B8%E6%88%8F-icg">公平组合游戏</a>，且不存在平局，只有「先手必胜」和「后手必胜」两种情况.</p>
+<h3 id="策略">策略 <a class="anchor" href="#%e7%ad%96%e7%95%a5">¶</a></h3><p>当且仅当 $A_1\oplus A_2\oplus\cdots\oplus A_n≠0$ 时，先手必胜（$\oplus$ 表示二进制异或）.</p>
+<blockquote>
+<p>$A\oplus B$：将 $A$ 和 $B$ 的二进制位对齐，相等取 $0$，不相等取 $1$.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+1 <span style="color:#728e00">\ </span>0 <span style="color:#728e00">\ </span>0 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>0 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>0<span style="color:#728e00">\\</span>
+<span style="color:#728e00">\underline</span><span style="color:#728e00">{</span><span style="color:#728e00">\oplus</span> <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>0 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>0 <span style="color:#728e00">\ </span>1<span style="color:#728e00">}</span><span style="color:#728e00">\\</span>
+0 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>0 <span style="color:#728e00">\ </span>0 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>1 <span style="color:#728e00">\ </span>1
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div></blockquote>
 
 <details >
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
   <div class='details-inner'><details >
   <summary>引理 1<img class='alt' src='../../../../images/right.svg'></summary>
-  <div class='details-inner'><p>设 $A_1\oplus A_2\oplus\cdots\oplus A_n=k≠0$，则：</p>
+  <div class='details-inner'><p>设 $A_1\oplus A_2\oplus\cdots\oplus A_n=k≠0$.</p>
+<p>设 $k$ 在二进制下有 $\text{len}(k)$ 位.</p>
+<p>由异或的定义得，至少存在一个 $i$，使 $A_i$ 的第 $\text{len}(k)$ 位为 $1$，这样才能保证 $k$ 的第 $\text{len}(k)$ 位也为 $1$. 在此条件下，显然有 $A_i&gt;A_i\oplus k$.</p>
+<p>于是可以取第 $i$ 堆石子，使其剩下 $A_i\oplus k$ 个. 取完石子后有</p>
 <p>$$(A_1\oplus\cdots\oplus A_{i-1})\oplus(A_i\oplus k)\oplus(A_{i+1}\oplus\cdots\oplus A_n)=k\oplus k=0$$</p>
-<p>根据异或的定义，若 $k$ 在二进制下有 ${\rm len}(k)$ 位，则至少有 $1$ 个 $A_i$ 的第 ${\rm len}(k)$ 位为 $1$，也就必然存在 $A_i&gt;A_i\oplus k$，因此将 $A_i$ 变为 $A_i\oplus k$ 可以是合法的操作.</p>
 </div>
 </details>
 <details >
   <summary>引理 2<img class='alt' src='../../../../images/right.svg'></summary>
-  <div class='details-inner'><p>设 $A_1\oplus A_2\oplus\cdots\oplus A_n=0$，则：</p>
-<p>$$(A_1\oplus\cdots\oplus A_{i-1})\oplus(A_i')\oplus(A_{i+1}\oplus\cdots\oplus A_n)=0\oplus A_i\oplus A_i'≠0$$</p>
-<p>即更改任意一个 $A_i$ 为 $A_i'$，都会导致异或和不为 $0$.</p>
+  <div class='details-inner'><p>设 $A_1\oplus A_2\oplus\cdots\oplus A_n=0$. 此时更改任意一个 $A_i$ 为 $A_i'$，都有：</p>
+<p>$$(A_1\oplus\cdots\oplus A_{i-1})\oplus(A_i')\oplus(A_{i+1}\oplus\cdots\oplus A_n)=0\oplus A_i\oplus A_i'\not=0$$</p>
+<p>即任意一步操作都会导致异或和 $\not=0$.</p>
 </div>
 </details>
 <p>结合引理 1，引理 2 可得：</p>
 <ul>
-<li>
-<p>石子被取光时失败（对手取走最后一个石子，获胜），此时异或和为 $0$.</p>
-</li>
-<li>
-<p>异或和 $≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}}$ 异或和 $=0$.</p>
-</li>
-<li>
-<p>异或和 $=0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}}$ 异或和 $≠0$.</p>
-</li>
+<li>异或和 $≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}}$ 异或和 $=0$.</li>
+<li>异或和 $=0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}}$ 异或和 $≠0$.</li>
+<li>石子被取光时失败（对手取走最后一个石子，获胜），此时异或和为 $0$.</li>
 </ul>
 <p>当 $A_1\oplus A_2\oplus\cdots\oplus A_n≠0$ 时，先手可以使博弈进入一种循环：</p>
 <p><img src="0.svg" static="true" style="zoom:120%"></img></p>
 <p>轮到后手时，异或和必为 $0$，即失败的局面只可能轮到后手. 先手必胜.</p>
-<p>当 $A_1\oplus A_2\oplus\cdots\oplus A_n=0$ 时，先手失去了主动权，后手可以同样的方法制胜. 此时先手必败.</p>
+<p>当 $A_1\oplus A_2\oplus\cdots\oplus A_n=0$ 时，后手可以同样的方法制胜. 此时先手必败.</p>
 </div>
 </details>
 <h2 id="有向图游戏">有向图游戏 <a class="anchor" href="#%e6%9c%89%e5%90%91%e5%9b%be%e6%b8%b8%e6%88%8f">¶</a></h2><h3 id="简介-2">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b-2">¶</a></h3><p>在一个有向无环图中，只有一个起点，上面有一枚棋子. 两名玩家轮轮流沿有向边推动棋子，无法移动者判负.</p>
@@ -738,8 +745,6 @@ details {
 </div>
 </details>
 
-</div>
-
 </article>
 
   
@@ -747,7 +752,6 @@ details {
   <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
-<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
 <li>评论区因安全问题被关闭.</li>
 </ul>
 
@@ -814,7 +818,9 @@ function renderTex() {
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
       "\\mex": "\\text\{mex\} \\, ",
-      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+      
+      "\\wave": "\{ \\ \\small\\sim \\ \}",
+      ",": "\\raisebox\{-.6em\}\{\\text\{\\textquoteright\}\} \\ \\ ",
     }
   });
 }
@@ -823,16 +829,18 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 $('.language-latex').each(function(id, el, arr) {
   function toText(text) { 
-    var temp = document.createElement("div"); 
-    temp.innerHTML = text; 
-    var output = temp.innerText || temp.textContent; 
-    temp = null; 
-    return output; 
+    var div = document.createElement("div"); 
+    div.innerHTML = text; 
+    var output = div.innerText || div.textContent; 
+    div = null; 
+    return output;
   } 
   tex = toText(el.innerHTML);
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
+
 
 <script>
   $(window).scroll(function(e) {
@@ -841,8 +849,11 @@ $('.language-latex').each(function(id, el, arr) {
     }
   });
   $(window).ready(function() {
-    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    if (window.location.hash) {
+      $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    }
   });
+  document.body.scroll="no";
 </script>
 
 

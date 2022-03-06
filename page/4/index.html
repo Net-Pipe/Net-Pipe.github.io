@@ -77,10 +77,10 @@ ol {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   background-color: white;
+  display: inline-block;
   background-color: var(--block-color);
   padding: .1rem .5rem;
   margin: .3rem 0;
-  display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
   .card .count {
@@ -91,11 +91,9 @@ ol {
   box-shadow: var(--shadow);
   background-color: white; }
 
-.hover {
-  transition: all .15s; }
-  .hover:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
+.hover:hover {
+  cursor: pointer;
+  background-color: var(--block-color); }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -127,9 +125,12 @@ aside {
 aside.left .author {
   text-align: center; }
   aside.left .author img {
+    transition: all 0.2s;
     width: 6rem;
     height: 6rem;
     border-radius: 1rem; }
+    aside.left .author img:hover {
+      transform: perspective(1px) scale(1.05); }
   aside.left .author h2.name {
     margin: .5rem; }
 
@@ -192,6 +193,9 @@ aside.left .search {
   line-height: 20px; }
   .core .time img {
     vertical-align: text-bottom; }
+
+.core .categories {
+  margin: .5rem 0; }
 
 .core .post {
   padding: 1rem;
@@ -331,9 +335,14 @@ aside.left .search {
       box-shadow: none;
       padding: 0; }
   .core.markdown table {
-    margin: .5rem 0;
+    display: block;
+    overflow: auto;
+    margin: .5rem -2px;
+    padding: 0 2px;
     border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
+    .core.markdown table::-webkit-scrollbar-track {
+      margin: 0 2px; }
     .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
       font-weight: normal; }
@@ -421,10 +430,10 @@ details {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
-.book-columns {
+.columns {
   display: flex;
   flex-wrap: wrap; }
-  .book-columns .markdown-inner {
+  .columns .markdown-inner {
     flex: 1 1; }
 
 .book-tabs {
@@ -541,7 +550,7 @@ details {
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>74,020</h3>
+    <h3>73,676</h3>
     <span>Words</span>
   </div>
 </div>
@@ -583,6 +592,11 @@ details {
   <div class="card">
     <div class="count">1</div>
     <a href="../../categories/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/">三角函数</a>
+  </div>
+  
+  <div class="card">
+    <div class="count">7</div>
+    <a href="../../categories/%E5%90%8C%E4%BD%99/">同余</a>
   </div>
   
   <div class="card">
@@ -878,7 +892,6 @@ details {
 <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
-<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
 <li>评论区因安全问题被关闭.</li>
 </ul>
 
@@ -916,7 +929,9 @@ function renderTex() {
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
       "\\mex": "\\text\{mex\} \\, ",
-      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+      
+      "\\wave": "\{ \\ \\small\\sim \\ \}",
+      ",": "\\raisebox\{-.6em\}\{\\text\{\\textquoteright\}\} \\ \\ ",
     }
   });
 }
@@ -925,16 +940,18 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 $('.language-latex').each(function(id, el, arr) {
   function toText(text) { 
-    var temp = document.createElement("div"); 
-    temp.innerHTML = text; 
-    var output = temp.innerText || temp.textContent; 
-    temp = null; 
-    return output; 
+    var div = document.createElement("div"); 
+    div.innerHTML = text; 
+    var output = div.innerText || div.textContent; 
+    div = null; 
+    return output;
   } 
   tex = toText(el.innerHTML);
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
+
 
 <script>
   $(window).scroll(function(e) {
@@ -943,8 +960,11 @@ $('.language-latex').each(function(id, el, arr) {
     }
   });
   $(window).ready(function() {
-    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    if (window.location.hash) {
+      $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    }
   });
+  document.body.scroll="no";
 </script>
 
 

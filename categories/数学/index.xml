@@ -5,7 +5,7 @@
   <item>
     <title>构造函数</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
-    <summary>严格上说，这已经属于微积分的范畴了.</summary>
+    <summary>出题老师在大气层.</summary>
     <content>简介 ¶已知 f(x)&amp;gt;0（或 &amp;lt;0），可以构造函数 F(x) 使 F&#39;(x)=K\cdot f(x) (K&amp;gt;0)，利用 f 的正负性判断 F 的单调性，以解决问题. 基本构造 ¶和差构造 ¶ f&#39;(x)&#43;g&#39;(x)&amp;gt;0\intro F(x)=f(x)&#43;g(x) f&#39;(x)-g&#39;(x)&amp;gt;0\intro F(x)=f(x)-g(x)  积商构造 ¶ f&#39;(x)g(x)&#43;f(x)g&#39;(x)&amp;gt;0\intro F(x)=f(x)g(x) f&#39;(x)g(x)-f(x)g&#39;(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{g(x)}\big(g(x)\not=0\big)  变形 ¶含 x 形构造 ¶ xf&#39;(x)&#43;nf(x)&amp;gt;0\intro F(x)=x^nf(x) xf&#39;(x)-nf(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{x^n}\big(x\not=0\big)  含 e 形构造 ¶ f&#39;(x)&#43;nf(x)&amp;gt;0\intro F(x)=e^{nx}f(x) f&#39;(x)-nf(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{e^{nx}}  三角构造 ¶  f(x)&#43;f&#39;(x)\tan x&amp;gt;0\intro F(x)=\sin x f(x)   f(x)-f&#39;(x)\tan x&amp;gt;0\intro F(x)=\dfrac{f(x)}{\sin x}\big(\sin x\not=0\big)   f(x)\tan x&#43;f&#39;(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{\cos x}\big(\cos x\not=0\big)   f(x)\tan x-f&#39;(x)&amp;gt;0\intro F(x)=\cos x f(x)   对数形构造 ¶ f&#39;(x)&#43;\ln af(x)&amp;gt;0\intro F(x)=a^xf(x) f&#39;(x)-\ln af(x)&amp;gt;0\intro F(x)=\dfrac{f(x)}{a^x}      例   已知 f(x)&#43;f&#39;(x)&amp;gt;0，f(0)=1，求证当 x\in[0,&#43;\infty) 时 f(x)\geq\dfrac{1}{3^x}. 证：令 g(x)=e^xf(x)，则  \therefore 当 x\in[0,&#43;\infty) 时，g(x) 单调递增，g(x)\geq g(0)，即 e^xf(x)\geq e^0f(0)=1. \therefore f(x)\geq \dfrac{1}{e^x}\geq \dfrac{1}{3^x}. 即证.   </content>
   </item>
   
@@ -51,7 +51,7 @@
     <title>莫比乌斯反演</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/</link>
     <summary>信息学不需要证明，但人的好奇心需要.</summary>
-    <content> 若无特殊说明，本章涉及的变量皆为正整数.  简介 ¶由函数 f 定义一个函数 g：  如果已知 g(n) 的值，就可以用莫比乌斯反演推出 f(n) 的值. 莫比乌斯函数 ¶定义 ¶n 的莫比乌斯函数记为 μ(n)，定义为： 特别地，μ(1)=1. 性质 ¶性质 1 ¶     证   设 n 有 k 个质因子 p_1,p_2,\cdots,p_k，则：       由 二项式定理 得：  当且仅当 n=1 时，k=1. 因此：    性质 2 ¶     证   根据 性质 1 自证.     证   动一动你聪明的小脑瓜.  --&gt;  积性函数 ¶     证   读者自证.  模板 ¶基于质数的 线性筛法 求 μ(1)\simμ(n). 狄利克雷卷积 ¶定义 ¶函数 f(x) 和 g(x) 的狄利克雷卷积 h(x) 定义为：  简记为：  性质 ¶  交换律：f* g=g*f.   结合律：(f* g)*h=f *(g *h).   分配律：(f&#43;g)*h=f *h&#43;g *h.   等式的性质：f=g\eq f* h=g*h,h(1)≠0.   单位元：即单位函数 ε，满足 f*ε=f.        值为常数的函数，如 f(n)=C，在狄利克雷卷积中简记为 C.   重要结论 ¶     证   由 μ 函数的 性质 1 得：     莫比乌斯反演 ¶形式 1 ¶     证   原式可简记为：  由 重要结论 得：  即证.   形式 2 ¶     证         即证.  </content>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  简介 ¶由函数 f 定义一个函数 g：  已知 g(n)，即可用莫比乌斯反演推出 f(n). 莫比乌斯函数 ¶定义 ¶n 的莫比乌斯函数记为 \mu(n)： 特别地，μ(1)=1. 性质 ¶性质 1 ¶    证   设 n 有 k 个质因子 p_1,p_2,\cdots,p_k，则： 由 二项式定理 得：  当且仅当 n=1 时，k=1. 因此：    性质 2 ¶    证   根据 性质 1 自证.     证   动一动你聪明的小脑瓜.  --&gt;  积性函数 ¶     证   读者自证.  模板 ¶基于质数的 线性筛法 求 μ(1)\simμ(n). 狄利克雷卷积 ¶定义 ¶函数 f(x) 和 g(x) 的狄利克雷卷积 h(x) 定义为：  简记为：  性质 ¶  交换律：f* g=g*f.   结合律：(f* g)*h=f *(g *h).   分配律：(f&#43;g)*h=f *h&#43;g *h.   等式的性质：f=g\eq f* h=g*h,h(1)≠0.   单位元：即单位函数 ε，满足 f*ε=f.        值为常数的函数，如 f(n)=C，在狄利克雷卷积中简记为 C.   重要结论 ¶     证   由 μ 函数的 性质 1 得：     莫比乌斯反演 ¶形式 1 ¶     证   原式可简记为：  由 重要结论 得：  即证.   形式 2 ¶     证     </content>
   </item>
   
 
@@ -60,7 +60,7 @@
     <title>博弈论</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%8D%9A%E5%BC%88%E8%AE%BA/</link>
     <summary>我预判了你对我预判的预判.</summary>
-    <content>简介 ¶博弈论主要研究，在一个游戏中，如何最优化多位玩家的策略. 公平组合游戏 ICG ¶  由两名玩家轮流做出行动.   两名玩家的行动规则相同.   不能行动的玩家判负.   NIM 游戏 ¶简介 ¶有 n 堆石子，第 i 堆有 A_i 个石子. 两个玩家轮流取走任意一堆的任意个石子，但不能不取. 取走最后一个石子的玩家胜. NIM 游戏属于公平组合游戏，且不存在平局，只有「先手必胜」和「后手必胜」两种情况. 策略 ¶当且仅当 A_1\oplus A_2\oplus\cdots\oplus A_n≠0 时，先手必胜（\oplus 表示异或）.     证      引理 1   设 A_1\oplus A_2\oplus\cdots\oplus A_n=k≠0，则：  根据异或的定义，若 k 在二进制下有 {\rm len}(k) 位，则至少有 1 个 A_i 的第 {\rm len}(k) 位为 1，也就必然存在 A_i&amp;gt;A_i\oplus k，因此将 A_i 变为 A_i\oplus k 可以是合法的操作.       引理 2   设 A_1\oplus A_2\oplus\cdots\oplus A_n=0，则：  即更改任意一个 A_i 为 A_i&#39;，都会导致异或和不为 0.    结合引理 1，引理 2 可得：   石子被取光时失败（对手取走最后一个石子，获胜），此时异或和为 0.   异或和 ≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 =0.   异或和 =0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 ≠0.   当 A_1\oplus A_2\oplus\cdots\oplus A_n≠0 时，先手可以使博弈进入一种循环：  轮到后手时，异或和必为 0，即失败的局面只可能轮到后手. 先手必胜. 当 A_1\oplus A_2\oplus\cdots\oplus A_n=0 时，先手失去了主动权，后手可以同样的方法制胜. 此时先手必败.   有向图游戏 ¶简介 ¶在一个有向无环图中，只有一个起点，上面有一枚棋子. 两名玩家轮轮流沿有向边推动棋子，无法移动者判负. 任何公平组合游戏都可以转换为有向图游戏：每个节点表示一个状态，并且向后继状态连有向边. 策略 ¶Mex 运算 ¶设 S% 为非负整数集合. \mex(S) 为不属于 S 的最小非负整数.  SG 函数 ¶状态 x 有 k 个后继状态 y_1,y_2,\cdots,y_k，定义 SG 函数：  单图游戏 ¶设起点为 s，当且仅当 SG(s)≠0 时，先手必胜.     证     当棋子无法移动时失败，此时没有后继状态，SG(s)=\mex(\varnothing)=0.   SG(s)≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}}SG(s)=0.   SG(s)=0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}}SG(s)≠0.   当 SG(s)≠0 时，先手可以通过类似于 NIM 游戏 的方法制胜.  当 SG(s)=0 时，后手必胜.   组合图游戏 ¶对于 n 个有向图游戏组合成的游戏，起点分别为 s_1,s_2,\cdots,s_n. 当且仅当 SG(s_1)\oplus SG(s_2)\oplus\cdots\oplus SG(s_n)≠0 时，先手必胜（\oplus 表示异或）.     证   由 单图游戏 可知：   SG(s_i)=0（无法移动每个棋子）时失败，此时异或和 =0.   异或和 ≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 =0.   异或和 =0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 ≠0.   当 SG(s_1)\oplus SG(s_2)\oplus\cdots\oplus SG(s_n)≠0 时，先手可以通过类似于 NIM 游戏 的方法制胜.    </content>
+    <content>简介 ¶博弈论研究在一局博弈中如何最优化玩家的策略. 公平组合游戏 ICG ¶ 两名玩家轮流行动，且行动规则相同. 最终不能行动的玩家判负.  NIM 游戏 ¶简介 ¶有 n 堆石子，第 i 堆石子数为 A_i. 两名玩家轮流取走任意一堆的任意个石子，但不能不取. 取走最后一个石子的玩家胜. NIM 游戏属于 公平组合游戏，且不存在平局，只有「先手必胜」和「后手必胜」两种情况. 策略 ¶当且仅当 A_1\oplus A_2\oplus\cdots\oplus A_n≠0 时，先手必胜（\oplus 表示二进制异或）.  A\oplus B：将 A 和 B 的二进制位对齐，相等取 0，不相等取 1.      证      引理 1   设 A_1\oplus A_2\oplus\cdots\oplus A_n=k≠0. 设 k 在二进制下有 \text{len}(k) 位. 由异或的定义得，至少存在一个 i，使 A_i 的第 \text{len}(k) 位为 1，这样才能保证 k 的第 \text{len}(k) 位也为 1. 在此条件下，显然有 A_i&amp;gt;A_i\oplus k. 于是可以取第 i 堆石子，使其剩下 A_i\oplus k 个. 取完石子后有        引理 2   设 A_1\oplus A_2\oplus\cdots\oplus A_n=0. 此时更改任意一个 A_i 为 A_i&#39;，都有：  即任意一步操作都会导致异或和 \not=0.    结合引理 1，引理 2 可得：  异或和 ≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 =0. 异或和 =0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 ≠0. 石子被取光时失败（对手取走最后一个石子，获胜），此时异或和为 0.  当 A_1\oplus A_2\oplus\cdots\oplus A_n≠0 时，先手可以使博弈进入一种循环：  轮到后手时，异或和必为 0，即失败的局面只可能轮到后手. 先手必胜. 当 A_1\oplus A_2\oplus\cdots\oplus A_n=0 时，后手可以同样的方法制胜. 此时先手必败.   有向图游戏 ¶简介 ¶在一个有向无环图中，只有一个起点，上面有一枚棋子. 两名玩家轮轮流沿有向边推动棋子，无法移动者判负. 任何公平组合游戏都可以转换为有向图游戏：每个节点表示一个状态，并且向后继状态连有向边. 策略 ¶Mex 运算 ¶设 S% 为非负整数集合. \mex(S) 为不属于 S 的最小非负整数.  SG 函数 ¶状态 x 有 k 个后继状态 y_1,y_2,\cdots,y_k，定义 SG 函数：  单图游戏 ¶设起点为 s，当且仅当 SG(s)≠0 时，先手必胜.     证     当棋子无法移动时失败，此时没有后继状态，SG(s)=\mex(\varnothing)=0.   SG(s)≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}}SG(s)=0.   SG(s)=0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}}SG(s)≠0.   当 SG(s)≠0 时，先手可以通过类似于 NIM 游戏 的方法制胜.  当 SG(s)=0 时，后手必胜.   组合图游戏 ¶对于 n 个有向图游戏组合成的游戏，起点分别为 s_1,s_2,\cdots,s_n. 当且仅当 SG(s_1)\oplus SG(s_2)\oplus\cdots\oplus SG(s_n)≠0 时，先手必胜（\oplus 表示异或）.     证   由 单图游戏 可知：   SG(s_i)=0（无法移动每个棋子）时失败，此时异或和 =0.   异或和 ≠0\stackrel{存在一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 =0.   异或和 =0\stackrel{任意一步操作}{\large\xRightarrow{\qquad\qquad}} 异或和 ≠0.   当 SG(s_1)\oplus SG(s_2)\oplus\cdots\oplus SG(s_n)≠0 时，先手可以通过类似于 NIM 游戏 的方法制胜.    </content>
   </item>
   
 
@@ -68,8 +68,8 @@
   <item>
     <title>容斥原理</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/</link>
-    <summary></summary>
-    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶容斥原理是一种不重不漏的计数原理. 举个例子，A,B,C 三人竞选扫黄队长：            15 人投给 A   16 人投给 B   17 人投给 C   2 人同时投给 A,B,C                 4 人同时投给 A,B   5 人同时投给 A,C   6 人同时投给 B,C          问共有多少人参与投票. A,B,C 三人的得票情况可以用小学二年级就学过的韦恩图描述：             |A|=15   |B|=16   |C|=17   |A∩B∩C|=2                 |A∩B|=4   |A∩C|=5   |B∩C|=6          问题是求投票人数，即 |A∪B∪C|.  将上述问题推广到普遍情况，就是容斥原理. 公式 ¶并集 ¶对于 n 个集合 S_1,S_2\cdots S_n，|S| 表示集合 S 的元素数，则：      证   设 x\in S_{a_1},S_{a_2},\cdots,S_{a_m}，根据公式，\su\left|\bigcup_{i=1}^nS_i\right| 中包含元素 x 的个数为：  根据 二项式定理 有：   每个元素只出现一次，等价于并集，证毕.   交集 ¶对于 n 个集合 S_1,S_2\cdots S_n，已知全集为 U：  其中 \su\left|\bigcup_{i=1}^n\overline{S_i}\right| 套用 并集 的公式计算即可. 多重集的排列数 ¶普通集合中，不允许有相同的元素；多重集中，相同的元素可以出现多次. 设 S=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\} 是由 n_1 个 a_1，n_2 个 a_2 &amp;hellip; n_k 个 a_k 组成的多重集，\su n=\sum_{i=1}^kn_i. S 的全排列个数为：      证   n 个不同元素的全排列有 n! 种. 若其中有 j 个元素相同，则 n! 种全排列中有部分也是相同的. 单独看这 j 个元素，有 j! 种排列，但它们现在是一样的. 于是总的排列数为：  根据 乘法原理，多重集的全排列个数为：    多重集的组合数 1 ¶设 S=\{∞\cdot a_1,∞\cdot a_2,\cdots,∞\cdot a_k\}，从 S 中任取 λ 个元素的方案数为：      证   原问题等价于求以下方程非负整数解的个数：  解的个数用插板法计算： 在 λ 个 1 之间插 k-1 块板，使其分为 k 个区间. 第 i 个区间的和代表 x_i. 这样就构造出了一组解.  需要注意，板插在两端或同一个空隙中是允许的. 最初有 λ&#43;1 个空隙. 插第一块板有 λ&#43;1 种方法，第二块有 λ&#43;2 种，第三块有 λ&#43;3 种 &amp;hellip; 第 k-1 块有 λ&#43;k-1 种. 根据 乘法原理，总的方案数为：  但是插板的顺序与答案无关. 这么算显然会包含一些重复情况：  每一个方案都有 (k-1)! 种不同的插板顺序，故答案为：    多重集的组合数 2 ¶设 S=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\}，从 S 中任取 λ(λ≤\sum_in_i) 个元素的方案数为：           证   考虑容斥原理： 合法方案数 = 总方案数 - 不合法方案数  总方案数 \su={k&#43;λ-1\choose k-1}，详见 多重集的组合数 1. 于是问题转化为求不合法方案数.   设 T_i 为 a_i 超标的多重集. 先取 n_i&#43;1 个 a_i，再任取 λ-n_i-1 个元素，加入 T_i. 不同 T_i 的数量为 \su{k&#43;λ-n_i-2\choose k-1}.   设 T_{ij} 为 a_i,a_j 超标的多重集. 先取 n_i&#43;1 个 a_i 和 n_j&#43;1 个 a_j，再任取 λ-n_i-n_j-2 个元素，加入 T_{ij}. 不同 T_{ij} 的数量为 \su{k&#43;λ-n_i-n_j-3\choose k-1}.   依次类推，由容斥原理可得，不合法的方案数为：  于是合法的方案数为：    </content>
+    <summary>一种不重不漏的计数原理.</summary>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  简介 ¶容斥原理是一种不重不漏的计数原理. 举个例子，A,B,C 三人竞选扫黄队长：           15 人投给 A 16 人投给 B 17 人投给 C 2 人同时投给 A,B,C               4 人同时投给 A,B 5 人同时投给 A,C 6 人同时投给 B,C         问共有多少人参与投票. A,B,C 三人的得票情况可以用小学二年级就学过的韦恩图描述：            |A|=15 |B|=16 |C|=17 |A∩B∩C|=2               |A∩B|=4 |A∩C|=5 |B∩C|=6         问题是求投票人数，即 |A∪B∪C|.  将上述问题推广到普遍情况，就是容斥原理. 公式 ¶并集 ¶对于 n 个集合 S_1,S_2\cdots S_n，|S| 表示集合 S 的元素数，则：      证   设 x\in S_{a_1},S_{a_2},\cdots,S_{a_m}，根据公式，\su\left|\bigcup_{i=1}^nS_i\right| 中包含元素 x 的个数为：  根据 二项式定理 有：   每个元素只出现一次，等价于并集，证毕.   交集 ¶对于 n 个集合 S_1,S_2\cdots S_n，已知全集为 U：  其中 \su\left|\bigcup_{i=1}^n\overline{S_i}\right| 套用 并集 的公式计算即可. 多重集的排列数 ¶普通集合中，不允许有相同的元素；多重集中，相同的元素可以出现多次. 设 S=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\} 是由 n_1 个 a_1，n_2 个 a_2 &amp;hellip; n_k 个 a_k 组成的多重集，\su n=\sum_{i=1}^kn_i. S 的全排列个数为：      证   n 个不同元素的全排列有 n! 种. 若其中有 j 个元素相同，则 n! 种全排列中有部分也是相同的. 单独看这 j 个元素，有 j! 种排列，但它们现在是一样的. 于是总的排列数为：  根据 乘法原理，多重集的全排列个数为：    多重集的组合数 1 ¶设 S=\{∞\cdot a_1,∞\cdot a_2,\cdots,∞\cdot a_k\}，从 S 中任取 λ 个元素的方案数为：      证   原问题等价于求以下方程非负整数解的个数：  解的个数用插板法计算： 在 λ 个 1 之间插 k-1 块板，使其分为 k 个区间. 第 i 个区间的和代表 x_i. 这样就构造出了一组解.  需要注意，板插在两端或同一个空隙中是允许的. 最初有 λ&#43;1 个空隙. 插第一块板有 λ&#43;1 种方法，第二块有 λ&#43;2 种，第三块有 λ&#43;3 种 \cdots 第 k-1 块有 λ&#43;k-1 种. 根据 乘法原理，总的方案数为：  但是插板的顺序与答案无关. 这么算显然会包含一些重复情况：  每一个方案都有 (k-1)! 种不同的插板顺序，故答案为：    多重集的组合数 2 ¶设 S=\{n_1\cdot a_1,n_2\cdot a_2,\cdots,n_k\cdot a_k\}，从 S 中任取 λ(λ≤\sum_in_i) 个元素的方案数为：           证   考虑容斥原理： 合法方案数 = 总方案数 - 不合法方案数  总方案数 \su={k&#43;λ-1\choose k-1}，详见 多重集的组合数 1. 于是问题转化为求不合法方案数.   设 T_i 为 a_i 超标的多重集. 先取 n_i&#43;1 个 a_i，再任取 λ-n_i-1 个元素，加入 T_i. 不同 T_i 的数量为 \su{k&#43;λ-n_i-2\choose k-1}.   设 T_{ij} 为 a_i,a_j 超标的多重集. 先取 n_i&#43;1 个 a_i 和 n_j&#43;1 个 a_j，再任取 λ-n_i-n_j-2 个元素，加入 T_{ij}. 不同 T_{ij} 的数量为 \su{k&#43;λ-n_i-n_j-3\choose k-1}.   依次类推，由容斥原理可得，不合法的方案数为：  于是合法的方案数为：    </content>
   </item>
   
 
@@ -77,8 +77,17 @@
   <item>
     <title>中国剩余定理</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%90%8C%E4%BD%99/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/</link>
-    <summary></summary>
-    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶中国剩余定理最早发现于《孙子算经》中.  有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二. 问物几何？  即求满足下列条件的 x： 它的通解公式为 x=233&#43;105k. 《孙子算经》中只给出了最小正整数解，也就是 k=-2 时的解：x=23. 至于古人是如何发现这个解的，有个网站记载得很详细：百度一下，你就知道. 不过，今天我们只关心中国剩余定理更普遍的应用. 问题 ¶中国剩余定理指关于 x 的同余方程组的解法： 其中 a_1, a_2, \cdots, a_k 两两互质. 解法 ¶设 M=\prod^k_{i=1}m_i，即所有 m 的乘积. 设 \su M_i=\frac{M}{m_i}，即除 m_i 外，其余所有 m 的乘积. 设 M_it_i≡1\pmod{m_i}，t_i 为 M_i 关于模 m_i 的 乘法逆元. 利用刚才设的一大坨东西，我们可以构造出一个解： 计算 x \bmod m_i 时，含 m_i 的项都被模没了，故原式可化简为 (a_iM_it_i) \bmod m_i. 而 t_i 为 M_i 的乘法逆元，因此 x \bmod m_i=a_i. 因此构造出的 x 满足每一个线性同余方程. 模板 ¶</content>
+    <summary>有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二. 问物几何？</summary>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  简介 ¶中国剩余定理最早发现于《孙子算经》中.  有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二. 问物几何？  即求满足下列条件的 x： 它的通解公式为 x=233&#43;105k. 《孙子算经》中只给出了最小正整数解，也就是 k=-2 时的解：x=23. 不过，今天我们只关心中国剩余定理更普遍的应用. 问题 ¶中国剩余定理指关于 x 的同余方程组的解法： 其中 a_1, a_2, \cdots, a_k 两两互质. 解法 ¶设 M=\prod^k_{i=1}m_i. 设 \su M_i=\frac{M}{m_i}，即除 m_i 外，其余所有 m 的乘积. 设 M_it_i≡1\pmod{m_i}，t_i 为 M_i 关于模 m_i 的 乘法逆元. 利用以上数据可以构造一个解： 其正确性显然. 模板 ¶</content>
+  </item>
+  
+
+  
+  <item>
+    <title>Lucas 定理</title>
+    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/</link>
+    <summary>为数不多比打表更受欢迎的简单算法.</summary>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  简介 ¶Lucas 定理用于求解大组合数对质数 p（p≤10^6）取模：  证明 ¶ 我不会，长大后再学习.  解法 ¶对于 n,m≤10^6 的组合数 \su{n\choose m}，可以直接代入 公式，并使用 乘法逆元 将除法转为乘法.  对于更大的组合数，套用 Lucas 定理.  其中 \su{n \bmod p\choose m \bmod p} 可以直接算，\su{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor} 需要递归求解. 预处理 ¶  fac[i]=i!\bmod p，线性递推：    inv[i]=(i!)^{-1}，参考 线性求逆元：     模板 ¶总时间复杂度：O(p&#43;\log_p{n}). </content>
   </item>
   
 
@@ -86,17 +95,8 @@
   <item>
     <title>卡特兰数列</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0%E5%88%97/</link>
-    <summary></summary>
-    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶卡特兰数列可以是许多看似毫不相关的问题的解.   n 个节点能构成 Cat_n 种不同的二叉树.   n 个左括号和 n 个右括号组成的合法序列有 Cat_n 种.   n 个元素的进栈顺序为 1,2,\cdots,n，合法的出栈顺序有 Cat_n 种.   在圆上选择 2n 个点成对连接，使得 n 条线段不相交的方法数为 Cat_n.   通过若干条互不相交的对角线,把凸 n 边形拆分成若干个三角形的方案数为 Cat_{n-2}.   在平面直角坐标系上，每一步只能向上或向右走 1 个单位，从 (0,0) 走到 (n,n) 且不接触直线 y=x 的路径数量为 2Cat_n-1.   通项公式 ¶ 递推公式 ¶ 附表 ¶   Cat_0 Cat_1 Cat_2 Cat_3 Cat_4 Cat_5 Cat_6 Cat_7 Cat_8 \cdots     1     1     2     5     14    42    132   429   1430  \cdots    </content>
-  </item>
-  
-
-  
-  <item>
-    <title>卢卡斯定理</title>
-    <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/</link>
-    <summary></summary>
-    <content>注意：若无特殊说明，本章涉及的变量皆为正整数. 简介 ¶Lucas 定理用于求解大组合数对质数 p 取模：  适用范围是 p≤10^6. 证明 ¶ Under Construction ...  解法 ¶对于 n,m≤10^6 的组合数 \su{n\choose m}，可以直接代入 公式，并使用 乘法逆元 将除法转为乘法.  对于更大的组合数，套用 Lucas 定理.  其中 \su{n \bmod p\choose m \bmod p} 可以直接算，\su{\lfloor n/p\rfloor\choose\lfloor m/p\rfloor} 需要递归求解. 算上预处理，总时间复杂度为 O(p&#43;\log_p{n}). 预处理 ¶  fac[i]=i!\bmod p，线性递推：    inv[i]=(i!)^{-1}，参考 线性求逆元：     模板 ¶</content>
+    <summary>卡特兰数列是许多看似毫不相关的问题的解.</summary>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  简介 ¶卡特兰数列是许多看似毫不相关的问题的解.  n 个节点能构成 Cat_n 种不同的二叉树. n 个左括号和 n 个右括号组成的合法序列有 Cat_n 种. n 个元素的进栈顺序为 1,2,\cdots,n，合法的出栈顺序有 Cat_n 种. 在圆上选择 2n 个点成对连接，使得 n 条线段不相交的方法数为 Cat_n. 通过若干条互不相交的对角线,把凸 n 边形拆分成若干个三角形的方案数为 Cat_{n-2}. 在平面直角坐标系上，每一步只能向上或向右走 1 个单位，从 (0,0) 走到 (n,n) 且不接触直线 y=x 的路径数量为 2Cat_n-1.  通项公式 ¶ 递推公式 ¶ 附表 ¶   Cat_0 Cat_1 Cat_2 Cat_3 Cat_4 Cat_5 Cat_6 Cat_7 Cat_8 \cdots     1     1     2     5     14    42    132   429   1430  \cdots    </content>
   </item>
   
 
@@ -195,7 +195,7 @@
     <title>因数</title>
     <link>/post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E5%9B%A0%E6%95%B0/</link>
     <summary></summary>
-    <content> 若无特殊说明，本章涉及的变量皆为正整数.  定义 ¶a÷b 的余数为 c，则称 a 模 b 等于 c，记作 a \bmod b=c. 若 n \bmod d=0，则 d 是 n 的因数，记为 d\mid n. 算数基本定理 ¶任意正整数 n 都能唯一分解为有限个质数的乘积：  分解质因数 ¶试除法 ¶ 将 n 分解成 算数基本定理 中的形式.  判断 n 能否整除 [2,\sqrt{n}] 中的所有整数 i，如果能，则从 n 中除掉所有的因子 i，并记录因子 i 的个数. 时间复杂度为 O(\sqrt n). 倍数法 ¶ 求 [1,n] 中所有整数的因数集合.  用 试除法 很容易超时，此时考虑倍数法： i 一定是 i 的倍数的因数. 枚举 [1,n] 中每个数的倍数即可. 时间复杂度为 O(n\log{n}). </content>
+    <content> 若无特殊说明，本章涉及的变量皆为正整数.  定义 ¶a÷b 的余数为 c，则称 a 模 b 等于 c，记作 a \bmod b=c. 若 n \bmod d=0，则 d 是 n 的因数，记为 d\mid n. 算数基本定理 ¶任意正整数 n 都能唯一分解为有限个质数的乘积.  分解质因数 ¶试除法 ¶ 将 n 分解成 算数基本定理 的形式. 如  360=2^3\times 3^2\times 5   枚举 i=2,3,\cdots,\sqrt{n}，除尽 n 中的 i，并记录除的次数. 倍数法 ¶ 求 [1,n] 中各整数的因数集 fact. 如  fact[12]=\{1,2,3,4,6,12\}   对各整数依次进行 试除法 太慢，此时考虑倍数法：  i 的倍数必有因数 i.  枚举 i=1,2,\cdots,n，并在 fact[i 的倍数] 中加入 i. 时间复杂度为 O(n\log{n}). </content>
   </item>
   
 

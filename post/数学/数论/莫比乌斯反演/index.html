@@ -76,10 +76,10 @@ ol {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   background-color: white;
+  display: inline-block;
   background-color: var(--block-color);
   padding: .1rem .5rem;
   margin: .3rem 0;
-  display: inline-block;
   font-size: 12.8px;
   font-weight: bold; }
   .card .count {
@@ -90,11 +90,9 @@ ol {
   box-shadow: var(--shadow);
   background-color: white; }
 
-.hover {
-  transition: all .15s; }
-  .hover:hover {
-    cursor: pointer;
-    background-color: var(--block-color); }
+.hover:hover {
+  cursor: pointer;
+  background-color: var(--block-color); }
 
 @font-face {
   font-family: 'Fantasque Sans Mono';
@@ -126,9 +124,12 @@ aside {
 aside.left .author {
   text-align: center; }
   aside.left .author img {
+    transition: all 0.2s;
     width: 6rem;
     height: 6rem;
     border-radius: 1rem; }
+    aside.left .author img:hover {
+      transform: perspective(1px) scale(1.05); }
   aside.left .author h2.name {
     margin: .5rem; }
 
@@ -191,6 +192,9 @@ aside.left .search {
   line-height: 20px; }
   .core .time img {
     vertical-align: text-bottom; }
+
+.core .categories {
+  margin: .5rem 0; }
 
 .core .post {
   padding: 1rem;
@@ -330,9 +334,14 @@ aside.left .search {
       box-shadow: none;
       padding: 0; }
   .core.markdown table {
-    margin: .5rem 0;
+    display: block;
+    overflow: auto;
+    margin: .5rem -2px;
+    padding: 0 2px;
     border-spacing: 0 5px;
     -webkit-overflow-scrolling: touch; }
+    .core.markdown table::-webkit-scrollbar-track {
+      margin: 0 2px; }
     .core.markdown table th, .core.markdown table td {
       padding: .3rem 16px;
       font-weight: normal; }
@@ -420,10 +429,10 @@ details {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
-.book-columns {
+.columns {
   display: flex;
   flex-wrap: wrap; }
-  .book-columns .markdown-inner {
+  .columns .markdown-inner {
     flex: 1 1; }
 
 .book-tabs {
@@ -540,7 +549,7 @@ details {
     <span>Posts</span>
   </div>
   <div class='box'>
-    <h3>74,020</h3>
+    <h3>73,676</h3>
     <span>Words</span>
   </div>
 </div>
@@ -585,6 +594,11 @@ details {
   </div>
   
   <div class="card">
+    <div class="count">7</div>
+    <a href="../../../../categories/%E5%90%8C%E4%BD%99/">同余</a>
+  </div>
+  
+  <div class="card">
     <div class="count">2</div>
     <a href="../../../../categories/%E6%95%B0%E5%88%97/">数列</a>
   </div>
@@ -619,7 +633,6 @@ details {
 
   
 <article class='core markdown shadow'>
-<div class='content'>
   
   <h1>莫比乌斯反演</h1>
   <span class="time">
@@ -634,52 +647,54 @@ details {
 
 </span>
   
-<div class="description">
-  信息学不需要证明，但人的好奇心需要.
-</div>
-
+  
 
   
 
-  <blockquote>
+<blockquote>
 <p>若无特殊说明，本章涉及的变量皆为正整数.</p>
 </blockquote>
 <h2 id="简介">简介 <a class="anchor" href="#%e7%ae%80%e4%bb%8b">¶</a></h2><p>由函数 $f$ 定义一个函数 $g$：</p>
-<p>$$g(n)=\sum_{d\mid n}f(d)\quad\big(\footnotesize 或\normalsize\quad g(n)=\sum_{n\mid d}f(d)\big)$$</p>
-<p>如果已知 $g(n)$ 的值，就可以用莫比乌斯反演推出 $f(n)$ 的值.</p>
-<h2 id="莫比乌斯函数">莫比乌斯函数 <a class="anchor" href="#%e8%8e%ab%e6%af%94%e4%b9%8c%e6%96%af%e5%87%bd%e6%95%b0">¶</a></h2><h3 id="定义">定义 <a class="anchor" href="#%e5%ae%9a%e4%b9%89">¶</a></h3><p>$n$ 的莫比乌斯函数记为 $μ(n)$，定义为：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">μ(n)=<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
-0  <span style="color:#728e00">&amp;</span> n <span style="color:#728e00">\ \footnotesize</span> 有平方因数 <span style="color:#728e00">\\</span>
-1  <span style="color:#728e00">&amp;</span> n <span style="color:#728e00">\ \footnotesize</span> 没有平方因数，且有偶数个质因数 <span style="color:#728e00">\\</span>
--1 <span style="color:#728e00">&amp;</span> n <span style="color:#728e00">\ \footnotesize</span> 没有平方因数，且有奇数个质因数
+<p>$$g(n)=\sum_{d\mid n}f(d)\quad\big(\text{或}\quad g(n)=\sum_{n\mid d}f(d)\big)$$</p>
+<p>已知 $g(n)$，即可用莫比乌斯反演推出 $f(n)$.</p>
+<h2 id="莫比乌斯函数">莫比乌斯函数 <a class="anchor" href="#%e8%8e%ab%e6%af%94%e4%b9%8c%e6%96%af%e5%87%bd%e6%95%b0">¶</a></h2><h3 id="定义">定义 <a class="anchor" href="#%e5%ae%9a%e4%b9%89">¶</a></h3><p>$n$ 的莫比乌斯函数记为 $\mu(n)$：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\mu</span>(n)=<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+0  <span style="color:#728e00">&amp;</span> n <span style="color:#728e00">\ </span>有平方因数 <span style="color:#728e00">\\</span>
+1  <span style="color:#728e00">&amp;</span> n <span style="color:#728e00">\ </span>无平方因数，且有偶数个质因数 <span style="color:#728e00">\\</span>
+-1 <span style="color:#728e00">&amp;</span> n <span style="color:#728e00">\ </span>无平方因数，且有奇数个质因数
 <span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
 </code></pre></div><p>特别地，$μ(1)=1$.</p>
-<h3 id="性质">性质 <a class="anchor" href="#%e6%80%a7%e8%b4%a8">¶</a></h3><h4 id="性质-1">性质 1 <a class="anchor" href="#%e6%80%a7%e8%b4%a8-1">¶</a></h4><p>$$\sum_{d\mid n}μ(d)=\left\lfloor\frac{1}{n}\right\rfloor=\begin{cases}1&amp;n=1\\0&amp;n&gt;1\end{cases}$$</p>
-
+<h3 id="性质">性质 <a class="anchor" href="#%e6%80%a7%e8%b4%a8">¶</a></h3><h4 id="性质-1">性质 1 <a class="anchor" href="#%e6%80%a7%e8%b4%a8-1">¶</a></h4><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>d<span style="color:#728e00">\mid</span> n<span style="color:#728e00">}</span>μ(d)
+= <span style="color:#728e00">\left\lfloor\frac</span><span style="color:#728e00">{</span>1<span style="color:#728e00">}{</span>n<span style="color:#728e00">}</span><span style="color:#728e00">\right\rfloor</span>
+= <span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    1 <span style="color:#728e00">&amp;</span> n=1<span style="color:#728e00">\\</span>
+    0 <span style="color:#728e00">&amp;</span> n&gt;1
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div>
 <details >
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
   <div class='details-inner'><p>设 $n$ 有 $k$ 个质因子 $p_1,p_2,\cdots,p_k$，则：</p>
-<div>
-$$
-\begin{aligned}
-\sum_{d\mid n}μ(d)
-= \ &μ(1)+μ(p_1)+μ(p_2)+\cdots+μ(p_k)+μ(p_1p_2)+\cdots+μ(p_1p_2\cdots p_k)\\
-= \ &{k\choose 0}+{k\choose 1}(-1)+{k\choose 2}(-1)^2+\cdots+{k\choose k}(-1)^k\\
-= \ &\sum_{i=0}^k{k\choose i}(-1)^i
-\end{aligned}
-$$
-</div>
-<p>由 <a href="../../../../docs/NOI/Math/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/">二项式定理</a> 得：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>d<span style="color:#728e00">\mid</span> n<span style="color:#728e00">}</span>μ(d)
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;</span>μ(1)+μ(p<span style="color:#728e00">_</span>1)+μ(p<span style="color:#728e00">_</span>2)+<span style="color:#728e00">\cdots</span>+μ(p<span style="color:#728e00">_</span>k)+μ(p<span style="color:#728e00">_</span>1p<span style="color:#728e00">_</span>2)+<span style="color:#728e00">\cdots</span>+μ(p<span style="color:#728e00">_</span>1p<span style="color:#728e00">_</span>2<span style="color:#728e00">\cdots</span> p<span style="color:#728e00">_</span>k)<span style="color:#728e00">\\</span>
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;{</span>k<span style="color:#728e00">\choose</span> 0<span style="color:#728e00">}</span>+<span style="color:#728e00">{</span>k<span style="color:#728e00">\choose</span> 1<span style="color:#728e00">}</span>(-1)+<span style="color:#728e00">{</span>k<span style="color:#728e00">\choose</span> 2<span style="color:#728e00">}</span>(-1)<span style="color:#728e00">^</span>2+<span style="color:#728e00">\cdots</span>+<span style="color:#728e00">{</span>k<span style="color:#728e00">\choose</span> k<span style="color:#728e00">}</span>(-1)<span style="color:#728e00">^</span>k<span style="color:#728e00">\\</span>
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;</span><span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>i=0<span style="color:#728e00">}^</span>k<span style="color:#728e00">{</span>k<span style="color:#728e00">\choose</span> i<span style="color:#728e00">}</span>(-1)<span style="color:#728e00">^</span>i
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div><p>由 <a href="../../../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/">二项式定理</a> 得：</p>
 <p>$$\sum_{i=0}^k{k\choose i}(-1)^i=(1-1)^k=\begin{cases}1&amp;k=1\\0&amp;k&gt;1\end{cases}$$</p>
 <p>当且仅当 $n=1$ 时，$k=1$. 因此：</p>
 <p>$$\sum_{d\mid n}μ(d)=\begin{cases}1&amp;n=1\\0&amp;n&gt;1\end{cases}$$</p>
 </div>
 </details>
-<h4 id="性质-2">性质 2 <a class="anchor" href="#%e6%80%a7%e8%b4%a8-2">¶</a></h4><p>$$\sum_{d\mid gcd(n,m)}μ(d)=\begin{cases}1&amp;n,m \ \footnotesize 互质\\0&amp;n,m \ \footnotesize 不互质\end{cases}$$</p>
-
+<h4 id="性质-2">性质 2 <a class="anchor" href="#%e6%80%a7%e8%b4%a8-2">¶</a></h4><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>d<span style="color:#728e00">\mid</span> gcd(n,m)<span style="color:#728e00">}</span>μ(d)=
+<span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+    1 <span style="color:#728e00">&amp;</span> n,m <span style="color:#728e00">\ </span>互质<span style="color:#728e00">\\</span>
+    0 <span style="color:#728e00">&amp;</span> n,m <span style="color:#728e00">\ </span>不互质
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>cases<span style="color:#728e00">}</span>
+</code></pre></div>
 <details >
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
-  <div class='details-inner'>根据 <a href="../../../../docs/NOI/Math/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/#%E6%80%A7%E8%B4%A8-1">性质 1</a> 自证.</div>
+  <div class='details-inner'>根据 <a href="#%E6%80%A7%E8%B4%A8-1">性质 1</a> 自证.</div>
 </details>
 <!-- #### 性质 3
 
@@ -690,30 +705,34 @@ $$\su\sum_{d\mid n}\dfrac{μ(d)}{d}=\dfrac{\varphi(n)}{n}$$
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
   <div class='details-inner'>动一动你聪明的小脑瓜.</div>
 </details> -->
-<h4 id="积性函数">积性函数 <a class="anchor" href="#%e7%a7%af%e6%80%a7%e5%87%bd%e6%95%b0">¶</a></h4><p>$$\displaystyleμ(nm)=\begin{cases}μ(n)\cdotμ(m)&amp;n,m \ \footnotesize 互质\\0&amp;n,m \ \footnotesize 不互质\end{cases}$$</p>
+<h4 id="积性函数">积性函数 <a class="anchor" href="#%e7%a7%af%e6%80%a7%e5%87%bd%e6%95%b0">¶</a></h4><p>$$\displaystyleμ(nm)=\begin{cases}μ(n)\cdotμ(m)&amp;n,m \  互质\\0&amp;n,m \  不互质\end{cases}$$</p>
 
 <details >
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
   <div class='details-inner'>读者自证.</div>
 </details>
-<h3 id="模板">模板 <a class="anchor" href="#%e6%a8%a1%e6%9d%bf">¶</a></h3><p>基于质数的 <a href="../../../../docs/NOI/Math/prime/#%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95">线性筛法</a> 求 $μ(1)\simμ(n)$.</p>
+<h3 id="模板">模板 <a class="anchor" href="#%e6%a8%a1%e6%9d%bf">¶</a></h3><p>基于质数的 <a href="../../../../post/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/%E8%B4%A8%E6%95%B0/#%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95">线性筛法</a> 求 $μ(1)\simμ(n)$.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#728e00">const</span> <span style="color:#00979d">int</span> <span style="color:#434f54">N</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">1e6</span>;
 <span style="color:#434f54">vector</span><span style="color:#728e00">&lt;</span><span style="color:#00979d">int</span><span style="color:#728e00">&gt;</span> <span style="color:#434f54">prime</span>;
-<span style="color:#00979d">int</span> <span style="color:#434f54">miu</span>[<span style="color:#434f54">N</span>]; <span style="color:#00979d">bool</span> <span style="color:#434f54">isPrime</span>[<span style="color:#434f54">N</span>];
+<span style="color:#00979d">int</span> <span style="color:#434f54">miu</span>[<span style="color:#434f54">N</span>];
+<span style="color:#00979d">bool</span> <span style="color:#434f54">isPrime</span>[<span style="color:#434f54">N</span>];
 
 <span style="color:#00979d">void</span> <span style="color:#d35400">getMiu</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">n</span>) {
     <span style="color:#434f54">miu</span>[<span style="color:#8a7b52">1</span>] <span style="color:#728e00">=</span> <span style="color:#8a7b52">1</span>;
     <span style="color:#434f54">memset</span>(<span style="color:#434f54">isPrime</span>, <span style="color:#728e00">true</span>, <span style="color:#728e00">sizeof</span> <span style="color:#434f54">isPrime</span>);
-    <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
-        <span style="color:#728e00">if</span>(<span style="color:#434f54">isPrime</span>[<span style="color:#434f54">i</span>])
+    <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">i</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">2</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">&lt;=</span> <span style="color:#434f54">n</span>; <span style="color:#434f54">i</span> <span style="color:#728e00">++</span>) {
+        <span style="color:#728e00">if</span> (<span style="color:#434f54">isPrime</span>[<span style="color:#434f54">i</span>])
             <span style="color:#434f54">prime</span>.<span style="color:#434f54">push_back</span>(<span style="color:#434f54">i</span>), <span style="color:#434f54">miu</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">=</span> <span style="color:#728e00">-</span><span style="color:#8a7b52">1</span>;
-        <span style="color:#728e00">for</span>(<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">prime</span>.<span style="color:#434f54">size</span>(); <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>) {
-            <span style="color:#728e00">if</span>(<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">&gt;</span> <span style="color:#434f54">n</span>) <span style="color:#728e00">break</span>;
+        <span style="color:#728e00">for</span> (<span style="color:#00979d">int</span> <span style="color:#434f54">j</span> <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>; <span style="color:#434f54">j</span> <span style="color:#728e00">&lt;</span> <span style="color:#434f54">prime</span>.<span style="color:#434f54">size</span>(); <span style="color:#434f54">j</span> <span style="color:#728e00">++</span>) {
+            <span style="color:#728e00">if</span> (<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">&gt;</span> <span style="color:#434f54">n</span>)
+                <span style="color:#728e00">break</span>;
             <span style="color:#434f54">isPrime</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>]] <span style="color:#728e00">=</span> <span style="color:#728e00">false</span>;
-            <span style="color:#728e00">if</span>(<span style="color:#434f54">i</span> <span style="color:#728e00">%</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) {
-              <span style="color:#434f54">miu</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>]] <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>; <span style="color:#728e00">break</span>;
-            } <span style="color:#728e00">else</span>
+            <span style="color:#728e00">if</span> (<span style="color:#434f54">i</span> <span style="color:#728e00">%</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>] <span style="color:#728e00">==</span> <span style="color:#8a7b52">0</span>) {
+              <span style="color:#434f54">miu</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>]] <span style="color:#728e00">=</span> <span style="color:#8a7b52">0</span>;
+              <span style="color:#728e00">break</span>;
+            } <span style="color:#728e00">else</span> {
               <span style="color:#434f54">miu</span>[<span style="color:#434f54">i</span> <span style="color:#728e00">*</span> <span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>]] <span style="color:#728e00">=</span> <span style="color:#434f54">miu</span>[<span style="color:#434f54">i</span>] <span style="color:#728e00">*</span> <span style="color:#434f54">miu</span>[<span style="color:#434f54">prime</span>[<span style="color:#434f54">j</span>]];
+            }
         }
     }
 }
@@ -741,16 +760,16 @@ $$\su\sum_{d\mid n}\dfrac{μ(d)}{d}=\dfrac{\varphi(n)}{n}$$
 <p>$$ε(n)=\begin{cases}1&amp;n=1\\0&amp;n&gt;1\end{cases}$$</p>
  <!-- - 逆元：若 $f*g=ε$，则 $g(x)$ 是 $f(x)$ 的逆元. 
 
-$$g(x)=\frac{ε(x)-\sum_{\footnotesize d|x,d≠1}f(d)g\Big(\su\frac{x}{d}\Big)}{f(1)}$$ -->
+$$g(x)=\frac{ε(x)-\sum_{ d|x,d≠1}f(d)g\Big(\su\frac{x}{d}\Big)}{f(1)}$$ -->
 <blockquote>
 <p>值为常数的函数，如 $f(n)=C$，在狄利克雷卷积中简记为 $C$.</p>
 <p>$$g(x)=\sum_{d|x}C\cdot f(d)\eq g=C*f$$</p>
 </blockquote>
-<h3 id="重要结论">重要结论 <a class="anchor" href="#%e9%87%8d%e8%a6%81%e7%bb%93%e8%ae%ba">¶</a></h3><p>$$ε(n)=\sum_{d\mid n}μ(d)\quad (\footnotesize 或 \quad\normalsize 1*μ=ε)$$</p>
+<h3 id="重要结论">重要结论 <a class="anchor" href="#%e9%87%8d%e8%a6%81%e7%bb%93%e8%ae%ba">¶</a></h3><p>$$ε(n)=\sum_{d\mid n}μ(d)\quad ( 或 \quad\normalsize 1*μ=ε)$$</p>
 
 <details >
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
-  <div class='details-inner'><p>由 $μ$ 函数的 <a href="../../../../docs/NOI/Math/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/#%E6%80%A7%E8%B4%A8-1">性质 1</a> 得：</p>
+  <div class='details-inner'><p>由 $μ$ 函数的 <a href="#%E6%80%A7%E8%B4%A8-1">性质 1</a> 得：</p>
 <p>$$\sum_{d\mid n}μ(d)=\begin{cases}1&amp;n=1\\0&amp;n&gt;1\end{cases}=ε(n)$$</p>
 <p>$$∴1*μ=ε$$</p>
 </div>
@@ -761,8 +780,8 @@ $$g(x)=\frac{ε(x)-\sum_{\footnotesize d|x,d≠1}f(d)g\Big(\su\frac{x}{d}\Big)}{
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
   <div class='details-inner'><p>原式可简记为：</p>
 <p>$$f=g*1\Longrightarrow g=μ *f$$</p>
-<p>由 <a href="../../../../docs/NOI/Math/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/#%E9%87%8D%E8%A6%81%E7%BB%93%E8%AE%BA">重要结论</a> 得：</p>
-<p>$$f=g* 1\Longrightarrow f<em>μ=g</em>(1<em>μ)=g</em>ε=g$$</p>
+<p>由 <a href="#%E9%87%8D%E8%A6%81%E7%BB%93%E8%AE%BA">重要结论</a> 得：</p>
+<p>$$f=g* 1\Longrightarrow f* μ=g* (1 *μ)=g *ε=g$$</p>
 <p>即证.</p>
 </div>
 </details>
@@ -770,22 +789,16 @@ $$g(x)=\frac{ε(x)-\sum_{\footnotesize d|x,d≠1}f(d)g\Big(\su\frac{x}{d}\Big)}{
 
 <details >
   <summary>证<img class='alt' src='../../../../images/right.svg'></summary>
-  <div class='details-inner'><div>
-$$
-\begin{aligned}
-& \sum_{n\mid d}μ\!\left(\frac{d}{n}\right)f(d)\\
-= \ &\sum_{k=1}^{+∞}μ(k)f(kn)&&\quad\footnotesize 设 \ k=\frac{d}{n}，代入\\
-= \ &\sum_{k=1}^{+∞}μ(k)\sum_{kn\mid d}g(d)&&\quad\footnotesize 将 \ f(n)=\sum_{n\mid d}g(d) \ 代入\\
-= \ &\sum_{n\mid d}g(d)\sum_{k\mid\frac{d}{n}}μ(k)\\
-= \ &\sum_{n\mid d}g(d)ε\!\left(\frac{d}{n}\right)&&\quad\footnotesize 套用 \ \href{/docs/NOI/Math/莫比乌斯反演/#重要结论}{重要结论}\\
-= \ &g(n)
-\end{aligned}
-$$
-</div>
-<p>即证.</div>
+  <div class='details-inner'><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#728e00">\begin</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+<span style="color:#728e00">&amp;</span> <span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>n<span style="color:#728e00">\mid</span> d<span style="color:#728e00">}</span>μ<span style="color:#728e00">\!\left</span>(<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>d<span style="color:#728e00">}{</span>n<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)f(d)<span style="color:#728e00">\\</span>
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;</span><span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>k=1<span style="color:#728e00">}^{</span>+∞<span style="color:#728e00">}</span>μ(k)f(kn)<span style="color:#728e00">&amp;&amp;</span><span style="color:#728e00">\quad</span> 设 <span style="color:#728e00">\ </span>k=<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>d<span style="color:#728e00">}{</span>n<span style="color:#728e00">}</span>，代入<span style="color:#728e00">\\</span>
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;</span><span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>k=1<span style="color:#728e00">}^{</span>+∞<span style="color:#728e00">}</span>μ(k)<span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>kn<span style="color:#728e00">\mid</span> d<span style="color:#728e00">}</span>g(d)<span style="color:#728e00">&amp;&amp;</span><span style="color:#728e00">\quad</span> 将 <span style="color:#728e00">\ </span>f(n)=<span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>n<span style="color:#728e00">\mid</span> d<span style="color:#728e00">}</span>g(d) <span style="color:#728e00">\ </span>代入<span style="color:#728e00">\\</span>
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;</span><span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>n<span style="color:#728e00">\mid</span> d<span style="color:#728e00">}</span>g(d)<span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>k<span style="color:#728e00">\mid\frac</span><span style="color:#728e00">{</span>d<span style="color:#728e00">}{</span>n<span style="color:#728e00">}}</span>μ(k)<span style="color:#728e00">\\</span>
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;</span><span style="color:#728e00">\sum</span><span style="color:#728e00">_{</span>n<span style="color:#728e00">\mid</span> d<span style="color:#728e00">}</span>g(d)ε<span style="color:#728e00">\!\left</span>(<span style="color:#728e00">\frac</span><span style="color:#728e00">{</span>d<span style="color:#728e00">}{</span>n<span style="color:#728e00">}</span><span style="color:#728e00">\right</span>)<span style="color:#728e00">&amp;&amp;</span><span style="color:#728e00">\quad</span> 套用 <span style="color:#728e00">\ </span>重要结论<span style="color:#728e00">\\</span>
+= <span style="color:#728e00">\ </span><span style="color:#728e00">&amp;</span>g(n)
+<span style="color:#728e00">\end</span><span style="color:#728e00">{</span>aligned<span style="color:#728e00">}</span>
+</code></pre></div></div>
 </details>
-
-</div>
 
 </article>
 
@@ -794,7 +807,6 @@ $$
   <h2>Notice</h2>
 <ul>
 <li>网站架构变更，部分文章正在重构中.</li>
-<li>从今天开始不接受任何形式的资助. 捐款已经够运营网站 10 年.</li>
 <li>评论区因安全问题被关闭.</li>
 </ul>
 
@@ -867,7 +879,9 @@ function renderTex() {
       "\\arccot": "\\text\{arccot\} \\, ",
       "\\xor": "\\text\{xor\} \\, ",
       "\\mex": "\\text\{mex\} \\, ",
-      "\\wave": "\\raisebox\{-0em\}\{\\small～\}",
+      
+      "\\wave": "\{ \\ \\small\\sim \\ \}",
+      ",": "\\raisebox\{-.6em\}\{\\text\{\\textquoteright\}\} \\ \\ ",
     }
   });
 }
@@ -876,16 +890,18 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 $('.language-latex').each(function(id, el, arr) {
   function toText(text) { 
-    var temp = document.createElement("div"); 
-    temp.innerHTML = text; 
-    var output = temp.innerText || temp.textContent; 
-    temp = null; 
-    return output; 
+    var div = document.createElement("div"); 
+    div.innerHTML = text; 
+    var output = div.innerText || div.textContent; 
+    div = null; 
+    return output;
   } 
   tex = toText(el.innerHTML);
   el.parentElement.outerHTML = '<div>$$' + tex + '$$</div>';
 });
 </script>
+
+
 
 <script>
   $(window).scroll(function(e) {
@@ -894,8 +910,11 @@ $('.language-latex').each(function(id, el, arr) {
     }
   });
   $(window).ready(function() {
-    $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    if (window.location.hash) {
+      $(decodeURI(window.location.hash)).get(0).scrollIntoView();
+    }
   });
+  document.body.scroll="no";
 </script>
 
 
